@@ -129,8 +129,24 @@ export const AIService = {
     if (question.type === 'fill') {
       const normalize = (s: string) =>
         s.trim().toLowerCase().replace(/[，,；;\s]+/g, '|')
-      const correct = normalize(studentAnswer) === normalize(question.answer)
-      return { correct, feedback: question.explanation }
+      if (normalize(studentAnswer) === normalize(question.answer)) {
+        return { correct: true, feedback: question.explanation }
+      }
+      // Exact match failed — try AI to catch mathematically equivalent forms
+      const key = StorageService.apiKey.get()
+      if (!key) return { correct: false, feedback: question.explanation }
+
+      const system = `你是 AP 物理 1 评分助手。判断两个答案是否数学等价（如 3L/4 与 0.75L 等价）。返回纯 JSON：{"correct":true/false,"feedback":"1句反馈"}`
+      const userMsg = `题目：${question.question}\n标准答案：${question.answer}\n学生答案：${studentAnswer}\n是否等价？`
+      try {
+        const raw = await callClaudeWithMessages([{ role: 'user', content: userMsg }], system, 100, signal)
+        const match = raw.match(/\{[\s\S]*\}/)
+        const parsed = JSON.parse(match?.[0] ?? '{}')
+        return { correct: parsed.correct ?? false, feedback: parsed.feedback ?? question.explanation }
+      } catch (err) {
+        if (err instanceof Error && err.name === 'AbortError') throw err
+        return { correct: false, feedback: question.explanation }
+      }
     }
 
     // short answer: use AI

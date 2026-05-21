@@ -38,6 +38,10 @@ function assignSlotOrders(resources: RawResource[]): Map<string, number> {
       const pA = PHASE_ORDER[derivePhase(atA, a.type)]
       const pB = PHASE_ORDER[derivePhase(atB, b.type)]
       if (pA !== pB) return pA - pB
+      // Within same phase: interactive first (build intuition), frq last (synthesis)
+      const typeRank = (r: RawResource) => r.type === 'interactive' ? 0 : r.type === 'frq' ? 2 : 1
+      const tA = typeRank(a), tB = typeRank(b)
+      if (tA !== tB) return tA - tB
       return a.id.localeCompare(b.id)
     })
     group.forEach((r, i) => result.set(r.id, i + 1))
