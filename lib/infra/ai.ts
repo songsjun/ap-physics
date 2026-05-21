@@ -120,13 +120,23 @@ export const AIService = {
     studentAnswer: string,
     signal?: AbortSignal,
   ): Promise<QuizGrade> {
+    // mcq and fill are graded locally — no AI needed
+    if (question.type === 'mcq') {
+      const correct = studentAnswer.trim().toLowerCase() === question.answer.trim().toLowerCase()
+      return { correct, feedback: question.explanation }
+    }
+
+    if (question.type === 'fill') {
+      const normalize = (s: string) =>
+        s.trim().toLowerCase().replace(/[，,；;\s]+/g, '|')
+      const correct = normalize(studentAnswer) === normalize(question.answer)
+      return { correct, feedback: question.explanation }
+    }
+
+    // short answer: use AI
     const key = StorageService.apiKey.get()
     if (!key) {
-      // Fallback: exact string match for MCQ/fill, always pass for short
-      const correct = question.type === 'short'
-        ? true
-        : studentAnswer.trim().toLowerCase() === question.answer.trim().toLowerCase()
-      return { correct, feedback: question.explanation }
+      return { correct: true, feedback: question.explanation }
     }
 
     const system = `你是 AP 物理 1 评分助手。只评分，不教学。返回纯 JSON，格式：{"correct":true/false,"feedback":"1句反馈"}`
