@@ -1,0 +1,4845 @@
+{
+  "metadata": {
+    "course": "AP Physics 1",
+    "ced_version": "Fall 2024",
+    "generated": "2026-05-18"
+  },
+  "concepts": [
+    {
+      "id": "kinematics-scalars-vectors-1d",
+      "name_zh": "标量与向量（一维）",
+      "name_en": "Scalars and Vectors in One Dimension",
+      "unit": 1,
+      "ced_topic": "1.1",
+      "ced_topic_name": "Scalars and Vectors in One Dimension",
+      "week": 1,
+      "day": 1,
+      "prerequisites": [],
+      "openstax_sections": [
+        "2.1",
+        "3.3"
+      ]
+    },
+    {
+      "id": "kinematics-displacement-velocity-acceleration",
+      "name_zh": "位移、速度与加速度",
+      "name_en": "Displacement, Velocity, and Acceleration",
+      "unit": 1,
+      "ced_topic": "1.2",
+      "ced_topic_name": "Displacement, Velocity, and Acceleration",
+      "week": 1,
+      "day": 2,
+      "prerequisites": [
+        "kinematics-scalars-vectors-1d"
+      ],
+      "openstax_sections": [
+        "2.1",
+        "2.3",
+        "2.4"
+      ]
+    },
+    {
+      "id": "kinematics-representing-motion",
+      "name_zh": "运动的表示（图像与方程）",
+      "name_en": "Representing Motion",
+      "unit": 1,
+      "ced_topic": "1.3",
+      "ced_topic_name": "Representing Motion",
+      "week": 1,
+      "day": 3,
+      "prerequisites": [
+        "kinematics-displacement-velocity-acceleration"
+      ],
+      "openstax_sections": [
+        "2.5",
+        "2.7",
+        "2.8"
+      ]
+    },
+    {
+      "id": "kinematics-reference-frames",
+      "name_zh": "参考系与相对运动",
+      "name_en": "Reference Frames and Relative Motion",
+      "unit": 1,
+      "ced_topic": "1.4",
+      "ced_topic_name": "Reference Frames and Relative Motion",
+      "week": 1,
+      "day": 6,
+      "prerequisites": [
+        "kinematics-displacement-velocity-acceleration"
+      ],
+      "openstax_sections": [
+        "3.5"
+      ]
+    },
+    {
+      "id": "kinematics-vectors-2d-motion",
+      "name_zh": "二维向量与运动（含抛体）",
+      "name_en": "Vectors and Motion in Two Dimensions",
+      "unit": 1,
+      "ced_topic": "1.5",
+      "ced_topic_name": "Vectors and Motion in Two Dimensions",
+      "week": 1,
+      "day": 5,
+      "prerequisites": [
+        "kinematics-scalars-vectors-1d",
+        "kinematics-displacement-velocity-acceleration"
+      ],
+      "openstax_sections": [
+        "3.3",
+        "3.4"
+      ]
+    },
+    {
+      "id": "dynamics-systems-center-of-mass",
+      "name_zh": "系统与质心",
+      "name_en": "Systems and Center of Mass",
+      "unit": 2,
+      "ced_topic": "2.1",
+      "ced_topic_name": "Systems and Center of Mass",
+      "week": 2,
+      "day": 2,
+      "prerequisites": [
+        "kinematics-displacement-velocity-acceleration"
+      ],
+      "openstax_sections": [
+        "4.3"
+      ]
+    },
+    {
+      "id": "dynamics-fbd-forces",
+      "name_zh": "力与自由体图（FBD）",
+      "name_en": "Forces and Free-Body Diagrams",
+      "unit": 2,
+      "ced_topic": "2.2",
+      "ced_topic_name": "Forces and Free-Body Diagrams",
+      "week": 2,
+      "day": 2,
+      "prerequisites": [
+        "kinematics-displacement-velocity-acceleration"
+      ],
+      "openstax_sections": [
+        "4.1",
+        "4.5"
+      ]
+    },
+    {
+      "id": "dynamics-newtons-third-law",
+      "name_zh": "牛顿第三定律",
+      "name_en": "Newton's Third Law",
+      "unit": 2,
+      "ced_topic": "2.3",
+      "ced_topic_name": "Newton's Third Law",
+      "week": 2,
+      "day": 2,
+      "prerequisites": [
+        "dynamics-fbd-forces"
+      ],
+      "openstax_sections": [
+        "4.4"
+      ]
+    },
+    {
+      "id": "dynamics-newtons-first-law",
+      "name_zh": "牛顿第一定律（惯性与平衡）",
+      "name_en": "Newton's First Law",
+      "unit": 2,
+      "ced_topic": "2.4",
+      "ced_topic_name": "Newton's First Law",
+      "week": 2,
+      "day": 3,
+      "prerequisites": [
+        "dynamics-fbd-forces"
+      ],
+      "openstax_sections": [
+        "4.2"
+      ]
+    },
+    {
+      "id": "dynamics-newtons-second-law",
+      "name_zh": "牛顿第二定律（ΣF=ma）",
+      "name_en": "Newton's Second Law",
+      "unit": 2,
+      "ced_topic": "2.5",
+      "ced_topic_name": "Newton's Second Law",
+      "week": 2,
+      "day": 3,
+      "prerequisites": [
+        "dynamics-fbd-forces",
+        "dynamics-newtons-first-law"
+      ],
+      "openstax_sections": [
+        "4.3"
+      ]
+    },
+    {
+      "id": "dynamics-gravitational-force",
+      "name_zh": "万有引力与重力场",
+      "name_en": "Gravitational Force",
+      "unit": 2,
+      "ced_topic": "2.6",
+      "ced_topic_name": "Gravitational Force",
+      "week": 3,
+      "day": 5,
+      "prerequisites": [
+        "dynamics-newtons-second-law"
+      ],
+      "openstax_sections": [
+        "6.5"
+      ]
+    },
+    {
+      "id": "dynamics-friction",
+      "name_zh": "静摩擦与动摩擦",
+      "name_en": "Kinetic and Static Friction",
+      "unit": 2,
+      "ced_topic": "2.7",
+      "ced_topic_name": "Kinetic and Static Friction",
+      "week": 2,
+      "day": 4,
+      "prerequisites": [
+        "dynamics-newtons-second-law"
+      ],
+      "openstax_sections": [
+        "5.1"
+      ]
+    },
+    {
+      "id": "dynamics-spring-forces",
+      "name_zh": "弹簧力（胡克定律）",
+      "name_en": "Spring Forces",
+      "unit": 2,
+      "ced_topic": "2.8",
+      "ced_topic_name": "Spring Forces",
+      "week": 2,
+      "day": 5,
+      "prerequisites": [
+        "dynamics-newtons-second-law"
+      ],
+      "openstax_sections": [
+        "16.1"
+      ]
+    },
+    {
+      "id": "dynamics-circular-motion",
+      "name_zh": "圆周运动与向心力",
+      "name_en": "Circular Motion",
+      "unit": 2,
+      "ced_topic": "2.9",
+      "ced_topic_name": "Circular Motion",
+      "week": 3,
+      "day": 4,
+      "prerequisites": [
+        "dynamics-newtons-second-law"
+      ],
+      "openstax_sections": [
+        "6.2",
+        "6.3"
+      ]
+    },
+    {
+      "id": "dynamics-inclined-planes",
+      "name_zh": "斜面问题（力分解）",
+      "name_en": "Forces on Inclined Planes",
+      "unit": 2,
+      "ced_topic": "2.5",
+      "ced_topic_name": "Newton's Second Law (Inclined Planes)",
+      "week": 3,
+      "day": 2,
+      "prerequisites": [
+        "dynamics-fbd-forces",
+        "dynamics-newtons-second-law"
+      ],
+      "openstax_sections": [
+        "4.5"
+      ]
+    },
+    {
+      "id": "dynamics-systems-connected",
+      "name_zh": "连接系统（系统法与单体法）",
+      "name_en": "Connected Systems and Atwood Machine",
+      "unit": 2,
+      "ced_topic": "2.5",
+      "ced_topic_name": "Newton's Second Law (Systems)",
+      "week": 3,
+      "day": 3,
+      "prerequisites": [
+        "dynamics-newtons-second-law"
+      ],
+      "openstax_sections": [
+        "4.3"
+      ]
+    },
+    {
+      "id": "dynamics-circular-orbits",
+      "name_zh": "圆形轨道趋势",
+      "name_en": "Circular Orbits",
+      "unit": 2,
+      "ced_topic": "2.9",
+      "ced_topic_name": "Circular Motion and Orbits",
+      "week": 3,
+      "day": 5,
+      "prerequisites": [
+        "dynamics-circular-motion",
+        "dynamics-gravitational-force"
+      ],
+      "openstax_sections": [
+        "6.6"
+      ]
+    },
+    {
+      "id": "energy-translational-kinetic",
+      "name_zh": "平动动能",
+      "name_en": "Translational Kinetic Energy",
+      "unit": 3,
+      "ced_topic": "3.1",
+      "ced_topic_name": "Translational Kinetic Energy",
+      "week": 4,
+      "day": 2,
+      "prerequisites": [
+        "kinematics-displacement-velocity-acceleration"
+      ],
+      "openstax_sections": [
+        "7.1",
+        "7.2"
+      ]
+    },
+    {
+      "id": "energy-work",
+      "name_zh": "功（W=Fd cosθ）与功能定理",
+      "name_en": "Work and Work-Energy Theorem",
+      "unit": 3,
+      "ced_topic": "3.2",
+      "ced_topic_name": "Work",
+      "week": 4,
+      "day": 2,
+      "prerequisites": [
+        "energy-translational-kinetic"
+      ],
+      "openstax_sections": [
+        "7.1",
+        "7.2"
+      ]
+    },
+    {
+      "id": "energy-fx-graph",
+      "name_zh": "F-x图面积表示功",
+      "name_en": "F-x Graph and Work",
+      "unit": 3,
+      "ced_topic": "3.2",
+      "ced_topic_name": "Work (graphical)",
+      "week": 4,
+      "day": 3,
+      "prerequisites": [
+        "energy-work"
+      ],
+      "openstax_sections": [
+        "7.1"
+      ]
+    },
+    {
+      "id": "energy-potential-energy",
+      "name_zh": "重力势能与弹性势能",
+      "name_en": "Potential Energy",
+      "unit": 3,
+      "ced_topic": "3.3",
+      "ced_topic_name": "Potential Energy",
+      "week": 4,
+      "day": 4,
+      "prerequisites": [
+        "energy-work"
+      ],
+      "openstax_sections": [
+        "7.3",
+        "7.4",
+        "16.1"
+      ]
+    },
+    {
+      "id": "energy-conservation",
+      "name_zh": "机械能守恒与能量系统",
+      "name_en": "Conservation of Energy",
+      "unit": 3,
+      "ced_topic": "3.4",
+      "ced_topic_name": "Conservation of Energy",
+      "week": 4,
+      "day": 5,
+      "prerequisites": [
+        "energy-potential-energy",
+        "energy-translational-kinetic"
+      ],
+      "openstax_sections": [
+        "7.5",
+        "7.6"
+      ]
+    },
+    {
+      "id": "energy-bar-charts",
+      "name_zh": "能量棒图",
+      "name_en": "Energy Bar Charts",
+      "unit": 3,
+      "ced_topic": "3.4",
+      "ced_topic_name": "Conservation of Energy (bar charts)",
+      "week": 4,
+      "day": 6,
+      "prerequisites": [
+        "energy-conservation"
+      ],
+      "openstax_sections": [
+        "7.6"
+      ]
+    },
+    {
+      "id": "energy-power",
+      "name_zh": "功率（P=W/t=Fv）",
+      "name_en": "Power",
+      "unit": 3,
+      "ced_topic": "3.5",
+      "ced_topic_name": "Power",
+      "week": 4,
+      "day": 6,
+      "prerequisites": [
+        "energy-work"
+      ],
+      "openstax_sections": [
+        "7.7"
+      ]
+    },
+    {
+      "id": "momentum-linear",
+      "name_zh": "线动量（p=mv）",
+      "name_en": "Linear Momentum",
+      "unit": 4,
+      "ced_topic": "4.1",
+      "ced_topic_name": "Linear Momentum",
+      "week": 5,
+      "day": 2,
+      "prerequisites": [
+        "kinematics-displacement-velocity-acceleration"
+      ],
+      "openstax_sections": [
+        "8.1"
+      ]
+    },
+    {
+      "id": "momentum-impulse",
+      "name_zh": "冲量与冲量-动量定理",
+      "name_en": "Change in Momentum and Impulse",
+      "unit": 4,
+      "ced_topic": "4.2",
+      "ced_topic_name": "Change in Momentum and Impulse",
+      "week": 5,
+      "day": 2,
+      "prerequisites": [
+        "momentum-linear"
+      ],
+      "openstax_sections": [
+        "8.2"
+      ]
+    },
+    {
+      "id": "momentum-ft-graph",
+      "name_zh": "F-t图面积=冲量",
+      "name_en": "F-t Graph and Impulse",
+      "unit": 4,
+      "ced_topic": "4.2",
+      "ced_topic_name": "Change in Momentum (graphical)",
+      "week": 5,
+      "day": 3,
+      "prerequisites": [
+        "momentum-impulse"
+      ],
+      "openstax_sections": [
+        "8.2"
+      ]
+    },
+    {
+      "id": "momentum-conservation",
+      "name_zh": "线动量守恒",
+      "name_en": "Conservation of Linear Momentum",
+      "unit": 4,
+      "ced_topic": "4.3",
+      "ced_topic_name": "Conservation of Linear Momentum",
+      "week": 5,
+      "day": 4,
+      "prerequisites": [
+        "momentum-impulse"
+      ],
+      "openstax_sections": [
+        "8.3"
+      ]
+    },
+    {
+      "id": "momentum-collisions",
+      "name_zh": "弹性/非弹性/完全非弹性碰撞",
+      "name_en": "Elastic and Inelastic Collisions",
+      "unit": 4,
+      "ced_topic": "4.4",
+      "ced_topic_name": "Elastic and Inelastic Collisions",
+      "week": 5,
+      "day": 5,
+      "prerequisites": [
+        "momentum-conservation"
+      ],
+      "openstax_sections": [
+        "8.4",
+        "8.5"
+      ]
+    },
+    {
+      "id": "torque-rotational-kinematics",
+      "name_zh": "转动运动学（角量定义与关系）",
+      "name_en": "Rotational Kinematics",
+      "unit": 5,
+      "ced_topic": "5.1",
+      "ced_topic_name": "Rotational Kinematics",
+      "week": 6,
+      "day": 2,
+      "prerequisites": [
+        "kinematics-representing-motion"
+      ],
+      "openstax_sections": [
+        "6.1"
+      ]
+    },
+    {
+      "id": "torque-linear-rotational-connection",
+      "name_zh": "线量-角量关系（s=rθ, v=rω）",
+      "name_en": "Connecting Linear and Rotational Motion",
+      "unit": 5,
+      "ced_topic": "5.2",
+      "ced_topic_name": "Connecting Linear and Rotational Motion",
+      "week": 6,
+      "day": 2,
+      "prerequisites": [
+        "torque-rotational-kinematics"
+      ],
+      "openstax_sections": [
+        "6.1"
+      ]
+    },
+    {
+      "id": "torque-torque",
+      "name_zh": "力矩（τ=rF sinθ）",
+      "name_en": "Torque",
+      "unit": 5,
+      "ced_topic": "5.3",
+      "ced_topic_name": "Torque",
+      "week": 6,
+      "day": 3,
+      "prerequisites": [
+        "torque-linear-rotational-connection"
+      ],
+      "openstax_sections": [
+        "9.1"
+      ]
+    },
+    {
+      "id": "torque-rotational-inertia",
+      "name_zh": "转动惯量（I）",
+      "name_en": "Rotational Inertia",
+      "unit": 5,
+      "ced_topic": "5.4",
+      "ced_topic_name": "Rotational Inertia",
+      "week": 6,
+      "day": 4,
+      "prerequisites": [
+        "torque-torque"
+      ],
+      "openstax_sections": [
+        "10.3"
+      ]
+    },
+    {
+      "id": "torque-rotational-equilibrium",
+      "name_zh": "转动平衡（Στ=0，牛顿第一定律转动形式）",
+      "name_en": "Rotational Equilibrium and Newton's First Law in Rotational Form",
+      "unit": 5,
+      "ced_topic": "5.5",
+      "ced_topic_name": "Rotational Equilibrium and Newton's First Law in Rotational Form",
+      "week": 6,
+      "day": 3,
+      "prerequisites": [
+        "torque-torque"
+      ],
+      "openstax_sections": [
+        "9.2"
+      ]
+    },
+    {
+      "id": "torque-newtons-second-law-rotational",
+      "name_zh": "转动牛顿第二定律（Στ=Iα）",
+      "name_en": "Newton's Second Law in Rotational Form",
+      "unit": 5,
+      "ced_topic": "5.6",
+      "ced_topic_name": "Newton's Second Law in Rotational Form",
+      "week": 6,
+      "day": 4,
+      "prerequisites": [
+        "torque-rotational-inertia",
+        "torque-rotational-equilibrium"
+      ],
+      "openstax_sections": [
+        "10.3"
+      ]
+    },
+    {
+      "id": "rotation-rotational-kinetic-energy",
+      "name_zh": "转动动能（Krot=½Iω²）",
+      "name_en": "Rotational Kinetic Energy",
+      "unit": 6,
+      "ced_topic": "6.1",
+      "ced_topic_name": "Rotational Kinetic Energy",
+      "week": 6,
+      "day": 5,
+      "prerequisites": [
+        "torque-rotational-inertia"
+      ],
+      "openstax_sections": [
+        "10.4"
+      ]
+    },
+    {
+      "id": "rotation-torque-work",
+      "name_zh": "力矩做功（W=τθ）",
+      "name_en": "Torque and Work",
+      "unit": 6,
+      "ced_topic": "6.2",
+      "ced_topic_name": "Torque and Work",
+      "week": 6,
+      "day": 5,
+      "prerequisites": [
+        "torque-torque",
+        "energy-work"
+      ],
+      "openstax_sections": [
+        "10.4"
+      ]
+    },
+    {
+      "id": "rotation-angular-momentum",
+      "name_zh": "角动量（L=Iω）",
+      "name_en": "Angular Momentum and Angular Impulse",
+      "unit": 6,
+      "ced_topic": "6.3",
+      "ced_topic_name": "Angular Momentum and Angular Impulse",
+      "week": 6,
+      "day": 6,
+      "prerequisites": [
+        "torque-rotational-inertia"
+      ],
+      "openstax_sections": [
+        "10.5"
+      ]
+    },
+    {
+      "id": "rotation-angular-momentum-conservation",
+      "name_zh": "角动量守恒",
+      "name_en": "Conservation of Angular Momentum",
+      "unit": 6,
+      "ced_topic": "6.4",
+      "ced_topic_name": "Conservation of Angular Momentum",
+      "week": 6,
+      "day": 6,
+      "prerequisites": [
+        "rotation-angular-momentum"
+      ],
+      "openstax_sections": [
+        "10.5"
+      ]
+    },
+    {
+      "id": "rotation-rolling",
+      "name_zh": "滚动运动（纯滚动与滑动）",
+      "name_en": "Rolling",
+      "unit": 6,
+      "ced_topic": "6.5",
+      "ced_topic_name": "Rolling",
+      "week": 6,
+      "day": 5,
+      "prerequisites": [
+        "rotation-rotational-kinetic-energy"
+      ],
+      "openstax_sections": [
+        "10.4"
+      ]
+    },
+    {
+      "id": "rotation-orbiting-satellites",
+      "name_zh": "卫星轨道运动（角动量守恒）",
+      "name_en": "Motion of Orbiting Satellites",
+      "unit": 6,
+      "ced_topic": "6.6",
+      "ced_topic_name": "Motion of Orbiting Satellites",
+      "week": 6,
+      "day": 6,
+      "prerequisites": [
+        "dynamics-gravitational-force",
+        "rotation-angular-momentum-conservation"
+      ],
+      "openstax_sections": [
+        "6.6"
+      ]
+    },
+    {
+      "id": "oscillation-shm-definition",
+      "name_zh": "简谐运动定义（SHM）",
+      "name_en": "Defining Simple Harmonic Motion (SHM)",
+      "unit": 7,
+      "ced_topic": "7.1",
+      "ced_topic_name": "Defining Simple Harmonic Motion (SHM)",
+      "week": 7,
+      "day": 2,
+      "prerequisites": [
+        "energy-potential-energy"
+      ],
+      "openstax_sections": [
+        "16.3"
+      ]
+    },
+    {
+      "id": "oscillation-shm-frequency-period",
+      "name_zh": "SHM频率与周期",
+      "name_en": "Frequency and Period of SHM",
+      "unit": 7,
+      "ced_topic": "7.2",
+      "ced_topic_name": "Frequency and Period of SHM",
+      "week": 7,
+      "day": 3,
+      "prerequisites": [
+        "oscillation-shm-definition"
+      ],
+      "openstax_sections": [
+        "16.3",
+        "16.4"
+      ]
+    },
+    {
+      "id": "oscillation-shm-representing",
+      "name_zh": "SHM的表示与分析（x/v/a图像）",
+      "name_en": "Representing and Analyzing SHM",
+      "unit": 7,
+      "ced_topic": "7.3",
+      "ced_topic_name": "Representing and Analyzing SHM",
+      "week": 7,
+      "day": 2,
+      "prerequisites": [
+        "oscillation-shm-definition"
+      ],
+      "openstax_sections": [
+        "16.3"
+      ]
+    },
+    {
+      "id": "oscillation-shm-energy",
+      "name_zh": "SHM能量（E=½kA²）",
+      "name_en": "Energy of Simple Harmonic Oscillators",
+      "unit": 7,
+      "ced_topic": "7.4",
+      "ced_topic_name": "Energy of Simple Harmonic Oscillators",
+      "week": 7,
+      "day": 3,
+      "prerequisites": [
+        "oscillation-shm-definition",
+        "energy-conservation"
+      ],
+      "openstax_sections": [
+        "16.5"
+      ]
+    },
+    {
+      "id": "fluids-density-structure",
+      "name_zh": "流体内部结构与密度",
+      "name_en": "Internal Structure and Density",
+      "unit": 8,
+      "ced_topic": "8.1",
+      "ced_topic_name": "Internal Structure and Density",
+      "week": 7,
+      "day": 4,
+      "prerequisites": [],
+      "openstax_sections": [
+        "11.2"
+      ]
+    },
+    {
+      "id": "fluids-pressure",
+      "name_zh": "流体压强（P=P₀+ρgh）",
+      "name_en": "Pressure",
+      "unit": 8,
+      "ced_topic": "8.2",
+      "ced_topic_name": "Pressure",
+      "week": 7,
+      "day": 4,
+      "prerequisites": [
+        "fluids-density-structure"
+      ],
+      "openstax_sections": [
+        "11.3",
+        "11.4"
+      ]
+    },
+    {
+      "id": "fluids-newton-laws",
+      "name_zh": "流体与牛顿定律（浮力/阿基米德）",
+      "name_en": "Fluids and Newton's Laws (Buoyancy)",
+      "unit": 8,
+      "ced_topic": "8.3",
+      "ced_topic_name": "Fluids and Newton's Laws",
+      "week": 7,
+      "day": 5,
+      "prerequisites": [
+        "fluids-pressure"
+      ],
+      "openstax_sections": [
+        "11.7"
+      ]
+    },
+    {
+      "id": "fluids-conservation-laws",
+      "name_zh": "流体与守恒定律（连续方程与伯努利）",
+      "name_en": "Fluids and Conservation Laws",
+      "unit": 8,
+      "ced_topic": "8.4",
+      "ced_topic_name": "Fluids and Conservation Laws",
+      "week": 7,
+      "day": 6,
+      "prerequisites": [
+        "fluids-pressure"
+      ],
+      "openstax_sections": [
+        "12.1",
+        "12.2"
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "id": "khan-motion-variables",
+      "title": "Understand: motion variables",
+      "url": "https://www.khanacademy.org/science/highschool-physics/x6679aa2c65c01e53:motion-and-forces/x6679aa2c65c01e53:describing-motion/e/understand-motion-variables",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 10,
+      "concepts": [
+        "kinematics-scalars-vectors-1d"
+      ],
+      "week": 1,
+      "day": 1
+    },
+    {
+      "id": "khan-position-velocity-speed",
+      "title": "Position, velocity, and speed",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:kinematics/xf557a762645cccc5:scalars-and-vectors-in-1d/v/position_velocity_speed",
+      "type": "video",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 12,
+      "concepts": [
+        "kinematics-scalars-vectors-1d",
+        "kinematics-displacement-velocity-acceleration"
+      ],
+      "week": 1,
+      "day": 2
+    },
+    {
+      "id": "khan-acceleration",
+      "title": "Acceleration",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:kinematics/xf557a762645cccc5:visual-models-of-motion/v/intro_to_acceleration",
+      "type": "video",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 12,
+      "concepts": [
+        "kinematics-displacement-velocity-acceleration"
+      ],
+      "week": 1,
+      "day": 2
+    },
+    {
+      "id": "khan-constant-speed-motion",
+      "title": "Apply: constant speed motion",
+      "url": "https://www.khanacademy.org/science/highschool-physics/x6679aa2c65c01e53:motion-and-forces/x6679aa2c65c01e53:describing-motion/e/apply-constant-speed-motion",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 12,
+      "concepts": [
+        "kinematics-displacement-velocity-acceleration"
+      ],
+      "week": 1,
+      "day": 2
+    },
+    {
+      "id": "khan-accelerated-motion",
+      "title": "Apply: accelerated motion",
+      "url": "https://www.khanacademy.org/science/highschool-physics/x6679aa2c65c01e53:motion-and-forces/x6679aa2c65c01e53:describing-motion/e/apply-accelerated-motion",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 13,
+      "concepts": [
+        "kinematics-displacement-velocity-acceleration"
+      ],
+      "week": 1,
+      "day": 2
+    },
+    {
+      "id": "khan-interpreting-motion-data",
+      "title": "Interpreting motion data",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:kinematics/xf557a762645cccc5:visual-models-of-motion/v/interpreting_motion_data",
+      "type": "video",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 12,
+      "concepts": [
+        "kinematics-representing-motion"
+      ],
+      "week": 1,
+      "day": 3
+    },
+    {
+      "id": "khan-velocity-acceleration-graphs",
+      "title": "Connecting velocity and acceleration graphs",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:kinematics/xf557a762645cccc5:visual-models-of-motion/e/acceleration-exercises-ap1",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 12,
+      "concepts": [
+        "kinematics-representing-motion"
+      ],
+      "week": 1,
+      "day": 3
+    },
+    {
+      "id": "phet-moving-man",
+      "title": "The Moving Man",
+      "url": "https://phet.colorado.edu/en/simulations/moving-man",
+      "type": "interactive",
+      "platform": "phet",
+      "tier": "A",
+      "estimated_minutes": 10,
+      "concepts": [
+        "kinematics-representing-motion"
+      ],
+      "week": 1,
+      "day": 3
+    },
+    {
+      "id": "khan-kinematic-equations",
+      "title": "Developing kinematic equations from data",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:kinematics/xf557a762645cccc5:mathematical-models-of-motion/v/developing-kinematic-equations-from-data",
+      "type": "video",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 15,
+      "concepts": [
+        "kinematics-representing-motion"
+      ],
+      "week": 1,
+      "day": 4
+    },
+    {
+      "id": "khan-free-fall",
+      "title": "Free fall",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:kinematics/xf557a762645cccc5:mathematical-models-of-motion/e/freefall-exercise-ap1-graphs-and-concepts",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 12,
+      "concepts": [
+        "kinematics-representing-motion"
+      ],
+      "week": 1,
+      "day": 4
+    },
+    {
+      "id": "khan-vectors-2d",
+      "title": "Learn and try: Vectors in 2D",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:kinematics/xf557a762645cccc5:motion-in-2d/a/what-are-velocity-components",
+      "type": "reading",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 15,
+      "concepts": [
+        "kinematics-vectors-2d-motion"
+      ],
+      "week": 1,
+      "day": 5
+    },
+    {
+      "id": "khan-vectors-2d-exercise",
+      "title": "Vectors in 2D",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:kinematics/xf557a762645cccc5:motion-in-2d/e/analyzing-vectors-in-2d-ap1",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 12,
+      "concepts": [
+        "kinematics-vectors-2d-motion"
+      ],
+      "week": 1,
+      "day": 5
+    },
+    {
+      "id": "phet-vector-addition",
+      "title": "Vector Addition",
+      "url": "https://phet.colorado.edu/en/simulations/vector-addition",
+      "type": "interactive",
+      "platform": "phet",
+      "tier": "A",
+      "estimated_minutes": 15,
+      "concepts": [
+        "kinematics-vectors-2d-motion"
+      ],
+      "week": 1,
+      "day": 5
+    },
+    {
+      "id": "khan-projectile-motion-video",
+      "title": "Projectile motion",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:kinematics/xf557a762645cccc5:motion-in-2d/v/projectile-motion",
+      "type": "video",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 13,
+      "concepts": [
+        "kinematics-vectors-2d-motion"
+      ],
+      "week": 1,
+      "day": 6
+    },
+    {
+      "id": "khan-projectile-concepts",
+      "title": "Projectile motion concepts",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:kinematics/xf557a762645cccc5:motion-in-2d/e/2d-projectile-motion-concepts-quiz",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 8,
+      "concepts": [
+        "kinematics-vectors-2d-motion"
+      ],
+      "week": 1,
+      "day": 6
+    },
+    {
+      "id": "khan-projectile-calculations",
+      "title": "Projectile motion calculations",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:kinematics/xf557a762645cccc5:motion-in-2d/e/2d-projectile-motion-with-components-given-exercise",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 9,
+      "concepts": [
+        "kinematics-vectors-2d-motion"
+      ],
+      "week": 1,
+      "day": 6
+    },
+    {
+      "id": "phet-projectile-motion",
+      "title": "Projectile Motion",
+      "url": "https://phet.colorado.edu/en/simulations/projectile-motion",
+      "type": "interactive",
+      "platform": "phet",
+      "tier": "A",
+      "estimated_minutes": 15,
+      "concepts": [
+        "kinematics-vectors-2d-motion"
+      ],
+      "week": 1,
+      "day": 6
+    },
+    {
+      "id": "khan-relative-velocity",
+      "title": "Relative velocity",
+      "url": "https://en.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:kinematics/xf557a762645cccc5:scalars-and-vectors-in-1d/v/intro-to-relative-velocity-class-11-india-physics-khan-academy",
+      "type": "video",
+      "platform": "khan",
+      "tier": "B",
+      "estimated_minutes": 7,
+      "concepts": [
+        "kinematics-reference-frames"
+      ],
+      "week": 1,
+      "day": 6
+    },
+    {
+      "id": "ap-central-2026-frq",
+      "title": "AP Physics 1 2026 FRQ",
+      "url": "/frq/ap26-frq-physics-1.pdf",
+      "type": "frq",
+      "platform": "ap_central",
+      "tier": "A",
+      "estimated_minutes": 20,
+      "concepts": [
+        "kinematics-vectors-2d-motion",
+        "kinematics-representing-motion"
+      ],
+      "week": 1,
+      "day": 7,
+      "answer_url": "https://apcentral.collegeboard.org/media/pdf/ap26-sg-physics-1.pdf"
+    },
+    {
+      "id": "khan-fbd-video",
+      "title": "Forces and free-body diagrams",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:force-and-translational-dynamics/xf557a762645cccc5:forces-and-systems/v/forces-and-free-body-diagrams",
+      "type": "video",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 14,
+      "concepts": [
+        "dynamics-fbd-forces"
+      ],
+      "week": 2,
+      "day": 2
+    },
+    {
+      "id": "khan-fbd-exercise",
+      "title": "Forces and free-body diagrams exercise",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:force-and-translational-dynamics/xf557a762645cccc5:forces-and-systems/e/free-body-diagrams-ap-physics-1",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 15,
+      "concepts": [
+        "dynamics-fbd-forces"
+      ],
+      "week": 2,
+      "day": 2
+    },
+    {
+      "id": "khan-newton3-exercise",
+      "title": "Systems and Newton's third law",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:force-and-translational-dynamics/xf557a762645cccc5:forces-and-systems/e/newton-3rd-law-free-body-diagram",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 15,
+      "concepts": [
+        "dynamics-newtons-third-law"
+      ],
+      "week": 2,
+      "day": 2
+    },
+    {
+      "id": "khan-newton2-video",
+      "title": "Newton's second law calculations",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:force-and-translational-dynamics/xf557a762645cccc5:forces-and-acceleration/v/newtons_second_law_calculations",
+      "type": "video",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 12,
+      "concepts": [
+        "dynamics-newtons-second-law"
+      ],
+      "week": 2,
+      "day": 3
+    },
+    {
+      "id": "khan-newton2-exercise",
+      "title": "Newton's second law exercise",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:force-and-translational-dynamics/xf557a762645cccc5:forces-and-acceleration/e/newton-s-second-law",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 15,
+      "concepts": [
+        "dynamics-newtons-second-law"
+      ],
+      "week": 2,
+      "day": 3
+    },
+    {
+      "id": "khan-friction-exercise",
+      "title": "Friction exercise",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:force-and-translational-dynamics/xf557a762645cccc5:frictional-force/e/friction-ap1",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 15,
+      "concepts": [
+        "dynamics-friction"
+      ],
+      "week": 2,
+      "day": 4
+    },
+    {
+      "id": "phet-forces-motion-basics",
+      "title": "Forces and Motion: Basics",
+      "url": "https://phet.colorado.edu/en/simulations/forces-and-motion-basics",
+      "type": "interactive",
+      "platform": "phet",
+      "tier": "A",
+      "estimated_minutes": 10,
+      "concepts": [
+        "dynamics-friction"
+      ],
+      "week": 2,
+      "day": 4
+    },
+    {
+      "id": "khan-spring-exercise",
+      "title": "Spring force and Hooke's law exercise",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:force-and-translational-dynamics/xf557a762645cccc5:spring-force/e/hooke-s-law-and-spring-force-ap1",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 15,
+      "concepts": [
+        "dynamics-spring-forces"
+      ],
+      "week": 2,
+      "day": 5
+    },
+    {
+      "id": "phet-hookes-law",
+      "title": "Hooke's Law",
+      "url": "https://phet.colorado.edu/en/simulations/hookes-law",
+      "type": "interactive",
+      "platform": "phet",
+      "tier": "A",
+      "estimated_minutes": 15,
+      "concepts": [
+        "dynamics-spring-forces"
+      ],
+      "week": 2,
+      "day": 5
+    },
+    {
+      "id": "khan-inclines-exercise",
+      "title": "Inclines practice",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:force-and-translational-dynamics/xf557a762645cccc5:forces-and-acceleration/e/inclined-planes-ap1",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 20,
+      "concepts": [
+        "dynamics-inclined-planes"
+      ],
+      "week": 3,
+      "day": 2
+    },
+    {
+      "id": "khan-analyzing-systems",
+      "title": "Analyzing systems",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:force-and-translational-dynamics/xf557a762645cccc5:forces-and-acceleration/e/applications-of-newtons-second-law",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 20,
+      "concepts": [
+        "dynamics-systems-connected"
+      ],
+      "week": 3,
+      "day": 3
+    },
+    {
+      "id": "khan-circular-motion-exercise",
+      "title": "Circular motion exercise",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:force-and-translational-dynamics/xf557a762645cccc5:circular-motion/e/circular-motion-ap1",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 20,
+      "concepts": [
+        "dynamics-circular-motion"
+      ],
+      "week": 3,
+      "day": 4
+    },
+    {
+      "id": "khan-gravitational-fields",
+      "title": "Gravitational fields exercise",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:force-and-translational-dynamics/xf557a762645cccc5:gravitational-force/e/the-gravitational-field",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 15,
+      "concepts": [
+        "dynamics-gravitational-force"
+      ],
+      "week": 3,
+      "day": 5
+    },
+    {
+      "id": "phet-gravity-orbits",
+      "title": "Gravity and Orbits",
+      "url": "https://phet.colorado.edu/en/simulations/gravity-and-orbits",
+      "type": "interactive",
+      "platform": "phet",
+      "tier": "A",
+      "estimated_minutes": 10,
+      "concepts": [
+        "dynamics-circular-orbits"
+      ],
+      "week": 3,
+      "day": 5
+    },
+    {
+      "id": "phet-gravity-force-lab",
+      "title": "Gravity Force Lab",
+      "url": "https://phet.colorado.edu/en/simulations/gravity-force-lab",
+      "type": "interactive",
+      "platform": "phet",
+      "tier": "A",
+      "estimated_minutes": 10,
+      "concepts": [
+        "dynamics-gravitational-force"
+      ],
+      "week": 3,
+      "day": 5
+    },
+    {
+      "id": "khan-work-energy-article",
+      "title": "Translational kinetic energy and work",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:work-energy-and-power/xf557a762645cccc5:translational-kinetic-energy-and-work/a/what-is-kinetic-energy",
+      "type": "reading",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 15,
+      "concepts": [
+        "energy-translational-kinetic",
+        "energy-work"
+      ],
+      "week": 4,
+      "day": 2
+    },
+    {
+      "id": "khan-work-energy-exercise",
+      "title": "Translational kinetic energy and work exercise",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:work-energy-and-power/xf557a762645cccc5:translational-kinetic-energy-and-work/e/work-and-mechanical-energy",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 20,
+      "concepts": [
+        "energy-work",
+        "energy-translational-kinetic"
+      ],
+      "week": 4,
+      "day": 2
+    },
+    {
+      "id": "khan-fx-graph-video",
+      "title": "Force vs. displacement graphs",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:work-energy-and-power/xf557a762645cccc5:translational-kinetic-energy-and-work/v/work-as-area-under-curve",
+      "type": "video",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 12,
+      "concepts": [
+        "energy-fx-graph"
+      ],
+      "week": 4,
+      "day": 3
+    },
+    {
+      "id": "khan-fx-graph-exercise",
+      "title": "Force vs. displacement graphs exercise",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:work-energy-and-power/xf557a762645cccc5:translational-kinetic-energy-and-work/e/work-graphs-ap-physics-1",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 20,
+      "concepts": [
+        "energy-fx-graph"
+      ],
+      "week": 4,
+      "day": 3
+    },
+    {
+      "id": "khan-potential-energy-exercise",
+      "title": "Potential energy exercise",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:work-energy-and-power/xf557a762645cccc5:potential-energy/e/gravitational-potential-energy-ap-physics-1",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 15,
+      "concepts": [
+        "energy-potential-energy"
+      ],
+      "week": 4,
+      "day": 4
+    },
+    {
+      "id": "khan-conservation-energy-exercise",
+      "title": "Conservation of energy exercise",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:work-energy-and-power/xf557a762645cccc5:untitled-271/e/conservation-of-energy-law-ap-physics-1",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 15,
+      "concepts": [
+        "energy-conservation"
+      ],
+      "week": 4,
+      "day": 5
+    },
+    {
+      "id": "khan-energy-systems-exercise",
+      "title": "Energy and systems exercise",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:work-energy-and-power/xf557a762645cccc5:untitled-271/e/conservation-of-energy",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 15,
+      "concepts": [
+        "energy-conservation"
+      ],
+      "week": 4,
+      "day": 5
+    },
+    {
+      "id": "phet-energy-skate-park",
+      "title": "Energy Skate Park",
+      "url": "https://phet.colorado.edu/en/simulations/energy-skate-park",
+      "type": "interactive",
+      "platform": "phet",
+      "tier": "A",
+      "estimated_minutes": 15,
+      "concepts": [
+        "energy-conservation"
+      ],
+      "week": 4,
+      "day": 5
+    },
+    {
+      "id": "khan-energy-bar-charts",
+      "title": "Energy bar charts",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:work-energy-and-power/xf557a762645cccc5:untitled-271/e/energy-bar-charts",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 15,
+      "concepts": [
+        "energy-bar-charts"
+      ],
+      "week": 4,
+      "day": 6
+    },
+    {
+      "id": "khan-power-exercise",
+      "title": "Power exercise",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:work-energy-and-power/xf557a762645cccc5:power/e/power-ap1",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 15,
+      "concepts": [
+        "energy-power"
+      ],
+      "week": 4,
+      "day": 6
+    },
+    {
+      "id": "khan-momentum-video",
+      "title": "Momentum",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:linear-momentum/xf557a762645cccc5:linear-momentum-and-impulse/v/momentum",
+      "type": "video",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 8,
+      "concepts": [
+        "momentum-linear"
+      ],
+      "week": 5,
+      "day": 2
+    },
+    {
+      "id": "khan-impulse-video",
+      "title": "Impulse",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:linear-momentum/xf557a762645cccc5:linear-momentum-and-impulse/v/impulse",
+      "type": "video",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 8,
+      "concepts": [
+        "momentum-impulse"
+      ],
+      "week": 5,
+      "day": 2
+    },
+    {
+      "id": "khan-momentum-impulse-exercise",
+      "title": "Momentum and impulse exercise",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:linear-momentum/xf557a762645cccc5:linear-momentum-and-impulse/e/momentum-and-impulse",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 20,
+      "concepts": [
+        "momentum-linear",
+        "momentum-impulse"
+      ],
+      "week": 5,
+      "day": 2
+    },
+    {
+      "id": "khan-ft-graph-exercise",
+      "title": "Force vs. time graphs exercise",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:linear-momentum/xf557a762645cccc5:linear-momentum-and-impulse/e/representation-of-changes-in-momentum",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 20,
+      "concepts": [
+        "momentum-ft-graph"
+      ],
+      "week": 5,
+      "day": 3
+    },
+    {
+      "id": "khan-momentum-conservation-exercise",
+      "title": "Conservation of linear momentum exercise",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:linear-momentum/xf557a762645cccc5:untitled-303/e/conservation-of-linear-momentum",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 20,
+      "concepts": [
+        "momentum-conservation"
+      ],
+      "week": 5,
+      "day": 4
+    },
+    {
+      "id": "khan-collisions-exercise",
+      "title": "Elastic and inelastic collisions exercise",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:linear-momentum/xf557a762645cccc5:untitled-303/e/inelastic-collisions-ap1",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 15,
+      "concepts": [
+        "momentum-collisions"
+      ],
+      "week": 5,
+      "day": 5
+    },
+    {
+      "id": "phet-collision-lab",
+      "title": "Collision Lab",
+      "url": "https://phet.colorado.edu/en/simulations/collision-lab",
+      "type": "interactive",
+      "platform": "phet",
+      "tier": "A",
+      "estimated_minutes": 10,
+      "concepts": [
+        "momentum-collisions"
+      ],
+      "week": 5,
+      "day": 5
+    },
+    {
+      "id": "openstax-6-1-rotation",
+      "title": "6.1 Rotation Angle and Angular Velocity",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/6-1-rotation-angle-and-angular-velocity",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "A",
+      "estimated_minutes": 10,
+      "concepts": [
+        "torque-rotational-kinematics",
+        "torque-linear-rotational-connection"
+      ],
+      "week": 6,
+      "day": 2
+    },
+    {
+      "id": "khan-rotational-kinematics-exercise",
+      "title": "Rotational kinematics exercise",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:simple-harmonic-motion-and-rotational-motion/xf557a762645cccc5:rotational-kinematics/e/rotational-kinematics",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 15,
+      "concepts": [
+        "torque-rotational-kinematics",
+        "torque-linear-rotational-connection"
+      ],
+      "week": 6,
+      "day": 2
+    },
+    {
+      "id": "khan-torque-video",
+      "title": "Torque Basics",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:torque-and-rotational-dynamics/xf557a762645cccc5:torque/v/torque-basics",
+      "type": "video",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 10,
+      "concepts": [
+        "torque-torque"
+      ],
+      "week": 6,
+      "day": 3
+    },
+    {
+      "id": "khan-torque-exercise",
+      "title": "Torque practice",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:torque-and-rotational-dynamics/xf557a762645cccc5:torque/e/torque-calculations-ap-physics-1",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 20,
+      "concepts": [
+        "torque-torque",
+        "torque-rotational-equilibrium"
+      ],
+      "week": 6,
+      "day": 3
+    },
+    {
+      "id": "phet-balancing-act",
+      "title": "Balancing Act",
+      "url": "https://phet.colorado.edu/en/simulations/balancing-act",
+      "type": "interactive",
+      "platform": "phet",
+      "tier": "A",
+      "estimated_minutes": 12,
+      "concepts": [
+        "torque-rotational-equilibrium"
+      ],
+      "week": 6,
+      "day": 3
+    },
+    {
+      "id": "flipping-unit5b-review",
+      "title": "Unit 5b Review: Torque and Rotational Inertia (from 9:30)",
+      "url": "https://www.flippingphysics.com/ap-physics-1-unit-5b-review.html",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "torque-rotational-equilibrium"
+      ],
+      "week": 6,
+      "day": 3
+    },
+    {
+      "id": "khan-rotational-newton2-exercise",
+      "title": "Rotational version of Newton's second law",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:torque-and-rotational-dynamics/xf557a762645cccc5:newton-s-second-law-in-rotational-form/e/conceptual-angular-second-law-exercises-ap1",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 15,
+      "concepts": [
+        "torque-newtons-second-law-rotational"
+      ],
+      "week": 6,
+      "day": 4
+    },
+    {
+      "id": "khan-rotational-ke-exercise",
+      "title": "Rotational kinetic energy and rolling",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:energy-and-momentum-of-rotating-systems/xf557a762645cccc5:rotational-kinetic-energy/e/rotational-kinetic-energy-exercises-ap1",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 20,
+      "concepts": [
+        "rotation-rotational-kinetic-energy",
+        "rotation-rolling"
+      ],
+      "week": 6,
+      "day": 5
+    },
+    {
+      "id": "flipping-unit6-review",
+      "title": "Unit 6 Review: Energy and Momentum of Rotating Systems (from 1:22)",
+      "url": "https://www.flippingphysics.com/ap-physics-1-unit-6-review.html",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "rotation-torque-work"
+      ],
+      "week": 6,
+      "day": 5
+    },
+    {
+      "id": "khan-angular-momentum-exercise",
+      "title": "Angular momentum exercise",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:energy-and-momentum-of-rotating-systems/xf557a762645cccc5:angular-momentum/e/angular-momentum-calculations-ap-physics-1",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 15,
+      "concepts": [
+        "rotation-angular-momentum"
+      ],
+      "week": 6,
+      "day": 6
+    },
+    {
+      "id": "khan-angular-momentum-conservation-exercise",
+      "title": "Conservation of angular momentum exercise",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:energy-and-momentum-of-rotating-systems/xf557a762645cccc5:conservation-of-angular-momentum/e/conservation-of-angular-momentum-2",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 15,
+      "concepts": [
+        "rotation-angular-momentum-conservation"
+      ],
+      "week": 6,
+      "day": 6
+    },
+    {
+      "id": "khan-shm-intuition",
+      "title": "Intuition about simple harmonic oscillators",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:oscillations/xf557a762645cccc5:simple-harmonic-oscillators/v/intuition-about-simple-harmonic-oscillators",
+      "type": "video",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 10,
+      "concepts": [
+        "oscillation-shm-definition",
+        "oscillation-shm-representing"
+      ],
+      "week": 7,
+      "day": 2
+    },
+    {
+      "id": "khan-shm-graphs-exercise",
+      "title": "Finding frequency and period from SHM graphs",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:oscillations/xf557a762645cccc5:simple-harmonic-oscillators/e/finding-frequency-and-period-from-shm-graph-ap1",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 15,
+      "concepts": [
+        "oscillation-shm-representing"
+      ],
+      "week": 7,
+      "day": 2
+    },
+    {
+      "id": "flipping-unit7-review",
+      "title": "Unit 7 Review: Oscillations (from 8:30)",
+      "url": "https://www.flippingphysics.com/ap-physics-1-unit-7-review.html",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "oscillation-shm-representing"
+      ],
+      "week": 7,
+      "day": 2
+    },
+    {
+      "id": "phet-masses-springs",
+      "title": "Masses and Springs",
+      "url": "https://phet.colorado.edu/en/simulations/masses-and-springs",
+      "type": "interactive",
+      "platform": "phet",
+      "tier": "A",
+      "estimated_minutes": 10,
+      "concepts": [
+        "oscillation-shm-definition",
+        "oscillation-shm-frequency-period"
+      ],
+      "week": 7,
+      "day": 2
+    },
+    {
+      "id": "khan-spring-period-video",
+      "title": "Period of a mass on a spring",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:oscillations/xf557a762645cccc5:period-of-simple-harmonic-oscillators/v/period-dependance-for-mass-on-spring",
+      "type": "video",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 8,
+      "concepts": [
+        "oscillation-shm-frequency-period"
+      ],
+      "week": 7,
+      "day": 3
+    },
+    {
+      "id": "khan-pendulum-period-video",
+      "title": "Period of a pendulum",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:oscillations/xf557a762645cccc5:period-of-simple-harmonic-oscillators/v/period-of-a-pendulum-simple-harmonic-motion-and-rotational-motion-ap-physics-1-khan-academy",
+      "type": "video",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 9,
+      "concepts": [
+        "oscillation-shm-frequency-period"
+      ],
+      "week": 7,
+      "day": 3
+    },
+    {
+      "id": "khan-shm-period-exercise",
+      "title": "Period of simple harmonic oscillators exercise",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:oscillations/xf557a762645cccc5:period-of-simple-harmonic-oscillators/e/period-simple-harmonic-oscillators",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 15,
+      "concepts": [
+        "oscillation-shm-frequency-period"
+      ],
+      "week": 7,
+      "day": 3
+    },
+    {
+      "id": "khan-shm-energy-exercise",
+      "title": "Energy of a simple harmonic oscillator",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:oscillations/xf557a762645cccc5:energy-of-simple-harmonic-oscillator/e/energy-simple-harmonic-oscillator",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 15,
+      "concepts": [
+        "oscillation-shm-energy"
+      ],
+      "week": 7,
+      "day": 3
+    },
+    {
+      "id": "phet-pendulum-lab",
+      "title": "Pendulum Lab",
+      "url": "https://phet.colorado.edu/en/simulations/pendulum-lab",
+      "type": "interactive",
+      "platform": "phet",
+      "tier": "A",
+      "estimated_minutes": 10,
+      "concepts": [
+        "oscillation-shm-frequency-period"
+      ],
+      "week": 7,
+      "day": 3
+    },
+    {
+      "id": "khan-fluids-density-video",
+      "title": "Fluids and density",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:fluids/xf557a762645cccc5:untitled-354/v/fluids-and-density",
+      "type": "video",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 8,
+      "concepts": [
+        "fluids-density-structure"
+      ],
+      "week": 7,
+      "day": 4
+    },
+    {
+      "id": "khan-fluid-pressure-video",
+      "title": "Fluid pressure",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:fluids/xf557a762645cccc5:untitled-354/v/fluid-pressure",
+      "type": "video",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 12,
+      "concepts": [
+        "fluids-pressure"
+      ],
+      "week": 7,
+      "day": 4
+    },
+    {
+      "id": "khan-density-pressure-exercise",
+      "title": "Density and pressure exercise",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:fluids/xf557a762645cccc5:untitled-354/e/density-and-pressure",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 20,
+      "concepts": [
+        "fluids-density-structure",
+        "fluids-pressure"
+      ],
+      "week": 7,
+      "day": 4
+    },
+    {
+      "id": "phet-under-pressure",
+      "title": "Under Pressure",
+      "url": "https://phet.colorado.edu/en/simulations/under-pressure",
+      "type": "interactive",
+      "platform": "phet",
+      "tier": "A",
+      "estimated_minutes": 10,
+      "concepts": [
+        "fluids-pressure"
+      ],
+      "week": 7,
+      "day": 4
+    },
+    {
+      "id": "khan-buoyant-force-video",
+      "title": "Buoyant force",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:fluids/xf557a762645cccc5:buoyant-force/v/buoyant-force",
+      "type": "video",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 12,
+      "concepts": [
+        "fluids-newton-laws"
+      ],
+      "week": 7,
+      "day": 5
+    },
+    {
+      "id": "khan-buoyant-force-exercise",
+      "title": "Buoyant force exercise",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:fluids/xf557a762645cccc5:buoyant-force/e/the-buoyant-force",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 20,
+      "concepts": [
+        "fluids-newton-laws"
+      ],
+      "week": 7,
+      "day": 5
+    },
+    {
+      "id": "phet-buoyancy",
+      "title": "Buoyancy",
+      "url": "https://phet.colorado.edu/en/simulations/buoyancy",
+      "type": "interactive",
+      "platform": "phet",
+      "tier": "A",
+      "estimated_minutes": 12,
+      "concepts": [
+        "fluids-newton-laws"
+      ],
+      "week": 7,
+      "day": 5
+    },
+    {
+      "id": "khan-fluid-flow-video",
+      "title": "Fluid flow",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:fluids/xf557a762645cccc5:fluid-flow/v/fluid-flow",
+      "type": "video",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 10,
+      "concepts": [
+        "fluids-conservation-laws"
+      ],
+      "week": 7,
+      "day": 6
+    },
+    {
+      "id": "khan-fluid-flow-exercise",
+      "title": "Fluid flow exercise",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:fluids/xf557a762645cccc5:fluid-flow/e/flow",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 15,
+      "concepts": [
+        "fluids-conservation-laws"
+      ],
+      "week": 7,
+      "day": 6
+    },
+    {
+      "id": "ap-central-2026-frq-week8",
+      "title": "AP Physics 1 2026 FRQ (Week 8)",
+      "url": "/frq/ap26-frq-physics-1.pdf",
+      "type": "frq",
+      "platform": "ap_central",
+      "tier": "A",
+      "estimated_minutes": 75,
+      "concepts": [
+        "kinematics-vectors-2d-motion",
+        "momentum-conservation",
+        "torque-newtons-second-law-rotational"
+      ],
+      "week": 8,
+      "day": 2,
+      "answer_url": "https://apcentral.collegeboard.org/media/pdf/ap26-sg-physics-1.pdf"
+    },
+    {
+      "id": "ap-central-2025-frq",
+      "title": "AP Physics 1 2025 FRQ",
+      "url": "/frq/ap25-frq-physics-1.pdf",
+      "type": "frq",
+      "platform": "ap_central",
+      "tier": "A",
+      "estimated_minutes": 70,
+      "concepts": [
+        "momentum-conservation",
+        "energy-conservation"
+      ],
+      "week": 8,
+      "day": 6,
+      "answer_url": "/frq/ap25-sg-physics-1.pdf"
+    },
+    {
+      "id": "openstax-ch2-displacement-reading-b",
+      "title": "OpenStax 2.1 Displacement - Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/2-1-displacement",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "kinematics-scalars-vectors-1d",
+        "kinematics-displacement-velocity-acceleration"
+      ],
+      "week": 1,
+      "day": 1
+    },
+    {
+      "id": "openstax-ch2-conceptual-displacement-b",
+      "title": "OpenStax Ch.2 Conceptual Questions - Displacement",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/2-conceptual-questions",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "kinematics-scalars-vectors-1d",
+        "kinematics-displacement-velocity-acceleration"
+      ],
+      "week": 1,
+      "day": 1,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-2"
+    },
+    {
+      "id": "openstax-ch2-problems-displacement-c",
+      "title": "OpenStax Ch.2 Problems & Exercises - Displacement",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/2-problems-exercises",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 12,
+      "concepts": [
+        "kinematics-scalars-vectors-1d",
+        "kinematics-displacement-velocity-acceleration"
+      ],
+      "week": 1,
+      "day": 1,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-2"
+    },
+    {
+      "id": "openstax-ch2-velocity-reading-b",
+      "title": "OpenStax 2.3 Time, Velocity, and Speed - Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/2-3-time-velocity-and-speed",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "kinematics-displacement-velocity-acceleration"
+      ],
+      "week": 1,
+      "day": 2
+    },
+    {
+      "id": "openstax-ch2-acceleration-reading-b",
+      "title": "OpenStax 2.4 Acceleration - Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/2-4-acceleration",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "kinematics-displacement-velocity-acceleration"
+      ],
+      "week": 1,
+      "day": 2
+    },
+    {
+      "id": "openstax-ch2-conceptual-velocity-b",
+      "title": "OpenStax Ch.2 Conceptual Questions - Velocity and Acceleration",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/2-conceptual-questions",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 8,
+      "concepts": [
+        "kinematics-displacement-velocity-acceleration"
+      ],
+      "week": 1,
+      "day": 2,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-2"
+    },
+    {
+      "id": "openstax-ch2-testprep-velocity-c",
+      "title": "OpenStax Ch.2 Test Prep for AP - Velocity and Acceleration",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/2-test-prep-for-ap-r-courses",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 12,
+      "concepts": [
+        "kinematics-displacement-velocity-acceleration"
+      ],
+      "week": 1,
+      "day": 2,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-2"
+    },
+    {
+      "id": "openstax-ch2-graphs-reading-b",
+      "title": "OpenStax 2.8 Graphical Analysis of One-Dimensional Motion - Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/2-8-graphical-analysis-of-one-dimensional-motion",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "kinematics-representing-motion"
+      ],
+      "week": 1,
+      "day": 3
+    },
+    {
+      "id": "openstax-ch2-testprep-graphs-b",
+      "title": "OpenStax Ch.2 Test Prep for AP - Motion Graphs",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/2-test-prep-for-ap-r-courses",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "kinematics-representing-motion"
+      ],
+      "week": 1,
+      "day": 3,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-2"
+    },
+    {
+      "id": "openstax-ch2-conceptual-graphs-c",
+      "title": "OpenStax Ch.2 Conceptual Questions - Motion Graphs",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/2-conceptual-questions",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 12,
+      "concepts": [
+        "kinematics-representing-motion"
+      ],
+      "week": 1,
+      "day": 3,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-2"
+    },
+    {
+      "id": "openstax-ch2-kinematics-reading-b",
+      "title": "OpenStax 2.5 Motion Equations for Constant Acceleration - Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/2-5-motion-equations-for-constant-acceleration-in-one-dimension",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "kinematics-representing-motion"
+      ],
+      "week": 1,
+      "day": 4
+    },
+    {
+      "id": "openstax-ch2-freefall-reading-b",
+      "title": "OpenStax 2.7 Falling Objects - Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/2-7-falling-objects",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "kinematics-representing-motion"
+      ],
+      "week": 1,
+      "day": 4
+    },
+    {
+      "id": "openstax-ch2-testprep-kinematics-b",
+      "title": "OpenStax Ch.2 Test Prep for AP - Kinematics",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/2-test-prep-for-ap-r-courses",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 8,
+      "concepts": [
+        "kinematics-representing-motion"
+      ],
+      "week": 1,
+      "day": 4,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-2"
+    },
+    {
+      "id": "openstax-ch2-conceptual-freefall-b",
+      "title": "OpenStax Ch.2 Conceptual Questions - Falling Objects",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/2-conceptual-questions",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 8,
+      "concepts": [
+        "kinematics-representing-motion"
+      ],
+      "week": 1,
+      "day": 4,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-2"
+    },
+    {
+      "id": "openstax-ch2-problems-freefall-c",
+      "title": "OpenStax Ch.2 Problems & Exercises - Free Fall",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/2-problems-exercises",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 15,
+      "concepts": [
+        "kinematics-representing-motion"
+      ],
+      "week": 1,
+      "day": 4,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-2"
+    },
+    {
+      "id": "openstax-ch3-vectors-reading-b",
+      "title": "OpenStax 3.3 Vector Addition and Subtraction: Analytical Methods - Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/3-3-vector-addition-and-subtraction-analytical-methods",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "kinematics-vectors-2d-motion"
+      ],
+      "week": 1,
+      "day": 5
+    },
+    {
+      "id": "openstax-ch3-conceptual-vectors-b",
+      "title": "OpenStax Ch.3 Conceptual Questions - Vectors",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/3-conceptual-questions",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 8,
+      "concepts": [
+        "kinematics-vectors-2d-motion"
+      ],
+      "week": 1,
+      "day": 5,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-3"
+    },
+    {
+      "id": "openstax-ch3-problems-vectors-c",
+      "title": "OpenStax Ch.3 Problems & Exercises - Vectors",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/3-problems-exercises",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 15,
+      "concepts": [
+        "kinematics-vectors-2d-motion"
+      ],
+      "week": 1,
+      "day": 5,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-3"
+    },
+    {
+      "id": "openstax-ch3-projectile-reading-b",
+      "title": "OpenStax 3.4 Projectile Motion - Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/3-4-projectile-motion",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "kinematics-vectors-2d-motion"
+      ],
+      "week": 1,
+      "day": 6
+    },
+    {
+      "id": "openstax-ch3-conceptual-projectile-b",
+      "title": "OpenStax Ch.3 Conceptual Questions - Projectile Motion",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/3-conceptual-questions",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 8,
+      "concepts": [
+        "kinematics-vectors-2d-motion"
+      ],
+      "week": 1,
+      "day": 6,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-3"
+    },
+    {
+      "id": "openstax-ch3-velocities-reading-c",
+      "title": "OpenStax 3.5 Addition of Velocities - Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/3-5-addition-of-velocities",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 10,
+      "concepts": [
+        "kinematics-reference-frames"
+      ],
+      "week": 1,
+      "day": 6
+    },
+    {
+      "id": "openstax-ch3-conceptual-relvel-c",
+      "title": "OpenStax Ch.3 Conceptual Questions - Relative Velocity",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/3-conceptual-questions",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 8,
+      "concepts": [
+        "kinematics-reference-frames"
+      ],
+      "week": 1,
+      "day": 6,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-3"
+    },
+    {
+      "id": "openstax-ch3-testprep-projectile-c",
+      "title": "OpenStax Ch.3 Test Prep for AP - Projectile Motion",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/3-test-prep-for-ap-r-courses",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 15,
+      "concepts": [
+        "kinematics-vectors-2d-motion"
+      ],
+      "week": 1,
+      "day": 6,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-3"
+    },
+    {
+      "id": "openstax-ch2-ch3-conceptual-summary-b",
+      "title": "OpenStax Ch.2 and Ch.3 Conceptual Questions - Weekly Summary",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/2-conceptual-questions",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 12,
+      "concepts": [
+        "kinematics-displacement-velocity-acceleration",
+        "kinematics-vectors-2d-motion"
+      ],
+      "week": 1,
+      "day": 7,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-2"
+    },
+    {
+      "id": "openstax-ch2-ch3-testprep-diagnostic-c",
+      "title": "OpenStax Ch.2 and Ch.3 Test Prep for AP - Diagnostic",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/2-test-prep-for-ap-r-courses",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 18,
+      "concepts": [
+        "kinematics-displacement-velocity-acceleration",
+        "kinematics-vectors-2d-motion"
+      ],
+      "week": 1,
+      "day": 7,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-2"
+    },
+    {
+      "id": "openstax-ch4-fbd-reading-b",
+      "title": "OpenStax 4.1 Development of Force Concept - Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/4-1-development-of-force-concept",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 5,
+      "concepts": [
+        "dynamics-fbd-forces"
+      ],
+      "week": 2,
+      "day": 1
+    },
+    {
+      "id": "openstax-ch4-newton3-reading-b",
+      "title": "OpenStax 4.4 Newton's Third Law - Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/4-4-newtons-third-law-of-motion-symmetry-in-forces",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 8,
+      "concepts": [
+        "dynamics-newtons-third-law"
+      ],
+      "week": 2,
+      "day": 2
+    },
+    {
+      "id": "openstax-ch4-problems-newton3-c",
+      "title": "OpenStax Ch.4 Problems & Exercises - Newton's Third Law",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/4-problems-exercises",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 12,
+      "concepts": [
+        "dynamics-newtons-third-law",
+        "dynamics-fbd-forces"
+      ],
+      "week": 2,
+      "day": 2,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-4"
+    },
+    {
+      "id": "openstax-ch4-newton2-reading-b",
+      "title": "OpenStax 4.3 Newton's Second Law - Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/4-3-newtons-second-law-of-motion-concept-of-a-system",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 8,
+      "concepts": [
+        "dynamics-newtons-second-law",
+        "dynamics-systems-center-of-mass"
+      ],
+      "week": 2,
+      "day": 3
+    },
+    {
+      "id": "openstax-ch4-problems-newton2-c",
+      "title": "OpenStax Ch.4 Problems & Exercises - Newton's Second Law",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/4-problems-exercises",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 12,
+      "concepts": [
+        "dynamics-newtons-second-law"
+      ],
+      "week": 2,
+      "day": 3,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-4"
+    },
+    {
+      "id": "openstax-ch4-normal-tension-reading-b",
+      "title": "OpenStax 4.5 Normal, Tension, and Other Examples of Forces - Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/4-5-normal-tension-and-other-examples-of-forces",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 8,
+      "concepts": [
+        "dynamics-fbd-forces",
+        "dynamics-newtons-second-law"
+      ],
+      "week": 2,
+      "day": 4
+    },
+    {
+      "id": "openstax-ch5-friction-reading-b",
+      "title": "OpenStax 5.1 Friction - Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/5-1-friction",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 8,
+      "concepts": [
+        "dynamics-friction"
+      ],
+      "week": 2,
+      "day": 4
+    },
+    {
+      "id": "openstax-ch5-problems-friction-c",
+      "title": "OpenStax Ch.5 Problems & Exercises - Friction",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/5-problems-exercises",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 12,
+      "concepts": [
+        "dynamics-friction"
+      ],
+      "week": 2,
+      "day": 4,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-5"
+    },
+    {
+      "id": "openstax-ch16-hooke-reading-b",
+      "title": "OpenStax 16.1 Hooke's Law: Stress and Strain Revisited - Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/16-1-hookes-law-stress-and-strain-revisited",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "dynamics-spring-forces"
+      ],
+      "week": 2,
+      "day": 5
+    },
+    {
+      "id": "openstax-ch16-problems-spring-c",
+      "title": "OpenStax Ch.16 Problems & Exercises - Hooke's Law",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/16-problems-exercises",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 12,
+      "concepts": [
+        "dynamics-spring-forces"
+      ],
+      "week": 2,
+      "day": 5,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-16"
+    },
+    {
+      "id": "openstax-ch4-ch5-ch16-mixed-b",
+      "title": "OpenStax Ch.4/5/16 Mixed Reading - Forces Review",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/4-3-newtons-second-law-of-motion-concept-of-a-system",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "dynamics-fbd-forces",
+        "dynamics-newtons-second-law",
+        "dynamics-friction",
+        "dynamics-spring-forces"
+      ],
+      "week": 2,
+      "day": 6
+    },
+    {
+      "id": "openstax-ch4-ch5-ch16-problems-c",
+      "title": "OpenStax Ch.4/5/16 Problems & Exercises - Mixed Forces",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/4-problems-exercises",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 15,
+      "concepts": [
+        "dynamics-fbd-forces",
+        "dynamics-newtons-second-law",
+        "dynamics-friction",
+        "dynamics-spring-forces"
+      ],
+      "week": 2,
+      "day": 6,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-4"
+    },
+    {
+      "id": "openstax-ch4-ch5-ch16-exit-c",
+      "title": "OpenStax Ch.4/5/16 Problems & Exercises - Exit Check",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/4-problems-exercises",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 15,
+      "concepts": [
+        "dynamics-fbd-forces",
+        "dynamics-newtons-second-law",
+        "dynamics-friction",
+        "dynamics-spring-forces"
+      ],
+      "week": 2,
+      "day": 7,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-4"
+    },
+    {
+      "id": "openstax-ch4-incline-reading-b",
+      "title": "OpenStax 4.5 Normal, Tension, and Other Examples of Forces - Incline Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/4-5-normal-tension-and-other-examples-of-forces",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 8,
+      "concepts": [
+        "dynamics-inclined-planes"
+      ],
+      "week": 3,
+      "day": 1
+    },
+    {
+      "id": "openstax-ch4-problems-incline-c",
+      "title": "OpenStax Ch.4 Problems & Exercises - Inclined Planes",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/4-problems-exercises",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 12,
+      "concepts": [
+        "dynamics-inclined-planes"
+      ],
+      "week": 3,
+      "day": 2,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-4"
+    },
+    {
+      "id": "openstax-ch4-systems-reading-b",
+      "title": "OpenStax 4.3 Newton's Second Law - Systems Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/4-3-newtons-second-law-of-motion-concept-of-a-system",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 8,
+      "concepts": [
+        "dynamics-systems-connected",
+        "dynamics-newtons-second-law"
+      ],
+      "week": 3,
+      "day": 3
+    },
+    {
+      "id": "openstax-ch4-problems-systems-c",
+      "title": "OpenStax Ch.4 Problems & Exercises - Connected Systems",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/4-problems-exercises",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 12,
+      "concepts": [
+        "dynamics-systems-connected"
+      ],
+      "week": 3,
+      "day": 3,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-4"
+    },
+    {
+      "id": "openstax-ch6-centripetal-acc-reading-b",
+      "title": "OpenStax 6.2 Centripetal Acceleration - Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/6-2-centripetal-acceleration",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 8,
+      "concepts": [
+        "dynamics-circular-motion"
+      ],
+      "week": 3,
+      "day": 4
+    },
+    {
+      "id": "openstax-ch6-centripetal-force-reading-b",
+      "title": "OpenStax 6.3 Centripetal Force - Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/6-3-centripetal-force",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 8,
+      "concepts": [
+        "dynamics-circular-motion"
+      ],
+      "week": 3,
+      "day": 4
+    },
+    {
+      "id": "openstax-ch6-problems-circular-c",
+      "title": "OpenStax Ch.6 Problems & Exercises - Circular Motion",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/6-problems-exercises",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 12,
+      "concepts": [
+        "dynamics-circular-motion"
+      ],
+      "week": 3,
+      "day": 4,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-6"
+    },
+    {
+      "id": "openstax-ch6-gravity-reading-b",
+      "title": "OpenStax 6.5 Newton's Universal Law of Gravitation - Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/6-5-newtons-universal-law-of-gravitation",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 8,
+      "concepts": [
+        "dynamics-gravitational-force"
+      ],
+      "week": 3,
+      "day": 5
+    },
+    {
+      "id": "openstax-ch6-orbits-reading-b",
+      "title": "OpenStax 6.6 Satellites and Kepler's Laws - Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/6-6-satellites-and-keplers-laws-an-argument-for-simplicity",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 8,
+      "concepts": [
+        "dynamics-circular-orbits"
+      ],
+      "week": 3,
+      "day": 5
+    },
+    {
+      "id": "openstax-ch6-testprep-gravity-c",
+      "title": "OpenStax Ch.6 Test Prep for AP - Gravity and Orbits",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/6-test-prep-for-ap-r-courses",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 12,
+      "concepts": [
+        "dynamics-gravitational-force",
+        "dynamics-circular-orbits"
+      ],
+      "week": 3,
+      "day": 5,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-6"
+    },
+    {
+      "id": "openstax-ch6-problems-circular-w3d6-c",
+      "title": "OpenStax Ch.6 Problems & Exercises - Circular and Gravity Mixed",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/6-problems-exercises",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 12,
+      "concepts": [
+        "dynamics-circular-motion",
+        "dynamics-gravitational-force"
+      ],
+      "week": 3,
+      "day": 6,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-6"
+    },
+    {
+      "id": "openstax-ch4-ch6-exit-c",
+      "title": "OpenStax Ch.4/6 Problems & Exercises - Week 3 Exit Check",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/4-problems-exercises",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 15,
+      "concepts": [
+        "dynamics-inclined-planes",
+        "dynamics-systems-connected",
+        "dynamics-circular-motion",
+        "dynamics-gravitational-force"
+      ],
+      "week": 3,
+      "day": 7,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-4"
+    },
+    {
+      "id": "openstax-ch7-work-intro-reading-b",
+      "title": "OpenStax 7.1 Work - Introduction Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/7-1-work-the-scientific-definition",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 5,
+      "concepts": [
+        "energy-work"
+      ],
+      "week": 4,
+      "day": 1
+    },
+    {
+      "id": "openstax-ch7-work-reading-b",
+      "title": "OpenStax 7.1 Work - Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/7-1-work-the-scientific-definition",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 8,
+      "concepts": [
+        "energy-work"
+      ],
+      "week": 4,
+      "day": 2
+    },
+    {
+      "id": "openstax-ch7-workenergy-reading-b",
+      "title": "OpenStax 7.2 Work-Energy Theorem - Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/7-2-kinetic-energy-and-the-work-energy-theorem",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 8,
+      "concepts": [
+        "energy-work",
+        "energy-translational-kinetic"
+      ],
+      "week": 4,
+      "day": 2
+    },
+    {
+      "id": "openstax-ch7-problems-work-b",
+      "title": "OpenStax Ch.7 Problems & Exercises - Work and Kinetic Energy",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/7-problems-exercises",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "energy-work",
+        "energy-translational-kinetic"
+      ],
+      "week": 4,
+      "day": 2,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-7"
+    },
+    {
+      "id": "openstax-ch7-problems-work-c",
+      "title": "OpenStax Ch.7 Problems & Exercises - Work-Energy Extended",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/7-problems-exercises",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 10,
+      "concepts": [
+        "energy-work",
+        "energy-translational-kinetic"
+      ],
+      "week": 4,
+      "day": 2,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-7"
+    },
+    {
+      "id": "openstax-ch7-testprep-fx-b",
+      "title": "OpenStax Ch.7 Test Prep for AP - F-x Graph",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/7-test-prep-for-ap-r-courses",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 8,
+      "concepts": [
+        "energy-fx-graph"
+      ],
+      "week": 4,
+      "day": 3,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-7"
+    },
+    {
+      "id": "openstax-ch7-power-reading-b",
+      "title": "OpenStax 7.7 Power - Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/7-7-power",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 5,
+      "concepts": [
+        "energy-power"
+      ],
+      "week": 4,
+      "day": 3
+    },
+    {
+      "id": "openstax-ch7-problems-power-c",
+      "title": "OpenStax Ch.7 Problems & Exercises - Power",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/7-problems-exercises",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 10,
+      "concepts": [
+        "energy-power"
+      ],
+      "week": 4,
+      "day": 3,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-7"
+    },
+    {
+      "id": "openstax-ch7-gpe-reading-b",
+      "title": "OpenStax 7.3 Gravitational Potential Energy - Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/7-3-gravitational-potential-energy",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 8,
+      "concepts": [
+        "energy-potential-energy"
+      ],
+      "week": 4,
+      "day": 4
+    },
+    {
+      "id": "openstax-ch7-problems-pe-b",
+      "title": "OpenStax Ch.7 Problems & Exercises - Potential Energy",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/7-problems-exercises",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "energy-potential-energy"
+      ],
+      "week": 4,
+      "day": 4,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-7"
+    },
+    {
+      "id": "openstax-ch7-conservative-reading-c",
+      "title": "OpenStax 7.4 Conservative Forces and Potential Energy - Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/7-4-conservative-forces-and-potential-energy",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 8,
+      "concepts": [
+        "energy-potential-energy"
+      ],
+      "week": 4,
+      "day": 4
+    },
+    {
+      "id": "openstax-ch7-nonconservative-reading-b",
+      "title": "OpenStax 7.5 Nonconservative Forces - Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/7-5-nonconservative-forces",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 8,
+      "concepts": [
+        "energy-conservation"
+      ],
+      "week": 4,
+      "day": 5
+    },
+    {
+      "id": "openstax-ch7-conservation-reading-b",
+      "title": "OpenStax 7.6 Conservation of Energy - Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/7-6-conservation-of-energy",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 8,
+      "concepts": [
+        "energy-conservation"
+      ],
+      "week": 4,
+      "day": 5
+    },
+    {
+      "id": "openstax-ch7-problems-conservation-b",
+      "title": "OpenStax Ch.7 Problems & Exercises - Conservation of Energy",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/7-problems-exercises",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "energy-conservation"
+      ],
+      "week": 4,
+      "day": 5,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-7"
+    },
+    {
+      "id": "openstax-ch7-problems-friction-c",
+      "title": "OpenStax Ch.7 Problems & Exercises - Energy with Friction",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/7-problems-exercises",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 10,
+      "concepts": [
+        "energy-conservation"
+      ],
+      "week": 4,
+      "day": 5,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-7"
+    },
+    {
+      "id": "openstax-ch7-testprep-mixed-b",
+      "title": "OpenStax Ch.7 Test Prep for AP - Mixed Energy",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/7-test-prep-for-ap-r-courses",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 12,
+      "concepts": [
+        "energy-work",
+        "energy-conservation",
+        "energy-bar-charts"
+      ],
+      "week": 4,
+      "day": 6,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-7"
+    },
+    {
+      "id": "openstax-ch7-conceptual-barchart-c",
+      "title": "OpenStax Ch.7 Conceptual Questions - Energy Bar Charts",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/7-conceptual-questions",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 12,
+      "concepts": [
+        "energy-bar-charts",
+        "energy-conservation"
+      ],
+      "week": 4,
+      "day": 6,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-7"
+    },
+    {
+      "id": "openstax-ch7-testprep-exit-b",
+      "title": "OpenStax Ch.7 Test Prep for AP - Exit Check",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/7-test-prep-for-ap-r-courses",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "energy-work",
+        "energy-conservation",
+        "energy-power"
+      ],
+      "week": 4,
+      "day": 7,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-7"
+    },
+    {
+      "id": "openstax-ch7-problems-exit-c",
+      "title": "OpenStax Ch.7 Problems & Exercises - Exit Review",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/7-problems-exercises",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 15,
+      "concepts": [
+        "energy-work",
+        "energy-conservation",
+        "energy-power"
+      ],
+      "week": 4,
+      "day": 7,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-7"
+    },
+    {
+      "id": "openstax-ch8-momentum-reading-b",
+      "title": "OpenStax 8.1 Linear Momentum and Force - Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/8-1-linear-momentum-and-force",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 5,
+      "concepts": [
+        "momentum-linear"
+      ],
+      "week": 5,
+      "day": 1
+    },
+    {
+      "id": "openstax-ch8-impulse-reading-b",
+      "title": "OpenStax 8.2 Impulse - Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/8-2-impulse",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 8,
+      "concepts": [
+        "momentum-impulse",
+        "momentum-linear"
+      ],
+      "week": 5,
+      "day": 2
+    },
+    {
+      "id": "openstax-ch8-problems-impulse-b",
+      "title": "OpenStax Ch.8 Problems & Exercises - Momentum and Impulse",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/8-problems-exercises",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "momentum-impulse",
+        "momentum-linear"
+      ],
+      "week": 5,
+      "day": 2,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-8"
+    },
+    {
+      "id": "openstax-ch8-problems-impulse-c",
+      "title": "OpenStax Ch.8 Problems & Exercises - Impulse Extended",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/8-problems-exercises",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 12,
+      "concepts": [
+        "momentum-impulse"
+      ],
+      "week": 5,
+      "day": 2,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-8"
+    },
+    {
+      "id": "openstax-ch8-testprep-ft-b",
+      "title": "OpenStax Ch.8 Test Prep for AP - F-t Graph",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/8-test-prep-for-ap-r-courses",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 8,
+      "concepts": [
+        "momentum-ft-graph"
+      ],
+      "week": 5,
+      "day": 3,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-8"
+    },
+    {
+      "id": "openstax-ch8-problems-ft-c",
+      "title": "OpenStax Ch.8 Problems & Exercises - F-t Graph",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/8-problems-exercises",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 10,
+      "concepts": [
+        "momentum-ft-graph"
+      ],
+      "week": 5,
+      "day": 3,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-8"
+    },
+    {
+      "id": "openstax-ch8-conservation-reading-b",
+      "title": "OpenStax 8.3 Conservation of Momentum - Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/8-3-conservation-of-momentum",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 8,
+      "concepts": [
+        "momentum-conservation"
+      ],
+      "week": 5,
+      "day": 4
+    },
+    {
+      "id": "openstax-ch8-2d-reading-b",
+      "title": "OpenStax 8.6 Collisions in Two Dimensions - Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/8-6-collisions-of-point-masses-in-two-dimensions",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 8,
+      "concepts": [
+        "momentum-conservation"
+      ],
+      "week": 5,
+      "day": 4
+    },
+    {
+      "id": "openstax-ch8-problems-conservation-b",
+      "title": "OpenStax Ch.8 Problems & Exercises - Conservation",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/8-problems-exercises",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "momentum-conservation"
+      ],
+      "week": 5,
+      "day": 4,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-8"
+    },
+    {
+      "id": "openstax-ch8-elastic-reading-b",
+      "title": "OpenStax 8.4 Elastic Collisions - Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/8-4-elastic-collisions-in-one-dimension",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 8,
+      "concepts": [
+        "momentum-collisions"
+      ],
+      "week": 5,
+      "day": 5
+    },
+    {
+      "id": "openstax-ch8-inelastic-reading-b",
+      "title": "OpenStax 8.5 Inelastic Collisions - Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/8-5-inelastic-collisions-in-one-dimension",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 8,
+      "concepts": [
+        "momentum-collisions"
+      ],
+      "week": 5,
+      "day": 5
+    },
+    {
+      "id": "openstax-ch8-problems-collisions-b",
+      "title": "OpenStax Ch.8 Problems & Exercises - Collisions",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/8-problems-exercises",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "momentum-collisions"
+      ],
+      "week": 5,
+      "day": 5,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-8"
+    },
+    {
+      "id": "openstax-ch8-testprep-collisions-c",
+      "title": "OpenStax Ch.8 Test Prep for AP - Collisions",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/8-test-prep-for-ap-r-courses",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 12,
+      "concepts": [
+        "momentum-collisions"
+      ],
+      "week": 5,
+      "day": 5,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-8"
+    },
+    {
+      "id": "openstax-ch8-testprep-mixed-b",
+      "title": "OpenStax Ch.8 Test Prep for AP - Mixed Momentum",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/8-test-prep-for-ap-r-courses",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 12,
+      "concepts": [
+        "momentum-linear",
+        "momentum-impulse",
+        "momentum-conservation",
+        "momentum-collisions"
+      ],
+      "week": 5,
+      "day": 6,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-8"
+    },
+    {
+      "id": "openstax-ch8-conceptual-mixed-c",
+      "title": "OpenStax Ch.8 Conceptual Questions - Mixed Momentum",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/8-conceptual-questions",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 12,
+      "concepts": [
+        "momentum-conservation",
+        "momentum-collisions"
+      ],
+      "week": 5,
+      "day": 6,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-8"
+    },
+    {
+      "id": "openstax-ch8-testprep-exit-b",
+      "title": "OpenStax Ch.8 Test Prep for AP - Exit Check",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/8-test-prep-for-ap-r-courses",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "momentum-linear",
+        "momentum-ft-graph",
+        "momentum-conservation",
+        "momentum-collisions"
+      ],
+      "week": 5,
+      "day": 7,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-8"
+    },
+    {
+      "id": "openstax-ch8-problems-exit-c",
+      "title": "OpenStax Ch.8 Problems & Exercises - Exit Review",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/8-problems-exercises",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 15,
+      "concepts": [
+        "momentum-linear",
+        "momentum-conservation",
+        "momentum-collisions"
+      ],
+      "week": 5,
+      "day": 7,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-8"
+    },
+    {
+      "id": "openstax-ch9-torque-preview-c",
+      "title": "OpenStax 9.2 Second Condition for Equilibrium - Preview",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/9-2-the-second-condition-for-equilibrium",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 8,
+      "concepts": [
+        "torque-torque",
+        "torque-rotational-equilibrium"
+      ],
+      "week": 6,
+      "day": 1
+    },
+    {
+      "id": "openstax-ch6-rotation-reread-b",
+      "title": "OpenStax 6.1 Rotation Angle and Angular Velocity - Reread",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/6-1-rotation-angle-and-angular-velocity",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "torque-rotational-kinematics",
+        "torque-linear-rotational-connection"
+      ],
+      "week": 6,
+      "day": 2
+    },
+    {
+      "id": "openstax-ch6-problems-rotation-c",
+      "title": "OpenStax Ch.6 Problems & Exercises - Rotational Kinematics",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/6-problems-exercises",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 12,
+      "concepts": [
+        "torque-rotational-kinematics",
+        "torque-linear-rotational-connection"
+      ],
+      "week": 6,
+      "day": 2,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-6"
+    },
+    {
+      "id": "openstax-ch9-equilibrium-reading-b",
+      "title": "OpenStax 9.2 Second Condition for Equilibrium - Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/9-2-the-second-condition-for-equilibrium",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "torque-torque",
+        "torque-rotational-equilibrium"
+      ],
+      "week": 6,
+      "day": 3
+    },
+    {
+      "id": "openstax-ch9-problems-torque-c",
+      "title": "OpenStax Ch.9 Problems & Exercises - Torque and Equilibrium",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/9-problems-exercises",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 12,
+      "concepts": [
+        "torque-torque",
+        "torque-rotational-equilibrium"
+      ],
+      "week": 6,
+      "day": 3,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-9"
+    },
+    {
+      "id": "openstax-ch10-inertia-reading-b",
+      "title": "OpenStax 10.3 Dynamics of Rotational Motion - Rotational Inertia Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/10-3-dynamics-of-rotational-motion-rotational-inertia",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "torque-rotational-inertia",
+        "torque-newtons-second-law-rotational"
+      ],
+      "week": 6,
+      "day": 4
+    },
+    {
+      "id": "openstax-ch10-problems-inertia-c",
+      "title": "OpenStax Ch.10 Problems & Exercises - Rotational Inertia",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/10-problems-exercises",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 12,
+      "concepts": [
+        "torque-rotational-inertia",
+        "torque-newtons-second-law-rotational"
+      ],
+      "week": 6,
+      "day": 4,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-10"
+    },
+    {
+      "id": "openstax-ch10-rotke-reading-b",
+      "title": "OpenStax 10.4 Rotational Kinetic Energy and Work - Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/10-4-rotational-kinetic-energy-work-and-energy-revisited",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "rotation-rotational-kinetic-energy",
+        "rotation-torque-work",
+        "rotation-rolling"
+      ],
+      "week": 6,
+      "day": 5
+    },
+    {
+      "id": "openstax-ch10-problems-rotke-c",
+      "title": "OpenStax Ch.10 Problems & Exercises - Rotational KE and Work",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/10-problems-exercises",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 12,
+      "concepts": [
+        "rotation-rotational-kinetic-energy",
+        "rotation-torque-work"
+      ],
+      "week": 6,
+      "day": 5,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-10"
+    },
+    {
+      "id": "openstax-ch10-angmom-reading-b",
+      "title": "OpenStax 10.5 Angular Momentum and Its Conservation - Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/10-5-angular-momentum-and-its-conservation",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 8,
+      "concepts": [
+        "rotation-angular-momentum",
+        "rotation-angular-momentum-conservation"
+      ],
+      "week": 6,
+      "day": 6
+    },
+    {
+      "id": "openstax-ch10-problems-angmom-c",
+      "title": "OpenStax Ch.10 Problems & Exercises - Angular Momentum",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/10-problems-exercises",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 12,
+      "concepts": [
+        "rotation-angular-momentum",
+        "rotation-angular-momentum-conservation"
+      ],
+      "week": 6,
+      "day": 6,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-10"
+    },
+    {
+      "id": "openstax-ch10-testprep-angmom-c",
+      "title": "OpenStax Ch.10 Test Prep for AP - Angular Momentum",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/10-test-prep-for-ap-r-courses",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 12,
+      "concepts": [
+        "rotation-angular-momentum",
+        "rotation-angular-momentum-conservation"
+      ],
+      "week": 6,
+      "day": 6,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-10"
+    },
+    {
+      "id": "openstax-ch9-ch10-exit-c",
+      "title": "OpenStax Ch.9/10 Problems & Exercises - Week 6 Exit Check",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/10-problems-exercises",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 15,
+      "concepts": [
+        "torque-torque",
+        "rotation-rotational-kinetic-energy",
+        "rotation-angular-momentum-conservation"
+      ],
+      "week": 6,
+      "day": 7,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-10"
+    },
+    {
+      "id": "openstax-ch16-shm-reading-b",
+      "title": "OpenStax 16.3 Simple Harmonic Motion - Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/16-3-simple-harmonic-motion-a-special-periodic-motion",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "oscillation-shm-definition",
+        "oscillation-shm-representing"
+      ],
+      "week": 7,
+      "day": 2
+    },
+    {
+      "id": "openstax-ch16-testprep-shm-c",
+      "title": "OpenStax Ch.16 Test Prep for AP - SHM",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/16-test-prep-for-ap-r-courses",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 12,
+      "concepts": [
+        "oscillation-shm-definition",
+        "oscillation-shm-representing"
+      ],
+      "week": 7,
+      "day": 2,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-16"
+    },
+    {
+      "id": "openstax-ch16-period-energy-reading-b",
+      "title": "OpenStax 16.3/16.5 SHM Period and Energy - Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/16-3-simple-harmonic-motion-a-special-periodic-motion",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "oscillation-shm-frequency-period",
+        "oscillation-shm-energy"
+      ],
+      "week": 7,
+      "day": 3
+    },
+    {
+      "id": "openstax-ch16-problems-period-c",
+      "title": "OpenStax Ch.16 Problems & Exercises - SHM Period",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/16-problems-exercises",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 12,
+      "concepts": [
+        "oscillation-shm-frequency-period",
+        "oscillation-shm-energy"
+      ],
+      "week": 7,
+      "day": 3,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-16"
+    },
+    {
+      "id": "openstax-ch11-density-reading-b",
+      "title": "OpenStax 11.2 Density - Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/11-2-density",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 8,
+      "concepts": [
+        "fluids-density-structure"
+      ],
+      "week": 7,
+      "day": 4
+    },
+    {
+      "id": "openstax-ch11-pressure-reading-b",
+      "title": "OpenStax 11.3/11.4 Pressure and Depth - Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/11-3-pressure",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 8,
+      "concepts": [
+        "fluids-pressure"
+      ],
+      "week": 7,
+      "day": 4
+    },
+    {
+      "id": "openstax-ch11-problems-pressure-c",
+      "title": "OpenStax Ch.11 Problems & Exercises - Density and Pressure",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/11-problems-exercises",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 12,
+      "concepts": [
+        "fluids-density-structure",
+        "fluids-pressure"
+      ],
+      "week": 7,
+      "day": 4,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-11"
+    },
+    {
+      "id": "openstax-ch11-archimedes-reading-b",
+      "title": "OpenStax 11.7 Archimedes' Principle - Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/11-7-archimedes-principle",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "fluids-newton-laws"
+      ],
+      "week": 7,
+      "day": 5
+    },
+    {
+      "id": "openstax-ch11-problems-buoyancy-c",
+      "title": "OpenStax Ch.11 Problems & Exercises - Buoyancy",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/11-problems-exercises",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 12,
+      "concepts": [
+        "fluids-newton-laws"
+      ],
+      "week": 7,
+      "day": 5,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-11"
+    },
+    {
+      "id": "openstax-ch12-flowrate-reading-b",
+      "title": "OpenStax 12.1 Flow Rate and Its Relation to Velocity - Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/12-1-flow-rate-and-its-relation-to-velocity",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 8,
+      "concepts": [
+        "fluids-conservation-laws"
+      ],
+      "week": 7,
+      "day": 6
+    },
+    {
+      "id": "openstax-ch12-bernoulli-reading-b",
+      "title": "OpenStax 12.2 Bernoulli's Equation - Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/12-2-bernoullis-equation",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 8,
+      "concepts": [
+        "fluids-conservation-laws"
+      ],
+      "week": 7,
+      "day": 6
+    },
+    {
+      "id": "openstax-ch12-problems-flow-c",
+      "title": "OpenStax Ch.12 Problems & Exercises - Fluid Flow",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/12-problems-exercises",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 12,
+      "concepts": [
+        "fluids-conservation-laws"
+      ],
+      "week": 7,
+      "day": 6,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-12"
+    },
+    {
+      "id": "openstax-ch12-testprep-flow-c",
+      "title": "OpenStax Ch.12 Test Prep for AP - Fluid Flow",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/12-test-prep-for-ap-r-courses",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 12,
+      "concepts": [
+        "fluids-conservation-laws"
+      ],
+      "week": 7,
+      "day": 6,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-12"
+    },
+    {
+      "id": "openstax-ch11-ch12-ch16-exit-c",
+      "title": "OpenStax Ch.11/12/16 Problems & Exercises - Week 7 Exit Check",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/11-problems-exercises",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 15,
+      "concepts": [
+        "oscillation-shm-frequency-period",
+        "fluids-pressure",
+        "fluids-newton-laws",
+        "fluids-conservation-laws"
+      ],
+      "week": 7,
+      "day": 7,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-11"
+    },
+    {
+      "id": "openstax-review-u1-testprep-c",
+      "title": "OpenStax Ch.2/3 Test Prep - U1 Kinematics Diagnostic",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/2-test-prep-for-ap-r-courses",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 10,
+      "concepts": [
+        "kinematics-displacement-velocity-acceleration",
+        "kinematics-representing-motion"
+      ],
+      "week": 8,
+      "day": 1,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-2"
+    },
+    {
+      "id": "openstax-review-u2-testprep-c",
+      "title": "OpenStax Ch.4/5/6 Test Prep - U2 Forces Diagnostic",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/4-test-prep-for-ap-r-courses",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 12,
+      "concepts": [
+        "dynamics-fbd-forces",
+        "dynamics-newtons-second-law",
+        "dynamics-circular-motion"
+      ],
+      "week": 8,
+      "day": 4,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-4"
+    },
+    {
+      "id": "openstax-review-u3-testprep-c",
+      "title": "OpenStax Ch.7 Test Prep - U3 Energy Diagnostic",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/7-test-prep-for-ap-r-courses",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 12,
+      "concepts": [
+        "energy-work",
+        "energy-conservation",
+        "energy-bar-charts"
+      ],
+      "week": 8,
+      "day": 4,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-7"
+    },
+    {
+      "id": "openstax-review-u4-testprep-c",
+      "title": "OpenStax Ch.8 Test Prep - U4 Momentum Diagnostic",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/8-test-prep-for-ap-r-courses",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 12,
+      "concepts": [
+        "momentum-linear",
+        "momentum-conservation",
+        "momentum-collisions"
+      ],
+      "week": 8,
+      "day": 4,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-8"
+    },
+    {
+      "id": "openstax-review-u5u6-testprep-c",
+      "title": "OpenStax Ch.9/10 Test Prep - U5/U6 Rotation Diagnostic",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/9-test-prep-for-ap-r-courses",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 12,
+      "concepts": [
+        "torque-torque",
+        "rotation-angular-momentum",
+        "rotation-angular-momentum-conservation"
+      ],
+      "week": 8,
+      "day": 4,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-9"
+    },
+    {
+      "id": "openstax-review-u7-testprep-c",
+      "title": "OpenStax Ch.16 Test Prep - U7 SHM Diagnostic",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/16-test-prep-for-ap-r-courses",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 10,
+      "concepts": [
+        "oscillation-shm-definition",
+        "oscillation-shm-frequency-period",
+        "oscillation-shm-energy"
+      ],
+      "week": 8,
+      "day": 4,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-16"
+    },
+    {
+      "id": "openstax-review-u8-testprep-c",
+      "title": "OpenStax Ch.11 Test Prep - U8 Fluids Diagnostic",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/11-test-prep-for-ap-r-courses",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 10,
+      "concepts": [
+        "fluids-density-structure",
+        "fluids-pressure",
+        "fluids-newton-laws",
+        "fluids-conservation-laws"
+      ],
+      "week": 8,
+      "day": 4,
+      "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-11"
+    },
+    {
+      "id": "flipping-displacement",
+      "title": "Flipping: Introduction to Displacement",
+      "url": "https://www.flippingphysics.com/introduction-to-displacement.html",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "B",
+      "estimated_minutes": 12,
+      "concepts": [
+        "kinematics-displacement-velocity-acceleration",
+        "kinematics-scalars-vectors-1d"
+      ],
+      "week": 1,
+      "day": 2
+    },
+    {
+      "id": "flipping-velocity-speed",
+      "title": "Flipping: Introduction to Velocity and Speed",
+      "url": "https://www.flippingphysics.com/introduction-to-velocity-and-speed.html",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "B",
+      "estimated_minutes": 12,
+      "concepts": [
+        "kinematics-displacement-velocity-acceleration",
+        "kinematics-scalars-vectors-1d"
+      ],
+      "week": 1,
+      "day": 2
+    },
+    {
+      "id": "flipping-motion-graphs",
+      "title": "Flipping: Position, Velocity & Acceleration Graphs",
+      "url": "https://www.flippingphysics.com/walking-position-velocity-and-acceleration-as-a-function-of-time-graphs.html",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "kinematics-representing-motion"
+      ],
+      "week": 1,
+      "day": 3
+    },
+    {
+      "id": "flipping-free-fall-pitfalls",
+      "title": "Flipping: Common Free-Fall Pitfalls",
+      "url": "https://www.flippingphysics.com/common-free-fall-pitfalls.html",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "kinematics-representing-motion"
+      ],
+      "week": 1,
+      "day": 4
+    },
+    {
+      "id": "flipping-acceleration-intro",
+      "title": "Flipping: Introduction to Acceleration",
+      "url": "https://www.flippingphysics.com/introduction-to-acceleration-with-prius-brake-slamming-example-problem.html",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "B",
+      "estimated_minutes": 7,
+      "concepts": [
+        "kinematics-representing-motion"
+      ],
+      "week": 1,
+      "day": 4
+    },
+    {
+      "id": "flipping-projectile-components",
+      "title": "Flipping: Components of Projectile Motion",
+      "url": "https://www.flippingphysics.com/components-of-projectile-motion.html",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "kinematics-vectors-2d-motion"
+      ],
+      "week": 1,
+      "day": 5
+    },
+    {
+      "id": "flipping-projectile-motion",
+      "title": "Flipping: Projectile Motion",
+      "url": "https://www.flippingphysics.com/projectile-motion.html",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "kinematics-reference-frames",
+        "kinematics-vectors-2d-motion"
+      ],
+      "week": 1,
+      "day": 6
+    },
+    {
+      "id": "flipping-how-to-draw-fbds",
+      "title": "Flipping: How to Draw Free Body Diagrams",
+      "url": "https://www.flippingphysics.com/fbds-for-ap-physics.html",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "dynamics-fbd-forces",
+        "dynamics-newtons-third-law"
+      ],
+      "week": 2,
+      "day": 2
+    },
+    {
+      "id": "flipping-newton3-misconception",
+      "title": "Flipping: Newton's 3rd Law Misconception",
+      "url": "https://www.flippingphysics.com/third-law-misconception.html",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "dynamics-fbd-forces",
+        "dynamics-newtons-third-law"
+      ],
+      "week": 2,
+      "day": 2
+    },
+    {
+      "id": "flipping-newtons-second-law",
+      "title": "Flipping: Newton's Second Law",
+      "url": "https://www.flippingphysics.com/second-law.html",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "dynamics-newtons-second-law",
+        "dynamics-systems-center-of-mass"
+      ],
+      "week": 2,
+      "day": 3
+    },
+    {
+      "id": "flipping-friction-intro",
+      "title": "Flipping: Static and Kinetic Friction",
+      "url": "https://www.flippingphysics.com/friction-intro.html",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "dynamics-fbd-forces",
+        "dynamics-friction",
+        "dynamics-newtons-second-law"
+      ],
+      "week": 2,
+      "day": 4
+    },
+    {
+      "id": "flipping-friction-equation",
+      "title": "Flipping: Force of Friction Equation",
+      "url": "https://www.flippingphysics.com/friction-equation.html",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "B",
+      "estimated_minutes": 4,
+      "concepts": [
+        "dynamics-fbd-forces",
+        "dynamics-friction",
+        "dynamics-newtons-second-law"
+      ],
+      "week": 2,
+      "day": 4
+    },
+    {
+      "id": "flipping-5-steps-fbd",
+      "title": "Flipping: 5-Step FBD Method",
+      "url": "https://www.flippingphysics.com/5-steps-fbd.html",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "B",
+      "estimated_minutes": 5,
+      "concepts": [
+        "dynamics-fbd-forces",
+        "dynamics-friction",
+        "dynamics-newtons-second-law",
+        "dynamics-spring-forces"
+      ],
+      "week": 2,
+      "day": 6
+    },
+    {
+      "id": "flipping-incline-components",
+      "title": "Flipping: Incline Plane Components",
+      "url": "https://www.flippingphysics.com/incline-components.html",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "dynamics-inclined-planes"
+      ],
+      "week": 3,
+      "day": 2
+    },
+    {
+      "id": "flipping-static-friction-incline",
+      "title": "Flipping: Static Friction on an Incline",
+      "url": "https://www.flippingphysics.com/static-friction-incline.html",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "dynamics-inclined-planes"
+      ],
+      "week": 3,
+      "day": 2
+    },
+    {
+      "id": "flipping-incline-pulley",
+      "title": "Flipping: Incline and Masses on a Pulley",
+      "url": "https://www.flippingphysics.com/incline-masses-pulley.html",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "B",
+      "estimated_minutes": 9,
+      "concepts": [
+        "dynamics-newtons-second-law",
+        "dynamics-systems-connected"
+      ],
+      "week": 3,
+      "day": 3
+    },
+    {
+      "id": "flipping-centripetal-acceleration",
+      "title": "Flipping: Centripetal Acceleration",
+      "url": "https://www.flippingphysics.com/centripetal-acceleration.html",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "dynamics-circular-motion"
+      ],
+      "week": 3,
+      "day": 4
+    },
+    {
+      "id": "flipping-centripetal-force",
+      "title": "Flipping: Centripetal Force",
+      "url": "https://www.flippingphysics.com/centripetal-force.html",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "dynamics-circular-motion"
+      ],
+      "week": 3,
+      "day": 4
+    },
+    {
+      "id": "flipping-universal-gravitation",
+      "title": "Flipping: Universal Law of Gravitation",
+      "url": "https://www.flippingphysics.com/universal-law-gravitation.html",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "dynamics-circular-orbits",
+        "dynamics-gravitational-force"
+      ],
+      "week": 3,
+      "day": 5
+    },
+    {
+      "id": "flipping-work-intro",
+      "title": "Flipping: Introduction to Work",
+      "url": "https://www.flippingphysics.com/work-intro.html",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "energy-translational-kinetic",
+        "energy-work"
+      ],
+      "week": 4,
+      "day": 2
+    },
+    {
+      "id": "flipping-kinetic-energy",
+      "title": "Flipping: Introduction to Kinetic Energy",
+      "url": "https://www.flippingphysics.com/intro-ke.html",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "energy-translational-kinetic",
+        "energy-work"
+      ],
+      "week": 4,
+      "day": 2
+    },
+    {
+      "id": "flipping-work-energy-theorem",
+      "title": "Flipping: Work-Energy Theorem",
+      "url": "https://www.flippingphysics.com/wnet-ke.html",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "energy-translational-kinetic",
+        "energy-work"
+      ],
+      "week": 4,
+      "day": 2
+    },
+    {
+      "id": "flipping-conservation-mechanical-energy",
+      "title": "Flipping: Conservation of Mechanical Energy",
+      "url": "https://www.flippingphysics.com/intro-coe.html",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "B",
+      "estimated_minutes": 5,
+      "concepts": [
+        "energy-conservation"
+      ],
+      "week": 4,
+      "day": 5
+    },
+    {
+      "id": "flipping-energy-with-friction",
+      "title": "Flipping: Mechanical Energy with Friction",
+      "url": "https://www.flippingphysics.com/intro-wf.html",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "B",
+      "estimated_minutes": 5,
+      "concepts": [
+        "energy-conservation"
+      ],
+      "week": 4,
+      "day": 5
+    },
+    {
+      "id": "flipping-energy-friction-spring",
+      "title": "Flipping: Energy with Friction and Spring",
+      "url": "https://www.flippingphysics.com/coe-incline-problem.html",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "energy-bar-charts",
+        "energy-conservation",
+        "energy-power",
+        "energy-work"
+      ],
+      "week": 4,
+      "day": 6
+    },
+    {
+      "id": "flipping-momentum-intro",
+      "title": "Flipping: Introduction to Momentum",
+      "url": "https://www.flippingphysics.com/momentum.html",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "momentum-impulse",
+        "momentum-linear"
+      ],
+      "week": 5,
+      "day": 2
+    },
+    {
+      "id": "flipping-impulse-intro",
+      "title": "Flipping: Introduction to Impulse",
+      "url": "https://www.flippingphysics.com/impulse-introduction.html",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "momentum-impulse",
+        "momentum-linear"
+      ],
+      "week": 5,
+      "day": 2
+    },
+    {
+      "id": "flipping-impulse-area",
+      "title": "Flipping: Impulse as Area Under F-t Curve",
+      "url": "https://www.flippingphysics.com/impulse-area.html",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "momentum-ft-graph"
+      ],
+      "week": 5,
+      "day": 3
+    },
+    {
+      "id": "flipping-conservation-momentum",
+      "title": "Flipping: Conservation of Momentum",
+      "url": "https://www.flippingphysics.com/conservation-of-momentum.html",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "B",
+      "estimated_minutes": 5,
+      "concepts": [
+        "momentum-conservation"
+      ],
+      "week": 5,
+      "day": 4
+    },
+    {
+      "id": "flipping-collisions",
+      "title": "Flipping: Elastic and Inelastic Collisions",
+      "url": "https://www.flippingphysics.com/collisions.html",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "B",
+      "estimated_minutes": 7,
+      "concepts": [
+        "momentum-collisions"
+      ],
+      "week": 5,
+      "day": 5
+    },
+    {
+      "id": "flipping-perfectly-inelastic",
+      "title": "Flipping: Perfectly Inelastic Collision",
+      "url": "https://www.flippingphysics.com/perfectly-inelastic.html",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "B",
+      "estimated_minutes": 7,
+      "concepts": [
+        "momentum-collisions"
+      ],
+      "week": 5,
+      "day": 5
+    },
+    {
+      "id": "flipping-torque",
+      "title": "Flipping: Introduction to Torque",
+      "url": "https://www.flippingphysics.com/torque.html",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "torque-rotational-equilibrium",
+        "torque-torque"
+      ],
+      "week": 6,
+      "day": 3
+    },
+    {
+      "id": "flipping-torque-door",
+      "title": "Flipping: Net Torque on a Door",
+      "url": "https://www.flippingphysics.com/torque-door.html",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "torque-rotational-equilibrium",
+        "torque-torque"
+      ],
+      "week": 6,
+      "day": 3
+    },
+    {
+      "id": "flipping-rotational-newton2",
+      "title": "Flipping: Rotational Newton's Second Law",
+      "url": "https://www.flippingphysics.com/rotational-newtons-second-law.html",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "torque-newtons-second-law-rotational",
+        "torque-rotational-inertia"
+      ],
+      "week": 6,
+      "day": 4
+    },
+    {
+      "id": "flipping-angular-momentum-conservation",
+      "title": "Flipping: Conservation of Angular Momentum",
+      "url": "https://www.flippingphysics.com/angular-momentum-conservation.html",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "B",
+      "estimated_minutes": 5,
+      "concepts": [
+        "rotation-angular-momentum",
+        "rotation-angular-momentum-conservation"
+      ],
+      "week": 6,
+      "day": 6
+    },
+    {
+      "id": "flipping-shm-intro",
+      "title": "Flipping: Introduction to Simple Harmonic Motion",
+      "url": "https://www.flippingphysics.com/simple-harmonic-motion.html",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "oscillation-shm-definition",
+        "oscillation-shm-frequency-period",
+        "oscillation-shm-representing"
+      ],
+      "week": 7,
+      "day": 2
+    },
+    {
+      "id": "flipping-shm-period",
+      "title": "Flipping: What Changes the Period of SHM",
+      "url": "https://www.flippingphysics.com/shm-period.html",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "oscillation-shm-energy",
+        "oscillation-shm-frequency-period"
+      ],
+      "week": 7,
+      "day": 3
+    },
+    {
+      "id": "flipping-fluid-pressure",
+      "title": "Flipping: Fluid Pressure",
+      "url": "https://www.flippingphysics.com/fluid-pressure.html",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "B",
+      "estimated_minutes": 10,
+      "concepts": [
+        "fluids-density-structure",
+        "fluids-pressure"
+      ],
+      "week": 7,
+      "day": 4
+    },
+    {
+      "id": "flipping-ideal-fluid-flow",
+      "title": "Flipping: Ideal Fluid Flow",
+      "url": "https://www.flippingphysics.com/ideal-fluid-flow.html",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "B",
+      "estimated_minutes": 5,
+      "concepts": [
+        "fluids-conservation-laws"
+      ],
+      "week": 7,
+      "day": 6
+    },
+    {
+      "id": "flipping-bernoulli",
+      "title": "Flipping: Bernoulli's Equation Derivation",
+      "url": "https://www.flippingphysics.com/bernoulli-derivation.html",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "B",
+      "estimated_minutes": 5,
+      "concepts": [
+        "fluids-conservation-laws"
+      ],
+      "week": 7,
+      "day": 6
+    },
+    {
+      "id": "flipping-ap1-review",
+      "title": "Flipping: AP Physics 1 Review",
+      "url": "https://www.flippingphysics.com/ap-physics-1-review.html",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "B",
+      "estimated_minutes": 15,
+      "concepts": [
+        "dynamics-circular-motion",
+        "dynamics-fbd-forces",
+        "dynamics-newtons-second-law",
+        "energy-bar-charts",
+        "energy-conservation",
+        "energy-work",
+        "fluids-conservation-laws",
+        "fluids-density-structure",
+        "fluids-newton-laws",
+        "fluids-pressure",
+        "momentum-collisions",
+        "momentum-conservation",
+        "momentum-linear",
+        "oscillation-shm-definition",
+        "oscillation-shm-energy",
+        "oscillation-shm-frequency-period",
+        "rotation-angular-momentum",
+        "rotation-angular-momentum-conservation",
+        "torque-torque"
+      ],
+      "week": 8,
+      "day": 4
+    },
+    {
+      "id": "khan-projectile-motion-quantities",
+      "title": "Projectile motion quantities",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:kinematics/xf557a762645cccc5:motion-in-2d/e/angled-launch-projectile-vectors-exercise",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 9,
+      "week": 1,
+      "day": 6,
+      "concepts": [
+        "kinematics-reference-frames",
+        "kinematics-vectors-2d-motion"
+      ]
+    },
+    {
+      "id": "khan-projectile-motion-graphs",
+      "title": "Projectile motion graphs",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:kinematics/xf557a762645cccc5:motion-in-2d/e/graphs-for-2d-projectiles",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 9,
+      "week": 1,
+      "day": 6,
+      "concepts": [
+        "kinematics-reference-frames",
+        "kinematics-vectors-2d-motion"
+      ]
+    },
+    {
+      "id": "khan-applying-newtons-laws",
+      "title": "Applying Newton's laws",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:force-and-translational-dynamics/xf557a762645cccc5:forces-and-acceleration/e/newton-s-2nd-and-3rd-laws",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 15,
+      "week": 2,
+      "day": 3,
+      "concepts": [
+        "dynamics-newtons-second-law",
+        "dynamics-systems-center-of-mass"
+      ]
+    },
+    {
+      "id": "khan-forces-at-an-angle",
+      "title": "Forces at an angle",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:force-and-translational-dynamics/xf557a762645cccc5:forces-and-acceleration/v/forces-at-an-angle",
+      "type": "video",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 12,
+      "week": 3,
+      "day": 2,
+      "concepts": [
+        "dynamics-inclined-planes"
+      ]
+    },
+    {
+      "id": "khan-analyzing-systems-video",
+      "title": "Analyzing systems",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:force-and-translational-dynamics/xf557a762645cccc5:forces-and-acceleration/v/analyzing-systems",
+      "type": "video",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 12,
+      "week": 3,
+      "day": 3,
+      "concepts": [
+        "dynamics-newtons-second-law",
+        "dynamics-systems-connected"
+      ]
+    },
+    {
+      "id": "khan-gravitational-forces-fields",
+      "title": "Gravitational forces and fields",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:force-and-translational-dynamics/xf557a762645cccc5:gravitational-force/v/gravitational-forces-and-fields",
+      "type": "video",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 10,
+      "week": 3,
+      "day": 5,
+      "concepts": [
+        "dynamics-circular-orbits",
+        "dynamics-gravitational-force"
+      ]
+    },
+    {
+      "id": "khan-work-energy-theorem-example",
+      "title": "Work-energy theorem example",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:work-energy-and-power/xf557a762645cccc5:translational-kinetic-energy-and-work/v/work-energy-principle-example",
+      "type": "video",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 10,
+      "week": 4,
+      "day": 2,
+      "concepts": [
+        "energy-translational-kinetic",
+        "energy-work"
+      ]
+    },
+    {
+      "id": "khan-power-video",
+      "title": "Power",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:work-energy-and-power/xf557a762645cccc5:power/v/power",
+      "type": "video",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 10,
+      "week": 4,
+      "day": 3,
+      "concepts": [
+        "energy-fx-graph",
+        "energy-power"
+      ]
+    },
+    {
+      "id": "khan-potential-energy-video",
+      "title": "Potential energy",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:work-energy-and-power/xf557a762645cccc5:potential-energy/v/potential_energy",
+      "type": "video",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 10,
+      "week": 4,
+      "day": 4,
+      "concepts": [
+        "energy-potential-energy"
+      ]
+    },
+    {
+      "id": "khan-conservation-energy-1",
+      "title": "Conservation of energy part 1",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:work-energy-and-power/xf557a762645cccc5:untitled-271/v/conservation-of-energy-part-1",
+      "type": "video",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 10,
+      "week": 4,
+      "day": 5,
+      "concepts": [
+        "energy-conservation"
+      ]
+    },
+    {
+      "id": "khan-conservation-energy-2",
+      "title": "Conservation of energy part 2",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:work-energy-and-power/xf557a762645cccc5:untitled-271/v/conservation-of-energy-part-2",
+      "type": "video",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 10,
+      "week": 4,
+      "day": 5,
+      "concepts": [
+        "energy-conservation"
+      ]
+    },
+    {
+      "id": "khan-impulse-momentum-example",
+      "title": "Impulse and momentum example",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:linear-momentum/xf557a762645cccc5:linear-momentum-and-impulse/v/impulse-and-momentum-dodgeball-example",
+      "type": "video",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 8,
+      "week": 5,
+      "day": 2,
+      "concepts": [
+        "momentum-impulse",
+        "momentum-linear"
+      ]
+    },
+    {
+      "id": "khan-force-time-graphs-video",
+      "title": "Force vs. time graphs",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:linear-momentum/xf557a762645cccc5:linear-momentum-and-impulse/v/force-vs-time-graphs",
+      "type": "video",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 10,
+      "week": 5,
+      "day": 3,
+      "concepts": [
+        "momentum-ft-graph"
+      ]
+    },
+    {
+      "id": "khan-conservation-linear-momentum-video",
+      "title": "Conservation of linear momentum",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:linear-momentum/xf557a762645cccc5:untitled-303/v/conservation-of-linear-momentum",
+      "type": "video",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 10,
+      "week": 5,
+      "day": 4,
+      "concepts": [
+        "momentum-conservation"
+      ]
+    },
+    {
+      "id": "khan-momentum-collisions-exercise",
+      "title": "Momentum and collisions",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:linear-momentum/xf557a762645cccc5:untitled-303/e/momentum-and-collisions",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 15,
+      "week": 5,
+      "day": 5,
+      "concepts": [
+        "momentum-collisions"
+      ]
+    },
+    {
+      "id": "khan-rotational-inertia-video",
+      "title": "Rotational inertia (more on moment of inertia)",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:torque-and-rotational-dynamics/xf557a762645cccc5:newton-s-second-law-in-rotational-form/v/more-on-moment-of-inertia",
+      "type": "video",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 10,
+      "week": 6,
+      "day": 4,
+      "concepts": [
+        "torque-newtons-second-law-rotational",
+        "torque-rotational-inertia"
+      ]
+    },
+    {
+      "id": "phet-torque",
+      "title": "Torque",
+      "url": "https://phet.colorado.edu/en/simulations/torque",
+      "type": "interactive",
+      "platform": "phet",
+      "tier": "A",
+      "estimated_minutes": 12,
+      "week": 6,
+      "day": 4,
+      "concepts": [
+        "torque-newtons-second-law-rotational",
+        "torque-rotational-inertia"
+      ]
+    },
+    {
+      "id": "khan-rotational-kinetic-energy-video",
+      "title": "Rotational kinetic energy",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:energy-and-momentum-of-rotating-systems/xf557a762645cccc5:rotational-kinetic-energy/v/rotational-kinetic-energy-of-rigid-systems",
+      "type": "video",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 10,
+      "week": 6,
+      "day": 5,
+      "concepts": [
+        "rotation-rolling",
+        "rotation-rotational-kinetic-energy",
+        "rotation-torque-work"
+      ]
+    },
+    {
+      "id": "khan-angular-momentum-rigid-systems",
+      "title": "Angular momentum of rigid systems",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:energy-and-momentum-of-rotating-systems/xf557a762645cccc5:angular-momentum/v/angular-momentum-of-rigid-systems",
+      "type": "video",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 10,
+      "week": 6,
+      "day": 6,
+      "concepts": [
+        "rotation-angular-momentum",
+        "rotation-angular-momentum-conservation"
+      ]
+    },
+    {
+      "id": "khan-conservation-angular-momentum-video",
+      "title": "Conservation of angular momentum",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:energy-and-momentum-of-rotating-systems/xf557a762645cccc5:conservation-of-angular-momentum/v/conservation-of-angular-momentum-ap",
+      "type": "video",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 10,
+      "week": 6,
+      "day": 6,
+      "concepts": [
+        "rotation-angular-momentum",
+        "rotation-angular-momentum-conservation"
+      ]
+    },
+    {
+      "id": "khan-amplitude-period-definition",
+      "title": "Definition of amplitude and period",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:oscillations/xf557a762645cccc5:simple-harmonic-oscillators/v/definition-of-amplitude-and-period",
+      "type": "video",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 8,
+      "week": 7,
+      "day": 2,
+      "concepts": [
+        "oscillation-shm-definition",
+        "oscillation-shm-frequency-period",
+        "oscillation-shm-representing"
+      ]
+    },
+    {
+      "id": "ap-central-2026-frq-day3",
+      "title": "AP Physics 1 2026 FRQ (Type 3 & 4)",
+      "url": "/frq/ap26-frq-physics-1.pdf",
+      "answer_url": "https://apcentral.collegeboard.org/media/pdf/ap26-sg-physics-1.pdf",
+      "type": "frq",
+      "platform": "ap_central",
+      "tier": "A",
+      "estimated_minutes": 40,
+      "week": 8,
+      "day": 3,
+      "concepts": [
+        "dynamics-friction",
+        "dynamics-inclined-planes",
+        "energy-conservation",
+        "torque-newtons-second-law-rotational",
+        "rotation-rotational-kinetic-energy"
+      ]
+    },
+    {
+      "id": "khan-ap1-full-course-practice",
+      "title": "AP Physics 1 全单元练习题",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "C",
+      "estimated_minutes": 60,
+      "week": 8,
+      "day": 5,
+      "concepts": []
+    },
+    {
+      "id": "ap-central-2024-frq-w8d2",
+      "title": "AP Physics 1 2024 FRQ",
+      "url": "/frq/ap24-frq-physics-1.pdf",
+      "answer_url": "/frq/ap24-sg-physics-1.pdf",
+      "type": "frq",
+      "platform": "ap_central",
+      "tier": "B",
+      "estimated_minutes": 70,
+      "concepts": [
+        "momentum-conservation",
+        "energy-conservation",
+        "torque-newtons-second-law-rotational"
+      ],
+      "week": 8,
+      "day": 2
+    },
+    {
+      "id": "ap-central-2023-frq-w8d3",
+      "title": "AP Physics 1 2023 FRQ",
+      "url": "/frq/ap23-frq-physics-1.pdf",
+      "answer_url": "/frq/ap23-sg-physics-1.pdf",
+      "type": "frq",
+      "platform": "ap_central",
+      "tier": "B",
+      "estimated_minutes": 70,
+      "concepts": [
+        "kinematics-vectors-2d-motion",
+        "momentum-conservation",
+        "energy-conservation"
+      ],
+      "week": 8,
+      "day": 3
+    },
+    {
+      "id": "ap-central-2022-frq-w8d6",
+      "title": "AP Physics 1 2022 FRQ",
+      "url": "/frq/ap22-frq-physics-1.pdf",
+      "answer_url": "/frq/ap22-sg-physics-1.pdf",
+      "type": "frq",
+      "platform": "ap_central",
+      "tier": "B",
+      "estimated_minutes": 70,
+      "concepts": [
+        "momentum-conservation",
+        "energy-conservation"
+      ],
+      "week": 8,
+      "day": 6
+    },
+    {
+      "id": "ap-central-2019-frq-w8d6",
+      "title": "AP Physics 1 2019 FRQ",
+      "url": "/frq/ap19-frq-physics-1.pdf",
+      "answer_url": "/frq/ap19-sg-physics-1.pdf",
+      "type": "frq",
+      "platform": "ap_central",
+      "tier": "C",
+      "estimated_minutes": 70,
+      "concepts": [
+        "kinematics-representing-motion",
+        "energy-conservation"
+      ],
+      "week": 8,
+      "day": 6
+    }
+  ]
+}

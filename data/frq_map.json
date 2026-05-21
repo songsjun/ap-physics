@@ -1,0 +1,443 @@
+{
+  "questions": [
+    {
+      "id": "ap19-q1",
+      "year": 2019,
+      "question_number": 1,
+      "frq_type": "type1_mathematical",
+      "frq_pdf": "/frq/ap19-frq-physics-1.pdf",
+      "frq_page": 4,
+      "concepts": [
+        "kinematics-representing-motion",
+        "kinematics-displacement-velocity-acceleration",
+        "dynamics-newtons-second-law"
+      ],
+      "text_preview": "2019 PHYSICS 1 Section II Time—1 hour and 30 minutes 5 Questions Directions: Questions 1, 4, and 5 are short free-response questions that require about 13 minutes each to answer and are worth 7 points",
+      "sg_pdf": "/frq/ap19-sg-physics-1.pdf",
+      "sg_page": 3
+    },
+    {
+      "id": "ap19-q2",
+      "year": 2019,
+      "question_number": 2,
+      "frq_type": "type2_representation",
+      "frq_pdf": "/frq/ap19-frq-physics-1.pdf",
+      "frq_page": 6,
+      "concepts": [
+        "dynamics-gravitational-force",
+        "dynamics-systems-connected",
+        "dynamics-newtons-second-law"
+      ],
+      "text_preview": "2019 2. (12 points, suggested time 25 minutes) This problem explores how the relative masses of two blocks affect the acceleration of the blocks. Block A, of mass m A , rests on a horizontal tabletop.",
+      "sg_pdf": "/frq/ap19-sg-physics-1.pdf",
+      "sg_page": 6
+    },
+    {
+      "id": "ap19-q3",
+      "year": 2019,
+      "question_number": 3,
+      "frq_type": "type3_experimental",
+      "frq_pdf": "/frq/ap19-frq-physics-1.pdf",
+      "frq_page": 8,
+      "concepts": [
+        "kinematics-vectors-2d-motion",
+        "dynamics-spring-forces",
+        "energy-conservation"
+      ],
+      "text_preview": "2019 3. (12 points, suggested time 25 minutes) A projectile launcher consists of a spring with an attached plate, as shown in Figure 1. When the spring is compressed, the plate can be held in place by",
+      "sg_pdf": "/frq/ap19-sg-physics-1.pdf",
+      "sg_page": 11
+    },
+    {
+      "id": "ap19-q4",
+      "year": 2019,
+      "question_number": 4,
+      "frq_type": "type4_short",
+      "frq_pdf": "/frq/ap19-frq-physics-1.pdf",
+      "frq_page": 10,
+      "concepts": [
+        "energy-power",
+        "energy-work",
+        "energy-conservation"
+      ],
+      "text_preview": "2019 4. (7 points, suggested time 13 minutes) A motor is a device that when connected to a battery converts electrical energy into mechanical energy. The motor shown above is used to lift a block of m",
+      "sg_pdf": "/frq/ap19-sg-physics-1.pdf",
+      "sg_page": 16
+    },
+    {
+      "id": "ap19-q5",
+      "year": 2019,
+      "question_number": 5,
+      "frq_type": "type5_short",
+      "frq_pdf": "/frq/ap19-frq-physics-1.pdf",
+      "frq_page": 11,
+      "concepts": [
+        "oscillation-shm-definition",
+        "oscillation-shm-frequency-period"
+      ],
+      "text_preview": "2019 5. (7 points, suggested time 13 minutes) A tuning fork vibrating at 512 Hz is held near one end of a tube of length L that is open at both ends, as shown above. The column of air in the tube reso",
+      "sg_pdf": "/frq/ap19-sg-physics-1.pdf",
+      "sg_page": 19
+    },
+    {
+      "id": "ap22-q1",
+      "year": 2022,
+      "question_number": 1,
+      "frq_type": "type1_mathematical",
+      "frq_pdf": "/frq/ap22-frq-physics-1.pdf",
+      "frq_page": 4,
+      "concepts": [
+        "dynamics-spring-forces",
+        "energy-conservation",
+        "dynamics-systems-connected"
+      ],
+      "text_preview": "AP® Physics 1 2022 Free-Response Questions   PHYSICS 1 SECTION II Time—1 hour and 30 minutes 5 Questions  Directions: Questions 1, 4, and 5 are short free-response questions that require about 13 minu",
+      "sg_pdf": "/frq/ap22-sg-physics-1.pdf",
+      "sg_page": 2
+    },
+    {
+      "id": "ap22-q2",
+      "year": 2022,
+      "question_number": 2,
+      "frq_type": "type2_representation",
+      "frq_pdf": "/frq/ap22-frq-physics-1.pdf",
+      "frq_page": 7,
+      "concepts": [
+        "dynamics-gravitational-force",
+        "dynamics-circular-orbits",
+        "rotation-orbiting-satellites"
+      ],
+      "text_preview": "AP® Physics 1 2022 Free-Response Questions   2. (12 points, suggested time 25 minutes) Two identical moons, Moon A and Moon B, orbit a planet. The mass m 0 of each moon is significant, but less than t",
+      "sg_pdf": "/frq/ap22-sg-physics-1.pdf",
+      "sg_page": 4
+    },
+    {
+      "id": "ap22-q3",
+      "year": 2022,
+      "question_number": 3,
+      "frq_type": "type3_experimental",
+      "frq_pdf": "/frq/ap22-frq-physics-1.pdf",
+      "frq_page": 10,
+      "concepts": [
+        "torque-newtons-second-law-rotational",
+        "rotation-rotational-kinetic-energy",
+        "torque-rotational-inertia",
+        "energy-conservation"
+      ],
+      "text_preview": "AP® Physics 1 2022 Free-Response Questions   3. (12 points, suggested time 25 minutes) A wheel is mounted on a horizontal axle. A light string is attached to the wheel’s rim and wrapped around it seve",
+      "sg_pdf": "/frq/ap22-sg-physics-1.pdf",
+      "sg_page": 6
+    },
+    {
+      "id": "ap22-q4",
+      "year": 2022,
+      "question_number": 4,
+      "frq_type": "type4_short",
+      "frq_pdf": "/frq/ap22-frq-physics-1.pdf",
+      "frq_page": 13,
+      "concepts": [
+        "momentum-conservation",
+        "momentum-collisions",
+        "kinematics-vectors-2d-motion"
+      ],
+      "text_preview": "AP® Physics 1 2022 Free-Response Questions  4. (7 points, suggested time 13 minutes) A student has a piece of clay and a rubber sphere, both of the same mass. Both objects are thrown horizontally at t",
+      "sg_pdf": "/frq/ap22-sg-physics-1.pdf",
+      "sg_page": 9
+    },
+    {
+      "id": "ap22-q5",
+      "year": 2022,
+      "question_number": 5,
+      "frq_type": "type5_short",
+      "frq_pdf": "/frq/ap22-frq-physics-1.pdf",
+      "frq_page": 15,
+      "concepts": [
+        "dynamics-spring-forces",
+        "oscillation-shm-definition",
+        "oscillation-shm-frequency-period"
+      ],
+      "text_preview": "AP® Physics 1 2022 Free-Response Questions   5. (7 points, suggested time 13 minutes) A spring of unknown spring constant k 0 is attached to a ceiling. A lightweight hanger is attached to the lower en",
+      "sg_pdf": "/frq/ap22-sg-physics-1.pdf",
+      "sg_page": 10
+    },
+    {
+      "id": "ap23-q1",
+      "year": 2023,
+      "question_number": 1,
+      "frq_type": "type1_mathematical",
+      "frq_pdf": "/frq/ap23-frq-physics-1.pdf",
+      "frq_page": 4,
+      "concepts": [
+        "momentum-conservation",
+        "momentum-collisions",
+        "energy-conservation"
+      ],
+      "text_preview": "AP® Physics 1 2023 Free-Response Questions   PHYSICS 1 SECTION II Time—1 hour and 30 minutes 5 Questions  Directions: Questions 1, 4, and 5 are short free-response questions that require about 13 minu",
+      "sg_pdf": "/frq/ap23-sg-physics-1.pdf",
+      "sg_page": 2
+    },
+    {
+      "id": "ap23-q2",
+      "year": 2023,
+      "question_number": 2,
+      "frq_type": "type2_representation",
+      "frq_pdf": "/frq/ap23-frq-physics-1.pdf",
+      "frq_page": 7,
+      "concepts": [
+        "dynamics-fbd-forces",
+        "dynamics-newtons-second-law",
+        "dynamics-friction"
+      ],
+      "text_preview": "AP® Physics 1 2023 Free-Response Questions   2. (12 points, suggested time 25 minutes) (a) Students conduct an experiment to determine the acceleration a of a cart. The cart is released from rest at t",
+      "sg_pdf": "/frq/ap23-sg-physics-1.pdf",
+      "sg_page": 4
+    },
+    {
+      "id": "ap23-q3",
+      "year": 2023,
+      "question_number": 3,
+      "frq_type": "type3_experimental",
+      "frq_pdf": "/frq/ap23-frq-physics-1.pdf",
+      "frq_page": 10,
+      "concepts": [
+        "dynamics-circular-motion",
+        "dynamics-spring-forces",
+        "torque-newtons-second-law-rotational"
+      ],
+      "text_preview": "AP® Physics 1 2023 Free-Response Questions   3. (12 points, suggested time 25 minutes) A small block of mass m 0 is attached to the end of a spring of spring constant k 0 that is attached to a rod on",
+      "sg_pdf": "/frq/ap23-sg-physics-1.pdf",
+      "sg_page": 11
+    },
+    {
+      "id": "ap23-q4",
+      "year": 2023,
+      "question_number": 4,
+      "frq_type": "type4_short",
+      "frq_pdf": "/frq/ap23-frq-physics-1.pdf",
+      "frq_page": 13,
+      "concepts": [
+        "energy-conservation",
+        "energy-potential-energy",
+        "dynamics-spring-forces"
+      ],
+      "text_preview": "AP® Physics 1 2023 Free-Response Questions   4. (7 points, suggested time 13 minutes) A block of unknown mass is attached to a long, lightweight string that is wrapped several turns around a pulley mo",
+      "sg_pdf": "/frq/ap23-sg-physics-1.pdf",
+      "sg_page": 15
+    },
+    {
+      "id": "ap23-q5",
+      "year": 2023,
+      "question_number": 5,
+      "frq_type": "type5_short",
+      "frq_pdf": "/frq/ap23-frq-physics-1.pdf",
+      "frq_page": 15,
+      "concepts": [
+        "kinematics-representing-motion",
+        "kinematics-displacement-velocity-acceleration"
+      ],
+      "text_preview": "AP® Physics 1 2023 Free-Response Questions   5. (7 points, suggested time 13 minutes) A rod with a sphere attached to the end is connected to a horizontal mounted axle and carefully balanced so that i",
+      "sg_pdf": "/frq/ap23-sg-physics-1.pdf",
+      "sg_page": 17
+    },
+    {
+      "id": "ap24-q1",
+      "year": 2024,
+      "question_number": 1,
+      "frq_type": "type1_mathematical",
+      "frq_pdf": "/frq/ap24-frq-physics-1.pdf",
+      "frq_page": 4,
+      "concepts": [
+        "dynamics-circular-motion",
+        "dynamics-newtons-second-law",
+        "dynamics-gravitational-force"
+      ],
+      "text_preview": "AP® Physics 1 2024 Free-Response Questions   PHYSICS 1 SECTION II Time—1 hour and 30 minutes 5 Questions  Directions: Questions 1, 4, and 5 are short free-response questions that require about 13 minu",
+      "sg_pdf": "/frq/ap24-sg-physics-1.pdf",
+      "sg_page": 2
+    },
+    {
+      "id": "ap24-q2",
+      "year": 2024,
+      "question_number": 2,
+      "frq_type": "type2_representation",
+      "frq_pdf": "/frq/ap24-frq-physics-1.pdf",
+      "frq_page": 7,
+      "concepts": [
+        "dynamics-spring-forces",
+        "energy-conservation",
+        "energy-bar-charts"
+      ],
+      "text_preview": "AP® Physics 1 2024 Free-Response Questions   2. (12 points, suggested time 25 minutes) A student hangs a spring of unknown spring constant k vertically by attaching one end to a stand, as shown in Fig",
+      "sg_pdf": "/frq/ap24-sg-physics-1.pdf",
+      "sg_page": 4
+    },
+    {
+      "id": "ap24-q3",
+      "year": 2024,
+      "question_number": 3,
+      "frq_type": "type3_experimental",
+      "frq_pdf": "/frq/ap24-frq-physics-1.pdf",
+      "frq_page": 11,
+      "concepts": [
+        "torque-rotational-equilibrium",
+        "torque-torque",
+        "dynamics-fbd-forces"
+      ],
+      "text_preview": "AP® Physics 1 2024 Free-Response Questions   3. (12 points, suggested time 25 minutes) The left end of a uniform beam of mass M and length L is attached to a wall by a hinge, as shown in Figure 1. One",
+      "sg_pdf": "/frq/ap24-sg-physics-1.pdf",
+      "sg_page": 8
+    },
+    {
+      "id": "ap24-q4",
+      "year": 2024,
+      "question_number": 4,
+      "frq_type": "type4_short",
+      "frq_pdf": "/frq/ap24-frq-physics-1.pdf",
+      "frq_page": 14,
+      "concepts": [
+        "oscillation-shm-definition",
+        "oscillation-shm-frequency-period",
+        "torque-torque"
+      ],
+      "text_preview": "AP® Physics 1 2024 Free-Response Questions   4. (7 points, suggested time 13 minutes) A simple pendulum consists of a small sphere that hangs from a string with negligible mass. The top end of the str",
+      "sg_pdf": "/frq/ap24-sg-physics-1.pdf",
+      "sg_page": 11
+    },
+    {
+      "id": "ap24-q5",
+      "year": 2024,
+      "question_number": 5,
+      "frq_type": "type5_short",
+      "frq_pdf": "/frq/ap24-frq-physics-1.pdf",
+      "frq_page": 16,
+      "concepts": [
+        "momentum-conservation",
+        "momentum-collisions",
+        "energy-conservation"
+      ],
+      "text_preview": "AP® Physics 1 2024 Free-Response Questions   5. (7 points, suggested time 13 minutes) At time t = 0, Block A slides along a horizontal surface toward Block B, which is initially at rest, as shown in F",
+      "sg_pdf": "/frq/ap24-sg-physics-1.pdf",
+      "sg_page": 13
+    },
+    {
+      "id": "ap25-q1",
+      "year": 2025,
+      "question_number": 1,
+      "frq_type": "type1_mathematical",
+      "frq_pdf": "/frq/ap25-frq-physics-1.pdf",
+      "frq_page": 3,
+      "concepts": [
+        "momentum-conservation",
+        "momentum-collisions",
+        "kinematics-representing-motion"
+      ],
+      "text_preview": "Question 1: Version J  1  1. A student has a cart of mass mc and a block of mass 5 mc , as shown in Figure 1. •  At time t = 0 , the cart is moving to the right across a horizontal surface with consta",
+      "sg_pdf": "/frq/ap25-sg-physics-1.pdf",
+      "sg_page": 2
+    },
+    {
+      "id": "ap25-q2",
+      "year": 2025,
+      "question_number": 2,
+      "frq_type": "type2_representation",
+      "frq_pdf": "/frq/ap25-frq-physics-1.pdf",
+      "frq_page": 5,
+      "concepts": [
+        "energy-conservation",
+        "energy-bar-charts",
+        "dynamics-spring-forces",
+        "dynamics-inclined-planes"
+      ],
+      "text_preview": "Question 2: Version J 2. A block of mass M is released from rest at position x = 0 near the top of a ramp. The ramp makes an angle of i with the horizontal. The block slides down the ramp with negligi",
+      "sg_pdf": "/frq/ap25-sg-physics-1.pdf",
+      "sg_page": 5
+    },
+    {
+      "id": "ap25-q3",
+      "year": 2025,
+      "question_number": 3,
+      "frq_type": "type3_experimental",
+      "frq_pdf": "/frq/ap25-frq-physics-1.pdf",
+      "frq_page": 8,
+      "concepts": [
+        "torque-rotational-equilibrium",
+        "torque-torque",
+        "dynamics-spring-forces"
+      ],
+      "text_preview": "Question 3: Version J 3. Students are investigating balancing systems using the following setup. The students have a spring scale of negligible mass that is fixed to one end of a uniform meterstick. T",
+      "sg_pdf": "/frq/ap25-sg-physics-1.pdf",
+      "sg_page": 8
+    },
+    {
+      "id": "ap25-q4",
+      "year": 2025,
+      "question_number": 4,
+      "frq_type": "type4_qualitative",
+      "frq_pdf": "/frq/ap25-frq-physics-1.pdf",
+      "frq_page": 11,
+      "concepts": [
+        "fluids-newton-laws",
+        "fluids-density-structure",
+        "dynamics-newtons-second-law"
+      ],
+      "text_preview": "Question 4 4. In Scenario 1, a swimmer holds a block of mass m at rest in a tank of freshwater with density t1 , as shown in Figure 1. The block is released from rest and accelerates upward with an in",
+      "sg_pdf": "/frq/ap25-sg-physics-1.pdf",
+      "sg_page": 13
+    },
+    {
+      "id": "ap26-q1",
+      "year": 2026,
+      "question_number": 1,
+      "frq_type": "type1_mathematical",
+      "frq_pdf": "/frq/ap26-frq-physics-1.pdf",
+      "frq_page": 3,
+      "concepts": [
+        "kinematics-vectors-2d-motion",
+        "momentum-conservation",
+        "energy-conservation"
+      ],
+      "text_preview": "Question 1: Version J 1. Water exits the nozzle of a fountain at an angle i0 above the horizontal. At time t = 0 , a droplet of water exits the nozzle and follows the path shown in Figure 1. The dropl"
+    },
+    {
+      "id": "ap26-q2",
+      "year": 2026,
+      "question_number": 2,
+      "frq_type": "type2_representation",
+      "frq_pdf": "/frq/ap26-frq-physics-1.pdf",
+      "frq_page": 5,
+      "concepts": [
+        "momentum-conservation",
+        "momentum-collisions"
+      ],
+      "text_preview": "Question 2: Version J 2. Two small disks, R and S, are on a straight, horizontal track. At time t = 0 , Disk R of mass m0 is located at position x = 0 . Disk R is initially moving with speed v0 in the"
+    },
+    {
+      "id": "ap26-q3",
+      "year": 2026,
+      "question_number": 3,
+      "frq_type": "type3_experimental",
+      "frq_pdf": "/frq/ap26-frq-physics-1.pdf",
+      "frq_page": 8,
+      "concepts": [
+        "dynamics-friction",
+        "dynamics-inclined-planes",
+        "energy-conservation"
+      ],
+      "text_preview": "Question 3: Version J The following information applies to parts A and B. 3. A group of students are investigating friction using the following procedure. The students release a block of unknown mass"
+    },
+    {
+      "id": "ap26-q4",
+      "year": 2026,
+      "question_number": 4,
+      "frq_type": "type4_qualitative",
+      "frq_pdf": "/frq/ap26-frq-physics-1.pdf",
+      "frq_page": 11,
+      "concepts": [
+        "torque-newtons-second-law-rotational",
+        "rotation-rotational-kinetic-energy",
+        "rotation-angular-momentum"
+      ],
+      "text_preview": "Question 4 4. Toys X and Y are free to rotate with negligible friction about a vertical axle through the center of each toy. The upper portion of each toy has a radius r0 , as shown in the side view i"
+    }
+  ]
+}
