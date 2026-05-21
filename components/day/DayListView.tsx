@@ -6,7 +6,6 @@ import { repo } from '@/lib/repository'
 import { StorageService } from '@/lib/infra/storage'
 import type { Resource, Completion, KnowledgePoint, DailyFeedback, QuizResult } from '@/lib/types'
 import { TierSection, RowSharedProps } from './ResourceRow'
-import { ReflectionCard } from './ReflectionCard'
 import { RelatedFRQCard } from './RelatedFRQCard'
 import { PASS_THRESHOLD } from '@/lib/constants'
 import { ChallengePrompt } from './ChallengePrompt'
@@ -94,8 +93,9 @@ export function DayListView({ week, day }: { week: number; day: number }) {
         setChallengeStatus('done')
         setChallengeResults(existingResults)
       } else {
-        const questions = await selectDailyQuestions(userId, week, day, conceptIds, 4)
-        if (!cancelled) setAvailableQuestions(questions.length)
+        const questions = await selectDailyQuestions(userId, week, day, conceptIds, 3)
+        // +1 for the Feynman question always appended when concepts are available
+        if (!cancelled) setAvailableQuestions(questions.length + (conceptIds.length > 0 ? 1 : 0))
       }
     }
     load().catch(console.error)
@@ -284,11 +284,6 @@ export function DayListView({ week, day }: { week: number; day: number }) {
       {/* 相关 FRQ 真题 */}
       {aConcepts.length > 0 && (
         <RelatedFRQCard conceptIds={aConcepts.map(k => k.id)} />
-      )}
-
-      {/* 今日反思 */}
-      {aTier.length > 0 && (
-        <ReflectionCard week={week} day={day} concepts={aConcepts} aResources={aTier} />
       )}
     </div>
   )
