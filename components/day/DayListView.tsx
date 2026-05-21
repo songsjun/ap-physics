@@ -7,7 +7,7 @@ import { StorageService } from '@/lib/infra/storage'
 import type { Resource, Completion, KnowledgePoint, DailyFeedback, QuizResult } from '@/lib/types'
 import { TierSection, RowSharedProps } from './ResourceRow'
 import { RelatedFRQCard } from './RelatedFRQCard'
-import { PASS_THRESHOLD } from '@/lib/constants'
+import { PASS_THRESHOLD, DAILY_CHALLENGE_QUESTION_COUNT } from '@/lib/constants'
 import { ChallengePrompt } from './ChallengePrompt'
 import { QuizPanel } from './QuizPanel'
 import { selectDailyQuestions } from '@/lib/app/quiz'
@@ -119,7 +119,7 @@ export function DayListView({ week, day }: { week: number; day: number }) {
         setChallengeStatus('done')
         setChallengeResults(existingResults)
       } else {
-        const questions = await selectDailyQuestions(userId, week, day, conceptIds, 4)
+        const questions = await selectDailyQuestions(userId, week, day, conceptIds, DAILY_CHALLENGE_QUESTION_COUNT)
         if (!cancelled) {
           setAvailableQuestions(questions.length)
           setQuizChecked(true)

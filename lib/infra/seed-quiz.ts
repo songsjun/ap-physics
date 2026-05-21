@@ -1,7 +1,6 @@
 import { getDb } from '@/lib/infra/db'
+import { QUIZ_BANK_VERSION } from '@/lib/constants'
 import type { QuizQuestion } from '@/lib/types'
-
-const QUIZ_BANK_VERSION = '1.0.0'
 
 export async function seedQuizBank(): Promise<void> {
   const db = getDb()

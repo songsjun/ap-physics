@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { selectDailyQuestions } from '@/lib/app/quiz'
+import { DAILY_CHALLENGE_QUESTION_COUNT } from '@/lib/constants'
 import { AIService } from '@/lib/infra/ai'
 import { repo } from '@/lib/repository'
 import { StorageService } from '@/lib/infra/storage'
@@ -50,7 +51,7 @@ export function QuizPanel({ week, day, conceptIds, onComplete, onExit }: QuizPan
   useEffect(() => {
     const userId = StorageService.userId.get()
     if (!userId) { onExit(); return }
-    selectDailyQuestions(userId, week, day, conceptIds, 4).then(qs => {
+    selectDailyQuestions(userId, week, day, conceptIds, DAILY_CHALLENGE_QUESTION_COUNT).then(qs => {
       if (qs.length === 0) { onExit(); return }
       setQuestions(qs)
       setPhase('question')

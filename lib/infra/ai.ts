@@ -45,34 +45,6 @@ async function callClaudeWithMessages(
   return data.content[0]?.type === 'text' ? data.content[0].text : ''
 }
 
-async function callClaude(prompt: string, signal?: AbortSignal): Promise<string> {
-  const key = StorageService.apiKey.get()
-  if (!key) return ''
-
-  const response = await fetch(ANTHROPIC_API, {
-    method: 'POST',
-    signal,
-    headers: {
-      'x-api-key': key,
-      'anthropic-version': '2023-06-01',
-      'anthropic-dangerous-request-type': 'CORS',
-      'content-type': 'application/json',
-    },
-    body: JSON.stringify({
-      model: MODEL,
-      max_tokens: 300,
-      messages: [{ role: 'user', content: prompt }],
-    }),
-  })
-
-  if (!response.ok) {
-    const err = await response.text().catch(() => response.statusText)
-    throw new Error(`Anthropic API error ${response.status}: ${err}`)
-  }
-
-  const data = (await response.json()) as AnthropicResponse
-  return data.content[0]?.type === 'text' ? data.content[0].text : ''
-}
 
 export const AIService = {
   async getDailyFeedback(
@@ -97,7 +69,7 @@ export const AIService = {
 {"strength":"做得好的地方（1句）","note":"需注意或建议（1句，若无填空字符串）","preview":"明天的预告（1句，若无填空字符串）"}`
 
     try {
-      const raw = await callClaude(prompt, signal)
+      const raw = await callClaudeWithMessages([{ role: 'user', content: prompt }], undefined, 300, signal)
       if (!raw) {
         return { strength: '今日学习已完成', note: '', preview: '' }
       }

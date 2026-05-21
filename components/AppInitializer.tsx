@@ -10,8 +10,7 @@ export function AppInitializer() {
   useEffect(() => {
     async function init() {
       const userId = StorageService.userId.init()
-      await seedContentLibrary()
-      await seedQuizBank()
+      await Promise.all([seedContentLibrary(), seedQuizBank()])
       // Week 1 Day 1 is always unlocked
       await repo.unlockDay(userId, 1, 1)
       // Request persistent storage to prevent Safari ITP clearing IndexedDB
