@@ -105,4 +105,9 @@ export class DexieRepository implements IRepository {
       .equals([userId, week, day])
       .toArray()
   }
+
+  async getAllQuizResultsForUser(userId: string): Promise<QuizResult[]> {
+    const db = getDb()
+    return db.quiz_results.where('user_id').equals(userId).toArray()
+  }
 }

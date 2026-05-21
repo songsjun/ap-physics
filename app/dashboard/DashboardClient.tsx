@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { StorageService } from '@/lib/infra/storage'
 import { repo } from '@/lib/repository'
 import { WEEKS, DAYS_PER_WEEK, PASS_THRESHOLD } from '@/lib/constants'
+import type { QuizResult } from '@/lib/types'
 
 interface DayStatus {
   week: number
@@ -12,6 +13,8 @@ interface DayStatus {
   aTotal: number
   aDone: number
   passRate: number | null
+  challengeCorrect: number | null
+  challengeTotal: number | null
 }
 
 export function DashboardClient() {
@@ -22,14 +25,23 @@ export function DashboardClient() {
     async function load() {
       const userId = StorageService.userId.init()
 
-      const [allResources, allCompletions, unlockedDays] = await Promise.all([
+      const [allResources, allCompletions, unlockedDays, allQuizResults] = await Promise.all([
         repo.getAllResources(),
         repo.getAllUserCompletions(userId),
         repo.getUnlockedDays(userId),
+        repo.getAllQuizResultsForUser(userId),
       ])
 
       const unlockedSet = new Set(unlockedDays.map(u => `${u.week}-${u.day}`))
       const completionMap = new Map(allCompletions.map(c => [c.resource_id, c]))
+
+      // Group quiz results by week-day for O(1) per-day lookups
+      const quizByDay = new Map<string, QuizResult[]>()
+      for (const r of allQuizResults) {
+        const key = `${r.week}-${r.day}`
+        if (!quizByDay.has(key)) quizByDay.set(key, [])
+        quizByDay.get(key)!.push(r)
+      }
 
       const result: DayStatus[] = []
       for (let w = 1; w <= WEEKS; w++) {
@@ -48,12 +60,18 @@ export function DashboardClient() {
             passRate = graded > 0 ? passed / graded : null
           }
 
+          const dayQuiz = quizByDay.get(`${w}-${d}`) ?? []
+          const challengeTotal = dayQuiz.length > 0 ? dayQuiz.length : null
+          const challengeCorrect = dayQuiz.length > 0 ? dayQuiz.filter(r => r.correct).length : null
+
           result.push({
             week: w, day: d,
             unlocked: unlockedSet.has(`${w}-${d}`),
             aTotal: aResources.length,
             aDone,
             passRate,
+            challengeCorrect,
+            challengeTotal,
           })
         }
       }
@@ -191,7 +209,7 @@ export function DashboardClient() {
 }
 
 function DayCell({ status, isCurrent }: { status: DayStatus; isCurrent: boolean }) {
-  const { week, day, unlocked, aTotal, aDone, passRate } = status
+  const { week, day, unlocked, aTotal, aDone, passRate, challengeCorrect, challengeTotal } = status
   const isComplete = aTotal > 0 && aDone === aTotal
   const isStarted = aDone > 0 && !isComplete
   const isPassed = isComplete && passRate !== null && passRate >= PASS_THRESHOLD
@@ -257,6 +275,16 @@ function DayCell({ status, isCurrent }: { status: DayStatus; isCurrent: boolean 
     </span>
   ) : null
 
+  const challengeText = challengeTotal !== null ? (
+    <span className={`text-[10px] ${
+      challengeCorrect! / challengeTotal >= 0.75
+        ? 'text-emerald-500'
+        : 'text-amber-500'
+    }`}>
+      ⚡{challengeCorrect}/{challengeTotal}
+    </span>
+  ) : null
+
   const inner = (
     <div className={`py-3 flex flex-col items-center gap-1.5 ${cellBg} transition-colors ${
       isCurrent ? 'ring-1 ring-inset ring-blue-400' : ''
@@ -264,6 +292,7 @@ function DayCell({ status, isCurrent }: { status: DayStatus; isCurrent: boolean 
       <span className={`text-[11px] font-semibold ${dayNumCls}`}>D{day}</span>
       <div className="flex items-center justify-center h-4">{indicator}</div>
       {subText}
+      {challengeText}
     </div>
   )
 
