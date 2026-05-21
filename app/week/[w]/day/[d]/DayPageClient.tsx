@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { StorageService } from '@/lib/infra/storage'
 import { DayProvider } from '@/lib/app/session-context'
-import { DayListView } from '@/components/DayListView'
+import { DayListView } from '@/components/day/DayListView'
 
 export function DayPageClient({ week, day }: { week: number; day: number }) {
   const [userId, setUserId] = useState<string | null>(null)
