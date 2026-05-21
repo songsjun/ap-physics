@@ -1,8 +1,8 @@
 'use client'
 
 import { useEffect } from 'react'
-import { StorageService } from '@/lib/storage'
-import { seedContentLibrary } from '@/lib/queries'
+import { StorageService } from '@/lib/infra/storage'
+import { seedContentLibrary } from '@/lib/infra/seed'
 import { repo } from '@/lib/repository'
 
 export function AppInitializer() {

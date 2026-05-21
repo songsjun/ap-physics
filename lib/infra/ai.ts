@@ -1,4 +1,4 @@
-import { StorageService } from '@/lib/storage'
+import { StorageService } from '@/lib/infra/storage'
 import type { DailyFeedback, DayStats } from '@/lib/types'
 
 const ANTHROPIC_API = 'https://api.anthropic.com/v1/messages'

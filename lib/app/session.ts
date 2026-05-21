@@ -1,15 +1,15 @@
-import { getDb } from '@/lib/db'
+import { getDb } from '@/lib/infra/db'
 import { assembleDaySnapshot } from '@/lib/app/snapshot'
-import { computeFlowState } from '@/lib/domain/flow'
+import { computeFlowState, shouldUnlock } from '@/lib/domain/flow'
 import { tracker } from '@/lib/domain/progress'
-import { AIService } from '@/lib/ai'
-import { DAYS_PER_WEEK, WEEKS, PASS_THRESHOLD } from '@/lib/constants'
-import type { Command, FlowState, DaySnapshot, DailyFeedback } from '@/lib/types'
+import { AIService } from '@/lib/infra/ai'
+import { DAYS_PER_WEEK, WEEKS } from '@/lib/constants'
+import type { Command, FlowState, DaySnapshot, DailyFeedback, DayStats } from '@/lib/types'
 
 function nextDay(week: number, day: number): [number, number] {
   if (day < DAYS_PER_WEEK) return [week, day + 1]
   if (week < WEEKS) return [week + 1, 1]
-  return [week, day] // last day of last week: no next
+  return [week, day]
 }
 
 export class DaySessionManager {
@@ -17,12 +17,16 @@ export class DaySessionManager {
   private userId: string = ''
   private week: number = 0
   private day: number = 0
+  private bTotalForSession: number = 0
 
   async load(userId: string, week: number, day: number): Promise<FlowState> {
     this.userId = userId
     this.week = week
     this.day = day
-    this.currentSnapshot = await assembleDaySnapshot(userId, week, day)
+    const snapshot = await assembleDaySnapshot(userId, week, day)
+    this.bTotalForSession = snapshot.bCandidates.length
+    this.currentSnapshot = { ...snapshot, bTotalForSession: this.bTotalForSession }
+
     const flowState = computeFlowState(this.currentSnapshot)
 
     // Auto-unlock next day for rest/review days that have no A-tier resources
@@ -40,6 +44,8 @@ export class DaySessionManager {
     if (!this.currentSnapshot) throw new Error('Session not loaded')
     const { userId, week, day } = this
 
+    const wasInRemediation = computeFlowState(this.currentSnapshot).phase === 'REMEDIATION'
+
     if (command.type === 'COMPLETE_RESOURCE' || command.type === 'SKIP_RESOURCE') {
       const result =
         command.type === 'COMPLETE_RESOURCE'
@@ -48,15 +54,18 @@ export class DaySessionManager {
 
       const db = getDb()
       const aResources = this.currentSnapshot.aResources
+      const aResourceIds = new Set(aResources.map(r => r.id))
       const mode = this.currentSnapshot.mode
 
       await db.transaction('rw', db.completions, db.day_unlocks, async () => {
         await tracker.record(userId, command.resourceId, result)
 
-        // Compute passRate using only db.completions (no db.resources access inside transaction)
-        const aResourceIds = new Set(aResources.map(r => r.id))
-        const allCompletions = await db.completions.where('user_id').equals(userId).toArray()
-        const dayCompletions = allCompletions.filter(c => aResourceIds.has(c.resource_id))
+        // Query only this day's A-tier completions (avoids full-table scan)
+        const dayCompletions = await db.completions
+          .where('user_id')
+          .equals(userId)
+          .filter(c => aResourceIds.has(c.resource_id))
+          .toArray()
 
         let passed = 0, failed = 0
         for (const c of dayCompletions) {
@@ -64,10 +73,17 @@ export class DaySessionManager {
           else if (c.status === 'failed') failed++
         }
         const gradedCount = passed + failed
-        const passRate = gradedCount === 0 ? 0 : passed / gradedCount
-        const shouldUnlockNow = mode === 'REVIEW' || passRate >= PASS_THRESHOLD
+        const stats: DayStats = {
+          passRate: gradedCount === 0 ? 0 : passed / gradedCount,
+          passedCount: passed,
+          failedCount: failed,
+          gradedCount,
+          totalACount: aResources.length,
+          weakConcepts: [],
+          seenResourceIds: new Set(),
+        }
 
-        if (shouldUnlockNow) {
+        if (shouldUnlock(stats, mode)) {
           const [nw, nd] = nextDay(week, day)
           if (nw !== week || nd !== day) {
             await tracker.unlockDay(userId, nw, nd)
@@ -77,7 +93,14 @@ export class DaySessionManager {
     }
 
     // Re-assemble snapshot and recompute flow state
-    this.currentSnapshot = await assembleDaySnapshot(userId, week, day)
+    const newSnapshot = await assembleDaySnapshot(userId, week, day)
+
+    // Freeze bTotalForSession on first entry into REMEDIATION; preserve while in it
+    if (!wasInRemediation) {
+      this.bTotalForSession = newSnapshot.bCandidates.length
+    }
+    this.currentSnapshot = { ...newSnapshot, bTotalForSession: this.bTotalForSession }
+
     return computeFlowState(this.currentSnapshot)
   }
 

@@ -1,5 +1,5 @@
 import { DayPageClient } from './DayPageClient'
-import { DayHeader } from './DayHeader'
+import { DayHeader } from '@/components/day/DayHeader'
 
 interface Props {
   params: Promise<{ w: string; d: string }>

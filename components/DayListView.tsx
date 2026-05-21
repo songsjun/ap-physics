@@ -2,11 +2,12 @@
 
 import { useEffect, useRef, useState, useCallback } from 'react'
 import { useDayContext } from '@/lib/app/session-context'
-import { getDb } from '@/lib/db'
-import { StorageService } from '@/lib/storage'
+import { getDb } from '@/lib/infra/db'
+import { StorageService } from '@/lib/infra/storage'
 import type { Resource, Completion, KnowledgePoint, DailyFeedback } from '@/lib/types'
-import { findRelatedFRQ, frqTypeLabel } from '@/lib/frq'
-import type { FRQEntry } from '@/lib/frq'
+import { findRelatedFRQ, frqTypeLabel } from '@/lib/domain/frq'
+import type { FRQEntry } from '@/lib/domain/frq'
+import { PASS_THRESHOLD } from '@/lib/constants'
 
 // ── Phase visual system ───────────────────────────────────────────────────────
 
@@ -196,7 +197,7 @@ export function DayListView({ week, day }: { week: number; day: number }) {
 
   const handleScoreSubmit = useCallback(async (r: Resource, score: number, scoreMax: number) => {
     setScoringId(null)
-    const passed = score / scoreMax >= 0.75
+    const passed = score / scoreMax >= PASS_THRESHOLD
     await dispatch({
       type: 'COMPLETE_RESOURCE',
       resourceId: r.id,
@@ -449,7 +450,7 @@ function ScorePanel({ resource, onSubmit, onCancel }: {
   const [score, setScore] = useState(0)
 
   const pct = Math.round((score / max) * 100)
-  const willPass = score / max >= 0.75
+  const willPass = score / max >= PASS_THRESHOLD
 
   return (
     <div className="mx-4 mb-3 ml-12 mt-1">

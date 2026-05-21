@@ -1,8 +1,8 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { StorageService } from '@/lib/storage'
-import { getDb } from '@/lib/db'
+import { StorageService } from '@/lib/infra/storage'
+import { getDb } from '@/lib/infra/db'
 
 export default function Home() {
   const [currentDay, setCurrentDay] = useState<{ week: number; day: number } | null>(null)

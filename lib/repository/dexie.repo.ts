@@ -1,4 +1,4 @@
-import { getDb } from '@/lib/db'
+import { getDb } from '@/lib/infra/db'
 import type { Resource, KnowledgePoint, Completion } from '@/lib/types'
 import type { IRepository } from './interface'
 

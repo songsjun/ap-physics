@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { StorageService } from '@/lib/storage'
+import { StorageService } from '@/lib/infra/storage'
 import { DayProvider } from '@/lib/app/session-context'
 import { DayListView } from '@/components/DayListView'
 

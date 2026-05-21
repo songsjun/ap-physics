@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { StorageService } from '@/lib/storage'
+import { StorageService } from '@/lib/infra/storage'
 import { exportProgress, importProgress, downloadJson, type ExportData } from '@/lib/app/share'
 
 export function SettingsClient() {

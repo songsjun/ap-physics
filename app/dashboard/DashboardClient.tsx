@@ -1,9 +1,9 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { StorageService } from '@/lib/storage'
-import { getDb } from '@/lib/db'
-import { WEEKS, DAYS_PER_WEEK } from '@/lib/constants'
+import { StorageService } from '@/lib/infra/storage'
+import { getDb } from '@/lib/infra/db'
+import { WEEKS, DAYS_PER_WEEK, PASS_THRESHOLD } from '@/lib/constants'
 
 interface DayStatus {
   week: number
@@ -195,8 +195,8 @@ function DayCell({ status, isCurrent }: { status: DayStatus; isCurrent: boolean 
   const { week, day, unlocked, aTotal, aDone, passRate } = status
   const isComplete = aTotal > 0 && aDone === aTotal
   const isStarted = aDone > 0 && !isComplete
-  const isPassed = isComplete && passRate !== null && passRate >= 0.75
-  const needsRetry = isComplete && passRate !== null && passRate < 0.75
+  const isPassed = isComplete && passRate !== null && passRate >= PASS_THRESHOLD
+  const needsRetry = isComplete && passRate !== null && passRate < PASS_THRESHOLD
 
   // Visual state
   let cellBg = 'bg-stone-50'
@@ -251,7 +251,7 @@ function DayCell({ status, isCurrent }: { status: DayStatus; isCurrent: boolean 
     <span className="text-[10px] text-stone-400">
       {aDone}/{aTotal}
       {passRate !== null && (
-        <span className={passRate >= 0.75 ? 'text-emerald-500' : 'text-orange-400'}>
+        <span className={passRate >= PASS_THRESHOLD ? 'text-emerald-500' : 'text-orange-400'}>
           {' '}{Math.round(passRate * 100)}%
         </span>
       )}

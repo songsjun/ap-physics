@@ -1,4 +1,4 @@
-import { getDb } from '@/lib/db'
+import { getDb } from '@/lib/infra/db'
 import { LIBRARY_VERSION } from '@/lib/constants'
 import type { Resource, KnowledgePoint } from '@/lib/types'
 
