@@ -42,12 +42,11 @@ export interface Resource {
   title: string
   url: string | null
   answer_url?: string
-  content_body: object | null
-  adapter_type: 'external_manual' | 'native_quiz' | 'ai_graded_text' | 'observation'
+  adapter_type: 'external_manual' | 'observation'
   type: string
   platform: string
   tier: 'A' | 'B' | 'C'
-  phase: 'LEARN' | 'PRACTICE' | 'CHECK'
+  phase: 'LEARN' | 'PRACTICE'
   estimated_minutes: number
   concepts: string[]
   week: number

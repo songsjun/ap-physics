@@ -9,7 +9,6 @@ function makeResource(id: string, overrides: Partial<Resource> = {}): Resource {
     id,
     title: `Resource ${id}`,
     url: 'https://example.com',
-    content_body: null,
     adapter_type: 'external_manual',
     type: 'video',
     platform: 'khan',

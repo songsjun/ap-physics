@@ -8,7 +8,6 @@ function makeResource(id: string, concepts: string[]): Resource {
     id,
     title: `Resource ${id}`,
     url: null,
-    content_body: null,
     adapter_type: 'external_manual',
     type: 'reading',
     platform: 'openstax',

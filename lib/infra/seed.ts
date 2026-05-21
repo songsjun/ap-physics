@@ -2,26 +2,22 @@ import { getDb } from '@/lib/infra/db'
 import { LIBRARY_VERSION } from '@/lib/constants'
 import type { Resource, KnowledgePoint } from '@/lib/types'
 
-type RawResource = Omit<Resource, 'adapter_type' | 'phase' | 'slot_order' | 'content_body'> & {
-  content_body?: object
+type RawResource = Omit<Resource, 'adapter_type' | 'phase' | 'slot_order'> & {
   url?: string | null
   answer_url?: string
 }
 
 function deriveAdapterType(r: RawResource): Resource['adapter_type'] {
   if (r.type === 'interactive') return 'observation'
-  if (r.platform === 'native' && r.type === 'quiz') return 'native_quiz'
-  if (r.platform === 'native') return 'ai_graded_text'
   return 'external_manual'
 }
 
-function derivePhase(adapterType: Resource['adapter_type'], type: string): Resource['phase'] {
-  if (adapterType === 'native_quiz' || adapterType === 'ai_graded_text') return 'CHECK'
+function derivePhase(type: string): Resource['phase'] {
   if (type === 'exercise') return 'PRACTICE'
   return 'LEARN'
 }
 
-const PHASE_ORDER: Record<Resource['phase'], number> = { LEARN: 0, PRACTICE: 1, CHECK: 2 }
+const PHASE_ORDER: Record<Resource['phase'], number> = { LEARN: 0, PRACTICE: 1 }
 
 function assignSlotOrders(resources: RawResource[]): Map<string, number> {
   const groups = new Map<string, RawResource[]>()
@@ -35,8 +31,8 @@ function assignSlotOrders(resources: RawResource[]): Map<string, number> {
     group.sort((a, b) => {
       const atA = deriveAdapterType(a)
       const atB = deriveAdapterType(b)
-      const pA = PHASE_ORDER[derivePhase(atA, a.type)]
-      const pB = PHASE_ORDER[derivePhase(atB, b.type)]
+      const pA = PHASE_ORDER[derivePhase(a.type)]
+      const pB = PHASE_ORDER[derivePhase(b.type)]
       if (pA !== pB) return pA - pB
       // Within same phase: interactive first (build intuition), frq last (synthesis)
       const typeRank = (r: RawResource) => r.type === 'interactive' ? 0 : r.type === 'frq' ? 2 : 1
@@ -67,9 +63,8 @@ export async function seedContentLibrary(): Promise<void> {
     return {
       ...r,
       adapter_type,
-      phase: derivePhase(adapter_type, r.type),
+      phase: derivePhase(r.type),
       slot_order: slotOrders.get(r.id) ?? 0,
-      content_body: r.content_body ?? null,
       url: r.url ?? null,
       answer_url: r.answer_url,
     }

@@ -24,12 +24,6 @@ const PHASE_STYLE: Record<string, {
     borderCls: 'border-l-blue-400',
     rowBg: 'bg-blue-50/40',
   },
-  CHECK: {
-    label: '检测',
-    badgeCls: 'bg-violet-100 text-violet-700',
-    borderCls: 'border-l-violet-400',
-    rowBg: 'bg-violet-50/40',
-  },
 }
 
 const PLATFORM_SHORT: Record<string, string> = {
