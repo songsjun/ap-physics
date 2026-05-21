@@ -138,6 +138,7 @@ export interface QuizResult {
   correct: boolean
   student_answer: string
   answered_at: string
+  question_type?: QuizQuestion['type']  // undefined for legacy records — treat as non-feynman
 }
 
 export interface QuizGrade {

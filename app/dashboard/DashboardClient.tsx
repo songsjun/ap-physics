@@ -61,8 +61,9 @@ export function DashboardClient() {
           }
 
           const dayQuiz = quizByDay.get(`${w}-${d}`) ?? []
-          const challengeTotal = dayQuiz.length > 0 ? dayQuiz.length : null
-          const challengeCorrect = dayQuiz.length > 0 ? dayQuiz.filter(r => r.correct).length : null
+          const regularQuiz = dayQuiz.filter(r => r.question_type !== 'feynman')
+          const challengeTotal = regularQuiz.length > 0 ? regularQuiz.length : null
+          const challengeCorrect = regularQuiz.length > 0 ? regularQuiz.filter(r => r.correct).length : null
 
           result.push({
             week: w, day: d,

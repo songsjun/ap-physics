@@ -30,12 +30,17 @@ export function DayProvider({ userId, week, day, children }: DayProviderProps) {
   const [feedback, setFeedback] = useState<DailyFeedback | null>(null)
 
   useEffect(() => {
+    let cancelled = false
     setLoading(true)
     sessionRef.current!
       .load(userId, week, day)
-      .then(setFlow)
-      .finally(() => setLoading(false))
+      .then(flowState => { if (!cancelled) setFlow(flowState) })
+      .catch(console.error)
+      .finally(() => { if (!cancelled) setLoading(false) })
+    return () => { cancelled = true }
   }, [userId, week, day])
+
+  const inFlight = useRef(false)
 
   const dispatch = useCallback(async (cmd: Command) => {
     if (cmd.type === 'REQUEST_FEEDBACK') {
@@ -43,8 +48,14 @@ export function DayProvider({ userId, week, day, children }: DayProviderProps) {
       setFeedback(fb)
       return
     }
-    const next = await sessionRef.current!.execute(cmd)
-    setFlow(next)
+    if (inFlight.current) return
+    inFlight.current = true
+    try {
+      const next = await sessionRef.current!.execute(cmd)
+      setFlow(next)
+    } finally {
+      inFlight.current = false
+    }
   }, [])
 
   if (loading) return <DaySkeleton />

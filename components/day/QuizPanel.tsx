@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { selectDailyQuestions } from '@/lib/app/quiz'
 import { AIService } from '@/lib/infra/ai'
 import { repo } from '@/lib/repository'
@@ -43,6 +43,9 @@ export function QuizPanel({ week, day, conceptIds, onComplete, onExit }: QuizPan
   const [chatInput, setChatInput] = useState('')
   const [chatLoading, setChatLoading] = useState(false)
 
+  const mountedRef = useRef(true)
+  const submittingRef = useRef(false)
+
   // Load questions on mount
   useEffect(() => {
     const userId = StorageService.userId.get()
@@ -55,33 +58,43 @@ export function QuizPanel({ week, day, conceptIds, onComplete, onExit }: QuizPan
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [week, day])
 
+  useEffect(() => () => { mountedRef.current = false }, [])
+
   async function handleSubmit() {
-    const q = questions[currentIdx]
-    const userAnswer = q.type === 'mcq' ? (selectedOption ?? '') : answer.trim()
-    if (!userAnswer) return
-    setPhase('grading')
-    const g = await AIService.gradeAnswer(q, userAnswer).catch(() => ({
-      correct: false,
-      feedback: q.explanation,
-    }))
-    setGrade(g)
-    const userId = StorageService.userId.get()
-    if (userId) {
-      const result: QuizResult = {
-        id: `${userId}-${q.id}-${Date.now()}`,
-        user_id: userId,
-        question_id: q.id,
-        concept_ids: q.concept_ids,
-        week,
-        day,
-        correct: g.correct,
-        student_answer: userAnswer,
-        answered_at: new Date().toISOString(),
+    if (submittingRef.current) return
+    submittingRef.current = true
+    try {
+      const q = questions[currentIdx]
+      const userAnswer = q.type === 'mcq' ? (selectedOption ?? '') : answer.trim()
+      if (!userAnswer) return
+      setPhase('grading')
+      const g = await AIService.gradeAnswer(q, userAnswer).catch(() => ({
+        correct: false,
+        feedback: q.explanation,
+      }))
+      if (!mountedRef.current) return
+      setGrade(g)
+      const userId = StorageService.userId.get()
+      if (userId) {
+        const result: QuizResult = {
+          id: `${userId}-${q.id}-${Date.now()}`,
+          user_id: userId,
+          question_id: q.id,
+          concept_ids: q.concept_ids,
+          week,
+          day,
+          correct: g.correct,
+          student_answer: userAnswer,
+          answered_at: new Date().toISOString(),
+          question_type: q.type,
+        }
+        await repo.saveQuizResult(result).catch(console.error)
+        setSessionResults(prev => [...prev, result])
       }
-      await repo.saveQuizResult(result).catch(console.error)
-      setSessionResults(prev => [...prev, result])
+      setPhase('result')
+    } finally {
+      submittingRef.current = false
     }
-    setPhase('result')
   }
 
   function handleNext() {
