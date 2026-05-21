@@ -1,0 +1,92 @@
+You are an expert AP Physics 1 exam writer with deep knowledge of the College Board CED.
+Generate ONE difficulty-3 synthesis question in Chinese for the following knowledge point.
+
+## Target Knowledge Point
+- ID: {{CONCEPT_ID}}
+- Chinese: {{CONCEPT_NAME_ZH}}
+- English: {{CONCEPT_NAME_EN}}
+- AP Unit: {{UNIT}} — {{CED_TOPIC}} ({{CED_TOPIC_NAME}})
+- Prerequisites: {{PREREQUISITES}}
+
+## Difficulty Standard: Level 3 / Synthesis (75th percentile AP Physics 1)
+A difficulty-3 question MUST satisfy ALL of the following:
+1. **Multi-concept synthesis** — combines this concept with at least one prerequisite or related concept
+2. **Reasoning over recall** — cannot be solved by plugging numbers into a single formula
+3. **Common-misconception distractors** — wrong options (for MCQ) target errors real students make
+4. **AP scope** — no calculus, no E&M, no relativity, no nuclear; algebra + trig only
+5. **Clean arithmetic** — integers or simple fractions; no calculator needed
+
+## Question Type: {{TYPE}}
+{{#if_mcq}}
+- Exactly 4 options labeled "A.", "B.", "C.", "D."
+- Exactly ONE correct answer
+- Each wrong option corresponds to a specific, named misconception (not "just wrong")
+- Do NOT use options like "A. 0 N" if 0 is trivially wrong
+{{/if_mcq}}
+{{#if_short}}
+- Open-ended calculation or qualitative explanation
+- Expected answer: 1–3 sentences or a numeric value with units
+- grading_rubric: key steps the grader checks (not a full solution)
+{{/if_short}}
+
+## AP Physics 1 Anti-Patterns to AVOID
+- Never use μ_k (kinetic friction) for "initial" or "starting" motion — that needs μ_s
+- Never ask for instantaneous quantities using only average formulas unless defined
+- Never require memorized constants beyond g = 10 m/s²
+- Avoid "trick questions" based on units alone; difficulty must come from physics reasoning
+- Avoid scenarios that require calculus to derive (e.g., variable forces without work-energy)
+
+## Two Reference Examples (existing difficulty-3 questions from this bank)
+
+Example 1 (short — velocity/acceleration synthesis):
+{
+  "id": "q-displacement-velocity-003",
+  "concept_ids": ["kinematics-displacement-velocity-acceleration"],
+  "week": 1, "difficulty": 3, "type": "short",
+  "question": "一个物体的速度在某段时间内方向不变但数值减小，其加速度方向与速度方向相同还是相反？请解释原因。",
+  "answer": "加速度方向与速度方向相反",
+  "grading_rubric": "a = Δv/Δt，速度减小意味着 Δv 与 v 方向相反，因此加速度与速度反向",
+  "explanation": "加速度 a = Δv/Δt。速度减小时，速度变化量 Δv 的方向与速度方向相反，因此加速度方向与速度方向相反（减速运动）。"
+}
+
+Example 2 (short — 2D vector synthesis):
+{
+  "id": "q-vectors-2d-003",
+  "concept_ids": ["kinematics-vectors-2d-motion"],
+  "week": 1, "difficulty": 3, "type": "short",
+  "question": "一只小船要渡过一条宽 100 m 的河，船速（相对于水）为 5 m/s，水流速度为 3 m/s。若船头始终垂直河岸行驶，求渡河时间和实际到达的位置偏移量。",
+  "answer": "渡河时间 t = 20 s；偏移量 = 60 m",
+  "grading_rubric": "垂直方向：t = 100/5 = 20 s；水平偏移 = 3 × 20 = 60 m",
+  "explanation": "船垂直河岸的速度分量为 5 m/s，渡河时间 t = 100/5 = 20 s。水流使船横向漂移：偏移量 = 3 × 20 = 60 m。体现运动的独立性原理。"
+}
+
+## Output Format
+Return ONLY valid JSON — no markdown fences, no preamble, no trailing comments.
+The JSON must match this schema exactly:
+
+For type "mcq":
+{
+  "id": "{{CONCEPT_ID}}-d3-{{INDEX}}",
+  "concept_ids": ["{{CONCEPT_ID}}"],
+  "week": {{WEEK}},
+  "difficulty": 3,
+  "type": "mcq",
+  "question": "题目文字（中文）",
+  "options": ["A. 选项A", "B. 选项B", "C. 选项C", "D. 选项D"],
+  "answer": "A",
+  "grading_rubric": "正确答案的推导步骤（简洁）",
+  "explanation": "正确答案解析 + 每个错误选项对应的典型错误思路"
+}
+
+For type "short":
+{
+  "id": "{{CONCEPT_ID}}-d3-{{INDEX}}",
+  "concept_ids": ["{{CONCEPT_ID}}"],
+  "week": {{WEEK}},
+  "difficulty": 3,
+  "type": "short",
+  "question": "题目文字（中文）",
+  "answer": "标准答案（数值+单位 或 1-2句说明）",
+  "grading_rubric": "评分关键点：检查哪些步骤/概念",
+  "explanation": "详细解析，说明解题思路和常见误区"
+}
