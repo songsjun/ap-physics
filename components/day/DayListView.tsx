@@ -93,9 +93,8 @@ export function DayListView({ week, day }: { week: number; day: number }) {
         setChallengeStatus('done')
         setChallengeResults(existingResults)
       } else {
-        const questions = await selectDailyQuestions(userId, week, day, conceptIds, 3)
-        // +1 for the Feynman question always appended when concepts are available
-        if (!cancelled) setAvailableQuestions(questions.length + (conceptIds.length > 0 ? 1 : 0))
+        const questions = await selectDailyQuestions(userId, week, day, conceptIds, 4)
+        if (!cancelled) setAvailableQuestions(questions.length)
       }
     }
     load().catch(console.error)

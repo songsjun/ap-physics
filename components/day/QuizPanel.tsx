@@ -5,21 +5,7 @@ import { selectDailyQuestions } from '@/lib/app/quiz'
 import { AIService } from '@/lib/infra/ai'
 import { repo } from '@/lib/repository'
 import { StorageService } from '@/lib/infra/storage'
-import type { QuizQuestion, QuizResult, QuizGrade, ChatMessage, KnowledgePoint } from '@/lib/types'
-
-function buildFeynmanQuestion(kp: KnowledgePoint, week: number, day: number): QuizQuestion {
-  return {
-    id: `feynman-${kp.id}-w${week}d${day}`,
-    concept_ids: [kp.id],
-    week,
-    difficulty: 2,
-    type: 'short',
-    question: `费曼挑战：用你自己的话，向一个初中生解释「${kp.name_zh}」——它是什么、物理意义是什么、用在什么场景？`,
-    answer: '开放性解释题，AI 评估理解深度',
-    grading_rubric: `评估对「${kp.name_zh}」的理解：1) 核心概念是否准确 2) 是否有例子或类比 3) 语言是否简洁清晰`,
-    explanation: `费曼技巧：能向外行人解释清楚，才是真正掌握了「${kp.name_zh}」的本质`,
-  }
-}
+import type { QuizQuestion, QuizResult, QuizGrade, ChatMessage } from '@/lib/types'
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -61,14 +47,9 @@ export function QuizPanel({ week, day, conceptIds, onComplete, onExit }: QuizPan
   useEffect(() => {
     const userId = StorageService.userId.get()
     if (!userId) { onExit(); return }
-    Promise.all([
-      selectDailyQuestions(userId, week, day, conceptIds, 3),
-      repo.getKnowledgePoints(conceptIds.slice(0, 1)),
-    ]).then(([qs, kps]) => {
-      const feynman = kps.length > 0 ? buildFeynmanQuestion(kps[0], week, day) : null
-      const all = feynman ? [...qs, feynman] : qs
-      if (all.length === 0) { onExit(); return }
-      setQuestions(all)
+    selectDailyQuestions(userId, week, day, conceptIds, 4).then(qs => {
+      if (qs.length === 0) { onExit(); return }
+      setQuestions(qs)
       setPhase('question')
     }).catch(console.error)
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -147,14 +128,25 @@ export function QuizPanel({ week, day, conceptIds, onComplete, onExit }: QuizPan
 
   // ── Render: summary ──────────────────────────────────────────────────────────
   if (phase === 'summary') {
-    const total = sessionResults.length
-    const correct = sessionResults.filter(r => r.correct).length
+    const regularResults = sessionResults.filter(r => {
+      const q = questions.find(q => q.id === r.question_id)
+      return q?.type !== 'feynman'
+    })
+    const feynmanResult = sessionResults.find(r => {
+      const q = questions.find(q => q.id === r.question_id)
+      return q?.type === 'feynman'
+    })
+    const correct = regularResults.filter(r => r.correct).length
+    const total = regularResults.length
     return (
       <div className="bg-white border border-stone-200 rounded-xl p-4 space-y-4">
         <div className="text-center space-y-1">
           <p className="text-lg">✦</p>
           <p className="text-sm font-semibold text-stone-800">挑战完成！</p>
-          <p className="text-xs text-stone-500">{correct} / {total} 正确</p>
+          <p className="text-xs text-stone-500">
+            {correct} / {total} 正确
+            {feynmanResult && ' · 费曼反思已完成'}
+          </p>
         </div>
         {/* Progress bar */}
         <div className="flex gap-1">
@@ -272,7 +264,7 @@ export function QuizPanel({ week, day, conceptIds, onComplete, onExit }: QuizPan
         <p className="text-xs text-stone-400">{currentIdx + 1} / {questions.length}</p>
 
         {/* Result badge */}
-        {q.id.startsWith('feynman-') ? (
+        {q.type === 'feynman' ? (
           <div className="inline-flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-full bg-violet-50 text-violet-700">
             费曼反思
           </div>

@@ -149,6 +149,29 @@ export const AIService = {
       }
     }
 
+    // feynman: evaluate quality of student's concept explanation
+    if (question.type === 'feynman') {
+      const key = StorageService.apiKey.get()
+      if (!key) return { correct: true, feedback: question.explanation }
+
+      const system = `你是 AP 物理 1 学习助手。评估学生用费曼技巧解释物理概念的质量。
+返回纯 JSON：{"correct":true/false,"feedback":"2-3句反馈：肯定理解准确之处，指出可以更清晰或补充的地方"}
+correct=true 表示学生展示了对核心概念的真实理解（不必完美）。`
+      const userMsg = `题目：${question.question}
+参考要点：${question.answer}
+评估标准：${question.grading_rubric}
+学生解释：${studentAnswer}`
+      try {
+        const raw = await callClaudeWithMessages([{ role: 'user', content: userMsg }], system, 200, signal)
+        const match = raw.match(/\{[\s\S]*\}/)
+        const parsed = JSON.parse(match?.[0] ?? '{}')
+        return { correct: parsed.correct ?? true, feedback: parsed.feedback ?? question.explanation }
+      } catch (err) {
+        if (err instanceof Error && err.name === 'AbortError') throw err
+        return { correct: true, feedback: question.explanation }
+      }
+    }
+
     // short answer: use AI
     const key = StorageService.apiKey.get()
     if (!key) {
