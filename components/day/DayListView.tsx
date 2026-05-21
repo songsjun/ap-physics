@@ -86,10 +86,7 @@ export function DayListView({ week, day }: { week: number; day: number }) {
     const refresh = async () => {
       const userId = StorageService.userId.get()
       if (!userId) return
-      const [, dayCompletions] = await Promise.all([
-        repo.getAllDayResources(week, day),
-        repo.getCompletions(userId, week, day),
-      ])
+      const dayCompletions = await repo.getCompletions(userId, week, day)
       if (cancelled) return
       setCompletions(new Map(dayCompletions.map(c => [c.resource_id, c])))
     }
