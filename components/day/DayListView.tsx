@@ -163,7 +163,6 @@ export function DayListView({ week, day }: { week: number; day: number }) {
 
   const aTier = resources.filter(r => r.tier === 'A')
   const bTier = resources.filter(r => r.tier === 'B')
-  const cTier = resources.filter(r => r.tier === 'C')
 
   const aPassed = aTier.filter(r => completions.get(r.id)?.status === 'passed').length
   const aFailed = aTier.filter(r => completions.get(r.id)?.status === 'failed').length
@@ -171,6 +170,22 @@ export function DayListView({ week, day }: { week: number; day: number }) {
   const passRate = aGraded > 0 ? aPassed / aGraded : null
   const aTotalMin = aTier.reduce((s, r) => s + r.estimated_minutes, 0)
   const hasAFailed = aTier.some(r => completions.get(r.id)?.status === 'failed')
+
+  // Weak concepts: A-tier resources the student failed
+  const weakConceptIds = new Set(
+    aTier
+      .filter(r => completions.get(r.id)?.status === 'failed')
+      .flatMap(r => r.concepts)
+  )
+
+  // C-tier sorted by weakness: resources covering failed concepts come first
+  const cTier = resources
+    .filter(r => r.tier === 'C')
+    .sort((a, b) => {
+      const aCoversWeak = a.concepts.some(c => weakConceptIds.has(c)) ? 0 : 1
+      const bCoversWeak = b.concepts.some(c => weakConceptIds.has(c)) ? 0 : 1
+      return aCoversWeak - bCoversWeak || a.slot_order - b.slot_order
+    })
 
   // Unique concepts from all A-tier resources (for reflection card)
   const aConcepts = [...new Set(aTier.flatMap(r => r.concepts))]

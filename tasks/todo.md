@@ -159,21 +159,18 @@ console.assert(r.every((x,i,a) => i===0 || a[i-1].slot_order <= x.slot_order), '
 ---
 
 ## Step 7 — 完整 Adapter + AI + Settings
-**状态**: 🔶 部分完成（2026-05-21）
+**状态**: ✅ 完成（重新设计，2026-05-21）
+
+> **设计变更**：native_quiz / ai_graded_text / CHECK phase 整体移除（commit 7927b11）。
+> 课内互动由 QuizPanel（daily challenge）统一承载，PhET 实验步骤通过 Resource.description 字段
+> 在 ResourceRow 内展示。ChecklistCard / QuizCard / AIGradedCard 不再需要。
 
 ### 任务
-- [ ] 创建 components/adapters/ChecklistCard.tsx（PhET 实验清单）
-- [ ] 创建 components/adapters/QuizCard.tsx（原生 MC 题）
+- [~] ~~创建 components/adapters/ChecklistCard.tsx~~ → 已废弃，PhET 步骤移入 ResourceRow
+- [~] ~~创建 components/adapters/QuizCard.tsx~~ → 已废弃，由 QuizPanel 替代
 - [x] 创建 lib/ai.ts（AIService）
-- [ ] 创建 components/adapters/AIGradedCard.tsx（with AbortController）
+- [~] ~~创建 components/adapters/AIGradedCard.tsx~~ → 已废弃，QuizPanel short-answer 题用 AI 评分
 - [x] 创建 app/settings/page.tsx（API Key 录入）
-
-### 验收标准
-- [ ] ChecklistCard 所有选项勾选后自动完成
-- [ ] QuizCard 答对后 status=passed，答错后 status=failed
-- [ ] 无 API Key 时 AIGradedCard 显示「AI 功能未配置，请在设置页输入 Key」
-- [ ] 有 API Key 时 AIGradedCard 流式输出评分结果
-- [ ] 组件卸载时 AI stream 自动取消（无 AbortError 以外的错误日志）
 - [x] Settings 页 Key 保存后 localStorage 可查到
 
 ---
@@ -220,9 +217,19 @@ console.assert(r.every((x,i,a) => i===0 || a[i-1].slot_order <= x.slot_order), '
 | 2026-05-21 | P3 | frq.ts sort 仅按年份不按相关性 | b.score - a.score \|\| b.q.year - a.q.year |
 | 2026-05-21 | P4 | ap24-q5 等 8 处 FRQ 概念映射错误 | 手动校正 frq_map.json |
 
+## Step 10 — Quiz System（Daily Challenge）
+**状态**: ✅ 完成（2026-05-21）
+
+- [x] quiz-bank.json（197 题：147 regular + 50 feynman，49 个概念全覆盖）
+- [x] Dexie quiz_questions / quiz_results 表
+- [x] selectDailyQuestions（3 regular + 1 feynman，终身去重，weakness-based 费曼选题）
+- [x] QuizPanel（MCQ / fill / short / feynman 四种题型，AI 评分，AI 追问）
+- [x] ChallengePrompt 软触发，Dashboard ⚡N/M 指示器
+- [x] C 层按薄弱概念排序（failed A-tier 概念的 C 层资源优先展示）
+
+---
+
 ## 已知遗留问题（P4/P5）
 
-- queries.ts TOCTOU：多标签同时打开时 seed 可能并发，低频不阻断
-- DayListView ~600 行，未来可拆分
+- seed.ts TOCTOU：多标签同时打开时 seed 可能并发执行两次（bulkPut 幂等，不丢数据，低频）
 - ap26 SG PDF 待 CollegeBoard 发布后替换外链为本地文件
-- QuizCard / AIGradedCard 未实现（native_quiz / ai_graded_text 资源暂不可交互）

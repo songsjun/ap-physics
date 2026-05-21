@@ -42,6 +42,16 @@ export function getDb(): AppDB {
       quiz_questions: 'id, *concept_ids, week, difficulty, type',
       quiz_results: 'id, [user_id+week+day], user_id, week, day, *concept_ids',
     })
+    // v3: add compound indexes for common query patterns
+    _db.version(3).stores({
+      resources: 'id, week, day, tier, adapter_type, *concepts, [week+day], [week+day+tier]',
+      knowledge_points: 'id, week, day, [week+day]',
+      completions: '[user_id+resource_id], user_id, status',
+      day_unlocks: '[user_id+week+day], user_id',
+      meta: 'key',
+      quiz_questions: 'id, *concept_ids, week, difficulty, type',
+      quiz_results: 'id, [user_id+week+day], user_id, week, day, *concept_ids',
+    })
   }
   return _db
 }

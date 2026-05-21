@@ -1,23 +1,29 @@
 import { repo } from '@/lib/repository'
-import type { QuizQuestion } from '@/lib/types'
+import type { QuizQuestion, QuizResult } from '@/lib/types'
 
 /**
  * Select questions for the daily challenge.
  * Returns count-1 regular questions (mcq/fill/short) + 1 feynman question.
  * Feynman selection prioritises concepts where the student has past failures;
  * falls back to the first available feynman question (highest-value by concept order).
+ *
+ * Exclusion scope is lifetime (not just today) — a question already answered
+ * on any previous day is excluded to maximise variety across revisits.
  */
 export async function selectDailyQuestions(
   userId: string,
-  week: number,
-  day: number,
+  _week: number,
+  _day: number,
   conceptIds: string[],
   count = 4,
 ): Promise<QuizQuestion[]> {
   if (conceptIds.length === 0) return []
 
-  const answered = await repo.getQuizResultsForDay(userId, week, day)
-  const seenIds = new Set(answered.map(r => r.question_id))
+  // Fetch all history once — used for both exclusion and weakness scoring.
+  // Exclusion is lifetime: questions answered on any previous day are skipped
+  // to maximise variety on revisit days.
+  const allResults = await repo.getAllQuizResultsForUser(userId)
+  const seenIds = new Set(allResults.map(r => r.question_id))
 
   const candidates = await repo.getQuizQuestions(conceptIds, seenIds)
 
@@ -31,20 +37,19 @@ export async function selectDailyQuestions(
   const regularSelected = [...easy, ...medium, ...hard].slice(0, count - 1)
 
   // Feynman question: weak-concept-first, else first available
-  const feynman = await pickFeynmanQuestion(userId, conceptIds, feynmanPool)
+  const feynman = pickFeynmanQuestion(conceptIds, feynmanPool, allResults)
 
   return feynman ? [...regularSelected, feynman] : regularSelected
 }
 
-async function pickFeynmanQuestion(
-  userId: string,
+function pickFeynmanQuestion(
   conceptIds: string[],
   pool: QuizQuestion[],
-): Promise<QuizQuestion | null> {
+  allResults: QuizResult[],
+): QuizQuestion | null {
   if (pool.length === 0) return null
   if (pool.length === 1) return pool[0]
 
-  const allResults = await repo.getAllQuizResultsForUser(userId)
   const conceptSet = new Set(conceptIds)
 
   // Net failure score per concept: each wrong answer +1, each correct -1
