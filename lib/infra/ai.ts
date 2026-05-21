@@ -1,11 +1,48 @@
 import { StorageService } from '@/lib/infra/storage'
-import type { DailyFeedback, DayStats } from '@/lib/types'
+import type { DailyFeedback, DayStats, QuizQuestion, QuizGrade, ChatMessage } from '@/lib/types'
 
 const ANTHROPIC_API = 'https://api.anthropic.com/v1/messages'
 const MODEL = 'claude-haiku-4-5-20251001'
 
 interface AnthropicResponse {
   content: Array<{ type: string; text: string }>
+}
+
+async function callClaudeWithMessages(
+  messages: Array<{ role: 'user' | 'assistant'; content: string }>,
+  system?: string,
+  maxTokens = 300,
+  signal?: AbortSignal,
+): Promise<string> {
+  const key = StorageService.apiKey.get()
+  if (!key) return ''
+
+  const body: Record<string, unknown> = {
+    model: MODEL,
+    max_tokens: maxTokens,
+    messages,
+  }
+  if (system) body.system = system
+
+  const response = await fetch(ANTHROPIC_API, {
+    method: 'POST',
+    signal,
+    headers: {
+      'x-api-key': key,
+      'anthropic-version': '2023-06-01',
+      'anthropic-dangerous-request-type': 'CORS',
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  })
+
+  if (!response.ok) {
+    const err = await response.text().catch(() => response.statusText)
+    throw new Error(`Anthropic API error ${response.status}: ${err}`)
+  }
+
+  const data = (await response.json()) as AnthropicResponse
+  return data.content[0]?.type === 'text' ? data.content[0].text : ''
 }
 
 async function callClaude(prompt: string, signal?: AbortSignal): Promise<string> {
@@ -75,6 +112,72 @@ export const AIService = {
       if (err instanceof Error && err.name === 'AbortError') throw err
       console.error('AI feedback error:', err)
       return { strength: '今日学习已完成', note: '', preview: '' }
+    }
+  },
+
+  async gradeAnswer(
+    question: QuizQuestion,
+    studentAnswer: string,
+    signal?: AbortSignal,
+  ): Promise<QuizGrade> {
+    const key = StorageService.apiKey.get()
+    if (!key) {
+      // Fallback: exact string match for MCQ/fill, always pass for short
+      const correct = question.type === 'short'
+        ? true
+        : studentAnswer.trim().toLowerCase() === question.answer.trim().toLowerCase()
+      return { correct, feedback: question.explanation }
+    }
+
+    const system = `你是 AP 物理 1 评分助手。只评分，不教学。返回纯 JSON，格式：{"correct":true/false,"feedback":"1句反馈"}`
+    const userMsg = `题目：${question.question}
+正确答案：${question.answer}
+评分要点：${question.grading_rubric}
+学生回答：${studentAnswer}
+
+判断是否正确，给出1句反馈。`
+
+    try {
+      const raw = await callClaudeWithMessages(
+        [{ role: 'user', content: userMsg }],
+        system,
+        150,
+        signal,
+      )
+      const match = raw.match(/\{[\s\S]*\}/)
+      const parsed = JSON.parse(match?.[0] ?? '{}')
+      return {
+        correct: parsed.correct ?? false,
+        feedback: parsed.feedback ?? question.explanation,
+      }
+    } catch (err) {
+      if (err instanceof Error && err.name === 'AbortError') throw err
+      console.error('gradeAnswer error:', err)
+      return { correct: false, feedback: question.explanation }
+    }
+  },
+
+  async chat(
+    messages: ChatMessage[],
+    questionContext: QuizQuestion,
+    signal?: AbortSignal,
+  ): Promise<string> {
+    const key = StorageService.apiKey.get()
+    if (!key) return '请在设置页配置 Claude API Key 以启用 AI 问答。'
+
+    const system = `你是 AP 物理 1 学习助手。学生刚完成了一道题，正在向你提问。
+只针对以下题目内容回答，不回答其他话题。
+题目：${questionContext.question}
+正确答案：${questionContext.answer}
+解析：${questionContext.explanation}
+用中文回答，简洁（2-4句）。`
+
+    try {
+      return await callClaudeWithMessages(messages, system, 300, signal)
+    } catch (err) {
+      if (err instanceof Error && err.name === 'AbortError') throw err
+      console.error('chat error:', err)
+      return '抱歉，AI 暂时无法响应，请稍后重试。'
     }
   },
 }

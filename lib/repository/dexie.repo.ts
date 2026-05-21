@@ -1,5 +1,5 @@
 import { getDb } from '@/lib/infra/db'
-import type { Resource, KnowledgePoint, Completion } from '@/lib/types'
+import type { Resource, KnowledgePoint, Completion, QuizQuestion, QuizResult } from '@/lib/types'
 import type { IRepository } from './interface'
 
 export class DexieRepository implements IRepository {
@@ -81,5 +81,28 @@ export class DexieRepository implements IRepository {
     const db = getDb()
     const results = await db.knowledge_points.bulkGet(ids)
     return results.filter((kp): kp is KnowledgePoint => kp !== undefined)
+  }
+
+  async getQuizQuestions(conceptIds: string[], seenIds: Set<string>): Promise<QuizQuestion[]> {
+    const db = getDb()
+    if (conceptIds.length === 0) return []
+    return db.quiz_questions
+      .where('concept_ids').anyOf(conceptIds)
+      .filter(q => !seenIds.has(q.id))
+      .distinct()
+      .toArray()
+  }
+
+  async saveQuizResult(result: QuizResult): Promise<void> {
+    const db = getDb()
+    await db.quiz_results.put(result)
+  }
+
+  async getQuizResultsForDay(userId: string, week: number, day: number): Promise<QuizResult[]> {
+    const db = getDb()
+    return db.quiz_results
+      .where('[user_id+week+day]')
+      .equals([userId, week, day])
+      .toArray()
   }
 }

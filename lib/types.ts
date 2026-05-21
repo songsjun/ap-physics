@@ -112,3 +112,40 @@ export interface ProgressSnapshot {
   currentWeek: number
   currentDay: number
 }
+
+// ── Quiz system ──
+
+export interface QuizQuestion {
+  id: string
+  concept_ids: string[]        // matches KnowledgePoint.id values
+  week: number                 // suggested week (for filtering)
+  difficulty: 1 | 2 | 3       // 1=basic recall, 2=application, 3=synthesis
+  type: 'mcq' | 'fill' | 'short'
+  question: string
+  options?: [string, string, string, string]  // MCQ only
+  answer: string               // correct answer text
+  grading_rubric: string       // hint for AI grader
+  explanation: string          // shown after answering
+}
+
+export interface QuizResult {
+  id: string                   // `${user_id}-${question_id}-${answered_at}`
+  user_id: string
+  question_id: string
+  concept_ids: string[]        // copied from question for fast querying
+  week: number
+  day: number
+  correct: boolean
+  student_answer: string
+  answered_at: string
+}
+
+export interface QuizGrade {
+  correct: boolean
+  feedback: string             // 1-2 sentence explanation
+}
+
+export interface ChatMessage {
+  role: 'user' | 'assistant'
+  content: string
+}

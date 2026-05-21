@@ -1,4 +1,4 @@
-import type { Resource, KnowledgePoint, Completion } from '@/lib/types'
+import type { Resource, KnowledgePoint, Completion, QuizQuestion, QuizResult } from '@/lib/types'
 
 export interface IRepository {
   getResources(week: number, day: number, tier: 'A' | 'B' | 'C'): Promise<Resource[]>
@@ -13,4 +13,7 @@ export interface IRepository {
   getAllResources(): Promise<Resource[]>
   getAllDayResources(week: number, day: number): Promise<Resource[]>
   getKnowledgePoints(ids: string[]): Promise<KnowledgePoint[]>
+  getQuizQuestions(conceptIds: string[], seenIds: Set<string>): Promise<QuizQuestion[]>
+  saveQuizResult(result: QuizResult): Promise<void>
+  getQuizResultsForDay(userId: string, week: number, day: number): Promise<QuizResult[]>
 }
