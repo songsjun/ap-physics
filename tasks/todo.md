@@ -216,6 +216,14 @@ console.assert(r.every((x,i,a) => i===0 || a[i-1].slot_order <= x.slot_order), '
 | 2026-05-21 | P3 | FRQViewer pdf.destroy() 内存泄漏 | 删除 FRQViewer.tsx（已是死代码）|
 | 2026-05-21 | P3 | frq.ts sort 仅按年份不按相关性 | b.score - a.score \|\| b.q.year - a.q.year |
 | 2026-05-21 | P4 | ap24-q5 等 8 处 FRQ 概念映射错误 | 手动校正 frq_map.json |
+| 2026-05-21 | P0 | dispatch 并发破坏 currentSnapshot | session-context 添加 inFlight ref 互斥锁 |
+| 2026-05-21 | P0 | StrictMode load effect 双触发 | 添加 cancelled flag + .catch(console.error) |
+| 2026-05-21 | P0 | QuizPanel unmount 后 setState | 添加 mountedRef + cleanup effect |
+| 2026-05-21 | P0 | Enter 键重复提交 quiz | 添加 submittingRef 守卫 |
+| 2026-05-21 | P0 | Dashboard ⚡ 包含 feynman 计数（显示 N/4 而非 N/3）| QuizResult 增加 question_type 字段，dashboard 过滤 feynman |
+| 2026-05-21 | P1 | NEEDS_RETRY 阶段无任何 UI，学生无退出路径 | 添加 NeedsRetryBanner 组件 |
+| 2026-05-21 | P1 | quiz 题库耗尽后无提示，静默消失 | 添加 quizChecked 状态 + 耗尽提示文字 |
+| 2026-05-21 | P1 | q-friction-002 用 μ_k 描述"从静止开始"运动，混淆静/动摩擦 | 改为描述"已在匀速运动"，避免概念混淆 |
 
 ## Step 10 — Quiz System（Daily Challenge）
 **状态**: ✅ 完成（2026-05-21）
@@ -229,7 +237,43 @@ console.assert(r.every((x,i,a) => i===0 || a[i-1].slot_order <= x.slot_order), '
 
 ---
 
-## 已知遗留问题（P4/P5）
+## Step 11 — P0/P1 质量加固 + P2 架构清理
+**状态**: ✅ 完成（2026-05-21）— commits 05a1b93, 07d0bfc, 692e907
 
+### P0 修复（运行时正确性）
+- [x] dispatch 并发互斥锁（inFlight ref）
+- [x] StrictMode load effect 双触发防护（cancelled flag）
+- [x] QuizPanel unmount 后 setState 防护（mountedRef）
+- [x] Enter 键重复提交防护（submittingRef）
+- [x] Feynman 计分不一致（QuizResult.question_type 字段 + Dashboard 过滤）
+
+### P1 修复（核心 UX）
+- [x] NEEDS_RETRY 阶段 UI（NeedsRetryBanner 组件）
+- [x] Quiz 题库耗尽提示（quizChecked 状态）
+- [x] q-friction-002 教学错误修正（静/动摩擦混淆）
+
+### P2 架构清理
+- [x] 删除 callClaude 死代码（getDailyFeedback 改用 callClaudeWithMessages）
+- [x] DAILY_CHALLENGE_QUESTION_COUNT、QUIZ_BANK_VERSION 移入 constants.ts
+- [x] seedContentLibrary + seedQuizBank 并行化（Promise.all，节省 ~300ms 首次加载）
+
+---
+
+## 已知遗留问题
+
+### P1（内容）
+- quiz-bank.json difficulty-3 题目仅 3 题（Units 2-8 缺少高难度题）
+- 14 个概念无 FRQ 示例覆盖（含图形技能、流体力学）
+
+### P2（重构）
+- QuizPanel.tsx 387 行、6 职责，建议拆为 useQuizSession hook + QuestionView + QuizSummary
+- Resource.type 字段类型为 string，建议改为联合字面量类型
+- completions 表缺少 [user_id+week+day] 复合索引（当前 JS 层过滤）
+
+### P3（低优先级）
+- pass-rate 计算逻辑重复出现 3 处，可抽取工具函数
+- quiz_results 无保留策略，重复刷题会无限增长
+
+### P4/P5（可接受）
 - seed.ts TOCTOU：多标签同时打开时 seed 可能并发执行两次（bulkPut 幂等，不丢数据，低频）
 - ap26 SG PDF 待 CollegeBoard 发布后替换外链为本地文件
