@@ -312,10 +312,22 @@ function ResourceRow({ resource, completion, kpMap, scoringId, onCheckDirect, on
               <span className="text-stone-600">{objective}</span>
             </div>
           )}
-          <div className="flex gap-2">
-            <span className="text-stone-300 shrink-0 w-14 text-right">完成标准</span>
-            <span className="text-stone-600">{criteria}</span>
-          </div>
+          {resource.description && (
+            <div className="flex gap-2">
+              <span className="text-stone-300 shrink-0 w-14 text-right pt-0.5">实验步骤</span>
+              <ol className="space-y-1 flex-1">
+                {resource.description.split('\n').map((step, i) => (
+                  <li key={i} className="text-stone-600">{step}</li>
+                ))}
+              </ol>
+            </div>
+          )}
+          {!resource.description && (
+            <div className="flex gap-2">
+              <span className="text-stone-300 shrink-0 w-14 text-right">完成标准</span>
+              <span className="text-stone-600">{criteria}</span>
+            </div>
+          )}
           {/* Answer key link */}
           {resource.answer_url && (
             <div className="flex gap-2">

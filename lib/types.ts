@@ -42,6 +42,7 @@ export interface Resource {
   title: string
   url: string | null
   answer_url?: string
+  description?: string
   adapter_type: 'external_manual' | 'observation'
   type: string
   platform: string

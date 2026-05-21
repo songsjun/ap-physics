@@ -107,6 +107,22 @@
       ]
     },
     {
+      "id": "dynamics-force-concept",
+      "name_zh": "力的概念与分类",
+      "name_en": "Force: Concept and Types of Forces",
+      "unit": 2,
+      "ced_topic": "2.2",
+      "ced_topic_name": "Forces and Free-Body Diagrams",
+      "week": 2,
+      "day": 1,
+      "prerequisites": [
+        "kinematics-displacement-velocity-acceleration"
+      ],
+      "openstax_sections": [
+        "4.1"
+      ]
+    },
+    {
       "id": "dynamics-fbd-forces",
       "name_zh": "力与自由体图（FBD）",
       "name_en": "Forces and Free-Body Diagrams",
@@ -938,7 +954,8 @@
         "kinematics-representing-motion"
       ],
       "week": 1,
-      "day": 3
+      "day": 3,
+      "description": "1. 匀速直线：设速度 2 m/s、加速度 0，观察 x-t 为直线、v-t 为水平线、a-t 为零线\n2. 匀加速：速度 0、加速度 1 m/s²，观察 v-t 斜率等于加速度，x-t 向上弯曲\n3. 负速度：设速度 -3 m/s，确认小人向左运动，x-t 图斜率为负\n4. 先加速后减速：初速 4 m/s、加速度 -2 m/s²，找到速度归零时刻，记录此时位移为最大值"
     },
     {
       "id": "khan-kinematic-equations",
@@ -1008,7 +1025,8 @@
         "kinematics-vectors-2d-motion"
       ],
       "week": 1,
-      "day": 5
+      "day": 5,
+      "description": "1. 同向叠加：两向量同方向，合向量 = 两者之和，反向时合向量 = 两者之差\n2. 直角合成：A=3、B=4 且夹角 90°，测量合向量，用勾股定理验证 = 5\n3. 角度影响：保持 |A|=|B|，夹角从 0° 增至 180°，观察合向量从最大单调减至最小\n4. 分量分解：切换「分量」模式，将斜向量分解到 x、y 轴，验证 Ax = |A|cosθ，Ay = |A|sinθ"
     },
     {
       "id": "khan-projectile-motion-video",
@@ -1064,7 +1082,8 @@
         "kinematics-vectors-2d-motion"
       ],
       "week": 1,
-      "day": 7
+      "day": 7,
+      "description": "1. 角度扫描：初速 20 m/s，从 15° 到 75° 依次发射，找到射程最大的角度（确认为 45°）\n2. 互补对称：比较 30° 和 60° 的射程，验证互补角射程相等\n3. 空气阻力对比：打开空气阻力，重复 45° 发射，观察射程缩短且轨迹不再对称\n4. 高台发射：将炮台升至 10 m 高，重新扫描最优角，观察其小于 45°"
     },
     {
       "id": "khan-relative-velocity",
@@ -1248,7 +1267,8 @@
         "dynamics-friction"
       ],
       "week": 2,
-      "day": 4
+      "day": 4,
+      "description": "1. 静摩擦临界：逐渐增大推力，找到箱子刚好开始运动的临界点，记录最大静摩擦力\n2. 动摩擦恒定：推动后撤去外力，观察箱子匀减速停止，减速度即 a = f_k/m\n3. 地面对比：切换冰面、木板、砖块，同等外力下加速度不同，估算各表面摩擦系数\n4. 平衡验证：施加恰等于动摩擦力的推力，实现匀速运动（合力为零）"
     },
     {
       "id": "khan-spring-exercise",
@@ -1276,7 +1296,8 @@
         "dynamics-spring-forces"
       ],
       "week": 2,
-      "day": 5
+      "day": 5,
+      "description": "1. 线性验证：依次挂 50g、100g、150g、200g，记录伸长量 x，确认 F-x 为过原点直线\n2. 弹簧常数：由斜率计算 k = F/x，切换弹簧 2，重复实验，比较两根 k 值\n3. 弹性势能：切换「能量」视图，伸长量加倍时势能变为 4 倍，验证 PE ∝ x²\n4. 串并联比较：切换串联和并联配置，观察等效弹簧常数的变化方向"
     },
     {
       "id": "khan-inclines-exercise",
@@ -1346,7 +1367,8 @@
         "dynamics-circular-orbits"
       ],
       "week": 3,
-      "day": 5
+      "day": 5,
+      "description": "1. 轨道速度：将行星拖至不同轨道半径，观察速度表盘，越远越慢\n2. 无重力飞出：暂时关闭重力，观察行星沿切线方向飞出，理解引力提供向心力\n3. 恒星质量：增大中心天体质量，同一轨道半径下速度增大、周期减小\n4. 开普勒第三定律：测量 2-3 个轨道的 r 和 T，验证 T² ∝ r³"
     },
     {
       "id": "phet-gravity-force-lab",
@@ -1360,7 +1382,8 @@
         "dynamics-gravitational-force"
       ],
       "week": 3,
-      "day": 5
+      "day": 5,
+      "description": "1. 质量正比：固定 r，m₁ 加倍引力加倍，m₂ 加倍引力也加倍，验证 F ∝ m₁m₂\n2. 距离平方反比：固定质量，r 加倍引力变为 1/4，r 变 3 倍引力变为 1/9\n3. 牛顿第三定律：观察 F₁₂ 和 F₂₁ 的数值和方向，确认等大反向\n4. 数值拟合：记录 4 组 (r, F)，计算各组 F·r²，确认近似相等（= Gm₁m₂）"
     },
     {
       "id": "khan-work-energy-article",
@@ -1474,7 +1497,8 @@
         "energy-conservation"
       ],
       "week": 4,
-      "day": 5
+      "day": 5,
+      "description": "1. 能量守恒：碗形轨道从顶部释放，最低点 KE 最大 PE=0，对面最高点 KE=0 PE 等于初始\n2. 速度与高度：在不同高度暂停，记录速度，验证 v = √(2gh)\n3. 摩擦耗散：打开摩擦，观察每次过最低点后高度降低，热能逐步积累\n4. 能量上限：将初始高度超过轨道最高边缘，观察滑板飞出，理解无法超越初始能量"
     },
     {
       "id": "khan-energy-bar-charts",
@@ -1601,7 +1625,8 @@
         "momentum-collisions"
       ],
       "week": 5,
-      "day": 5
+      "day": 5,
+      "description": "1. 等质量弹性碰撞：m₁=m₂，碰后 m₁ 停止、m₂ 以 m₁ 原速度运动，动量和动能均守恒\n2. 完全非弹性碰撞：设为「粘性」，碰后合并，用 p_before = p_after 计算末速度并核对\n3. 质量不等弹性：m₁=2、m₂=1，计算理论末速度后与模拟值对比\n4. 二维碰撞：切换 2D 模式，斜角碰撞后分别验证 x 和 y 方向动量各自守恒"
     },
     {
       "id": "openstax-6-1-rotation",
@@ -1674,7 +1699,8 @@
         "torque-rotational-equilibrium"
       ],
       "week": 6,
-      "day": 3
+      "day": 3,
+      "description": "1. 基础力矩：左侧 10N 距支点 2m（力矩 20 N·m），右侧找到平衡质量和位置\n2. 力矩正比：左侧距离加倍，右侧需要加倍力或加倍距离才能重新平衡\n3. 多物体平衡：左侧两砝码，右侧一砝码，验证净力矩 = 0 时系统平衡\n4. 支点偏移：移动支点至非中心位置，重新寻找平衡，体会各力矩正负号规则"
     },
     {
       "id": "flipping-unit5b-review",
@@ -1817,7 +1843,8 @@
         "oscillation-shm-frequency-period"
       ],
       "week": 7,
-      "day": 2
+      "day": 2,
+      "description": "1. 弹簧常数：挂 100g，记录平衡位移，计算 k = mg/x\n2. T 与质量：挂 100g、200g、400g，测量周期，验证质量变 4 倍时 T 变 2 倍（T ∝ √m）\n3. T 与弹簧常数：固定质量 200g，切换三根弹簧，硬弹簧周期更短（T ∝ 1/√k）\n4. 能量转换：切换「能量」视图，观察振动过程中 KE 和弹性 PE 互相转换"
     },
     {
       "id": "khan-spring-period-video",
@@ -1887,7 +1914,8 @@
         "oscillation-shm-frequency-period"
       ],
       "week": 7,
-      "day": 3
+      "day": 3,
+      "description": "1. 摆长影响：摆角固定 10°，摆长 0.5m→1m→2m，验证摆长 4 倍时周期 2 倍（T ∝ √L）\n2. 质量无关：摆长 1m、摆角 10°，质量从 0.1kg 换至 1.5kg，周期保持不变\n3. 小角近似极限：摆角从 10° 增至 60°，找出周期开始明显偏离理论值的角度（约 >30°）\n4. 重力场对比：切换「月球」（g ≈ 1.6 m/s²），周期约变为地球 2.5 倍，验证 T ∝ 1/√g"
     },
     {
       "id": "khan-fluids-density-video",
@@ -1944,7 +1972,8 @@
         "fluids-pressure"
       ],
       "week": 7,
-      "day": 4
+      "day": 4,
+      "description": "1. 深度正比：1m、2m、3m 深处各放压力计，确认 P 随深度线性增加，斜率 = ρg\n2. 液体密度：切换水和蜂蜜，同深度下蜂蜜压强更大，验证 P ∝ ρ\n3. 形状无关：宽容器和窄容器同深度处压强相同，确认压强由深度而非容器形状决定\n4. 大气压叠加：液面处压力计 = 大气压，深处 = 大气压 + ρgh"
     },
     {
       "id": "khan-buoyant-force-video",
@@ -1986,7 +2015,8 @@
         "fluids-newton-laws"
       ],
       "week": 7,
-      "day": 5
+      "day": 5,
+      "description": "1. 排水体积：物体逐步浸入，浮力随浸入体积增大，完全浸入后不再增加（F_b = ρ_fluid·V·g）\n2. 漂浮条件：密度 < 水的物体漂浮，密度 > 水的下沉，等于水的悬浮\n3. 盐水效果：切换盐水，同一物体所受浮力增大，观察原本下沉的物体是否能漂浮\n4. 绳索约束：对下沉物体加向下绳索，绳子张力 = 重力 - 浮力，调节质量验证此等式"
     },
     {
       "id": "khan-fluid-flow-video",
@@ -2514,7 +2544,7 @@
       "tier": "B",
       "estimated_minutes": 5,
       "concepts": [
-        "dynamics-fbd-forces"
+        "dynamics-force-concept"
       ],
       "week": 2,
       "day": 1
@@ -4835,7 +4865,8 @@
       "concepts": [
         "torque-newtons-second-law-rotational",
         "torque-rotational-inertia"
-      ]
+      ],
+      "description": "1. 力矩大小：固定力 10N，作用点从 0.5m 移至 2m，观察角加速度随 r 增大而增大\n2. 力的方向：垂直杆时力矩最大，平行杆时力矩为零，验证 τ = rF sinθ\n3. 转动惯量：切换质量集中在轴处和质量在端部的棒，同力矩下后者角加速度更小\n4. 净力矩为零：两端施力使合力矩为零，确认角加速度 = 0"
     },
     {
       "id": "khan-rotational-kinetic-energy-video",
@@ -5080,6 +5111,34 @@
       ],
       "week": 8,
       "day": 6
+    },
+    {
+      "id": "khan-intro-forces-types",
+      "title": "Khan Academy: Introduction to Forces",
+      "url": "https://www.khanacademy.org/science/ap-physics-1/ap-forces-newtons-laws/ap-introduction-to-forces-and-newtons-laws/v/introduction-to-forces-review",
+      "type": "video",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 12,
+      "concepts": [
+        "dynamics-force-concept"
+      ],
+      "week": 2,
+      "day": 1
+    },
+    {
+      "id": "khan-contact-field-forces",
+      "title": "Khan Academy: Contact and Field Forces Exercise",
+      "url": "https://www.khanacademy.org/science/ap-physics-1/ap-forces-newtons-laws/ap-introduction-to-forces-and-newtons-laws/e/introduction-to-forces-and-free-body-diagrams",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 10,
+      "concepts": [
+        "dynamics-force-concept"
+      ],
+      "week": 2,
+      "day": 1
     }
   ]
 }
