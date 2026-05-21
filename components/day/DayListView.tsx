@@ -41,6 +41,31 @@ function CompleteBanner({ passRate, feedback }: { passRate: number; feedback: Da
   )
 }
 
+// ── NeedsRetryBanner ─────────────────────────────────────────────────────────
+
+function NeedsRetryBanner({ passRate }: { passRate: number | null }) {
+  return (
+    <div className="bg-orange-50 border border-orange-200 rounded-xl p-4 space-y-2">
+      <div className="flex items-center gap-3">
+        <div className="w-8 h-8 rounded-full bg-orange-400 flex items-center justify-center shrink-0">
+          <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+          </svg>
+        </div>
+        <div>
+          <p className="font-semibold text-orange-900 text-sm">需要重试</p>
+          <p className="text-xs text-orange-600">
+            当前通过率 {passRate !== null ? Math.round(passRate * 100) : 0}%  ·  目标 75%
+          </p>
+        </div>
+      </div>
+      <p className="text-xs text-orange-700 pl-1">
+        请重新完成下方 A 层资源，提升答题质量后即可解锁下一天。
+      </p>
+    </div>
+  )
+}
+
 // ── DayListView ───────────────────────────────────────────────────────────────
 
 type ChallengeStatus = 'prompt' | 'active' | 'done' | 'skipped'
@@ -58,6 +83,7 @@ export function DayListView({ week, day }: { week: number; day: number }) {
   // Challenge state
   const [challengeStatus, setChallengeStatus] = useState<ChallengeStatus>('prompt')
   const [availableQuestions, setAvailableQuestions] = useState(0)
+  const [quizChecked, setQuizChecked] = useState(false)
   const [challengeResults, setChallengeResults] = useState<QuizResult[]>([])
 
   useEffect(() => {
@@ -94,7 +120,10 @@ export function DayListView({ week, day }: { week: number; day: number }) {
         setChallengeResults(existingResults)
       } else {
         const questions = await selectDailyQuestions(userId, week, day, conceptIds, 4)
-        if (!cancelled) setAvailableQuestions(questions.length)
+        if (!cancelled) {
+          setAvailableQuestions(questions.length)
+          setQuizChecked(true)
+        }
       }
     }
     load().catch(console.error)
@@ -202,6 +231,11 @@ export function DayListView({ week, day }: { week: number; day: number }) {
         <CompleteBanner passRate={flowState.passRate} feedback={feedback} />
       )}
 
+      {/* Needs-retry banner */}
+      {flowState.phase === 'NEEDS_RETRY' && (
+        <NeedsRetryBanner passRate={passRate} />
+      )}
+
       {/* Challenge system */}
       {flowState.phase === 'COMPLETE' && challengeStatus === 'prompt' && availableQuestions > 0 && (
         <ChallengePrompt
@@ -231,6 +265,12 @@ export function DayListView({ week, day }: { week: number; day: number }) {
           <p className="text-xs text-stone-500">
             ⚡ 今日挑战：{challengeResults.filter(r => r.correct).length} / {challengeResults.length} 正确
           </p>
+        </div>
+      )}
+
+      {flowState.phase === 'COMPLETE' && challengeStatus === 'prompt' && quizChecked && availableQuestions === 0 && (
+        <div className="bg-stone-50 border border-stone-100 rounded-xl px-4 py-3">
+          <p className="text-xs text-stone-400">⚡ 本日相关题目已全部完成，继续学习新内容以解锁更多题目。</p>
         </div>
       )}
 
