@@ -50,8 +50,21 @@ export async function importProgress(userId: string, data: ExportData): Promise<
   await db.transaction('rw', db.completions, db.day_unlocks, async () => {
     await db.completions.where('user_id').equals(userId).delete()
     await db.day_unlocks.where('user_id').equals(userId).delete()
-    const completions = validCompletions.map(c => ({ ...c, user_id: userId }))
-    const unlocks = validUnlocks.map(u => ({ ...u, user_id: userId }))
+    const completions = validCompletions.map(c => ({
+      user_id: userId,
+      resource_id: (c as any).resource_id as string,
+      status: (c as any).status as 'passed' | 'failed' | 'skipped',
+      score: (c as any).score as number | undefined,
+      score_max: (c as any).score_max as number | undefined,
+      ai_feedback: (c as any).ai_feedback as string | undefined,
+      completed_at: (c as any).completed_at as string,
+    }))
+    const unlocks = validUnlocks.map(u => ({
+      user_id: userId,
+      week: (u as any).week as number,
+      day: (u as any).day as number,
+      unlocked_at: (u as any).unlocked_at as string,
+    }))
     await db.completions.bulkPut(completions)
     await db.day_unlocks.bulkPut(unlocks)
   })

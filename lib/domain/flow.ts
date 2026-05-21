@@ -44,7 +44,7 @@ export function computeFlowState(snapshot: DaySnapshot): FlowState {
     return {
       phase: 'REMEDIATION',
       resources: snapshot.bCandidates,
-      slot: snapshot.bTotalForSession - snapshot.bCandidates.length,
+      slot: snapshot.bTotalForSession - snapshot.bCandidates.length + 1,
       total: snapshot.bTotalForSession,
     }
   }

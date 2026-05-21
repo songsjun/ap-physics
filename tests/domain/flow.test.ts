@@ -161,7 +161,7 @@ describe('computeFlowState', () => {
     }))
     expect(result.phase).toBe('REMEDIATION')
     if (result.phase === 'REMEDIATION') {
-      expect(result.slot).toBe(1) // 3 - 2 = 1 consumed
+      expect(result.slot).toBe(2) // 3 - 2 + 1 = 2 (presenting B resource #2)
       expect(result.total).toBe(3)
     }
   })

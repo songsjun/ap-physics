@@ -119,7 +119,9 @@ describe('DaySessionManager', () => {
     // reset the shared mutable array between tests
     mockDbCompletions.length = 0
     // sensible defaults that don't conflict
-    mockTrackerRecord.mockResolvedValue(undefined)
+    mockTrackerRecord.mockImplementation(async (_userId: string, resourceId: string, result: { status: string }) => {
+      mockDbCompletions.push(makeCompletion(resourceId, result.status as 'passed' | 'failed' | 'skipped'))
+    })
     mockTrackerUnlockDay.mockResolvedValue(undefined)
   })
 
@@ -249,12 +251,11 @@ describe('DaySessionManager', () => {
     })
     mockAssembleDaySnapshot.mockResolvedValueOnce(loadSnapshot).mockResolvedValue(postSnapshot)
 
-    // DB returns 3 passed + 1 failed for A resources
+    // DB pre-populates completions from prior execute() calls; r4 is written by mockTrackerRecord
     mockDbCompletions.push(
       makeCompletion('r1', 'passed'),
       makeCompletion('r2', 'passed'),
       makeCompletion('r3', 'passed'),
-      makeCompletion('r4', 'failed'),
     )
 
     const manager = new DaySessionManager()
@@ -296,12 +297,11 @@ describe('DaySessionManager', () => {
     })
     mockAssembleDaySnapshot.mockResolvedValueOnce(loadSnapshot).mockResolvedValue(postSnapshot)
 
-    // DB returns 1 passed + 3 failed
+    // DB pre-populates completions from prior execute() calls; r4 is written by mockTrackerRecord
     mockDbCompletions.push(
       makeCompletion('r1', 'passed'),
       makeCompletion('r2', 'failed'),
       makeCompletion('r3', 'failed'),
-      makeCompletion('r4', 'failed'),
     )
 
     const manager = new DaySessionManager()
@@ -360,9 +360,6 @@ describe('DaySessionManager', () => {
       .mockResolvedValueOnce(afterR1Snapshot) // first execute()
       .mockResolvedValueOnce(afterB1Snapshot) // second execute()
 
-    // DB completions: r1 failed (doesn't meet unlock threshold)
-    mockDbCompletions.push(makeCompletion('r1', 'failed'))
-
     const manager = new DaySessionManager()
 
     // Step 1: load
@@ -378,7 +375,7 @@ describe('DaySessionManager', () => {
     expect(state2.phase).toBe('REMEDIATION')
     if (state2.phase === 'REMEDIATION') {
       expect(state2.total).toBe(3)
-      expect(state2.slot).toBe(0) // 3 - 3 = 0 consumed yet
+      expect(state2.slot).toBe(1) // 0 consumed → presenting B resource #1
     }
 
     // Step 3: complete b1 as passed → REMEDIATION slot should advance; total must stay 3
@@ -389,7 +386,7 @@ describe('DaySessionManager', () => {
     })
     expect(state3.phase).toBe('REMEDIATION')
     if (state3.phase === 'REMEDIATION') {
-      expect(state3.slot).toBe(1) // 3 - 2 = 1 consumed
+      expect(state3.slot).toBe(2) // 1 consumed → presenting B resource #2
       expect(state3.total).toBe(3) // frozen, not 2
     }
   })
