@@ -1,19 +1,28 @@
 [
   {
     "id": "q-scalars-vectors-001",
-    "concept_ids": ["kinematics-scalars-vectors-1d"],
+    "concept_ids": [
+      "kinematics-scalars-vectors-1d"
+    ],
     "week": 1,
     "difficulty": 1,
     "type": "mcq",
     "question": "以下哪个物理量是矢量？",
-    "options": ["路程", "时间", "速度", "质量"],
+    "options": [
+      "路程",
+      "时间",
+      "速度",
+      "质量"
+    ],
     "answer": "速度",
     "grading_rubric": "矢量既有大小又有方向，速度有方向，路程/时间/质量是标量",
     "explanation": "速度是矢量，因为它既有大小（速率）又有方向。路程、时间和质量只有大小，是标量。"
   },
   {
     "id": "q-scalars-vectors-002",
-    "concept_ids": ["kinematics-scalars-vectors-1d"],
+    "concept_ids": [
+      "kinematics-scalars-vectors-1d"
+    ],
     "week": 1,
     "difficulty": 1,
     "type": "fill",
@@ -24,31 +33,47 @@
   },
   {
     "id": "q-scalars-vectors-003",
-    "concept_ids": ["kinematics-scalars-vectors-1d"],
+    "concept_ids": [
+      "kinematics-scalars-vectors-1d"
+    ],
     "week": 1,
     "difficulty": 2,
     "type": "mcq",
     "question": "一个物体向东运动 6 m，再向西运动 2 m，则位移大小和路程分别是多少？",
-    "options": ["位移 4 m 向东，路程 4 m", "位移 4 m 向东，路程 8 m", "位移 8 m，路程 8 m", "位移 4 m，路程 4 m"],
+    "options": [
+      "位移 4 m 向东，路程 4 m",
+      "位移 4 m 向东，路程 8 m",
+      "位移 8 m，路程 8 m",
+      "位移 4 m，路程 4 m"
+    ],
     "answer": "位移 4 m 向东，路程 8 m",
     "grading_rubric": "位移是从起点到终点的有向线段（6-2=4 m 向东），路程是总行程（6+2=8 m）",
     "explanation": "位移是矢量，大小为净变化量 6-2=4 m，方向向东。路程是标量，为总行程 6+2=8 m。"
   },
   {
     "id": "q-displacement-velocity-001",
-    "concept_ids": ["kinematics-displacement-velocity-acceleration"],
+    "concept_ids": [
+      "kinematics-displacement-velocity-acceleration"
+    ],
     "week": 1,
     "difficulty": 1,
     "type": "mcq",
     "question": "平均速度的定义式是？",
-    "options": ["v = Δx / Δt", "v = Δv / Δt", "v = x / t²", "v = at"],
+    "options": [
+      "v = Δx / Δt",
+      "v = Δv / Δt",
+      "v = x / t²",
+      "v = at"
+    ],
     "answer": "v = Δx / Δt",
     "grading_rubric": "平均速度 = 位移 / 时间间隔",
     "explanation": "平均速度定义为位移除以时间间隔：v̄ = Δx / Δt。注意是位移（矢量），不是路程。"
   },
   {
     "id": "q-displacement-velocity-002",
-    "concept_ids": ["kinematics-displacement-velocity-acceleration"],
+    "concept_ids": [
+      "kinematics-displacement-velocity-acceleration"
+    ],
     "week": 1,
     "difficulty": 2,
     "type": "fill",
@@ -59,7 +84,9 @@
   },
   {
     "id": "q-displacement-velocity-003",
-    "concept_ids": ["kinematics-displacement-velocity-acceleration"],
+    "concept_ids": [
+      "kinematics-displacement-velocity-acceleration"
+    ],
     "week": 1,
     "difficulty": 3,
     "type": "short",
@@ -70,31 +97,47 @@
   },
   {
     "id": "q-reference-frames-001",
-    "concept_ids": ["kinematics-reference-frames"],
+    "concept_ids": [
+      "kinematics-reference-frames"
+    ],
     "week": 1,
     "difficulty": 1,
     "type": "mcq",
     "question": "描述物体运动时，必须先确定的是？",
-    "options": ["参考系", "质量", "温度", "颜色"],
+    "options": [
+      "参考系",
+      "质量",
+      "温度",
+      "颜色"
+    ],
     "answer": "参考系",
     "grading_rubric": "运动的描述是相对的，必须先选定参考系（参照物）",
     "explanation": "运动是相对的。描述物体的运动（位置、速度等）必须先选定一个参考系（参照物），否则运动的描述没有意义。"
   },
   {
     "id": "q-reference-frames-002",
-    "concept_ids": ["kinematics-reference-frames"],
+    "concept_ids": [
+      "kinematics-reference-frames"
+    ],
     "week": 1,
     "difficulty": 2,
     "type": "mcq",
     "question": "坐在行驶的火车上，以火车为参考系，乘客的速度是？",
-    "options": ["等于火车速度", "零", "大于火车速度", "小于火车速度"],
+    "options": [
+      "等于火车速度",
+      "零",
+      "大于火车速度",
+      "小于火车速度"
+    ],
     "answer": "零",
     "grading_rubric": "以火车为参考系，乘客相对于火车静止，速度为零",
     "explanation": "以火车为参考系时，乘客相对于火车没有运动，速度为零。这体现了运动描述的相对性。"
   },
   {
     "id": "q-reference-frames-003",
-    "concept_ids": ["kinematics-reference-frames"],
+    "concept_ids": [
+      "kinematics-reference-frames"
+    ],
     "week": 1,
     "difficulty": 2,
     "type": "short",
@@ -105,31 +148,47 @@
   },
   {
     "id": "q-representing-motion-001",
-    "concept_ids": ["kinematics-representing-motion"],
+    "concept_ids": [
+      "kinematics-representing-motion"
+    ],
     "week": 1,
     "difficulty": 1,
     "type": "mcq",
     "question": "在匀速直线运动的 x-t 图像中，图线的斜率表示什么？",
-    "options": ["加速度", "速度", "位移", "路程"],
+    "options": [
+      "加速度",
+      "速度",
+      "位移",
+      "路程"
+    ],
     "answer": "速度",
     "grading_rubric": "x-t 图斜率 = Δx/Δt = 速度",
     "explanation": "在位移-时间（x-t）图中，斜率 = Δx/Δt，即为速度。斜率越大，速度越大；斜率为负表示反向运动。"
   },
   {
     "id": "q-representing-motion-002",
-    "concept_ids": ["kinematics-representing-motion"],
+    "concept_ids": [
+      "kinematics-representing-motion"
+    ],
     "week": 1,
     "difficulty": 2,
     "type": "mcq",
     "question": "在 v-t 图像中，图线与时间轴围成的面积表示什么？",
-    "options": ["加速度", "速率", "位移", "合外力"],
+    "options": [
+      "加速度",
+      "速率",
+      "位移",
+      "合外力"
+    ],
     "answer": "位移",
     "grading_rubric": "v-t 图中面积 = v × Δt = 位移",
     "explanation": "在速度-时间（v-t）图中，图线与时间轴围成的面积等于位移（Δx = v · Δt）。面积在时间轴上方为正位移，下方为负位移。"
   },
   {
     "id": "q-representing-motion-003",
-    "concept_ids": ["kinematics-representing-motion"],
+    "concept_ids": [
+      "kinematics-representing-motion"
+    ],
     "week": 1,
     "difficulty": 3,
     "type": "short",
@@ -140,19 +199,28 @@
   },
   {
     "id": "q-vectors-2d-001",
-    "concept_ids": ["kinematics-vectors-2d-motion"],
+    "concept_ids": [
+      "kinematics-vectors-2d-motion"
+    ],
     "week": 1,
     "difficulty": 1,
     "type": "mcq",
     "question": "两个分量分别为 3 m 和 4 m 的互相垂直的位移，合位移大小是？",
-    "options": ["7 m", "5 m", "1 m", "3.5 m"],
+    "options": [
+      "7 m",
+      "5 m",
+      "1 m",
+      "3.5 m"
+    ],
     "answer": "5 m",
     "grading_rubric": "合位移 = √(3² + 4²) = √25 = 5 m（勾股定理）",
     "explanation": "两个互相垂直的矢量的合矢量大小用勾股定理求得：R = √(3² + 4²) = √(9+16) = √25 = 5 m。"
   },
   {
     "id": "q-vectors-2d-002",
-    "concept_ids": ["kinematics-vectors-2d-motion"],
+    "concept_ids": [
+      "kinematics-vectors-2d-motion"
+    ],
     "week": 1,
     "difficulty": 2,
     "type": "fill",
@@ -163,7 +231,9 @@
   },
   {
     "id": "q-vectors-2d-003",
-    "concept_ids": ["kinematics-vectors-2d-motion"],
+    "concept_ids": [
+      "kinematics-vectors-2d-motion"
+    ],
     "week": 1,
     "difficulty": 3,
     "type": "short",
@@ -171,5 +241,2249 @@
     "answer": "渡河时间 t = 20 s；偏移量 = 60 m",
     "grading_rubric": "垂直方向：t = 100/5 = 20 s；水平偏移 = 3 × 20 = 60 m",
     "explanation": "船垂直河岸的速度分量为 5 m/s，渡河时间 t = 100/5 = 20 s。同时水流使船横向漂移：偏移量 = 3 m/s × 20 s = 60 m。这体现了运动的独立性原理。"
+  },
+  {
+    "id": "q-systems-center-of-mass-001",
+    "concept_ids": [
+      "dynamics-systems-center-of-mass"
+    ],
+    "week": 2,
+    "difficulty": 1,
+    "type": "mcq",
+    "question": "关于系统质心，下列说法正确的是？",
+    "options": [
+      "A. 质心一定位于系统中某个物体内部",
+      "B. 在无外力作用下，系统质心的运动状态不变",
+      "C. 质心位置只与物体形状有关，与质量分布无关",
+      "D. 质心一定与几何中心重合"
+    ],
+    "answer": "B",
+    "grading_rubric": "选 B：系统不受外力时质心动量守恒，质心做匀速直线运动或保持静止。",
+    "explanation": "外力为零时系统总动量守恒，质心保持原有运动状态；质心位置由质量加权平均决定，未必在物体内部或与几何中心重合。"
+  },
+  {
+    "id": "q-systems-center-of-mass-002",
+    "concept_ids": [
+      "dynamics-systems-center-of-mass"
+    ],
+    "week": 2,
+    "difficulty": 2,
+    "type": "mcq",
+    "question": "两个质量分别为 2 kg 和 6 kg 的物体放在 x 轴上，分别位于 x=0 和 x=4 m，系统质心位置为？",
+    "options": [
+      "A. 1 m",
+      "B. 2 m",
+      "C. 3 m",
+      "D. 4 m"
+    ],
+    "answer": "C",
+    "grading_rubric": "x_cm = (m1·x1 + m2·x2)/(m1+m2) = (0+24)/8 = 3 m。",
+    "explanation": "代入质心公式：(2×0+6×4)/(2+6)=24/8=3 m，质心更靠近质量较大的物体。"
+  },
+  {
+    "id": "q-systems-center-of-mass-003",
+    "concept_ids": [
+      "dynamics-systems-center-of-mass"
+    ],
+    "week": 2,
+    "difficulty": 2,
+    "type": "fill",
+    "question": "质量为 m 和 3m 的两质点相距 L，则它们的质心距离 m 这一端的距离为______（用 L 表示）。",
+    "answer": "3L/4",
+    "grading_rubric": "x_cm = (m·0 + 3m·L)/(4m) = 3L/4。",
+    "explanation": "以质量 m 端为原点，质心位置 = 3m·L/(m+3m) = 3L/4。"
+  },
+  {
+    "id": "q-fbd-forces-001",
+    "concept_ids": [
+      "dynamics-fbd-forces"
+    ],
+    "week": 2,
+    "difficulty": 1,
+    "type": "mcq",
+    "question": "在画自由体图（FBD）时，下列做法正确的是？",
+    "options": [
+      "A. 必须画出物体所受的所有内力",
+      "B. 只画作用在该物体上的外部接触力和场力",
+      "C. 应画出该物体施加给其他物体的力",
+      "D. 自由体图上必须标出物体的速度和加速度"
+    ],
+    "answer": "B",
+    "grading_rubric": "选 B：FBD 只标作用于该物体上的外力（接触力 + 场力如重力）。",
+    "explanation": "FBD 只反映作用在所研究物体上的外力，不包括它对外施加的力，也不画速度或加速度。"
+  },
+  {
+    "id": "q-fbd-forces-002",
+    "concept_ids": [
+      "dynamics-fbd-forces"
+    ],
+    "week": 2,
+    "difficulty": 2,
+    "type": "mcq",
+    "question": "一个静止物体放在水平桌面上，受到的合力为？",
+    "options": [
+      "A. 重力大小",
+      "B. 法向支持力大小",
+      "C. 0",
+      "D. 重力与支持力之和"
+    ],
+    "answer": "C",
+    "grading_rubric": "静止物体加速度为 0，所以合力 = 0。",
+    "explanation": "根据牛顿第一定律，静止物体处于平衡状态，重力与支持力大小相等方向相反，合力为零。"
+  },
+  {
+    "id": "q-fbd-forces-003",
+    "concept_ids": [
+      "dynamics-fbd-forces"
+    ],
+    "week": 2,
+    "difficulty": 2,
+    "type": "fill",
+    "question": "一个质量为 5 kg 的物体悬挂在天花板上静止不动，绳的张力大小为______ N（g=10 m/s²）。",
+    "answer": "50",
+    "grading_rubric": "T = mg = 5×10 = 50 N。",
+    "explanation": "物体静止，绳张力与重力平衡：T = mg = 5×10 = 50 N。"
+  },
+  {
+    "id": "q-newtons-third-law-001",
+    "concept_ids": [
+      "dynamics-newtons-third-law"
+    ],
+    "week": 2,
+    "difficulty": 1,
+    "type": "mcq",
+    "question": "关于牛顿第三定律，下列说法正确的是？",
+    "options": [
+      "A. 作用力与反作用力作用在同一物体上",
+      "B. 作用力大于反作用力时物体被推动",
+      "C. 作用力与反作用力大小相等、方向相反，分别作用于两个不同物体",
+      "D. 重力与支持力是一对作用力与反作用力"
+    ],
+    "answer": "C",
+    "grading_rubric": "选 C：作用力与反作用力等大反向、作用在两个不同物体上。",
+    "explanation": "牛顿第三定律：F_AB = -F_BA，分别作用于两个不同物体；重力与支持力作用在同一物体，不构成第三定律对。"
+  },
+  {
+    "id": "q-newtons-third-law-002",
+    "concept_ids": [
+      "dynamics-newtons-third-law"
+    ],
+    "week": 2,
+    "difficulty": 2,
+    "type": "mcq",
+    "question": "一辆 1000 kg 的汽车以 200 N 的力推一辆 500 kg 的小车。小车对汽车的作用力大小为？",
+    "options": [
+      "A. 100 N",
+      "B. 200 N",
+      "C. 400 N",
+      "D. 取决于加速度"
+    ],
+    "answer": "B",
+    "grading_rubric": "由牛顿第三定律，小车对汽车的作用力 = 汽车对小车的作用力 = 200 N。",
+    "explanation": "无论质量比如何，作用力与反作用力始终大小相等，方向相反。"
+  },
+  {
+    "id": "q-newtons-third-law-003",
+    "concept_ids": [
+      "dynamics-newtons-third-law"
+    ],
+    "week": 2,
+    "difficulty": 2,
+    "type": "fill",
+    "question": "宇航员在太空中用 50 N 的力推一个质量为 100 kg 的物体，则物体对宇航员的反作用力大小为______ N。",
+    "answer": "50",
+    "grading_rubric": "牛顿第三定律：反作用力 = 50 N。",
+    "explanation": "反作用力与作用力大小相等，与物体质量、加速度无关。"
+  },
+  {
+    "id": "q-newtons-first-law-001",
+    "concept_ids": [
+      "dynamics-newtons-first-law"
+    ],
+    "week": 2,
+    "difficulty": 1,
+    "type": "mcq",
+    "question": "下列哪种情形物体一定处于平衡状态？",
+    "options": [
+      "A. 物体静止",
+      "B. 物体做匀速直线运动",
+      "C. 物体加速度为零",
+      "D. 以上都对"
+    ],
+    "answer": "D",
+    "grading_rubric": "平衡状态的本质是合力为零（即加速度为零），静止和匀速直线运动都属于平衡态。",
+    "explanation": "牛顿第一定律：当合力为零时，物体保持静止或匀速直线运动，三种描述等价。"
+  },
+  {
+    "id": "q-newtons-first-law-002",
+    "concept_ids": [
+      "dynamics-newtons-first-law"
+    ],
+    "week": 2,
+    "difficulty": 2,
+    "type": "mcq",
+    "question": "一个物体所受合力为零，下列说法正确的是？",
+    "options": [
+      "A. 物体一定静止",
+      "B. 物体的速度一定为零",
+      "C. 物体的加速度为零",
+      "D. 物体一定做减速运动"
+    ],
+    "answer": "C",
+    "grading_rubric": "合力为零时 a=0，但物体可以匀速运动。",
+    "explanation": "F_net=0 → a=0，物体可以保持任意恒定速度（包括零），不一定静止。"
+  },
+  {
+    "id": "q-newtons-first-law-003",
+    "concept_ids": [
+      "dynamics-newtons-first-law"
+    ],
+    "week": 2,
+    "difficulty": 2,
+    "type": "fill",
+    "question": "牛顿第一定律也叫______定律，描述物体保持原有运动状态的性质。",
+    "answer": "惯性",
+    "grading_rubric": "关键词：惯性。",
+    "explanation": "牛顿第一定律即惯性定律，反映物体维持其速度状态的性质。"
+  },
+  {
+    "id": "q-newtons-second-law-001",
+    "concept_ids": [
+      "dynamics-newtons-second-law"
+    ],
+    "week": 2,
+    "difficulty": 1,
+    "type": "mcq",
+    "question": "牛顿第二定律 F=ma 中，F 表示？",
+    "options": [
+      "A. 物体受到的最大力",
+      "B. 物体所受合力（净力）",
+      "C. 重力",
+      "D. 摩擦力"
+    ],
+    "answer": "B",
+    "grading_rubric": "F 表示合力 F_net。",
+    "explanation": "牛顿第二定律中 F 是物体所受的合力，加速度方向与合力方向相同。"
+  },
+  {
+    "id": "q-newtons-second-law-002",
+    "concept_ids": [
+      "dynamics-newtons-second-law"
+    ],
+    "week": 2,
+    "difficulty": 2,
+    "type": "mcq",
+    "question": "质量为 4 kg 的物体在合力 12 N 作用下，加速度大小为？",
+    "options": [
+      "A. 0.33 m/s²",
+      "B. 3 m/s²",
+      "C. 8 m/s²",
+      "D. 48 m/s²"
+    ],
+    "answer": "B",
+    "grading_rubric": "a = F/m = 12/4 = 3 m/s²。",
+    "explanation": "由 F=ma，a = 12 N ÷ 4 kg = 3 m/s²。"
+  },
+  {
+    "id": "q-newtons-second-law-003",
+    "concept_ids": [
+      "dynamics-newtons-second-law"
+    ],
+    "week": 2,
+    "difficulty": 2,
+    "type": "fill",
+    "question": "一个 2 kg 物体以 5 m/s² 加速度运动，则所受合力为______ N。",
+    "answer": "10",
+    "grading_rubric": "F = ma = 2×5 = 10 N。",
+    "explanation": "由 F=ma，合力 = 2 kg × 5 m/s² = 10 N。"
+  },
+  {
+    "id": "q-gravitational-force-001",
+    "concept_ids": [
+      "dynamics-gravitational-force"
+    ],
+    "week": 3,
+    "difficulty": 1,
+    "type": "mcq",
+    "question": "万有引力公式 F = Gm₁m₂/r² 中，r 表示？",
+    "options": [
+      "A. 两物体表面之间的距离",
+      "B. 两物体质心之间的距离",
+      "C. 物体的半径之和",
+      "D. 物体的体积"
+    ],
+    "answer": "B",
+    "grading_rubric": "r 是两物体质心之间的距离。",
+    "explanation": "牛顿万有引力定律中 r 指两质点（或质心）间的距离。"
+  },
+  {
+    "id": "q-gravitational-force-002",
+    "concept_ids": [
+      "dynamics-gravitational-force"
+    ],
+    "week": 3,
+    "difficulty": 2,
+    "type": "mcq",
+    "question": "若两物体距离增大为原来的 2 倍，万有引力变为原来的？",
+    "options": [
+      "A. 2 倍",
+      "B. 1/2",
+      "C. 1/4",
+      "D. 4 倍"
+    ],
+    "answer": "C",
+    "grading_rubric": "F ∝ 1/r²，r 变为 2r，则 F 变为 1/4。",
+    "explanation": "万有引力与距离平方成反比，距离变为 2 倍则引力变为原来的 1/4。"
+  },
+  {
+    "id": "q-gravitational-force-003",
+    "concept_ids": [
+      "dynamics-gravitational-force"
+    ],
+    "week": 3,
+    "difficulty": 2,
+    "type": "fill",
+    "question": "地球表面附近重力加速度 g 与万有引力关系为 g = G·M/______（M 为地球质量，填距离量）。",
+    "answer": "R²",
+    "grading_rubric": "答案为 R² 或 r²（地球半径平方）。",
+    "explanation": "g = GM/R²，其中 R 为地球半径，这是引力场强度的表达式。"
+  },
+  {
+    "id": "q-friction-001",
+    "concept_ids": [
+      "dynamics-friction"
+    ],
+    "week": 2,
+    "difficulty": 1,
+    "type": "mcq",
+    "question": "关于动摩擦力，下列说法正确的是？",
+    "options": [
+      "A. 总是与运动方向相同",
+      "B. 大小总是等于 μ·N",
+      "C. 总是与相对运动方向相反",
+      "D. 与接触面积成正比"
+    ],
+    "answer": "C",
+    "grading_rubric": "动摩擦力方向与物体相对接触面的运动方向相反。",
+    "explanation": "动摩擦力 f_k = μ_k·N，方向阻碍相对运动；其与正压力相关，而非接触面积。"
+  },
+  {
+    "id": "q-friction-002",
+    "concept_ids": [
+      "dynamics-friction"
+    ],
+    "week": 2,
+    "difficulty": 2,
+    "type": "mcq",
+    "question": "一物体重 100 N 静止于水平面上，动摩擦系数 μ_k=0.3，要使其匀速滑动需施加水平力至少为？",
+    "options": [
+      "A. 10 N",
+      "B. 30 N",
+      "C. 100 N",
+      "D. 300 N"
+    ],
+    "answer": "B",
+    "grading_rubric": "匀速时 F = μ_k·N = 0.3×100 = 30 N。",
+    "explanation": "匀速运动时拉力等于动摩擦力 = μ_k·N = 0.3×100 N = 30 N。"
+  },
+  {
+    "id": "q-friction-003",
+    "concept_ids": [
+      "dynamics-friction"
+    ],
+    "week": 2,
+    "difficulty": 2,
+    "type": "fill",
+    "question": "在水平面上质量为 m，正压力为 N=mg，动摩擦系数为 μ，则动摩擦力大小为______（用 μ、m、g 表示）。",
+    "answer": "μmg",
+    "grading_rubric": "f_k = μ·N = μmg。",
+    "explanation": "动摩擦力 = μ·N = μmg。"
+  },
+  {
+    "id": "q-spring-forces-001",
+    "concept_ids": [
+      "dynamics-spring-forces"
+    ],
+    "week": 3,
+    "difficulty": 1,
+    "type": "mcq",
+    "question": "胡克定律 F = -kx 中负号表示？",
+    "options": [
+      "A. 弹力大小为负",
+      "B. 弹力方向与位移方向相反（回复力）",
+      "C. k 是负值",
+      "D. 弹簧被拉伸为负方向"
+    ],
+    "answer": "B",
+    "grading_rubric": "负号代表弹簧的弹力是回复力，与位移方向相反。",
+    "explanation": "胡克定律的负号意味着弹力始终指向平衡位置，是回复力的体现。"
+  },
+  {
+    "id": "q-spring-forces-002",
+    "concept_ids": [
+      "dynamics-spring-forces"
+    ],
+    "week": 3,
+    "difficulty": 2,
+    "type": "mcq",
+    "question": "弹簧劲度系数 k=200 N/m，被拉伸 0.05 m 后弹力大小为？",
+    "options": [
+      "A. 4 N",
+      "B. 10 N",
+      "C. 40 N",
+      "D. 100 N"
+    ],
+    "answer": "B",
+    "grading_rubric": "F = kx = 200×0.05 = 10 N。",
+    "explanation": "由胡克定律 F=kx，弹力大小 = 200×0.05 = 10 N。"
+  },
+  {
+    "id": "q-spring-forces-003",
+    "concept_ids": [
+      "dynamics-spring-forces"
+    ],
+    "week": 3,
+    "difficulty": 2,
+    "type": "fill",
+    "question": "弹簧的劲度系数 k 的国际单位是______。",
+    "answer": "N/m",
+    "grading_rubric": "单位 N/m。",
+    "explanation": "F=kx，单位关系为 N = (N/m)·m，所以 k 的单位是 N/m。"
+  },
+  {
+    "id": "q-circular-motion-001",
+    "concept_ids": [
+      "dynamics-circular-motion"
+    ],
+    "week": 3,
+    "difficulty": 1,
+    "type": "mcq",
+    "question": "做匀速圆周运动的物体，向心加速度方向？",
+    "options": [
+      "A. 沿切线方向",
+      "B. 指向圆心",
+      "C. 背离圆心",
+      "D. 与速度同向"
+    ],
+    "answer": "B",
+    "grading_rubric": "向心加速度方向始终指向圆心。",
+    "explanation": "向心加速度 a_c = v²/r，方向沿径向指向圆心。"
+  },
+  {
+    "id": "q-circular-motion-002",
+    "concept_ids": [
+      "dynamics-circular-motion"
+    ],
+    "week": 3,
+    "difficulty": 2,
+    "type": "mcq",
+    "question": "质量 2 kg 物体以 4 m/s 做半径 2 m 的匀速圆周运动，所需向心力大小为？",
+    "options": [
+      "A. 4 N",
+      "B. 8 N",
+      "C. 16 N",
+      "D. 32 N"
+    ],
+    "answer": "C",
+    "grading_rubric": "F = mv²/r = 2×16/2 = 16 N。",
+    "explanation": "向心力 F_c = mv²/r = 2×(4²)/2 = 16 N。"
+  },
+  {
+    "id": "q-circular-motion-003",
+    "concept_ids": [
+      "dynamics-circular-motion"
+    ],
+    "week": 3,
+    "difficulty": 2,
+    "type": "fill",
+    "question": "做匀速圆周运动时，向心加速度公式为 a_c = ______（用 v 和 r 表示）。",
+    "answer": "v²/r",
+    "grading_rubric": "答案 v²/r。",
+    "explanation": "向心加速度 a_c = v²/r 或等价的 ω²r。"
+  },
+  {
+    "id": "q-inclined-planes-001",
+    "concept_ids": [
+      "dynamics-inclined-planes"
+    ],
+    "week": 3,
+    "difficulty": 1,
+    "type": "mcq",
+    "question": "斜面倾角为 θ，质量为 m 的物体放在光滑斜面上，沿斜面方向重力分量为？",
+    "options": [
+      "A. mg",
+      "B. mg·cosθ",
+      "C. mg·sinθ",
+      "D. mg·tanθ"
+    ],
+    "answer": "C",
+    "grading_rubric": "沿斜面方向分量 = mg·sinθ。",
+    "explanation": "将重力分解：沿斜面向下分量 = mg·sinθ，垂直斜面分量 = mg·cosθ。"
+  },
+  {
+    "id": "q-inclined-planes-002",
+    "concept_ids": [
+      "dynamics-inclined-planes"
+    ],
+    "week": 3,
+    "difficulty": 2,
+    "type": "mcq",
+    "question": "30° 光滑斜面上质量 4 kg 物体，沿斜面下滑的加速度为？（g=10 m/s²）",
+    "options": [
+      "A. 2 m/s²",
+      "B. 5 m/s²",
+      "C. 8.66 m/s²",
+      "D. 10 m/s²"
+    ],
+    "answer": "B",
+    "grading_rubric": "a = g·sinθ = 10×0.5 = 5 m/s²。",
+    "explanation": "光滑斜面下滑加速度 a = g·sin30° = 10×0.5 = 5 m/s²。"
+  },
+  {
+    "id": "q-inclined-planes-003",
+    "concept_ids": [
+      "dynamics-inclined-planes"
+    ],
+    "week": 3,
+    "difficulty": 2,
+    "type": "fill",
+    "question": "斜面倾角为 θ，物体所受法向支持力 N 等于______（用 m、g、θ 表示）。",
+    "answer": "mgcosθ",
+    "grading_rubric": "N = mg·cosθ。",
+    "explanation": "垂直斜面方向平衡：N = mg·cosθ。"
+  },
+  {
+    "id": "q-systems-connected-001",
+    "concept_ids": [
+      "dynamics-systems-connected"
+    ],
+    "week": 3,
+    "difficulty": 1,
+    "type": "mcq",
+    "question": "连接体（通过轻绳/轻杆相连）中，下列说法正确的是？",
+    "options": [
+      "A. 各物体加速度可以不同",
+      "B. 通过同一根不可伸长的绳的两物体加速度大小相等",
+      "C. 绳上各点的张力一定不同",
+      "D. 绳的质量不可忽略"
+    ],
+    "answer": "B",
+    "grading_rubric": "不可伸长轻绳两端物体加速度大小相等。",
+    "explanation": "理想轻绳不可伸长，连接的两物体在绳方向的速度和加速度大小相等；轻绳张力处处相同。"
+  },
+  {
+    "id": "q-systems-connected-002",
+    "concept_ids": [
+      "dynamics-systems-connected"
+    ],
+    "week": 3,
+    "difficulty": 2,
+    "type": "mcq",
+    "question": "光滑水平面上 2 kg 物体 A 通过轻绳拉 3 kg 物体 B，外力 F=10 N 拉 A，则系统加速度为？",
+    "options": [
+      "A. 1 m/s²",
+      "B. 2 m/s²",
+      "C. 3.3 m/s²",
+      "D. 5 m/s²"
+    ],
+    "answer": "B",
+    "grading_rubric": "a = F/(m_A+m_B) = 10/5 = 2 m/s²。",
+    "explanation": "将系统视为整体：a = 总外力/总质量 = 10/(2+3) = 2 m/s²。"
+  },
+  {
+    "id": "q-systems-connected-003",
+    "concept_ids": [
+      "dynamics-systems-connected"
+    ],
+    "week": 3,
+    "difficulty": 2,
+    "type": "fill",
+    "question": "上题中绳对 B 的张力大小为______ N。",
+    "answer": "6",
+    "grading_rubric": "T = m_B·a = 3×2 = 6 N。",
+    "explanation": "对 B 单独分析：T = m_B·a = 3×2 = 6 N。"
+  },
+  {
+    "id": "q-circular-orbits-001",
+    "concept_ids": [
+      "dynamics-circular-orbits"
+    ],
+    "week": 3,
+    "difficulty": 1,
+    "type": "mcq",
+    "question": "卫星做圆形轨道运动时，向心力由什么提供？",
+    "options": [
+      "A. 卫星的推进力",
+      "B. 万有引力",
+      "C. 摩擦力",
+      "D. 空气阻力"
+    ],
+    "answer": "B",
+    "grading_rubric": "向心力由地球与卫星之间的万有引力提供。",
+    "explanation": "圆轨道卫星运动中，万有引力提供向心力：GMm/r² = mv²/r。"
+  },
+  {
+    "id": "q-circular-orbits-002",
+    "concept_ids": [
+      "dynamics-circular-orbits"
+    ],
+    "week": 3,
+    "difficulty": 2,
+    "type": "mcq",
+    "question": "圆形轨道卫星的轨道半径变大时，其速度会？",
+    "options": [
+      "A. 变大",
+      "B. 变小",
+      "C. 不变",
+      "D. 先变大后变小"
+    ],
+    "answer": "B",
+    "grading_rubric": "由 v=√(GM/r)，r 增大则 v 减小。",
+    "explanation": "卫星圆轨道速度 v=√(GM/r)，r 越大 v 越小，所以高轨道卫星速度更慢。"
+  },
+  {
+    "id": "q-circular-orbits-003",
+    "concept_ids": [
+      "dynamics-circular-orbits"
+    ],
+    "week": 3,
+    "difficulty": 2,
+    "type": "fill",
+    "question": "圆形轨道卫星的速度公式 v = ______（用 G、M、r 表示）。",
+    "answer": "√(GM/r)",
+    "grading_rubric": "v = √(GM/r) 或等价形式。",
+    "explanation": "由 GMm/r² = mv²/r 解得 v = √(GM/r)。"
+  },
+  {
+    "id": "q-translational-kinetic-001",
+    "concept_ids": [
+      "energy-translational-kinetic"
+    ],
+    "week": 4,
+    "difficulty": 1,
+    "type": "mcq",
+    "question": "平动动能 K 的表达式是？",
+    "options": [
+      "A. K = mv",
+      "B. K = mv²",
+      "C. K = ½mv²",
+      "D. K = ½mv"
+    ],
+    "answer": "C",
+    "grading_rubric": "K = ½mv²。",
+    "explanation": "平动动能定义 K = ½mv²，单位焦耳 (J)。"
+  },
+  {
+    "id": "q-translational-kinetic-002",
+    "concept_ids": [
+      "energy-translational-kinetic"
+    ],
+    "week": 4,
+    "difficulty": 2,
+    "type": "mcq",
+    "question": "质量为 2 kg 的物体速度为 3 m/s，其动能为？",
+    "options": [
+      "A. 3 J",
+      "B. 6 J",
+      "C. 9 J",
+      "D. 18 J"
+    ],
+    "answer": "C",
+    "grading_rubric": "K = ½×2×3² = 9 J。",
+    "explanation": "K = ½mv² = ½×2×9 = 9 J。"
+  },
+  {
+    "id": "q-translational-kinetic-003",
+    "concept_ids": [
+      "energy-translational-kinetic"
+    ],
+    "week": 4,
+    "difficulty": 2,
+    "type": "fill",
+    "question": "若一物体的速度增大为原来的 3 倍，其动能变为原来的______倍。",
+    "answer": "9",
+    "grading_rubric": "K ∝ v²，速度变 3 倍，动能变 9 倍。",
+    "explanation": "K = ½mv² ∝ v²，v 变 3 倍则 K 变 9 倍。"
+  },
+  {
+    "id": "q-work-001",
+    "concept_ids": [
+      "energy-work"
+    ],
+    "week": 4,
+    "difficulty": 1,
+    "type": "mcq",
+    "question": "恒力做功的公式 W = Fd·cosθ 中，θ 表示？",
+    "options": [
+      "A. 力与水平方向夹角",
+      "B. 力与位移方向夹角",
+      "C. 位移与水平方向夹角",
+      "D. 力与重力方向夹角"
+    ],
+    "answer": "B",
+    "grading_rubric": "θ 为力与位移方向之间的夹角。",
+    "explanation": "功 W = F·d·cosθ，θ 是力与位移的夹角，cosθ 决定符号和大小。"
+  },
+  {
+    "id": "q-work-002",
+    "concept_ids": [
+      "energy-work"
+    ],
+    "week": 4,
+    "difficulty": 2,
+    "type": "mcq",
+    "question": "10 N 的水平力作用在物体上，物体沿水平方向移动 5 m，则该力做功为？",
+    "options": [
+      "A. 0.5 J",
+      "B. 2 J",
+      "C. 15 J",
+      "D. 50 J"
+    ],
+    "answer": "D",
+    "grading_rubric": "W = Fd·cos0 = 10×5 = 50 J。",
+    "explanation": "力与位移同向，W = F·d = 10×5 = 50 J。"
+  },
+  {
+    "id": "q-work-003",
+    "concept_ids": [
+      "energy-work"
+    ],
+    "week": 4,
+    "difficulty": 2,
+    "type": "fill",
+    "question": "若力与位移方向垂直，则该力做功为______ J。",
+    "answer": "0",
+    "grading_rubric": "cos90° = 0，W = 0。",
+    "explanation": "W = Fd·cos90° = 0，垂直方向的力不做功。"
+  },
+  {
+    "id": "q-fx-graph-001",
+    "concept_ids": [
+      "energy-fx-graph"
+    ],
+    "week": 4,
+    "difficulty": 1,
+    "type": "mcq",
+    "question": "在 F-x 图像中，曲线与 x 轴围成的面积代表？",
+    "options": [
+      "A. 平均力",
+      "B. 功",
+      "C. 动能变化率",
+      "D. 冲量"
+    ],
+    "answer": "B",
+    "grading_rubric": "F-x 图下面积 = 力对位移的积分 = 功。",
+    "explanation": "由 W = ∫F·dx，F-x 图与 x 轴所围面积即为功。"
+  },
+  {
+    "id": "q-fx-graph-002",
+    "concept_ids": [
+      "energy-fx-graph"
+    ],
+    "week": 4,
+    "difficulty": 2,
+    "type": "mcq",
+    "question": "F-x 图中力从 0 线性增加到 20 N 经过位移 4 m，则做功为？",
+    "options": [
+      "A. 20 J",
+      "B. 40 J",
+      "C. 80 J",
+      "D. 100 J"
+    ],
+    "answer": "B",
+    "grading_rubric": "三角形面积 = ½×4×20 = 40 J。",
+    "explanation": "F-x 图为三角形，W = ½×底×高 = ½×4×20 = 40 J。"
+  },
+  {
+    "id": "q-fx-graph-003",
+    "concept_ids": [
+      "energy-fx-graph"
+    ],
+    "week": 4,
+    "difficulty": 2,
+    "type": "fill",
+    "question": "若 F-x 图位于 x 轴下方，则该过程做的功为______（填正或负）。",
+    "answer": "负",
+    "grading_rubric": "面积在 x 轴下方代表负功。",
+    "explanation": "F-x 图位于 x 轴下方表示力与位移反向，做负功。"
+  },
+  {
+    "id": "q-potential-energy-001",
+    "concept_ids": [
+      "energy-potential-energy"
+    ],
+    "week": 4,
+    "difficulty": 1,
+    "type": "mcq",
+    "question": "重力势能 U_g = mgh 中，h 是？",
+    "options": [
+      "A. 物体的真实高度",
+      "B. 相对于某一参考点的高度",
+      "C. 必须从地面起算",
+      "D. 物体自身高度"
+    ],
+    "answer": "B",
+    "grading_rubric": "重力势能依赖于参考点的选择。",
+    "explanation": "势能是相对量，h 是相对于所选参考点（零势能面）的高度。"
+  },
+  {
+    "id": "q-potential-energy-002",
+    "concept_ids": [
+      "energy-potential-energy"
+    ],
+    "week": 4,
+    "difficulty": 2,
+    "type": "mcq",
+    "question": "k=200 N/m 的弹簧被压缩 0.1 m，弹性势能为？",
+    "options": [
+      "A. 1 J",
+      "B. 2 J",
+      "C. 10 J",
+      "D. 20 J"
+    ],
+    "answer": "A",
+    "grading_rubric": "U_s = ½kx² = ½×200×0.01 = 1 J。",
+    "explanation": "弹性势能 U_s = ½kx² = ½×200×(0.1)² = 1 J。"
+  },
+  {
+    "id": "q-potential-energy-003",
+    "concept_ids": [
+      "energy-potential-energy"
+    ],
+    "week": 4,
+    "difficulty": 2,
+    "type": "fill",
+    "question": "弹簧弹性势能公式为 U_s = ______（用 k 和 x 表示）。",
+    "answer": "½kx²",
+    "grading_rubric": "答案 ½kx² 或 (1/2)kx²。",
+    "explanation": "弹性势能 U_s = ½kx²，对应 F=kx 的积分结果。"
+  },
+  {
+    "id": "q-energy-conservation-001",
+    "concept_ids": [
+      "energy-conservation"
+    ],
+    "week": 4,
+    "difficulty": 1,
+    "type": "mcq",
+    "question": "机械能守恒的条件是？",
+    "options": [
+      "A. 物体不受任何力",
+      "B. 只受重力或弹力（保守力）作用",
+      "C. 物体匀速运动",
+      "D. 没有摩擦力但有外力做功"
+    ],
+    "answer": "B",
+    "grading_rubric": "只有保守力做功时机械能守恒。",
+    "explanation": "机械能守恒要求只有重力、弹力等保守力做功（无摩擦、无外力做功）。"
+  },
+  {
+    "id": "q-energy-conservation-002",
+    "concept_ids": [
+      "energy-conservation"
+    ],
+    "week": 4,
+    "difficulty": 2,
+    "type": "mcq",
+    "question": "物体从 5 m 高处自由下落到地面，落地速度为？（g=10 m/s²）",
+    "options": [
+      "A. 5 m/s",
+      "B. 10 m/s",
+      "C. 25 m/s",
+      "D. 50 m/s"
+    ],
+    "answer": "B",
+    "grading_rubric": "mgh = ½mv² → v = √(2gh) = √100 = 10 m/s。",
+    "explanation": "机械能守恒：mgh = ½mv²，解得 v = √(2gh) = √(2×10×5) = 10 m/s。"
+  },
+  {
+    "id": "q-energy-conservation-003",
+    "concept_ids": [
+      "energy-conservation"
+    ],
+    "week": 4,
+    "difficulty": 2,
+    "type": "fill",
+    "question": "机械能守恒时，K + U = ______（填关键词）。",
+    "answer": "常量",
+    "grading_rubric": "答案：常量（或不变、恒定）。",
+    "explanation": "机械能守恒意味着动能与势能之和保持恒定。"
+  },
+  {
+    "id": "q-bar-charts-001",
+    "concept_ids": [
+      "energy-bar-charts"
+    ],
+    "week": 4,
+    "difficulty": 1,
+    "type": "mcq",
+    "question": "能量条形图（Energy Bar Chart）主要用来表示？",
+    "options": [
+      "A. 物体的速度大小",
+      "B. 系统初末状态各种能量的相对大小及变化",
+      "C. 力随时间的变化",
+      "D. 位移变化"
+    ],
+    "answer": "B",
+    "grading_rubric": "能量条形图展示系统各种能量的相对值与转换。",
+    "explanation": "能量条形图用条柱表示动能、势能、内能等的初末状态及外力做功，帮助分析能量流动。"
+  },
+  {
+    "id": "q-bar-charts-002",
+    "concept_ids": [
+      "energy-bar-charts"
+    ],
+    "week": 4,
+    "difficulty": 2,
+    "type": "mcq",
+    "question": "物体在自由落体过程中（无空气阻力），能量条形图变化趋势是？",
+    "options": [
+      "A. 动能增大，势能不变",
+      "B. 动能减小，势能增大",
+      "C. 动能增大，势能减小，总和不变",
+      "D. 动能和势能都增大"
+    ],
+    "answer": "C",
+    "grading_rubric": "自由落体时势能转动能，总机械能守恒。",
+    "explanation": "下落过程中重力做正功，势能减小转化为动能，总机械能不变。"
+  },
+  {
+    "id": "q-bar-charts-003",
+    "concept_ids": [
+      "energy-bar-charts"
+    ],
+    "week": 4,
+    "difficulty": 2,
+    "type": "fill",
+    "question": "若系统受摩擦力做负功，则在能量条形图中需引入______能。",
+    "answer": "内",
+    "grading_rubric": "答案为内能（或热能）。",
+    "explanation": "摩擦力做负功使机械能转化为热能（内能），能量条图需添加内能柱。"
+  },
+  {
+    "id": "q-power-001",
+    "concept_ids": [
+      "energy-power"
+    ],
+    "week": 4,
+    "difficulty": 1,
+    "type": "mcq",
+    "question": "功率的定义式是？",
+    "options": [
+      "A. P = W·t",
+      "B. P = W/t",
+      "C. P = F·t",
+      "D. P = mg·h"
+    ],
+    "answer": "B",
+    "grading_rubric": "P = W/t。",
+    "explanation": "功率 = 功 / 时间 = W/t，单位为瓦特 (W)。"
+  },
+  {
+    "id": "q-power-002",
+    "concept_ids": [
+      "energy-power"
+    ],
+    "week": 4,
+    "difficulty": 2,
+    "type": "mcq",
+    "question": "一台机器在 4 s 内做了 200 J 的功，其功率为？",
+    "options": [
+      "A. 50 W",
+      "B. 100 W",
+      "C. 200 W",
+      "D. 800 W"
+    ],
+    "answer": "A",
+    "grading_rubric": "P = W/t = 200/4 = 50 W。",
+    "explanation": "P = W/t = 200 J ÷ 4 s = 50 W。"
+  },
+  {
+    "id": "q-power-003",
+    "concept_ids": [
+      "energy-power"
+    ],
+    "week": 4,
+    "difficulty": 2,
+    "type": "fill",
+    "question": "当力 F 作用在以速度 v 运动的物体上时（同向），瞬时功率 P = ______。",
+    "answer": "Fv",
+    "grading_rubric": "P = F·v。",
+    "explanation": "瞬时功率 P = F·v（F 与 v 同向时）。"
+  },
+  {
+    "id": "q-momentum-linear-001",
+    "concept_ids": [
+      "momentum-linear"
+    ],
+    "week": 5,
+    "difficulty": 1,
+    "type": "mcq",
+    "question": "线动量 p 的定义式是？",
+    "options": [
+      "A. p = mv",
+      "B. p = ½mv²",
+      "C. p = Ft",
+      "D. p = mg"
+    ],
+    "answer": "A",
+    "grading_rubric": "p = mv。",
+    "explanation": "线动量 p = mv，是矢量，方向与速度方向相同。"
+  },
+  {
+    "id": "q-momentum-linear-002",
+    "concept_ids": [
+      "momentum-linear"
+    ],
+    "week": 5,
+    "difficulty": 2,
+    "type": "mcq",
+    "question": "质量为 3 kg 的物体以 4 m/s 向东运动，其动量大小为？",
+    "options": [
+      "A. 7 kg·m/s",
+      "B. 12 kg·m/s",
+      "C. 24 kg·m/s",
+      "D. 0.75 kg·m/s"
+    ],
+    "answer": "B",
+    "grading_rubric": "p = mv = 3×4 = 12 kg·m/s。",
+    "explanation": "p = mv = 3×4 = 12 kg·m/s，方向向东。"
+  },
+  {
+    "id": "q-momentum-linear-003",
+    "concept_ids": [
+      "momentum-linear"
+    ],
+    "week": 5,
+    "difficulty": 2,
+    "type": "fill",
+    "question": "动量的国际单位是______。",
+    "answer": "kg·m/s",
+    "grading_rubric": "kg·m/s（或 N·s）。",
+    "explanation": "动量单位 kg·m/s，等价于 N·s。"
+  },
+  {
+    "id": "q-momentum-impulse-001",
+    "concept_ids": [
+      "momentum-impulse"
+    ],
+    "week": 5,
+    "difficulty": 1,
+    "type": "mcq",
+    "question": "冲量定理（动量定理）的表达式是？",
+    "options": [
+      "A. J = mΔv",
+      "B. J = FΔt = Δp",
+      "C. J = ½mv²",
+      "D. J = Fd"
+    ],
+    "answer": "B",
+    "grading_rubric": "J = FΔt = Δp。",
+    "explanation": "冲量 J = F·Δt，等于动量的变化 Δp。"
+  },
+  {
+    "id": "q-momentum-impulse-002",
+    "concept_ids": [
+      "momentum-impulse"
+    ],
+    "week": 5,
+    "difficulty": 2,
+    "type": "mcq",
+    "question": "10 N 的力作用 5 s，对物体的冲量大小为？",
+    "options": [
+      "A. 2 N·s",
+      "B. 15 N·s",
+      "C. 50 N·s",
+      "D. 0.5 N·s"
+    ],
+    "answer": "C",
+    "grading_rubric": "J = FΔt = 10×5 = 50 N·s。",
+    "explanation": "冲量 = 力×时间 = 10×5 = 50 N·s。"
+  },
+  {
+    "id": "q-momentum-impulse-003",
+    "concept_ids": [
+      "momentum-impulse"
+    ],
+    "week": 5,
+    "difficulty": 2,
+    "type": "fill",
+    "question": "冲量的单位是______（用基本单位表示）。",
+    "answer": "N·s",
+    "grading_rubric": "N·s（或 kg·m/s）。",
+    "explanation": "冲量单位 N·s，与动量单位 kg·m/s 等价。"
+  },
+  {
+    "id": "q-momentum-ft-graph-001",
+    "concept_ids": [
+      "momentum-ft-graph"
+    ],
+    "week": 5,
+    "difficulty": 1,
+    "type": "mcq",
+    "question": "F-t 图中曲线与 t 轴围成的面积代表？",
+    "options": [
+      "A. 功",
+      "B. 冲量",
+      "C. 动能",
+      "D. 功率"
+    ],
+    "answer": "B",
+    "grading_rubric": "F-t 图下面积 = 冲量。",
+    "explanation": "J = ∫F·dt，F-t 图中面积即冲量。"
+  },
+  {
+    "id": "q-momentum-ft-graph-002",
+    "concept_ids": [
+      "momentum-ft-graph"
+    ],
+    "week": 5,
+    "difficulty": 2,
+    "type": "mcq",
+    "question": "F-t 图中力恒定为 5 N 持续 3 s，冲量大小为？",
+    "options": [
+      "A. 1.67 N·s",
+      "B. 8 N·s",
+      "C. 15 N·s",
+      "D. 45 N·s"
+    ],
+    "answer": "C",
+    "grading_rubric": "矩形面积 = 5×3 = 15 N·s。",
+    "explanation": "恒力情况下冲量 = F·Δt = 5×3 = 15 N·s。"
+  },
+  {
+    "id": "q-momentum-ft-graph-003",
+    "concept_ids": [
+      "momentum-ft-graph"
+    ],
+    "week": 5,
+    "difficulty": 2,
+    "type": "fill",
+    "question": "F-t 图下方面积代表冲量，也等于物体的______变化。",
+    "answer": "动量",
+    "grading_rubric": "答案：动量。",
+    "explanation": "由冲量定理 J = Δp，F-t 图面积等于动量变化。"
+  },
+  {
+    "id": "q-momentum-conservation-001",
+    "concept_ids": [
+      "momentum-conservation"
+    ],
+    "week": 5,
+    "difficulty": 1,
+    "type": "mcq",
+    "question": "动量守恒的条件是？",
+    "options": [
+      "A. 系统机械能守恒",
+      "B. 系统所受外力的合力为零",
+      "C. 系统不受重力",
+      "D. 系统内部没有摩擦力"
+    ],
+    "answer": "B",
+    "grading_rubric": "外力合力为零时动量守恒。",
+    "explanation": "动量守恒条件：系统所受合外力为零（内力不影响总动量）。"
+  },
+  {
+    "id": "q-momentum-conservation-002",
+    "concept_ids": [
+      "momentum-conservation"
+    ],
+    "week": 5,
+    "difficulty": 2,
+    "type": "mcq",
+    "question": "光滑水平面上 2 kg 物体以 3 m/s 向右运动，与静止的 4 kg 物体完全非弹性碰撞，共同速度为？",
+    "options": [
+      "A. 0.5 m/s",
+      "B. 1 m/s",
+      "C. 1.5 m/s",
+      "D. 2 m/s"
+    ],
+    "answer": "B",
+    "grading_rubric": "m1·v1 = (m1+m2)·v → 2×3 = 6×v → v=1 m/s。",
+    "explanation": "动量守恒：2×3 + 4×0 = (2+4)v，解得 v=1 m/s。"
+  },
+  {
+    "id": "q-momentum-conservation-003",
+    "concept_ids": [
+      "momentum-conservation"
+    ],
+    "week": 5,
+    "difficulty": 2,
+    "type": "fill",
+    "question": "若系统受到外力但作用时间极短（如爆炸、碰撞），近似认为动量______（填守恒/不守恒）。",
+    "answer": "守恒",
+    "grading_rubric": "答案：守恒。",
+    "explanation": "极短时间内外力冲量远小于内力冲量，可近似认为动量守恒。"
+  },
+  {
+    "id": "q-momentum-collisions-001",
+    "concept_ids": [
+      "momentum-collisions"
+    ],
+    "week": 5,
+    "difficulty": 1,
+    "type": "mcq",
+    "question": "下列关于碰撞的说法正确的是？",
+    "options": [
+      "A. 弹性碰撞动量不守恒",
+      "B. 非弹性碰撞动能守恒",
+      "C. 弹性碰撞中动量和动能都守恒",
+      "D. 所有碰撞动量和动能都守恒"
+    ],
+    "answer": "C",
+    "grading_rubric": "弹性碰撞动量与动能都守恒；非弹性碰撞仅动量守恒。",
+    "explanation": "弹性碰撞动量与动能同时守恒；非弹性碰撞动量守恒、动能不守恒。"
+  },
+  {
+    "id": "q-momentum-collisions-002",
+    "concept_ids": [
+      "momentum-collisions"
+    ],
+    "week": 5,
+    "difficulty": 2,
+    "type": "mcq",
+    "question": "等质量两物体发生一维弹性正碰，初始一动一静止，碰后？",
+    "options": [
+      "A. 两个物体共同向前运动",
+      "B. 入射物体反弹，被撞物体静止",
+      "C. 入射物体停下，被撞物体以原速向前",
+      "D. 两物体均静止"
+    ],
+    "answer": "C",
+    "grading_rubric": "等质量弹性正碰交换速度。",
+    "explanation": "等质量一维弹性正碰：两物体交换速度。入射物停下，被撞物以入射速度前进。"
+  },
+  {
+    "id": "q-momentum-collisions-003",
+    "concept_ids": [
+      "momentum-collisions"
+    ],
+    "week": 5,
+    "difficulty": 2,
+    "type": "fill",
+    "question": "完全非弹性碰撞中碰后两物体______（填运动状态特点）。",
+    "answer": "共速",
+    "grading_rubric": "答案：共速（或粘在一起、相同速度）。",
+    "explanation": "完全非弹性碰撞后两物体粘在一起、以相同速度运动，动能损失最大。"
+  },
+  {
+    "id": "q-rotational-kinematics-001",
+    "concept_ids": [
+      "torque-rotational-kinematics"
+    ],
+    "week": 6,
+    "difficulty": 1,
+    "type": "mcq",
+    "question": "角速度 ω 的国际单位是？",
+    "options": [
+      "A. m/s",
+      "B. rad/s",
+      "C. rev/min",
+      "D. Hz"
+    ],
+    "answer": "B",
+    "grading_rubric": "rad/s。",
+    "explanation": "角速度 ω 的 SI 单位是 rad/s（弧度每秒）。"
+  },
+  {
+    "id": "q-rotational-kinematics-002",
+    "concept_ids": [
+      "torque-rotational-kinematics"
+    ],
+    "week": 6,
+    "difficulty": 2,
+    "type": "mcq",
+    "question": "一刚体从静止开始以角加速度 α=2 rad/s² 转动，经过 5 s 后的角速度为？",
+    "options": [
+      "A. 2 rad/s",
+      "B. 5 rad/s",
+      "C. 10 rad/s",
+      "D. 25 rad/s"
+    ],
+    "answer": "C",
+    "grading_rubric": "ω = ω₀ + αt = 0 + 2×5 = 10 rad/s。",
+    "explanation": "由转动运动学 ω = ω₀ + αt = 0 + 2×5 = 10 rad/s。"
+  },
+  {
+    "id": "q-rotational-kinematics-003",
+    "concept_ids": [
+      "torque-rotational-kinematics"
+    ],
+    "week": 6,
+    "difficulty": 2,
+    "type": "fill",
+    "question": "匀角加速运动中角位移公式：θ = ω₀t + ______（用 α、t 表示）。",
+    "answer": "½αt²",
+    "grading_rubric": "答案 ½αt² 或 (1/2)αt²。",
+    "explanation": "对应平动 x = v₀t + ½at²，转动形式为 θ = ω₀t + ½αt²。"
+  },
+  {
+    "id": "q-linear-rotational-connection-001",
+    "concept_ids": [
+      "torque-linear-rotational-connection"
+    ],
+    "week": 6,
+    "difficulty": 1,
+    "type": "mcq",
+    "question": "做圆周运动物体的线速度 v 与角速度 ω 的关系是？",
+    "options": [
+      "A. v = ω/r",
+      "B. v = r/ω",
+      "C. v = ωr",
+      "D. v = ω + r"
+    ],
+    "answer": "C",
+    "grading_rubric": "v = ωr。",
+    "explanation": "线速度与角速度关系：v = ωr，其中 r 是离转轴的距离。"
+  },
+  {
+    "id": "q-linear-rotational-connection-002",
+    "concept_ids": [
+      "torque-linear-rotational-connection"
+    ],
+    "week": 6,
+    "difficulty": 2,
+    "type": "mcq",
+    "question": "圆盘以 4 rad/s 转动，距中心 0.5 m 处某点线速度为？",
+    "options": [
+      "A. 0.125 m/s",
+      "B. 0.5 m/s",
+      "C. 2 m/s",
+      "D. 8 m/s"
+    ],
+    "answer": "C",
+    "grading_rubric": "v = ωr = 4×0.5 = 2 m/s。",
+    "explanation": "v = ωr = 4 rad/s × 0.5 m = 2 m/s。"
+  },
+  {
+    "id": "q-linear-rotational-connection-003",
+    "concept_ids": [
+      "torque-linear-rotational-connection"
+    ],
+    "week": 6,
+    "difficulty": 2,
+    "type": "fill",
+    "question": "切向加速度 a_t 与角加速度 α 的关系为 a_t = ______（用 α 和 r 表示）。",
+    "answer": "αr",
+    "grading_rubric": "答案：αr。",
+    "explanation": "a_t = αr，与 v=ωr 对应的角量与线量关系。"
+  },
+  {
+    "id": "q-torque-001",
+    "concept_ids": [
+      "torque-torque"
+    ],
+    "week": 6,
+    "difficulty": 1,
+    "type": "mcq",
+    "question": "力矩 τ 的定义为？",
+    "options": [
+      "A. τ = Fd（d 是力臂）",
+      "B. τ = F + r",
+      "C. τ = F/r",
+      "D. τ = F·v"
+    ],
+    "answer": "A",
+    "grading_rubric": "τ = F·d（力臂）= rFsinθ。",
+    "explanation": "力矩 τ = r·F·sinθ = F×力臂 d，方向垂直于 r 与 F 所在平面。"
+  },
+  {
+    "id": "q-torque-002",
+    "concept_ids": [
+      "torque-torque"
+    ],
+    "week": 6,
+    "difficulty": 2,
+    "type": "mcq",
+    "question": "10 N 的力作用于离轴 0.5 m 处，且与力臂方向垂直，力矩大小为？",
+    "options": [
+      "A. 0.05 N·m",
+      "B. 2 N·m",
+      "C. 5 N·m",
+      "D. 10 N·m"
+    ],
+    "answer": "C",
+    "grading_rubric": "τ = Fd·sin90° = 10×0.5 = 5 N·m。",
+    "explanation": "τ = rFsinθ = 0.5×10×1 = 5 N·m。"
+  },
+  {
+    "id": "q-torque-003",
+    "concept_ids": [
+      "torque-torque"
+    ],
+    "week": 6,
+    "difficulty": 2,
+    "type": "fill",
+    "question": "力矩的 SI 单位是______。",
+    "answer": "N·m",
+    "grading_rubric": "N·m。",
+    "explanation": "力矩单位 N·m，不要与功的单位 J 混淆，二者量纲虽相同但物理意义不同。"
+  },
+  {
+    "id": "q-rotational-inertia-001",
+    "concept_ids": [
+      "torque-rotational-inertia"
+    ],
+    "week": 6,
+    "difficulty": 1,
+    "type": "mcq",
+    "question": "转动惯量 I 描述的是？",
+    "options": [
+      "A. 物体的质量",
+      "B. 物体抵抗转动状态变化的性质",
+      "C. 物体所受的力",
+      "D. 物体的角速度"
+    ],
+    "answer": "B",
+    "grading_rubric": "转动惯量类似平动中的质量，反映抵抗角加速度变化的性质。",
+    "explanation": "I 是转动中的'惯性'，I = Σmr²，依赖于质量及其离转轴的分布。"
+  },
+  {
+    "id": "q-rotational-inertia-002",
+    "concept_ids": [
+      "torque-rotational-inertia"
+    ],
+    "week": 6,
+    "difficulty": 2,
+    "type": "mcq",
+    "question": "质量为 2 kg 的质点绕距离 0.5 m 的轴转动，转动惯量为？",
+    "options": [
+      "A. 0.25 kg·m²",
+      "B. 0.5 kg·m²",
+      "C. 1 kg·m²",
+      "D. 2 kg·m²"
+    ],
+    "answer": "B",
+    "grading_rubric": "I = mr² = 2×0.25 = 0.5 kg·m²。",
+    "explanation": "质点 I = mr² = 2 × (0.5)² = 0.5 kg·m²。"
+  },
+  {
+    "id": "q-rotational-inertia-003",
+    "concept_ids": [
+      "torque-rotational-inertia"
+    ],
+    "week": 6,
+    "difficulty": 2,
+    "type": "fill",
+    "question": "转动惯量的 SI 单位是______。",
+    "answer": "kg·m²",
+    "grading_rubric": "kg·m²。",
+    "explanation": "I = Σmr²，单位为 kg·m²。"
+  },
+  {
+    "id": "q-rotational-equilibrium-001",
+    "concept_ids": [
+      "torque-rotational-equilibrium"
+    ],
+    "week": 6,
+    "difficulty": 1,
+    "type": "mcq",
+    "question": "刚体处于转动平衡的条件是？",
+    "options": [
+      "A. 合力为零即可",
+      "B. 合力矩为零即可",
+      "C. 合力和合力矩均为零",
+      "D. 角速度为零"
+    ],
+    "answer": "C",
+    "grading_rubric": "完全平衡：ΣF=0 且 Στ=0。",
+    "explanation": "刚体平衡要求平动平衡（合力为零）和转动平衡（合力矩为零）。"
+  },
+  {
+    "id": "q-rotational-equilibrium-002",
+    "concept_ids": [
+      "torque-rotational-equilibrium"
+    ],
+    "week": 6,
+    "difficulty": 2,
+    "type": "mcq",
+    "question": "一根均匀杆放在支点上，左端挂 30 N，距支点 2 m；右端在距支点 3 m 处需挂多少 N 才能转动平衡？（忽略杆重）",
+    "options": [
+      "A. 10 N",
+      "B. 15 N",
+      "C. 20 N",
+      "D. 45 N"
+    ],
+    "answer": "C",
+    "grading_rubric": "30×2 = F×3 → F=20 N。",
+    "explanation": "力矩平衡：30 N×2 m = F×3 m，解得 F = 20 N。"
+  },
+  {
+    "id": "q-rotational-equilibrium-003",
+    "concept_ids": [
+      "torque-rotational-equilibrium"
+    ],
+    "week": 6,
+    "difficulty": 2,
+    "type": "fill",
+    "question": "转动平衡条件用数学式表示为 Στ = ______。",
+    "answer": "0",
+    "grading_rubric": "答案：0。",
+    "explanation": "刚体转动平衡时合力矩 Στ = 0。"
+  },
+  {
+    "id": "q-newtons-second-law-rotational-001",
+    "concept_ids": [
+      "torque-newtons-second-law-rotational"
+    ],
+    "week": 6,
+    "difficulty": 1,
+    "type": "mcq",
+    "question": "转动牛顿第二定律的表达式是？",
+    "options": [
+      "A. F = ma",
+      "B. τ = Iα",
+      "C. τ = Fr",
+      "D. p = mv"
+    ],
+    "answer": "B",
+    "grading_rubric": "τ = Iα。",
+    "explanation": "转动版牛顿第二定律：净力矩 = 转动惯量 × 角加速度，τ_net = Iα。"
+  },
+  {
+    "id": "q-newtons-second-law-rotational-002",
+    "concept_ids": [
+      "torque-newtons-second-law-rotational"
+    ],
+    "week": 6,
+    "difficulty": 2,
+    "type": "mcq",
+    "question": "转动惯量 0.4 kg·m² 的转盘，受合力矩 2 N·m，角加速度为？",
+    "options": [
+      "A. 0.2 rad/s²",
+      "B. 0.8 rad/s²",
+      "C. 2.5 rad/s²",
+      "D. 5 rad/s²"
+    ],
+    "answer": "D",
+    "grading_rubric": "α = τ/I = 2/0.4 = 5 rad/s²。",
+    "explanation": "由 τ=Iα，α = τ/I = 2 ÷ 0.4 = 5 rad/s²。"
+  },
+  {
+    "id": "q-newtons-second-law-rotational-003",
+    "concept_ids": [
+      "torque-newtons-second-law-rotational"
+    ],
+    "week": 6,
+    "difficulty": 2,
+    "type": "fill",
+    "question": "转动牛顿第二定律中 τ 与 α 的方向关系是______。",
+    "answer": "相同",
+    "grading_rubric": "答案：相同（或一致、同方向）。",
+    "explanation": "合力矩方向与角加速度方向相同（τ = Iα，I 为正标量）。"
+  },
+  {
+    "id": "q-rotational-kinetic-energy-001",
+    "concept_ids": [
+      "rotation-rotational-kinetic-energy"
+    ],
+    "week": 6,
+    "difficulty": 1,
+    "type": "mcq",
+    "question": "转动动能的表达式是？",
+    "options": [
+      "A. K_rot = Iω",
+      "B. K_rot = ½Iω²",
+      "C. K_rot = mv²",
+      "D. K_rot = ½mω²"
+    ],
+    "answer": "B",
+    "grading_rubric": "K_rot = ½Iω²。",
+    "explanation": "转动动能 K_rot = ½Iω²，对应平动 ½mv² 的转动版本。"
+  },
+  {
+    "id": "q-rotational-kinetic-energy-002",
+    "concept_ids": [
+      "rotation-rotational-kinetic-energy"
+    ],
+    "week": 6,
+    "difficulty": 2,
+    "type": "mcq",
+    "question": "I = 2 kg·m²，ω = 3 rad/s，转动动能为？",
+    "options": [
+      "A. 3 J",
+      "B. 6 J",
+      "C. 9 J",
+      "D. 18 J"
+    ],
+    "answer": "C",
+    "grading_rubric": "K = ½×2×9 = 9 J。",
+    "explanation": "K_rot = ½Iω² = ½×2×3² = 9 J。"
+  },
+  {
+    "id": "q-rotational-kinetic-energy-003",
+    "concept_ids": [
+      "rotation-rotational-kinetic-energy"
+    ],
+    "week": 6,
+    "difficulty": 2,
+    "type": "fill",
+    "question": "若角速度增大为 2 倍，转动动能变为原来的______倍。",
+    "answer": "4",
+    "grading_rubric": "K ∝ ω²，ω 变 2 倍，K 变 4 倍。",
+    "explanation": "K_rot ∝ ω²，所以 ω 变 2 倍则动能变 4 倍。"
+  },
+  {
+    "id": "q-torque-work-001",
+    "concept_ids": [
+      "rotation-torque-work"
+    ],
+    "week": 6,
+    "difficulty": 1,
+    "type": "mcq",
+    "question": "力矩对转动物体做功的公式是？",
+    "options": [
+      "A. W = Fd",
+      "B. W = τθ",
+      "C. W = τω",
+      "D. W = Iα"
+    ],
+    "answer": "B",
+    "grading_rubric": "W = τ·θ（恒定力矩）。",
+    "explanation": "恒定力矩做功 W = τ·Δθ，对应平动 W = F·d。"
+  },
+  {
+    "id": "q-torque-work-002",
+    "concept_ids": [
+      "rotation-torque-work"
+    ],
+    "week": 6,
+    "difficulty": 2,
+    "type": "mcq",
+    "question": "力矩 5 N·m 使物体转过 π/2 rad，做的功为？",
+    "options": [
+      "A. 2.5 J",
+      "B. 5π/2 J",
+      "C. 10 J",
+      "D. 5π J"
+    ],
+    "answer": "B",
+    "grading_rubric": "W = τθ = 5×π/2 = 5π/2 J ≈ 7.85 J。",
+    "explanation": "W = τ·θ = 5×(π/2) = 5π/2 J。"
+  },
+  {
+    "id": "q-torque-work-003",
+    "concept_ids": [
+      "rotation-torque-work"
+    ],
+    "week": 6,
+    "difficulty": 2,
+    "type": "fill",
+    "question": "转动功率公式 P = ______（用 τ 和 ω 表示）。",
+    "answer": "τω",
+    "grading_rubric": "P = τ·ω。",
+    "explanation": "转动功率 P = τω，对应平动 P = Fv。"
+  },
+  {
+    "id": "q-angular-momentum-001",
+    "concept_ids": [
+      "rotation-angular-momentum"
+    ],
+    "week": 6,
+    "difficulty": 1,
+    "type": "mcq",
+    "question": "刚体绕轴转动的角动量公式是？",
+    "options": [
+      "A. L = mv",
+      "B. L = Iω",
+      "C. L = Fr",
+      "D. L = ½Iω²"
+    ],
+    "answer": "B",
+    "grading_rubric": "L = Iω。",
+    "explanation": "对绕固定轴转动的刚体，角动量 L = Iω。"
+  },
+  {
+    "id": "q-angular-momentum-002",
+    "concept_ids": [
+      "rotation-angular-momentum"
+    ],
+    "week": 6,
+    "difficulty": 2,
+    "type": "mcq",
+    "question": "I = 0.5 kg·m²，ω = 6 rad/s，角动量大小为？",
+    "options": [
+      "A. 0.083 kg·m²/s",
+      "B. 3 kg·m²/s",
+      "C. 6 kg·m²/s",
+      "D. 12 kg·m²/s"
+    ],
+    "answer": "B",
+    "grading_rubric": "L = Iω = 0.5×6 = 3 kg·m²/s。",
+    "explanation": "L = Iω = 0.5×6 = 3 kg·m²/s。"
+  },
+  {
+    "id": "q-angular-momentum-003",
+    "concept_ids": [
+      "rotation-angular-momentum"
+    ],
+    "week": 6,
+    "difficulty": 2,
+    "type": "fill",
+    "question": "角动量的国际单位是______。",
+    "answer": "kg·m²/s",
+    "grading_rubric": "kg·m²/s（或 N·m·s、J·s）。",
+    "explanation": "L = Iω 单位为 kg·m²/s，等价于 J·s。"
+  },
+  {
+    "id": "q-angular-momentum-conservation-001",
+    "concept_ids": [
+      "rotation-angular-momentum-conservation"
+    ],
+    "week": 6,
+    "difficulty": 1,
+    "type": "mcq",
+    "question": "角动量守恒的条件是？",
+    "options": [
+      "A. 合外力为零",
+      "B. 合外力矩为零",
+      "C. 系统做匀速圆周运动",
+      "D. 系统机械能守恒"
+    ],
+    "answer": "B",
+    "grading_rubric": "合外力矩为零时角动量守恒。",
+    "explanation": "由 dL/dt = τ_ext，当合外力矩为零时角动量守恒。"
+  },
+  {
+    "id": "q-angular-momentum-conservation-002",
+    "concept_ids": [
+      "rotation-angular-momentum-conservation"
+    ],
+    "week": 6,
+    "difficulty": 2,
+    "type": "mcq",
+    "question": "一花样滑冰运动员收拢双臂时，转动惯量减小一半，角速度变为原来的？",
+    "options": [
+      "A. 1/4",
+      "B. 1/2",
+      "C. 2 倍",
+      "D. 4 倍"
+    ],
+    "answer": "C",
+    "grading_rubric": "Iω 守恒，I 变 1/2，ω 变 2 倍。",
+    "explanation": "L=Iω 守恒，I 减半时 ω 须变 2 倍以保持总角动量不变。"
+  },
+  {
+    "id": "q-angular-momentum-conservation-003",
+    "concept_ids": [
+      "rotation-angular-momentum-conservation"
+    ],
+    "week": 6,
+    "difficulty": 2,
+    "type": "fill",
+    "question": "角动量守恒可表示为 I₁ω₁ = ______。",
+    "answer": "I₂ω₂",
+    "grading_rubric": "答案 I₂ω₂。",
+    "explanation": "无外力矩时，初末状态满足 I₁ω₁ = I₂ω₂。"
+  },
+  {
+    "id": "q-rolling-001",
+    "concept_ids": [
+      "rotation-rolling"
+    ],
+    "week": 6,
+    "difficulty": 1,
+    "type": "mcq",
+    "question": "纯滚动（无滑动）时，接触点相对地面的速度为？",
+    "options": [
+      "A. v_cm",
+      "B. 2v_cm",
+      "C. 0",
+      "D. ωR"
+    ],
+    "answer": "C",
+    "grading_rubric": "纯滚条件下接触点瞬时速度为零。",
+    "explanation": "纯滚条件 v_cm = ωR，接触点相对地面瞬时速度为 0。"
+  },
+  {
+    "id": "q-rolling-002",
+    "concept_ids": [
+      "rotation-rolling"
+    ],
+    "week": 6,
+    "difficulty": 2,
+    "type": "mcq",
+    "question": "半径 0.2 m 的轮子纯滚动，质心速度为 4 m/s，则其角速度为？",
+    "options": [
+      "A. 0.8 rad/s",
+      "B. 2 rad/s",
+      "C. 8 rad/s",
+      "D. 20 rad/s"
+    ],
+    "answer": "D",
+    "grading_rubric": "ω = v_cm/R = 4/0.2 = 20 rad/s。",
+    "explanation": "纯滚时 ω = v_cm / R = 4 ÷ 0.2 = 20 rad/s。"
+  },
+  {
+    "id": "q-rolling-003",
+    "concept_ids": [
+      "rotation-rolling"
+    ],
+    "week": 6,
+    "difficulty": 2,
+    "type": "fill",
+    "question": "纯滚动的运动学条件为 v_cm = ______（用 ω 和 R 表示）。",
+    "answer": "ωR",
+    "grading_rubric": "答案 ωR。",
+    "explanation": "纯滚条件：质心速度 = ωR，无相对滑动。"
+  },
+  {
+    "id": "q-orbiting-satellites-001",
+    "concept_ids": [
+      "rotation-orbiting-satellites"
+    ],
+    "week": 7,
+    "difficulty": 1,
+    "type": "mcq",
+    "question": "卫星在椭圆轨道上运行时，相对地心的角动量？",
+    "options": [
+      "A. 不断增大",
+      "B. 不断减小",
+      "C. 守恒（因为引力指向中心，力矩为零）",
+      "D. 周期性变化"
+    ],
+    "answer": "C",
+    "grading_rubric": "引力是中心力，对中心的力矩为零，角动量守恒。",
+    "explanation": "万有引力始终沿径向指向中心，对中心的力矩为零，故卫星角动量守恒（开普勒第二定律）。"
+  },
+  {
+    "id": "q-orbiting-satellites-002",
+    "concept_ids": [
+      "rotation-orbiting-satellites"
+    ],
+    "week": 7,
+    "difficulty": 2,
+    "type": "mcq",
+    "question": "卫星在椭圆轨道近地点的速度 v_近 与远地点速度 v_远 的关系是？",
+    "options": [
+      "A. v_近 < v_远",
+      "B. v_近 = v_远",
+      "C. v_近 > v_远",
+      "D. 无法比较"
+    ],
+    "answer": "C",
+    "grading_rubric": "由 mvr 守恒，r 小则 v 大。",
+    "explanation": "角动量守恒：mvr = 常量，近地点 r 小所以 v 大，远地点 v 小。"
+  },
+  {
+    "id": "q-orbiting-satellites-003",
+    "concept_ids": [
+      "rotation-orbiting-satellites"
+    ],
+    "week": 7,
+    "difficulty": 2,
+    "type": "fill",
+    "question": "卫星在椭圆轨道上角动量守恒可写为 m·v·r·______ = 常量（填三角函数）。",
+    "answer": "sinθ",
+    "grading_rubric": "答案 sinθ（θ 为 r 与 v 夹角）。",
+    "explanation": "L = mvr·sinθ；近、远地点 sinθ=1，速度极值。"
+  },
+  {
+    "id": "q-shm-definition-001",
+    "concept_ids": [
+      "oscillation-shm-definition"
+    ],
+    "week": 7,
+    "difficulty": 1,
+    "type": "mcq",
+    "question": "简谐运动的特征是？",
+    "options": [
+      "A. 加速度恒定",
+      "B. 回复力与位移成正比，方向相反",
+      "C. 速度恒定",
+      "D. 周期与振幅成正比"
+    ],
+    "answer": "B",
+    "grading_rubric": "SHM 特征：F = -kx，加速度与位移成正比反向。",
+    "explanation": "简谐运动定义条件 F = -kx 或 a = -ω²x，回复力（加速度）正比于位移、反向。"
+  },
+  {
+    "id": "q-shm-definition-002",
+    "concept_ids": [
+      "oscillation-shm-definition"
+    ],
+    "week": 7,
+    "difficulty": 2,
+    "type": "mcq",
+    "question": "下列哪种运动属于简谐运动？",
+    "options": [
+      "A. 自由落体",
+      "B. 弹簧振子的小振幅振动",
+      "C. 匀速圆周运动",
+      "D. 匀加速直线运动"
+    ],
+    "answer": "B",
+    "grading_rubric": "弹簧振子满足 F=-kx，是简谐运动。",
+    "explanation": "弹簧振子的回复力满足胡克定律 F=-kx，是典型的 SHM。"
+  },
+  {
+    "id": "q-shm-definition-003",
+    "concept_ids": [
+      "oscillation-shm-definition"
+    ],
+    "week": 7,
+    "difficulty": 2,
+    "type": "fill",
+    "question": "简谐运动的运动方程通常写为 x(t) = A·______（含 ω、t、相位 φ）。",
+    "answer": "cos(ωt+φ)",
+    "grading_rubric": "答案 cos(ωt+φ) 或 sin(ωt+φ)。",
+    "explanation": "SHM 的标准形式 x(t) = A·cos(ωt+φ)，A 为振幅，ω 为角频率。"
+  },
+  {
+    "id": "q-shm-frequency-period-001",
+    "concept_ids": [
+      "oscillation-shm-frequency-period"
+    ],
+    "week": 7,
+    "difficulty": 1,
+    "type": "mcq",
+    "question": "周期 T 与频率 f 的关系是？",
+    "options": [
+      "A. T = f",
+      "B. T = 1/f",
+      "C. T = 2πf",
+      "D. T = f²"
+    ],
+    "answer": "B",
+    "grading_rubric": "T = 1/f。",
+    "explanation": "周期为频率的倒数 T = 1/f，频率 f 单位 Hz。"
+  },
+  {
+    "id": "q-shm-frequency-period-002",
+    "concept_ids": [
+      "oscillation-shm-frequency-period"
+    ],
+    "week": 7,
+    "difficulty": 2,
+    "type": "mcq",
+    "question": "弹簧振子周期公式 T = 2π√(m/k)，若质量增大为 4 倍而 k 不变，周期变为？",
+    "options": [
+      "A. 1/2 倍",
+      "B. 2 倍",
+      "C. 4 倍",
+      "D. 16 倍"
+    ],
+    "answer": "B",
+    "grading_rubric": "T ∝ √m，m 变 4 倍则 T 变 2 倍。",
+    "explanation": "T ∝ √m，m 变 4 倍 → T 变 √4 = 2 倍。"
+  },
+  {
+    "id": "q-shm-frequency-period-003",
+    "concept_ids": [
+      "oscillation-shm-frequency-period"
+    ],
+    "week": 7,
+    "difficulty": 2,
+    "type": "fill",
+    "question": "单摆小角度近似下周期公式为 T = 2π√(______/g)。",
+    "answer": "L",
+    "grading_rubric": "答案 L（摆长）。",
+    "explanation": "单摆周期 T = 2π√(L/g)，与质量无关、与摆长平方根成正比。"
+  },
+  {
+    "id": "q-shm-representing-001",
+    "concept_ids": [
+      "oscillation-shm-representing"
+    ],
+    "week": 7,
+    "difficulty": 1,
+    "type": "mcq",
+    "question": "简谐运动的位移-时间图像通常是？",
+    "options": [
+      "A. 直线",
+      "B. 抛物线",
+      "C. 正弦/余弦曲线",
+      "D. 双曲线"
+    ],
+    "answer": "C",
+    "grading_rubric": "x-t 图为正弦/余弦曲线。",
+    "explanation": "SHM 的 x-t 图像是正弦或余弦曲线。"
+  },
+  {
+    "id": "q-shm-representing-002",
+    "concept_ids": [
+      "oscillation-shm-representing"
+    ],
+    "week": 7,
+    "difficulty": 2,
+    "type": "mcq",
+    "question": "x(t)=A·cos(ωt) 中位移最大时（x=A），速度的大小为？",
+    "options": [
+      "A. ωA（最大）",
+      "B. 0",
+      "C. ½ωA",
+      "D. A"
+    ],
+    "answer": "B",
+    "grading_rubric": "极位时速度为 0。",
+    "explanation": "在最大位移处运动反向，瞬时速度为零；速度最大值发生在平衡位置 x=0。"
+  },
+  {
+    "id": "q-shm-representing-003",
+    "concept_ids": [
+      "oscillation-shm-representing"
+    ],
+    "week": 7,
+    "difficulty": 2,
+    "type": "fill",
+    "question": "简谐运动速度最大时其位移大小为______。",
+    "answer": "0",
+    "grading_rubric": "答案：0（在平衡位置）。",
+    "explanation": "速度最大出现在平衡位置 x=0；位移最大时速度为 0。"
+  },
+  {
+    "id": "q-shm-energy-001",
+    "concept_ids": [
+      "oscillation-shm-energy"
+    ],
+    "week": 7,
+    "difficulty": 1,
+    "type": "mcq",
+    "question": "弹簧振子做 SHM 时，总机械能 E_total 与振幅 A 的关系？",
+    "options": [
+      "A. E ∝ A",
+      "B. E ∝ A²",
+      "C. E ∝ 1/A",
+      "D. 与 A 无关"
+    ],
+    "answer": "B",
+    "grading_rubric": "E_total = ½kA²，与 A² 成正比。",
+    "explanation": "弹簧振子总能量 E = ½kA²，与振幅平方成正比。"
+  },
+  {
+    "id": "q-shm-energy-002",
+    "concept_ids": [
+      "oscillation-shm-energy"
+    ],
+    "week": 7,
+    "difficulty": 2,
+    "type": "mcq",
+    "question": "k=100 N/m 的弹簧振子振幅 A=0.1 m，最大动能为？",
+    "options": [
+      "A. 0.5 J",
+      "B. 1 J",
+      "C. 5 J",
+      "D. 10 J"
+    ],
+    "answer": "A",
+    "grading_rubric": "K_max = ½kA² = ½×100×0.01 = 0.5 J。",
+    "explanation": "总能量 = 最大动能（在平衡位置）= ½kA² = ½×100×0.01 = 0.5 J。"
+  },
+  {
+    "id": "q-shm-energy-003",
+    "concept_ids": [
+      "oscillation-shm-energy"
+    ],
+    "week": 7,
+    "difficulty": 2,
+    "type": "fill",
+    "question": "弹簧振子的总机械能公式：E = ______（用 k 和 A 表示）。",
+    "answer": "½kA²",
+    "grading_rubric": "答案 ½kA² 或 (1/2)kA²。",
+    "explanation": "E_total = ½kA²，是动能与势能的恒定总和。"
+  },
+  {
+    "id": "q-density-structure-001",
+    "concept_ids": [
+      "fluids-density-structure"
+    ],
+    "week": 7,
+    "difficulty": 1,
+    "type": "mcq",
+    "question": "密度 ρ 的定义式是？",
+    "options": [
+      "A. ρ = m·V",
+      "B. ρ = m/V",
+      "C. ρ = V/m",
+      "D. ρ = mg"
+    ],
+    "answer": "B",
+    "grading_rubric": "ρ = m/V。",
+    "explanation": "密度 = 质量 / 体积，SI 单位 kg/m³。"
+  },
+  {
+    "id": "q-density-structure-002",
+    "concept_ids": [
+      "fluids-density-structure"
+    ],
+    "week": 7,
+    "difficulty": 2,
+    "type": "mcq",
+    "question": "0.002 m³ 的某液体质量为 1.6 kg，密度为？",
+    "options": [
+      "A. 80 kg/m³",
+      "B. 320 kg/m³",
+      "C. 800 kg/m³",
+      "D. 3200 kg/m³"
+    ],
+    "answer": "C",
+    "grading_rubric": "ρ = 1.6 / 0.002 = 800 kg/m³。",
+    "explanation": "ρ = m/V = 1.6 kg ÷ 0.002 m³ = 800 kg/m³。"
+  },
+  {
+    "id": "q-density-structure-003",
+    "concept_ids": [
+      "fluids-density-structure"
+    ],
+    "week": 7,
+    "difficulty": 2,
+    "type": "fill",
+    "question": "水的密度约为______ kg/m³。",
+    "answer": "1000",
+    "grading_rubric": "答案：1000（或 1.0×10³）。",
+    "explanation": "纯水密度约为 1000 kg/m³ = 1 g/cm³。"
+  },
+  {
+    "id": "q-pressure-001",
+    "concept_ids": [
+      "fluids-pressure"
+    ],
+    "week": 7,
+    "difficulty": 1,
+    "type": "mcq",
+    "question": "液体内某深度 h 处压强（不计大气压）为？",
+    "options": [
+      "A. P = ρg",
+      "B. P = ρgh",
+      "C. P = mgh",
+      "D. P = ρ/h"
+    ],
+    "answer": "B",
+    "grading_rubric": "P = ρgh（流体静压强）。",
+    "explanation": "液体内深度 h 处的压强 P = ρgh，由静压公式给出。"
+  },
+  {
+    "id": "q-pressure-002",
+    "concept_ids": [
+      "fluids-pressure"
+    ],
+    "week": 7,
+    "difficulty": 2,
+    "type": "mcq",
+    "question": "在水中（ρ=1000 kg/m³）2 m 深处液体压强为？（g=10 m/s²，不计大气压）",
+    "options": [
+      "A. 2000 Pa",
+      "B. 5000 Pa",
+      "C. 20000 Pa",
+      "D. 50000 Pa"
+    ],
+    "answer": "C",
+    "grading_rubric": "P = 1000×10×2 = 20000 Pa。",
+    "explanation": "P = ρgh = 1000×10×2 = 20000 Pa = 20 kPa。"
+  },
+  {
+    "id": "q-pressure-003",
+    "concept_ids": [
+      "fluids-pressure"
+    ],
+    "week": 7,
+    "difficulty": 2,
+    "type": "fill",
+    "question": "压强的 SI 单位是______。",
+    "answer": "Pa",
+    "grading_rubric": "Pa（帕斯卡）。",
+    "explanation": "压强单位为帕斯卡 Pa = N/m²。"
+  },
+  {
+    "id": "q-newton-laws-001",
+    "concept_ids": [
+      "fluids-newton-laws"
+    ],
+    "week": 7,
+    "difficulty": 1,
+    "type": "mcq",
+    "question": "阿基米德原理中浮力大小等于？",
+    "options": [
+      "A. 物体的重力",
+      "B. 物体所排开液体的重力",
+      "C. 物体所受重力的一半",
+      "D. 液体的总重力"
+    ],
+    "answer": "B",
+    "grading_rubric": "F_浮 = ρ_液·V_排·g（排开液体的重力）。",
+    "explanation": "阿基米德原理：浮力 = 物体排开液体所受的重力 = ρ_液·V_排·g。"
+  },
+  {
+    "id": "q-newton-laws-002",
+    "concept_ids": [
+      "fluids-newton-laws"
+    ],
+    "week": 7,
+    "difficulty": 2,
+    "type": "mcq",
+    "question": "完全浸没在水中（ρ=1000 kg/m³）的物体体积 0.005 m³，浮力大小为？（g=10 m/s²）",
+    "options": [
+      "A. 5 N",
+      "B. 25 N",
+      "C. 50 N",
+      "D. 500 N"
+    ],
+    "answer": "C",
+    "grading_rubric": "F_浮 = ρVg = 1000×0.005×10 = 50 N。",
+    "explanation": "F_浮 = ρ·V·g = 1000×0.005×10 = 50 N。"
+  },
+  {
+    "id": "q-newton-laws-003",
+    "concept_ids": [
+      "fluids-newton-laws"
+    ],
+    "week": 7,
+    "difficulty": 2,
+    "type": "fill",
+    "question": "若物体在液体中静止漂浮，则浮力大小等于______。",
+    "answer": "物体重力",
+    "grading_rubric": "答案：物体重力（或 mg、自身重力）。",
+    "explanation": "漂浮时平衡：F_浮 = mg（物体的重力）。"
+  },
+  {
+    "id": "q-conservation-laws-001",
+    "concept_ids": [
+      "fluids-conservation-laws"
+    ],
+    "week": 7,
+    "difficulty": 1,
+    "type": "mcq",
+    "question": "不可压缩流体的连续性方程为？",
+    "options": [
+      "A. P₁ = P₂",
+      "B. A₁v₁ = A₂v₂",
+      "C. v₁ = v₂",
+      "D. ρ₁ = ρ₂"
+    ],
+    "answer": "B",
+    "grading_rubric": "连续性方程：A₁v₁ = A₂v₂（体积流量守恒）。",
+    "explanation": "不可压缩流体体积流量守恒：A·v = 常量，即 A₁v₁ = A₂v₂。"
+  },
+  {
+    "id": "q-conservation-laws-002",
+    "concept_ids": [
+      "fluids-conservation-laws"
+    ],
+    "week": 7,
+    "difficulty": 2,
+    "type": "mcq",
+    "question": "水管 A₁=0.04 m²，v₁=2 m/s；当截面变小到 A₂=0.01 m²，v₂ 为？",
+    "options": [
+      "A. 0.5 m/s",
+      "B. 2 m/s",
+      "C. 4 m/s",
+      "D. 8 m/s"
+    ],
+    "answer": "D",
+    "grading_rubric": "v₂ = A₁v₁/A₂ = 0.04×2/0.01 = 8 m/s。",
+    "explanation": "连续性方程：v₂ = A₁v₁/A₂ = (0.04×2)/0.01 = 8 m/s。"
+  },
+  {
+    "id": "q-conservation-laws-003",
+    "concept_ids": [
+      "fluids-conservation-laws"
+    ],
+    "week": 7,
+    "difficulty": 2,
+    "type": "fill",
+    "question": "伯努利方程：P + ½ρv² + ρgh = ______（填守恒量）。",
+    "answer": "常量",
+    "grading_rubric": "答案：常量（或不变、恒定）。",
+    "explanation": "伯努利方程描述沿流线 P + ½ρv² + ρgh = 常量，反映流体的能量守恒。"
   }
 ]

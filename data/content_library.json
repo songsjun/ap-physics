@@ -814,6 +814,20 @@
   ],
   "resources": [
     {
+      "id": "khan-intro-scalars-vectors",
+      "title": "Introduction to Vectors and Scalars",
+      "url": "https://www.khanacademy.org/science/highschool-physics/x6679aa2c65c01e53:motion-and-forces/x6679aa2c65c01e53:describing-motion/v/introduction-to-vectors-and-scalars",
+      "type": "video",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 12,
+      "concepts": [
+        "kinematics-scalars-vectors-1d"
+      ],
+      "week": 1,
+      "day": 1
+    },
+    {
       "id": "khan-motion-variables",
       "title": "Understand: motion variables",
       "url": "https://www.khanacademy.org/science/highschool-physics/x6679aa2c65c01e53:motion-and-forces/x6679aa2c65c01e53:describing-motion/e/understand-motion-variables",
@@ -1050,7 +1064,7 @@
         "kinematics-vectors-2d-motion"
       ],
       "week": 1,
-      "day": 6
+      "day": 7
     },
     {
       "id": "khan-relative-velocity",
@@ -1123,6 +1137,62 @@
       ],
       "week": 2,
       "day": 2
+    },
+    {
+      "id": "khan-newton1-video",
+      "title": "Newton's First Law of Motion",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:force-and-translational-dynamics/xf557a762645cccc5:newtons-first-law/v/newtons-first-law-of-motion",
+      "type": "video",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 8,
+      "concepts": [
+        "dynamics-newtons-first-law"
+      ],
+      "week": 2,
+      "day": 3
+    },
+    {
+      "id": "khan-newton1-exercise",
+      "title": "Newton's First Law exercise",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:force-and-translational-dynamics/xf557a762645cccc5:newtons-first-law/e/newtons-first-law",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 10,
+      "concepts": [
+        "dynamics-newtons-first-law"
+      ],
+      "week": 2,
+      "day": 3
+    },
+    {
+      "id": "openstax-4-2-newton1-reading-b",
+      "title": "OpenStax 4.2 Newton's First Law of Motion: Inertia - Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/4-2-newtons-first-law-of-motion-inertia",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 8,
+      "concepts": [
+        "dynamics-newtons-first-law"
+      ],
+      "week": 2,
+      "day": 3
+    },
+    {
+      "id": "flipping-newtons-first-law",
+      "title": "Flipping: Newton's First Law",
+      "url": "https://www.flippingphysics.com/newtons-first-law.html",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "B",
+      "estimated_minutes": 5,
+      "concepts": [
+        "dynamics-newtons-first-law"
+      ],
+      "week": 2,
+      "day": 3
     },
     {
       "id": "khan-newton2-video",
@@ -1398,7 +1468,7 @@
       "url": "https://phet.colorado.edu/en/simulations/energy-skate-park",
       "type": "interactive",
       "platform": "phet",
-      "tier": "A",
+      "tier": "B",
       "estimated_minutes": 15,
       "concepts": [
         "energy-conservation"
@@ -1947,12 +2017,54 @@
       "day": 6
     },
     {
+      "id": "khan-review-2d-kinematics-w8d2",
+      "title": "Review: 2D Motion and Projectile",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:kinematics/xf557a762645cccc5:motion-in-2d/e/analyzing-vectors-in-2d-ap1",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 15,
+      "concepts": [
+        "kinematics-vectors-2d-motion"
+      ],
+      "week": 8,
+      "day": 2
+    },
+    {
+      "id": "khan-review-momentum-w8d2",
+      "title": "Review: Conservation of Momentum",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:linear-momentum/xf557a762645cccc5:untitled-303/e/conservation-of-linear-momentum",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 15,
+      "concepts": [
+        "momentum-conservation"
+      ],
+      "week": 8,
+      "day": 2
+    },
+    {
+      "id": "khan-review-rotational-w8d2",
+      "title": "Review: Rotational Dynamics",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:torque-and-rotational-dynamics/xf557a762645cccc5:newton-s-second-law-in-rotational-form/e/conceptual-angular-second-law-exercises-ap1",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 15,
+      "concepts": [
+        "torque-newtons-second-law-rotational"
+      ],
+      "week": 8,
+      "day": 2
+    },
+    {
       "id": "ap-central-2026-frq-week8",
       "title": "AP Physics 1 2026 FRQ (Week 8)",
       "url": "/frq/ap26-frq-physics-1.pdf",
       "type": "frq",
       "platform": "ap_central",
-      "tier": "A",
+      "tier": "B",
       "estimated_minutes": 75,
       "concepts": [
         "kinematics-vectors-2d-motion",
@@ -1964,12 +2076,55 @@
       "answer_url": "https://apcentral.collegeboard.org/media/pdf/ap26-sg-physics-1.pdf"
     },
     {
+      "id": "khan-review-momentum-w8d6",
+      "title": "Review: Conservation of Momentum",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:linear-momentum/xf557a762645cccc5:untitled-303/e/conservation-of-linear-momentum",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 15,
+      "concepts": [
+        "momentum-conservation"
+      ],
+      "week": 8,
+      "day": 6
+    },
+    {
+      "id": "khan-review-energy-w8d6",
+      "title": "Review: Conservation of Energy",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:work-energy-and-power/xf557a762645cccc5:untitled-271/e/conservation-of-energy-law-ap-physics-1",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 15,
+      "concepts": [
+        "energy-conservation"
+      ],
+      "week": 8,
+      "day": 6
+    },
+    {
+      "id": "khan-review-conservation-synthesis-w8d6",
+      "title": "Review: Momentum-Energy Synthesis",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:work-energy-and-power/xf557a762645cccc5:untitled-271/e/conservation-of-energy",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 15,
+      "concepts": [
+        "momentum-conservation",
+        "energy-conservation"
+      ],
+      "week": 8,
+      "day": 6
+    },
+    {
       "id": "ap-central-2025-frq",
       "title": "AP Physics 1 2025 FRQ",
       "url": "/frq/ap25-frq-physics-1.pdf",
       "type": "frq",
       "platform": "ap_central",
-      "tier": "A",
+      "tier": "B",
       "estimated_minutes": 70,
       "concepts": [
         "momentum-conservation",
@@ -2324,7 +2479,7 @@
       "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/2-conceptual-questions",
       "type": "exercise",
       "platform": "openstax",
-      "tier": "B",
+      "tier": "A",
       "estimated_minutes": 12,
       "concepts": [
         "kinematics-displacement-velocity-acceleration",
@@ -4729,6 +4884,76 @@
       ]
     },
     {
+      "id": "khan-orbiting-satellites-video",
+      "title": "Orbiting Satellites and Angular Momentum",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:energy-and-momentum-of-rotating-systems/xf557a762645cccc5:conservation-of-angular-momentum/v/angular-momentum-of-orbiting-satellites",
+      "type": "video",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 12,
+      "concepts": [
+        "rotation-orbiting-satellites"
+      ],
+      "week": 7,
+      "day": 1
+    },
+    {
+      "id": "khan-orbiting-satellites-exercise",
+      "title": "Orbiting Satellites exercise",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:energy-and-momentum-of-rotating-systems/xf557a762645cccc5:conservation-of-angular-momentum/e/orbital-angular-momentum",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 15,
+      "concepts": [
+        "rotation-orbiting-satellites"
+      ],
+      "week": 7,
+      "day": 1
+    },
+    {
+      "id": "openstax-6-6-satellites-reading-a",
+      "title": "OpenStax 6.6 Satellites and Kepler's Laws - Reading",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/6-6-satellites-and-keplers-laws-an-argument-for-simplicity",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "A",
+      "estimated_minutes": 12,
+      "concepts": [
+        "rotation-orbiting-satellites"
+      ],
+      "week": 7,
+      "day": 1
+    },
+    {
+      "id": "flipping-orbiting-satellites",
+      "title": "Flipping: Orbiting Satellites",
+      "url": "https://www.flippingphysics.com/orbiting-satellites.html",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "B",
+      "estimated_minutes": 7,
+      "concepts": [
+        "rotation-orbiting-satellites"
+      ],
+      "week": 7,
+      "day": 1
+    },
+    {
+      "id": "openstax-ch6-satellites-problems-c",
+      "title": "OpenStax Ch.6 Problems - Satellites & Orbits",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/6-problems-exercises",
+      "type": "exercise",
+      "platform": "openstax",
+      "tier": "C",
+      "estimated_minutes": 15,
+      "concepts": [
+        "rotation-orbiting-satellites"
+      ],
+      "week": 7,
+      "day": 1
+    },
+    {
       "id": "khan-amplitude-period-definition",
       "title": "Definition of amplitude and period",
       "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:oscillations/xf557a762645cccc5:simple-harmonic-oscillators/v/definition-of-amplitude-and-period",
@@ -4743,6 +4968,21 @@
         "oscillation-shm-frequency-period",
         "oscillation-shm-representing"
       ]
+    },
+    {
+      "id": "khan-review-friction-energy-w8d3",
+      "title": "Review: Friction and Energy",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:work-energy-and-power/xf557a762645cccc5:untitled-271/e/conservation-of-energy-law-ap-physics-1",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 15,
+      "concepts": [
+        "dynamics-friction",
+        "energy-conservation"
+      ],
+      "week": 8,
+      "day": 3
     },
     {
       "id": "ap-central-2026-frq-day3",
