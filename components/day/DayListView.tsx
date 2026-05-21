@@ -4,11 +4,14 @@ import { useEffect, useRef, useState, useCallback } from 'react'
 import { useDayContext } from '@/lib/app/session-context'
 import { repo } from '@/lib/repository'
 import { StorageService } from '@/lib/infra/storage'
-import type { Resource, Completion, KnowledgePoint, DailyFeedback } from '@/lib/types'
+import type { Resource, Completion, KnowledgePoint, DailyFeedback, QuizResult } from '@/lib/types'
 import { TierSection, RowSharedProps } from './ResourceRow'
 import { ReflectionCard } from './ReflectionCard'
 import { RelatedFRQCard } from './RelatedFRQCard'
 import { PASS_THRESHOLD } from '@/lib/constants'
+import { ChallengePrompt } from './ChallengePrompt'
+import { QuizPanel } from './QuizPanel'
+import { selectDailyQuestions } from '@/lib/app/quiz'
 
 // ── CompleteBanner ────────────────────────────────────────────────────────────
 
@@ -41,6 +44,8 @@ function CompleteBanner({ passRate, feedback }: { passRate: number; feedback: Da
 
 // ── DayListView ───────────────────────────────────────────────────────────────
 
+type ChallengeStatus = 'prompt' | 'active' | 'done' | 'skipped'
+
 export function DayListView({ week, day }: { week: number; day: number }) {
   const { dispatch, flowState, feedback } = useDayContext()
   const [resources, setResources] = useState<Resource[]>([])
@@ -50,6 +55,11 @@ export function DayListView({ week, day }: { week: number; day: number }) {
   // id of resource currently in score-input mode
   const [scoringId, setScoringId] = useState<string | null>(null)
   const feedbackRequestedRef = useRef(false)
+
+  // Challenge state
+  const [challengeStatus, setChallengeStatus] = useState<ChallengeStatus>('prompt')
+  const [availableQuestions, setAvailableQuestions] = useState(0)
+  const [challengeResults, setChallengeResults] = useState<QuizResult[]>([])
 
   useEffect(() => {
     if (flowState.phase === 'COMPLETE' && !feedbackRequestedRef.current) {
@@ -76,6 +86,17 @@ export function DayListView({ week, day }: { week: number; day: number }) {
       setResources(allRes)
       setKpMap(newKpMap)
       setLoading(false)
+
+      // Check challenge status
+      const existingResults = await repo.getQuizResultsForDay(userId, week, day)
+      if (cancelled) return
+      if (existingResults.length > 0) {
+        setChallengeStatus('done')
+        setChallengeResults(existingResults)
+      } else {
+        const questions = await selectDailyQuestions(userId, week, day, conceptIds, 4)
+        if (!cancelled) setAvailableQuestions(questions.length)
+      }
     }
     load().catch(console.error)
     return () => { cancelled = true }
@@ -165,6 +186,38 @@ export function DayListView({ week, day }: { week: number; day: number }) {
       {/* Complete banner */}
       {flowState.phase === 'COMPLETE' && (
         <CompleteBanner passRate={flowState.passRate} feedback={feedback} />
+      )}
+
+      {/* Challenge system */}
+      {flowState.phase === 'COMPLETE' && challengeStatus === 'prompt' && availableQuestions > 0 && (
+        <ChallengePrompt
+          week={week}
+          day={day}
+          questionCount={availableQuestions}
+          onStart={() => setChallengeStatus('active')}
+          onSkip={() => setChallengeStatus('skipped')}
+        />
+      )}
+
+      {flowState.phase === 'COMPLETE' && challengeStatus === 'active' && (
+        <QuizPanel
+          week={week}
+          day={day}
+          conceptIds={[...new Set(aTier.flatMap(r => r.concepts))]}
+          onComplete={(results) => {
+            setChallengeResults(results)
+            setChallengeStatus('done')
+          }}
+          onExit={() => setChallengeStatus('skipped')}
+        />
+      )}
+
+      {flowState.phase === 'COMPLETE' && challengeStatus === 'done' && challengeResults.length > 0 && (
+        <div className="bg-white border border-stone-100 rounded-xl px-4 py-3">
+          <p className="text-xs text-stone-500">
+            ⚡ 今日挑战：{challengeResults.filter(r => r.correct).length} / {challengeResults.length} 正确
+          </p>
+        </div>
       )}
 
       {/* A 必做 */}
