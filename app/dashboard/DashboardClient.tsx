@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { StorageService } from '@/lib/infra/storage'
-import { getDb } from '@/lib/infra/db'
+import { repo } from '@/lib/repository'
 import { WEEKS, DAYS_PER_WEEK, PASS_THRESHOLD } from '@/lib/constants'
 
 interface DayStatus {
@@ -21,15 +21,14 @@ export function DashboardClient() {
   useEffect(() => {
     async function load() {
       const userId = StorageService.userId.init()
-      const db = getDb()
 
-      const [allResources, allCompletions, allUnlocks] = await Promise.all([
-        db.resources.toArray(),
-        db.completions.where('user_id').equals(userId).toArray(),
-        db.day_unlocks.where('user_id').equals(userId).toArray(),
+      const [allResources, allCompletions, unlockedDays] = await Promise.all([
+        repo.getAllResources(),
+        repo.getAllUserCompletions(userId),
+        repo.getUnlockedDays(userId),
       ])
 
-      const unlockedSet = new Set(allUnlocks.map(u => `${u.week}-${u.day}`))
+      const unlockedSet = new Set(unlockedDays.map(u => `${u.week}-${u.day}`))
       const completionMap = new Map(allCompletions.map(c => [c.resource_id, c]))
 
       const result: DayStatus[] = []

@@ -66,4 +66,20 @@ export class DexieRepository implements IRepository {
     const records = await db.day_unlocks.where('user_id').equals(userId).toArray()
     return records.map(r => ({ week: r.week, day: r.day }))
   }
+
+  async getAllResources(): Promise<Resource[]> {
+    const db = getDb()
+    return db.resources.toArray()
+  }
+
+  async getAllDayResources(week: number, day: number): Promise<Resource[]> {
+    const db = getDb()
+    return db.resources.where({ week, day }).sortBy('slot_order')
+  }
+
+  async getKnowledgePoints(ids: string[]): Promise<KnowledgePoint[]> {
+    const db = getDb()
+    const results = await db.knowledge_points.bulkGet(ids)
+    return results.filter((kp): kp is KnowledgePoint => kp !== undefined)
+  }
 }

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { StorageService } from '@/lib/infra/storage'
-import { getDb } from '@/lib/infra/db'
+import { repo } from '@/lib/repository'
 
 export default function Home() {
   const [currentDay, setCurrentDay] = useState<{ week: number; day: number } | null>(null)
@@ -10,8 +10,7 @@ export default function Home() {
   useEffect(() => {
     async function findCurrentDay() {
       const userId = StorageService.userId.init()
-      const db = getDb()
-      const unlocks = await db.day_unlocks.where('user_id').equals(userId).toArray()
+      const unlocks = await repo.getUnlockedDays(userId)
 
       if (unlocks.length === 0) {
         setCurrentDay({ week: 1, day: 1 })

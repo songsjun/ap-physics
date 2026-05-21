@@ -10,4 +10,7 @@ export interface IRepository {
   isDayUnlocked(userId: string, week: number, day: number): Promise<boolean>
   unlockDay(userId: string, week: number, day: number): Promise<void>
   getUnlockedDays(userId: string): Promise<Array<{ week: number; day: number }>>
+  getAllResources(): Promise<Resource[]>
+  getAllDayResources(week: number, day: number): Promise<Resource[]>
+  getKnowledgePoints(ids: string[]): Promise<KnowledgePoint[]>
 }

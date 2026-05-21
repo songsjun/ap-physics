@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, useCallback } from 'react'
 import { useDayContext } from '@/lib/app/session-context'
-import { getDb } from '@/lib/infra/db'
+import { repo } from '@/lib/repository'
 import { StorageService } from '@/lib/infra/storage'
 import type { Resource, Completion, KnowledgePoint, DailyFeedback } from '@/lib/types'
 import { findRelatedFRQ, frqTypeLabel } from '@/lib/domain/frq'
@@ -148,14 +148,13 @@ export function DayListView({ week, day }: { week: number; day: number }) {
     const load = async () => {
       const userId = StorageService.userId.get()
       if (!userId) return
-      const db = getDb()
-      const allRes = await db.resources.where({ week, day }).sortBy('slot_order')
+      const allRes = await repo.getAllDayResources(week, day)
       if (cancelled) return
       const conceptIds = [...new Set(allRes.flatMap(r => r.concepts))]
-      const kps = await db.knowledge_points.bulkGet(conceptIds)
+      const kps = await repo.getKnowledgePoints(conceptIds)
       if (cancelled) return
       const newKpMap = new Map<string, KnowledgePoint>()
-      kps.forEach(kp => { if (kp) newKpMap.set(kp.id, kp) })
+      kps.forEach(kp => { newKpMap.set(kp.id, kp) })
       setResources(allRes)
       setKpMap(newKpMap)
       setLoading(false)
@@ -169,15 +168,12 @@ export function DayListView({ week, day }: { week: number; day: number }) {
     const refresh = async () => {
       const userId = StorageService.userId.get()
       if (!userId) return
-      const db = getDb()
-      const allRes = await db.resources.where({ week, day }).toArray()
+      const [, dayCompletions] = await Promise.all([
+        repo.getAllDayResources(week, day),
+        repo.getCompletions(userId, week, day),
+      ])
       if (cancelled) return
-      const allComp = await db.completions.where('user_id').equals(userId).toArray()
-      if (cancelled) return
-      const resIds = new Set(allRes.map(r => r.id))
-      setCompletions(new Map(
-        allComp.filter(c => resIds.has(c.resource_id)).map(c => [c.resource_id, c])
-      ))
+      setCompletions(new Map(dayCompletions.map(c => [c.resource_id, c])))
     }
     refresh().catch(console.error)
     return () => { cancelled = true }
