@@ -120,7 +120,7 @@ export interface QuizQuestion {
   concept_ids: string[]        // matches KnowledgePoint.id values
   week: number                 // suggested week (for filtering)
   difficulty: 1 | 2 | 3       // 1=basic recall, 2=application, 3=synthesis
-  type: 'mcq' | 'fill' | 'short'
+  type: 'mcq' | 'fill' | 'short' | 'feynman'
   question: string
   options?: [string, string, string, string]  // MCQ only
   answer: string               // correct answer text
