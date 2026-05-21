@@ -86,7 +86,6 @@ export function QuizPanel({ week, day, conceptIds, onComplete, onExit }: QuizPan
 
   function handleNext() {
     if (currentIdx + 1 >= questions.length) {
-      onComplete(sessionResults)
       setPhase('summary')
     } else {
       setCurrentIdx(i => i + 1)
