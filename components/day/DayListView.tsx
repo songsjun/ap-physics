@@ -170,6 +170,15 @@ export function DayListView({ week, day }: { week: number; day: number }) {
 
   const handleScoreCancel = useCallback(() => setScoringId(null), [])
 
+  // All hooks must be called before any early return
+  const aTier = resources.filter(r => r.tier === 'A')
+  const aConceptIds = useMemo(
+    () => [...new Set(aTier.flatMap(r => r.concepts))],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [resources],
+  )
+  const handleQuizExit = useCallback(() => setChallengeStatus('skipped'), [setChallengeStatus])
+
   if (loading) {
     return <DaySkeleton />
   }
@@ -186,8 +195,6 @@ export function DayListView({ week, day }: { week: number; day: number }) {
       </div>
     )
   }
-
-  const aTier = resources.filter(r => r.tier === 'A')
   const bTier = resources.filter(r => r.tier === 'B')
 
   const aPassed = aTier.filter(r => completions.get(r.id)?.status === 'passed').length
@@ -213,16 +220,9 @@ export function DayListView({ week, day }: { week: number; day: number }) {
       return aCoversWeak - bCoversWeak || a.slot_order - b.slot_order
     })
 
-  // Unique concepts from all A-tier resources (for reflection card and quiz)
-  const aConceptIds = useMemo(
-    () => [...new Set(aTier.flatMap(r => r.concepts))],
-    [aTier]
-  )
   const aConcepts = aConceptIds
     .map(id => kpMap.get(id))
     .filter(Boolean) as KnowledgePoint[]
-
-  const handleQuizExit = useCallback(() => setChallengeStatus('skipped'), [])
 
   const rowProps: RowSharedProps = { completions, kpMap, scoringId, onCheckDirect: handleCheckDirect, onCheckGraded: handleCheckGraded, onScoreSubmit: handleScoreSubmit, onScoreCancel: handleScoreCancel }
 
