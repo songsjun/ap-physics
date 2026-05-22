@@ -29,8 +29,6 @@ function assignSlotOrders(resources: RawResource[]): Map<string, number> {
   const result = new Map<string, number>()
   for (const group of groups.values()) {
     group.sort((a, b) => {
-      const atA = deriveAdapterType(a)
-      const atB = deriveAdapterType(b)
       const pA = PHASE_ORDER[derivePhase(a.type)]
       const pB = PHASE_ORDER[derivePhase(b.type)]
       if (pA !== pB) return pA - pB

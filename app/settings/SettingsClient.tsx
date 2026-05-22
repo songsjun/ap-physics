@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import Link from 'next/link'
 import { StorageService } from '@/lib/infra/storage'
 import { exportProgress, importProgress, downloadJson, type ExportData } from '@/lib/app/share'
 
@@ -58,7 +59,7 @@ export function SettingsClient() {
   return (
     <div className="max-w-2xl mx-auto px-4 py-8 space-y-8">
       <div className="flex items-center gap-4">
-        <a href="/" className="text-sm text-blue-500 hover:underline">← 返回首页</a>
+        <Link href="/" className="text-sm text-blue-500 hover:underline">← 返回首页</Link>
         <h1 className="text-2xl font-bold text-stone-900">设置</h1>
       </div>
 

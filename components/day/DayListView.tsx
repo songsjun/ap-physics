@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useMemo, useRef, useState, useCallback } from 'react'
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { useDayContext } from '@/lib/app/session-context'
 import { useDayResources } from '@/lib/app/useDayResources'
 import type { Resource, KnowledgePoint, DailyFeedback } from '@/lib/types'
@@ -124,7 +124,9 @@ export function DayListView({ week, day }: { week: number; day: number }) {
   // Track current phase in a ref so the cleanup below can distinguish StrictMode
   // double-invoke (phase unchanged) from a real phase transition away from NEEDS_RETRY.
   const phaseRef = useRef(flowState.phase)
-  phaseRef.current = flowState.phase
+  useLayoutEffect(() => {
+    phaseRef.current = flowState.phase
+  })
 
   // Increment per-day retry counter in localStorage when landing in NEEDS_RETRY.
   // On StrictMode double-invoke: cleanup sees phase still NEEDS_RETRY → restores counter.

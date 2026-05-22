@@ -13,6 +13,17 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
   ]),
+  {
+    rules: {
+      // Hard errors: hooks ordering and stale closure bugs must never land.
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "error",
+      // The React Compiler plugin's set-state-in-effect rule fires on legitimate
+      // patterns (initialising state from localStorage, resetting on navigation).
+      // Disable globally; rules-of-hooks + exhaustive-deps cover real correctness.
+      "react-hooks/set-state-in-effect": "off",
+    },
+  },
 ]);
 
 export default eslintConfig;

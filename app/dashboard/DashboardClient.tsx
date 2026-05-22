@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
 import { StorageService } from '@/lib/infra/storage'
 import { ensureAppReady } from '@/lib/app/ready'
 import { repo } from '@/lib/repository'
@@ -192,8 +193,8 @@ export function DashboardClient() {
           <p className="text-sm text-stone-400 mt-0.5">AP Physics 1  ·  8 周 56 天</p>
         </div>
         <div className="flex items-center gap-4 text-sm">
-          <a href="/" className="text-stone-500 hover:text-stone-900 transition-colors">← 返回</a>
-          <a href="/settings" className="text-stone-400 hover:text-stone-600 transition-colors">⚙ 设置</a>
+          <Link href="/" className="text-stone-500 hover:text-stone-900 transition-colors">← 返回</Link>
+          <Link href="/settings" className="text-stone-400 hover:text-stone-600 transition-colors">⚙ 设置</Link>
         </div>
       </div>
 
