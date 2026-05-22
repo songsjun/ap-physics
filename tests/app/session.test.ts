@@ -10,8 +10,15 @@ const {
   mockTrackerGetDayStats,
   mockAIGetDailyFeedback,
   mockDbCompletions,
+  mockTransact,
+  mockGetCompletionsByResourceIds,
 } = vi.hoisted(() => {
   const mockDbCompletions: Completion[] = []
+  const mockGetCompletionsByResourceIds = vi.fn(
+    async (_userId: string, resourceIds: Set<string>) =>
+      mockDbCompletions.filter(c => resourceIds.has(c.resource_id)),
+  )
+  const mockTransact = vi.fn(async (fn: () => Promise<void>) => { await fn() })
   return {
     mockAssembleDaySnapshot: vi.fn(),
     mockTrackerRecord: vi.fn(),
@@ -19,6 +26,8 @@ const {
     mockTrackerGetDayStats: vi.fn(),
     mockAIGetDailyFeedback: vi.fn(),
     mockDbCompletions,
+    mockTransact,
+    mockGetCompletionsByResourceIds,
   }
 })
 
@@ -40,27 +49,12 @@ vi.mock('@/lib/infra/ai', () => ({
   },
 }))
 
-vi.mock('@/lib/infra/db', () => ({
-  getDb: () => ({
-    transaction: async (
-      _mode: string,
-      _table1: unknown,
-      _table2: unknown,
-      callback: () => Promise<void>,
-    ) => {
-      await callback()
-    },
-    completions: {
-      where: (_field: string) => ({
-        equals: (_value: string) => ({
-          filter: (pred: (c: Completion) => boolean) => ({
-            toArray: async () => mockDbCompletions.filter(pred),
-          }),
-        }),
-      }),
-    },
-    day_unlocks: {},
-  }),
+// repo is now the only infra dependency of session.ts — no longer needs getDb mock
+vi.mock('@/lib/repository', () => ({
+  repo: {
+    transact: mockTransact,
+    getCompletionsByResourceIds: mockGetCompletionsByResourceIds,
+  },
 }))
 
 // ── import SUT after mocks are wired ─────────────────────────────────────────
@@ -117,6 +111,12 @@ describe('DaySessionManager', () => {
     vi.clearAllMocks()
     // reset the shared mutable array between tests
     mockDbCompletions.length = 0
+    // Re-wire after clearAllMocks resets implementations
+    mockTransact.mockImplementation(async (fn: () => Promise<void>) => { await fn() })
+    mockGetCompletionsByResourceIds.mockImplementation(
+      async (_userId: string, resourceIds: Set<string>) =>
+        mockDbCompletions.filter(c => resourceIds.has(c.resource_id)),
+    )
     // sensible defaults that don't conflict
     mockTrackerRecord.mockImplementation(async (_userId: string, resourceId: string, result: { status: string }) => {
       mockDbCompletions.push(makeCompletion(resourceId, result.status as 'passed' | 'failed' | 'skipped'))
@@ -391,6 +391,121 @@ describe('DaySessionManager', () => {
   })
 
   // ── Test 9 ────────────────────────────────────────────────────────────────
+  it('forceAdvance() unlocks next day and returns COMPLETE phase', async () => {
+    const r1 = makeResource('r1')
+    const snapshot = makeSnapshot({
+      isUnlocked: true,
+      aResources: [r1],
+      completions: new Map([['r1', makeCompletion('r1', 'failed')]]),
+      bCandidates: [],
+    })
+    const afterAdvanceSnapshot = makeSnapshot({
+      isUnlocked: true,
+      aResources: [r1],
+      completions: new Map([['r1', makeCompletion('r1', 'failed')]]),
+    })
+    mockAssembleDaySnapshot
+      .mockResolvedValueOnce(snapshot)             // load()
+      .mockResolvedValueOnce(afterAdvanceSnapshot) // forceAdvance()
+
+    const manager = new DaySessionManager()
+    await manager.load('user1', 1, 3)
+    const state = await manager.forceAdvance()
+
+    expect(mockTrackerUnlockDay).toHaveBeenCalledWith('user1', 1, 4)
+    // forceAdvance signals in-session COMPLETE so the UI transitions away from NEEDS_RETRY
+    expect(state.phase).toBe('COMPLETE')
+  })
+
+  // ── Test 10 ───────────────────────────────────────────────────────────────
+  it('forceAdvance() at final day returns current state without calling unlockDay', async () => {
+    const r1 = makeResource('r1')
+    const snapshot = makeSnapshot({
+      isUnlocked: true,
+      aResources: [r1],
+      completions: new Map(),
+    })
+    mockAssembleDaySnapshot.mockResolvedValue(snapshot)
+
+    const manager = new DaySessionManager()
+    const loadState = await manager.load('user1', 8, 7)
+    const advanceState = await manager.forceAdvance()
+
+    // No unlock should happen at the terminus
+    expect(mockTrackerUnlockDay).not.toHaveBeenCalled()
+    // State is unchanged
+    expect(advanceState.phase).toBe(loadState.phase)
+  })
+
+  // ── Test 11 ───────────────────────────────────────────────────────────────
+  it('forceAdvance() returns COMPLETE even when mid-REMEDIATION (in-session signal)', async () => {
+    const r1 = makeResource('r1')
+    const b1 = makeResource('b1', { tier: 'B' })
+    const b2 = makeResource('b2', { tier: 'B' })
+
+    const remediationSnapshot = makeSnapshot({
+      isUnlocked: true,
+      aResources: [r1],
+      completions: new Map([['r1', makeCompletion('r1', 'failed')]]),
+      bCandidates: [b1, b2],
+      bTotalForSession: 2,
+    })
+    const afterAdvanceSnapshot = makeSnapshot({
+      isUnlocked: true,
+      aResources: [r1],
+      completions: new Map([['r1', makeCompletion('r1', 'failed')]]),
+      bCandidates: [b2],
+      bTotalForSession: 1,
+    })
+    mockAssembleDaySnapshot
+      .mockResolvedValueOnce(remediationSnapshot) // load()
+      .mockResolvedValueOnce(afterAdvanceSnapshot) // forceAdvance()
+
+    const manager = new DaySessionManager()
+    await manager.load('user1', 1, 1)
+    const state = await manager.forceAdvance()
+
+    expect(mockTrackerUnlockDay).toHaveBeenCalledWith('user1', 1, 2)
+    expect(state.phase).toBe('COMPLETE')
+  })
+
+  // ── Test 11b ──────────────────────────────────────────────────────────────
+  it('execute() does NOT unlock when a resource is skipped (skip gaming prevention)', async () => {
+    const r1 = makeResource('r1')
+    const r2 = makeResource('r2')
+    const r3 = makeResource('r3')
+    const r4 = makeResource('r4')
+    const aResources = [r1, r2, r3, r4]
+
+    const loadSnapshot = makeSnapshot({ isUnlocked: true, aResources, completions: new Map() })
+    const postSnapshot = makeSnapshot({
+      isUnlocked: true,
+      aResources,
+      completions: new Map([
+        ['r1', makeCompletion('r1', 'passed')],
+        ['r2', makeCompletion('r2', 'passed')],
+        ['r3', makeCompletion('r3', 'passed')],
+        ['r4', makeCompletion('r4', 'skipped')],
+      ]),
+    })
+    mockAssembleDaySnapshot.mockResolvedValueOnce(loadSnapshot).mockResolvedValue(postSnapshot)
+
+    // Pre-populate DB completions (r1-r3 passed already)
+    mockDbCompletions.push(
+      makeCompletion('r1', 'passed'),
+      makeCompletion('r2', 'passed'),
+      makeCompletion('r3', 'passed'),
+    )
+
+    const manager = new DaySessionManager()
+    await manager.load('user1', 1, 1)
+    // r4 is skipped — should NOT unlock next day even though pass rate (3/3=100%) is above threshold
+    await manager.execute({ type: 'SKIP_RESOURCE', resourceId: 'r4' })
+
+    expect(mockTrackerUnlockDay).not.toHaveBeenCalled()
+  })
+
+  // ── Test 12 ───────────────────────────────────────────────────────────────
   it('requestFeedback() calls getDayStats and AIService.getDailyFeedback', async () => {
     const r1 = makeResource('r1')
     const snapshot = makeSnapshot({

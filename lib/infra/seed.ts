@@ -71,6 +71,8 @@ export async function seedContentLibrary(): Promise<void> {
   })
 
   await db.transaction('rw', db.knowledge_points, db.resources, db.meta, async () => {
+    await db.knowledge_points.clear()
+    await db.resources.clear()
     await db.knowledge_points.bulkPut(concepts as KnowledgePoint[])
     await db.resources.bulkPut(processed)
     await db.meta.put({ key: 'content_version', value: LIBRARY_VERSION })

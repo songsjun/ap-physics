@@ -1,4 +1,4 @@
-import { getDb } from '@/lib/infra/db'
+import { repo } from '@/lib/repository'
 import { assembleDaySnapshot } from '@/lib/app/snapshot'
 import { computeFlowState, shouldUnlock } from '@/lib/domain/flow'
 import { tracker } from '@/lib/domain/progress'
@@ -52,20 +52,15 @@ export class DaySessionManager {
           ? command.result
           : { status: 'skipped' as const }
 
-      const db = getDb()
       const aResources = this.currentSnapshot.aResources
       const aResourceIds = new Set(aResources.map(r => r.id))
       const mode = this.currentSnapshot.mode
 
-      await db.transaction('rw', db.completions, db.day_unlocks, async () => {
+      await repo.transact(async () => {
         await tracker.record(userId, command.resourceId, result)
 
         // Query only this day's A-tier completions (avoids full-table scan)
-        const dayCompletions = await db.completions
-          .where('user_id')
-          .equals(userId)
-          .filter(c => aResourceIds.has(c.resource_id))
-          .toArray()
+        const dayCompletions = await repo.getCompletionsByResourceIds(userId, aResourceIds)
 
         let passed = 0, failed = 0
         for (const c of dayCompletions) {
@@ -83,7 +78,11 @@ export class DaySessionManager {
           seenResourceIds: new Set(),
         }
 
-        if (shouldUnlock(stats, mode)) {
+        // Only unlock when every A resource is in a final state (passed or failed).
+        // Skipped resources don't count — a student cannot bypass the gate by skipping.
+        const completedIds = new Set(dayCompletions.filter(c => c.status !== 'skipped').map(c => c.resource_id))
+        const allADone = aResources.every(r => completedIds.has(r.id))
+        if (allADone && shouldUnlock(stats, mode)) {
           const [nw, nd] = nextDay(week, day)
           if (nw !== week || nd !== day) {
             await tracker.unlockDay(userId, nw, nd)
@@ -106,6 +105,17 @@ export class DaySessionManager {
 
   async requestFeedback(): Promise<DailyFeedback> {
     if (!this.currentSnapshot) throw new Error('Session not loaded')
+    if (computeFlowState(this.currentSnapshot).phase !== 'COMPLETE') {
+      throw new Error('requestFeedback called before day is complete')
+    }
+    // After forceAdvance, skip AI call — student didn't truly pass
+    if (this.currentSnapshot.forceCompleted) {
+      return {
+        strength: '已选择跳过本日关口',
+        note: '建议之后返回重新完成以巩固知识点',
+        preview: '',
+      }
+    }
     const stats = await tracker.getDayStats(
       this.userId,
       this.week,
@@ -113,5 +123,24 @@ export class DaySessionManager {
       this.currentSnapshot.aResources,
     )
     return AIService.getDailyFeedback(stats, { week: this.week, day: this.day })
+  }
+
+  async forceAdvance(): Promise<FlowState> {
+    if (!this.currentSnapshot) throw new Error('Session not loaded')
+    const { userId, week, day } = this
+    const [nw, nd] = nextDay(week, day)
+
+    // Already at the final day: return current state without any side effects
+    if (nw === week && nd === day) {
+      return computeFlowState(this.currentSnapshot)
+    }
+
+    await tracker.unlockDay(userId, nw, nd)
+
+    // Re-assemble snapshot and mark forceCompleted so the UI transitions to COMPLETE
+    // in-session without corrupting the actual DB pass-rate record.
+    const newSnapshot = await assembleDaySnapshot(userId, week, day)
+    this.currentSnapshot = { ...newSnapshot, bTotalForSession: this.bTotalForSession, forceCompleted: true }
+    return computeFlowState(this.currentSnapshot)
   }
 }

@@ -40,10 +40,13 @@ export function SettingsClient() {
     setImportStatus('idle')
     try {
       const text = await file.text()
-      const data = JSON.parse(text) as ExportData
+      const raw: unknown = JSON.parse(text)
+      if (typeof raw !== 'object' || raw === null || Array.isArray(raw)) {
+        throw new Error('文件格式错误：不是有效的 JSON 对象')
+      }
       const userId = StorageService.userId.get()
       if (!userId) throw new Error('用户未初始化')
-      await importProgress(userId, data)
+      await importProgress(userId, raw as ExportData)
       setImportStatus('success')
     } catch (err) {
       setImportStatus('error')
@@ -56,14 +59,14 @@ export function SettingsClient() {
     <div className="max-w-2xl mx-auto px-4 py-8 space-y-8">
       <div className="flex items-center gap-4">
         <a href="/" className="text-sm text-blue-500 hover:underline">← 返回首页</a>
-        <h1 className="text-2xl font-bold text-gray-900">设置</h1>
+        <h1 className="text-2xl font-bold text-stone-900">设置</h1>
       </div>
 
       {/* API Key */}
-      <section className="bg-white rounded-xl border border-gray-100 shadow-sm p-6 space-y-4">
+      <section className="bg-white rounded-xl border border-stone-100 shadow-sm p-6 space-y-4">
         <div>
-          <h2 className="font-semibold text-gray-900">Claude API Key</h2>
-          <p className="text-sm text-gray-500 mt-0.5">用于获取个性化学习反馈。Key 仅保存在本地浏览器，不会上传。</p>
+          <h2 className="font-semibold text-stone-900">Claude API Key</h2>
+          <p className="text-sm text-stone-500 mt-0.5">用于获取个性化学习反馈。Key 仅保存在本地浏览器，不会上传。</p>
         </div>
         <div className="flex gap-2">
           <input
@@ -72,7 +75,7 @@ export function SettingsClient() {
             onChange={e => setApiKey(e.target.value)}
             onKeyDown={e => e.key === 'Enter' && handleSave()}
             placeholder="sk-ant-..."
-            className="flex-1 border border-gray-200 rounded-lg px-3 py-2 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-blue-300"
+            className="flex-1 border border-stone-200 rounded-lg px-3 py-2 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-blue-300"
           />
           <button
             onClick={handleSave}
@@ -89,7 +92,7 @@ export function SettingsClient() {
             清除 Key
           </button>
         )}
-        <p className="text-xs text-gray-400">
+        <p className="text-xs text-stone-400">
           前往{' '}
           <a
             href="https://console.anthropic.com"
@@ -104,21 +107,21 @@ export function SettingsClient() {
       </section>
 
       {/* Progress backup */}
-      <section className="bg-white rounded-xl border border-gray-100 shadow-sm p-6 space-y-4">
+      <section className="bg-white rounded-xl border border-stone-100 shadow-sm p-6 space-y-4">
         <div>
-          <h2 className="font-semibold text-gray-900">学习进度备份</h2>
-          <p className="text-sm text-gray-500 mt-0.5">导出进度到 JSON 文件，或从备份文件恢复（会覆盖当前进度）。</p>
+          <h2 className="font-semibold text-stone-900">学习进度备份</h2>
+          <p className="text-sm text-stone-500 mt-0.5">导出进度到 JSON 文件，或从备份文件恢复（会覆盖当前进度）。</p>
         </div>
         <div className="flex gap-2 flex-wrap">
           <button
             onClick={handleExport}
-            className="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm font-medium rounded-lg transition-colors"
+            className="px-4 py-2 bg-stone-100 hover:bg-stone-200 text-stone-700 text-sm font-medium rounded-lg transition-colors"
           >
             导出进度
           </button>
           <button
             onClick={() => fileInputRef.current?.click()}
-            className="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm font-medium rounded-lg transition-colors"
+            className="px-4 py-2 bg-stone-100 hover:bg-stone-200 text-stone-700 text-sm font-medium rounded-lg transition-colors"
           >
             导入进度
           </button>
@@ -131,7 +134,7 @@ export function SettingsClient() {
           />
         </div>
         {importStatus === 'success' && (
-          <p className="text-sm text-green-600">✓ 进度已成功导入，请刷新页面查看更新。</p>
+          <p className="text-sm text-emerald-600">✓ 进度已成功导入，请刷新页面查看更新。</p>
         )}
         {importStatus === 'error' && (
           <p className="text-sm text-red-500">导入失败：{importError}</p>

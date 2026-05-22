@@ -37,8 +37,9 @@ async function callClaudeWithMessages(
   })
 
   if (!response.ok) {
-    const err = await response.text().catch(() => response.statusText)
-    throw new Error(`Anthropic API error ${response.status}: ${err}`)
+    // Truncate body to prevent API key fragments from leaking into logs
+    const body = await response.text().catch(() => response.statusText)
+    throw new Error(`Anthropic API error ${response.status}: ${body.slice(0, 120)}`)
   }
 
   const data = (await response.json()) as AnthropicResponse
@@ -124,7 +125,7 @@ export const AIService = {
     // feynman: evaluate quality of student's concept explanation
     if (question.type === 'feynman') {
       const key = StorageService.apiKey.get()
-      if (!key) return { correct: true, feedback: question.explanation }
+      if (!key) return { correct: false, feedback: '未配置 API Key，无法评分。请在设置页配置后重试。' }
 
       const system = `你是 AP 物理 1 学习助手。评估学生用费曼技巧解释物理概念的质量。
 返回纯 JSON：{"correct":true/false,"feedback":"2-3句反馈：肯定理解准确之处，指出可以更清晰或补充的地方"}
@@ -132,7 +133,7 @@ correct=true 表示学生展示了对核心概念的真实理解（不必完美�
       const userMsg = `题目：${question.question}
 参考要点：${question.answer}
 评估标准：${question.grading_rubric}
-学生解释：${studentAnswer}`
+<student_answer>${studentAnswer.slice(0, 2000)}</student_answer>`
       try {
         const raw = await callClaudeWithMessages([{ role: 'user', content: userMsg }], system, 200, signal)
         const match = raw.match(/\{[\s\S]*\}/)
@@ -140,21 +141,21 @@ correct=true 表示学生展示了对核心概念的真实理解（不必完美�
         return { correct: parsed.correct ?? true, feedback: parsed.feedback ?? question.explanation }
       } catch (err) {
         if (err instanceof Error && err.name === 'AbortError') throw err
-        return { correct: true, feedback: question.explanation }
+        return { correct: false, feedback: question.explanation }
       }
     }
 
     // short answer: use AI
     const key = StorageService.apiKey.get()
     if (!key) {
-      return { correct: true, feedback: question.explanation }
+      return { correct: false, feedback: '未配置 API Key，无法评分。请在设置页配置后重试。' }
     }
 
     const system = `你是 AP 物理 1 评分助手。只评分，不教学。返回纯 JSON，格式：{"correct":true/false,"feedback":"1句反馈"}`
     const userMsg = `题目：${question.question}
 正确答案：${question.answer}
 评分要点：${question.grading_rubric}
-学生回答：${studentAnswer}
+<student_answer>${studentAnswer.slice(0, 2000)}</student_answer>
 
 判断是否正确，给出1句反馈。`
 

@@ -5,6 +5,10 @@ export function computeFlowState(snapshot: DaySnapshot): FlowState {
   // Rule 1: not unlocked → LOCKED
   if (!snapshot.isUnlocked) return { phase: 'LOCKED' }
 
+  // Rule 0: explicitly force-completed in-session (after FORCE_ADVANCE) → COMPLETE
+  // passRate is null because the student skipped the gate, not actually passed
+  if (snapshot.forceCompleted) return { phase: 'COMPLETE', passRate: null }
+
   // Rule 1b: no A-tier resources (rest/review day) → auto-complete
   if (snapshot.aResources.length === 0) {
     return { phase: 'COMPLETE', passRate: 1 }

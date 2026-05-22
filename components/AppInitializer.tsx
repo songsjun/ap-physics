@@ -1,24 +1,17 @@
 'use client'
 
 import { useEffect } from 'react'
-import { StorageService } from '@/lib/infra/storage'
-import { seedContentLibrary } from '@/lib/infra/seed'
-import { seedQuizBank } from '@/lib/infra/seed-quiz'
-import { repo } from '@/lib/repository'
+import { ensureAppReady } from '@/lib/app/ready'
 
+/**
+ * Mounted once in the root layout. Kicks off the app initialisation
+ * sequence (seed + unlock) so it begins as early as possible. All page
+ * components that need ready data should also call ensureAppReady() and
+ * await it — the singleton Promise ensures the work is never duplicated.
+ */
 export function AppInitializer() {
   useEffect(() => {
-    async function init() {
-      const userId = StorageService.userId.init()
-      await Promise.all([seedContentLibrary(), seedQuizBank()])
-      // Week 1 Day 1 is always unlocked
-      await repo.unlockDay(userId, 1, 1)
-      // Request persistent storage to prevent Safari ITP clearing IndexedDB
-      if (navigator.storage?.persist) {
-        await navigator.storage.persist()
-      }
-    }
-    init().catch(console.error)
+    ensureAppReady().catch(console.error)
   }, [])
 
   return null

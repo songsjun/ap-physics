@@ -1,10 +1,12 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { findRelatedFRQ, frqTypeLabel } from '@/lib/domain/frq'
 import type { FRQEntry } from '@/lib/domain/frq'
 
 // ── MoralJudgmentDialog ───────────────────────────────────────────────────────
+
+const FOCUSABLE_SELECTOR = 'button:not([disabled]), [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
 
 function MoralJudgmentDialog({ entry, onConfirm, onCancel }: {
   entry: FRQEntry
@@ -12,6 +14,27 @@ function MoralJudgmentDialog({ entry, onConfirm, onCancel }: {
   onCancel: () => void
 }) {
   const [checked, setChecked] = useState([false])
+  const firstButtonRef = useRef<HTMLButtonElement>(null)
+  const dialogRef = useRef<HTMLDivElement>(null)
+
+  // Auto-focus first interactive element, handle Escape, and trap Tab inside dialog
+  useEffect(() => {
+    firstButtonRef.current?.focus()
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') { onCancel(); return }
+      if (e.key !== 'Tab') return
+      const els = Array.from(dialogRef.current?.querySelectorAll(FOCUSABLE_SELECTOR) ?? []) as HTMLElement[]
+      if (!els.length) return
+      const first = els[0], last = els[els.length - 1]
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault(); last.focus()
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault(); first.focus()
+      }
+    }
+    document.addEventListener('keydown', onKey)
+    return () => document.removeEventListener('keydown', onKey)
+  }, [onCancel])
 
   const toggle = (i: number) =>
     setChecked(prev => prev.map((v, j) => (j === i ? !v : v)))
@@ -28,6 +51,10 @@ function MoralJudgmentDialog({ entry, onConfirm, onCancel }: {
       onClick={onCancel}
     >
       <div
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="moral-dialog-title"
         className="bg-white rounded-2xl shadow-2xl w-full max-w-sm overflow-hidden"
         onClick={e => e.stopPropagation()}
       >
@@ -38,7 +65,7 @@ function MoralJudgmentDialog({ entry, onConfirm, onCancel }: {
               ⚖️
             </div>
             <div>
-              <p className="text-sm font-semibold text-stone-800">查看答案前，请认真思考</p>
+              <p id="moral-dialog-title" className="text-sm font-semibold text-stone-800">查看答案前，请认真思考</p>
               <p className="text-xs text-stone-500 mt-0.5">{entry.year} · Q{entry.question_number} · {frqTypeLabel(entry.frq_type)}</p>
             </div>
           </div>
@@ -76,6 +103,7 @@ function MoralJudgmentDialog({ entry, onConfirm, onCancel }: {
         {/* Actions */}
         <div className="px-5 pb-5 flex gap-2.5">
           <button
+            ref={firstButtonRef}
             onClick={onCancel}
             className="flex-1 py-2 rounded-xl text-sm text-stone-500 bg-stone-100 hover:bg-stone-200 transition-colors"
           >
@@ -122,6 +150,8 @@ export function RelatedFRQCard({ conceptIds }: { conceptIds: string[] }) {
         {/* Collapsible header */}
         <button
           onClick={() => setOpen(o => !o)}
+          aria-expanded={open}
+          aria-controls="frq-card-content"
           className="w-full px-4 py-2.5 flex items-center justify-between bg-violet-50 hover:brightness-95 transition-all text-left"
         >
           <div className="flex items-center gap-2.5">
@@ -142,7 +172,7 @@ export function RelatedFRQCard({ conceptIds }: { conceptIds: string[] }) {
 
         {/* Rows */}
         {open && (
-          <div className="divide-y divide-stone-50">
+          <div id="frq-card-content" className="divide-y divide-stone-50">
             {related.map(entry => (
               <div key={entry.id} className="px-4 py-3 flex items-start justify-between gap-3">
                 <div className="flex-1 min-w-0">

@@ -40,6 +40,20 @@ export class DexieRepository implements IRepository {
     return db.completions.where('user_id').equals(userId).toArray()
   }
 
+  async getCompletionsByResourceIds(userId: string, resourceIds: Set<string>): Promise<Completion[]> {
+    const db = getDb()
+    return db.completions
+      .where('user_id')
+      .equals(userId)
+      .filter(c => resourceIds.has(c.resource_id))
+      .toArray()
+  }
+
+  async transact(fn: () => Promise<void>): Promise<void> {
+    const db = getDb()
+    await db.transaction('rw', db.completions, db.day_unlocks, fn)
+  }
+
   async saveCompletion(completion: Completion): Promise<void> {
     const db = getDb()
     await db.completions.put(completion)

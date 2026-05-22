@@ -1,0 +1,895 @@
+[
+  {
+    "id": "kinematics-scalars-vectors-1d-d3-1",
+    "concept_ids": [
+      "kinematics-scalars-vectors-1d"
+    ],
+    "week": 1,
+    "difficulty": 3,
+    "type": "mcq",
+    "question": "一物体在直线上运动，向东行驶距离d后，立刻以减半的速率向西行驶距离d/2。全程的平均速度大小与平均速率之比为？",
+    "options": [
+      "A. 3:1",
+      "B. 1:3",
+      "C. 1:4",
+      "D. 1:2"
+    ],
+    "answer": "B",
+    "grading_rubric": "位移=d-d/2=d/2，路程=d+d/2=3d/2。时间相同，所以比值为1:3。",
+    "explanation": "平均速度与位移成正比，平均速率与路程成正比。总位移为向东d/2，总路程为3d/2。因为时间相同，两者的比值等于位移大小与路程之比，即(d/2)/(3d/2) = 1:3。B正确。C选项混淆了时间，D选项将两者弄反。"
+  },
+  {
+    "id": "kinematics-reference-frames-d3-1",
+    "concept_ids": [
+      "kinematics-reference-frames"
+    ],
+    "week": 1,
+    "difficulty": 3,
+    "type": "mcq",
+    "question": "一列无顶火车以恒定速度v向右行驶。车内乘客以相对车厢速度u向左平抛一小球，地面观察者看到小球恰好垂直下落。关于v与u的大小关系及落地时间t，正确的是？",
+    "options": [
+      "A. v = u，t随v的增大而增大",
+      "B. v < u，t与u的大小有关",
+      "C. v = u，t由抛出高度决定",
+      "D. v > u，t随v的增大而减小"
+    ],
+    "answer": "C",
+    "grading_rubric": "地面看到垂直下落说明水平初速度为0，v=u。竖直下落为自由落体，时间仅由高度决定。",
+    "explanation": "小球对地水平初速为0，满足v=u。竖直方向自由落体t=√(2h/g)，与水平速度无关。C正确。A错误认为t随v增大，B错误认为v<u，D错误认为水平速度影响下落时间。"
+  },
+  {
+    "id": "dynamics-systems-center-of-mass-d3-1",
+    "concept_ids": [
+      "dynamics-systems-center-of-mass"
+    ],
+    "week": 2,
+    "difficulty": 3,
+    "type": "mcq",
+    "question": "光滑水平面上，质量为m和2m的两人静止站立。两人互推后分开，在此过程中，系统的质心将？",
+    "options": [
+      "A. 向质量为m的人移动",
+      "B. 以匀速运动",
+      "C. 保持静止",
+      "D. 向质量为2m的人移动"
+    ],
+    "answer": "C",
+    "grading_rubric": "系统水平方向不受外力，动量守恒，质心静止。",
+    "explanation": "系统在水平方向合外力为零，初动量为零，所以系统动量守恒且始终为零，质心位置保持不变。C正确。A、D错误认为质量不同会导致质心移动，B错误认为质心会匀速运动。"
+  },
+  {
+    "id": "dynamics-force-concept-d3-1",
+    "concept_ids": [
+      "dynamics-force-concept"
+    ],
+    "week": 2,
+    "difficulty": 3,
+    "type": "mcq",
+    "question": "用与水平方向成θ角的推力F将木块压在竖直墙壁上，木块静止。若增大F的大小，墙壁对木块的静摩擦力将？",
+    "options": [
+      "A. 无法确定",
+      "B. 逐渐减小",
+      "C. 逐渐增大",
+      "D. 保持不变"
+    ],
+    "answer": "D",
+    "grading_rubric": "竖直方向受力平衡：静摩擦力 f = mg，与推力无关。",
+    "explanation": "木块静止，竖直方向受力平衡。若推力F无竖直分量，静摩擦力f=mg；若有竖直分量，合力为零。只要保持静止且重力不变，竖直方向静摩擦力大小仅取决于抵消其他竖直力的需求。假设推力水平，f始终等于mg。D正确。B选项混淆了最大静摩擦力和实际静摩擦力。"
+  },
+  {
+    "id": "dynamics-fbd-forces-d3-1",
+    "concept_ids": [
+      "dynamics-fbd-forces"
+    ],
+    "week": 2,
+    "difficulty": 3,
+    "type": "mcq",
+    "question": "物块A叠放在物块B上，B放在光滑水平面上。用水平力F拉B，A、B一起加速运动。此时A受到的摩擦力方向？",
+    "options": [
+      "A. 受力为零",
+      "B. 与F方向相同",
+      "C. 无法确定",
+      "D. 与F方向相反"
+    ],
+    "answer": "B",
+    "grading_rubric": "A与B一起向前加速，A在水平方向仅受摩擦力，由牛顿第二定律知摩擦力方向向前。",
+    "explanation": "A随B向前加速，A产生向前加速度的唯一水平力是B对A的静摩擦力，因此方向与F相同。B正确。B选项错误认为是滑动摩擦力的阻碍作用，C选项忽略了A的加速度。"
+  },
+  {
+    "id": "dynamics-newtons-third-law-d3-1",
+    "concept_ids": [
+      "dynamics-newtons-third-law"
+    ],
+    "week": 2,
+    "difficulty": 3,
+    "type": "mcq",
+    "question": "冰面上，磁铁A吸引铁块B，两者相向滑动。A的质量大于B。关于它们受到的磁力大小，正确的是？",
+    "options": [
+      "A. A受到的力等于B受到的力",
+      "B. 无法确定",
+      "C. A受到的力大于B受到的力",
+      "D. A受到的力小于B受到的力"
+    ],
+    "answer": "A",
+    "grading_rubric": "牛顿第三定律，作用力与反作用力大小相等。",
+    "explanation": "磁铁吸引铁块和铁块吸引磁铁是一对相互作用力，根据牛顿第三定律，大小始终相等，与物体质量无关。A正确。B、C选项混淆了质量或加速度与相互作用力的关系。"
+  },
+  {
+    "id": "dynamics-newtons-first-law-d3-1",
+    "concept_ids": [
+      "dynamics-newtons-first-law"
+    ],
+    "week": 2,
+    "difficulty": 3,
+    "type": "mcq",
+    "question": "匀速直线运动的列车中，悬挂的小球突然向后倾斜。这说明列车正在？",
+    "options": [
+      "A. 加速前进",
+      "B. 匀速转弯",
+      "C. 减速前进",
+      "D. 保持匀速"
+    ],
+    "answer": "A",
+    "grading_rubric": "小球因惯性保持原速，相对车向后，说明车加速。",
+    "explanation": "小球向后倾斜说明列车具有向前的加速度。根据惯性，小球倾向于保持原速度，而悬挂点加速向前，导致小球向后倾斜。A正确。B匀速转弯会导致小球侧向倾斜，C减速前进会导致小球向前倾斜。"
+  },
+  {
+    "id": "dynamics-newtons-second-law-d3-1",
+    "concept_ids": [
+      "dynamics-newtons-second-law"
+    ],
+    "week": 2,
+    "difficulty": 3,
+    "type": "mcq",
+    "question": "电梯内一物体挂在弹簧秤上。电梯以g/2的加速度匀加速上升时，弹簧秤示数是物体真实重力的几倍？",
+    "options": [
+      "A. 1倍",
+      "B. 0.5倍",
+      "C. 1.5倍",
+      "D. 2倍"
+    ],
+    "answer": "C",
+    "grading_rubric": "牛顿第二定律：T - mg = ma，a = g/2，T = 1.5mg。",
+    "explanation": "选物体为研究对象，受向上的拉力T和向下的重力mg。由牛顿第二定律得 T - mg = m(g/2)，解得T = 1.5mg。C正确。B选项是减速上升或加速下降的情况，C选项是加速度为g的情况。"
+  },
+  {
+    "id": "dynamics-gravitational-force-d3-1",
+    "concept_ids": [
+      "dynamics-gravitational-force"
+    ],
+    "week": 2,
+    "difficulty": 3,
+    "type": "mcq",
+    "question": "某行星半径是地球的两倍，平均密度与地球相同。该行星表面的重力加速度是地球表面重力加速度的几倍？",
+    "options": [
+      "A. 1倍",
+      "B. 4倍",
+      "C. 2倍",
+      "D. 0.5倍"
+    ],
+    "answer": "C",
+    "grading_rubric": "g = GM/R^2，M = ρ * (4/3)πR^3，所以 g ∝ ρR。密度同，半径2倍，g为2倍。",
+    "explanation": "重力加速度 g = GM/R^2 = G(ρ * 4/3 πR^3)/R^2 = (4/3)πGρR。可见当密度相同时，g与半径R成正比。半径是两倍，则g也是两倍。C正确。B、C、D选项错误套用公式，未将质量展开为密度和体积。"
+  },
+  {
+    "id": "dynamics-friction-d3-1",
+    "concept_ids": [
+      "dynamics-friction"
+    ],
+    "week": 2,
+    "difficulty": 3,
+    "type": "mcq",
+    "question": "卡车以加速度a水平加速，车厢底部的木块与车厢保持相对静止。若木块与车厢间的静摩擦因数为μ_s，木块不滑动的条件是？",
+    "options": [
+      "A. a ≤ μ_s g",
+      "B. 与质量有关",
+      "C. a ≥ μ_s g",
+      "D. a = μ_s g"
+    ],
+    "answer": "A",
+    "grading_rubric": "木块唯一水平受力为静摩擦力，f = ma。最大静摩擦力 f_max = μ_s mg。需 ma ≤ μ_s mg。",
+    "explanation": "木块做加速运动的向心力由静摩擦力提供，f = ma。要保持不滑动，所需静摩擦力不能超过最大静摩擦力，即 ma ≤ μ_s mg，得出 a ≤ μ_s g。A正确。B是滑动条件，D错误认为摩擦力极限与质量不能消去。"
+  },
+  {
+    "id": "dynamics-spring-forces-d3-1",
+    "concept_ids": [
+      "dynamics-spring-forces"
+    ],
+    "week": 2,
+    "difficulty": 3,
+    "type": "mcq",
+    "question": "一根劲度系数为k的弹簧剪成等长的两段后并联使用，新的等效劲度系数是？",
+    "options": [
+      "A. 2k",
+      "B. 4k",
+      "C. k/2",
+      "D. k"
+    ],
+    "answer": "B",
+    "grading_rubric": "剪半后每段k变为2k。并联后等效k = 2k + 2k = 4k。",
+    "explanation": "将弹簧剪成一半，相当于受同样的力伸长量减半，因此每半段的劲度系数变为2k。将这两段并联，受到相同拉力时形变一致，总刚度为两者之和，即2k + 2k = 4k。B正确。A只考虑了变短或只考虑了并联（未完整推导），D混淆了串并联公式。"
+  },
+  {
+    "id": "dynamics-circular-motion-d3-1",
+    "concept_ids": [
+      "dynamics-circular-motion"
+    ],
+    "week": 2,
+    "difficulty": 3,
+    "type": "mcq",
+    "question": "小球在水平面内做圆锥摆运动（细线悬挂），细线与竖直方向夹角为θ。绳的张力T与重力mg的关系是？",
+    "options": [
+      "A. T = mg sinθ",
+      "B. T = mg / cosθ",
+      "C. T = mg cosθ",
+      "D. T = mg"
+    ],
+    "answer": "B",
+    "grading_rubric": "竖直方向平衡：T cosθ = mg，因此 T = mg / cosθ。",
+    "explanation": "小球在水平面内做匀速圆周运动，竖直方向上受力平衡。受向下的重力mg和沿绳子向上的拉力T。根据受力分析，T在竖直方向的分力抵消重力，即T cosθ = mg，所以T = mg / cosθ。B正确。B选项是将重力分解的错误做法。"
+  },
+  {
+    "id": "dynamics-inclined-planes-d3-1",
+    "concept_ids": [
+      "dynamics-inclined-planes"
+    ],
+    "week": 2,
+    "difficulty": 3,
+    "type": "mcq",
+    "question": "一物块在倾角为θ的粗糙斜面上以初速度v向上滑动，动摩擦因数为μ。其上滑加速度大小为？",
+    "options": [
+      "A. g(sinθ + μcosθ)",
+      "B. g(sinθ - μcosθ)",
+      "C. g sinθ",
+      "D. g(cosθ + μsinθ)"
+    ],
+    "answer": "A",
+    "grading_rubric": "物块向上滑，重力分量和摩擦力都向下：a = (mg sinθ + μmg cosθ)/m。",
+    "explanation": "上滑过程中，重力沿斜面向下的分力为 mg sinθ，滑动摩擦力方向也沿斜面向下，大小为 μN = μmg cosθ。合力 F = mg sinθ + μmg cosθ，由牛顿第二定律得 a = g(sinθ + μcosθ)。A正确。B是下滑时的加速度。"
+  },
+  {
+    "id": "dynamics-systems-connected-d3-1",
+    "concept_ids": [
+      "dynamics-systems-connected"
+    ],
+    "week": 2,
+    "difficulty": 3,
+    "type": "mcq",
+    "question": "阿特伍德机两端悬挂质量为m1和m2的物块(m1 > m2)。系统释放后，绳子张力T与重力m1g的关系是？",
+    "options": [
+      "A. T = m1g",
+      "B. 无法确定",
+      "C. T > m1g",
+      "D. T < m1g"
+    ],
+    "answer": "D",
+    "grading_rubric": "m1向下加速，因此合力向下，m1g - T = m1a，所以 T < m1g。",
+    "explanation": "系统释放后，较重的物块m1向下加速运动。对m1进行受力分析，受到向下的重力m1g和向上的拉力T。由牛顿第二定律知 m1g - T = m1a (a>0)，故 T < m1g。D正确。同理 T > m2g。B、C选项违反牛顿第二定律。"
+  },
+  {
+    "id": "dynamics-circular-orbits-d3-1",
+    "concept_ids": [
+      "dynamics-circular-orbits"
+    ],
+    "week": 2,
+    "difficulty": 3,
+    "type": "mcq",
+    "question": "地球卫星从低轨道变轨到高轨道做匀速圆周运动，其线速度v和周期T的变化情况是？",
+    "options": [
+      "A. v和T均减小",
+      "B. v减小，T增大",
+      "C. v增大，T减小",
+      "D. v和T均增大"
+    ],
+    "answer": "B",
+    "grading_rubric": "v = √(GM/r)，r变大则v变小。根据开普勒第三定律，T∝r^(3/2)，r变大则T变大。",
+    "explanation": "引力提供向心力 GMm/r^2 = m v^2/r，解得 v = √(GM/r)，轨道半径r增大，线速度v减小。由 T = 2πr/v 可知，r增大且v减小，周期T必定增大（或直接根据开普勒第三定律）。B正确。B、C、D选项错误理解了万有引力与向心力的关系。"
+  },
+  {
+    "id": "energy-translational-kinetic-d3-1",
+    "concept_ids": [
+      "energy-translational-kinetic"
+    ],
+    "week": 3,
+    "difficulty": 3,
+    "type": "mcq",
+    "question": "某物体的动量大小增加了20%，在质量不变的情况下，其动能增加了多少？",
+    "options": [
+      "A. 10%",
+      "B. 20%",
+      "C. 40%",
+      "D. 44%"
+    ],
+    "answer": "D",
+    "grading_rubric": "K = p^2 / 2m。p变为1.2p，K变为(1.2)^2 = 1.44，即增加44%。",
+    "explanation": "动能K与动量p的关系为 K = p^2 / (2m)。若动量变为原来的1.2倍，则动能变为原来的 1.2^2 = 1.44 倍。因此动能增加了 44%。D正确。B选项错误认为正比，C选项错误认为是简单的2倍关系。"
+  },
+  {
+    "id": "energy-work-d3-1",
+    "concept_ids": [
+      "energy-work"
+    ],
+    "week": 3,
+    "difficulty": 3,
+    "type": "mcq",
+    "question": "一木板B在光滑水平面上向右运动，木块A以较大速度向右滑上B。关于滑动摩擦力做功，正确的是？",
+    "options": [
+      "A. 摩擦力对A做正功，对B做负功",
+      "B. 摩擦力对A和B都做正功",
+      "C. 摩擦力对A做负功，对B做正功",
+      "D. 摩擦力对A和B都做负功"
+    ],
+    "answer": "C",
+    "grading_rubric": "A速度比B快，A相对B向右滑，A受向左摩擦力（与位移相反），B受向右摩擦力（与位移相同）。",
+    "explanation": "A的速度大于B，A相对B向右运动，所以A受到的滑动摩擦力向左。A的对地位移向右，故摩擦力对A做负功。B受到的反作用力（摩擦力）向右，位移向右，故摩擦力对B做正功。C正确。该过程实现了动能从A转移到B。"
+  },
+  {
+    "id": "energy-fx-graph-d3-1",
+    "concept_ids": [
+      "energy-fx-graph"
+    ],
+    "week": 3,
+    "difficulty": 3,
+    "type": "mcq",
+    "question": "一个力F随位移x的变化关系为F=kx（k为大于零的常数）。物体从x=0运动到x=x0的过程中，该力做的功为？",
+    "options": [
+      "A. k x0^2",
+      "B. 0",
+      "C. k x0",
+      "D. 1/2 k x0^2"
+    ],
+    "answer": "D",
+    "grading_rubric": "F-x图像是过原点的直线，功等于图像与坐标轴围成的三角形面积：1/2 * 底 * 高。",
+    "explanation": "力F随位移x线性增加，在F-x图像中是一条斜率为k的直线。所做的功等于图像下方的面积，即一个底为x0，高为kx0的三角形面积。W = 1/2 * x0 * (kx0) = 1/2 k x0^2。D正确。B选项是矩形面积（恒力最大值），C选项单位不对。"
+  },
+  {
+    "id": "energy-potential-energy-d3-1",
+    "concept_ids": [
+      "energy-potential-energy"
+    ],
+    "week": 3,
+    "difficulty": 3,
+    "type": "mcq",
+    "question": "将小球从高处自由释放，在不计空气阻力的情况下，当小球的动能等于其重力势能时（取地面为势能零点），小球下落的距离是总高度的？",
+    "options": [
+      "A. 1/4",
+      "B. 1/3",
+      "C. 1/2",
+      "D. 2/3"
+    ],
+    "answer": "C",
+    "grading_rubric": "机械能守恒：E = mgh。当 K = U 时，2U = mgh，U = mgh/2。高度为h/2，下落距离也是h/2。",
+    "explanation": "根据机械能守恒，初始总能量 E = mgh。在某高度y处，动能K与势能U相等，即 K = U。因为 E = K + U = 2U，所以 2(mgy) = mgh，解得 y = h/2。小球下落的距离为 h - y = h/2。C正确。"
+  },
+  {
+    "id": "energy-conservation-d3-1",
+    "concept_ids": [
+      "energy-conservation"
+    ],
+    "week": 3,
+    "difficulty": 3,
+    "type": "mcq",
+    "question": "小球沿光滑轨道从静止滑下，恰好能通过半径为R的圆轨道最高点。小球释放的最小高度h是？",
+    "options": [
+      "A. 3R",
+      "B. 2.5R",
+      "C. 1.5R",
+      "D. 2R"
+    ],
+    "answer": "B",
+    "grading_rubric": "最高点恰能通过条件：mg = mv^2/R，K = 0.5mgR。初态 mgh = 顶态 mg(2R) + 0.5mgR = 2.5mgR。",
+    "explanation": "在最高点恰好通过，说明仅重力提供向心力，mg = mv^2/R，此时动能 K = 1/2 mv^2 = 1/2 mgR。最高点的势能为 mg(2R)。由机械能守恒，初始势能 mgh = 2mgR + 0.5mgR = 2.5mgR，故 h = 2.5R。B正确。B选项忽略了最高点需要的动能。"
+  },
+  {
+    "id": "energy-bar-charts-d3-1",
+    "concept_ids": [
+      "energy-bar-charts"
+    ],
+    "week": 3,
+    "difficulty": 3,
+    "type": "mcq",
+    "question": "一物块沿粗糙斜面匀速下滑。若将物块、斜面和地球视为一个系统，关于系统能量的变化，正确的是？",
+    "options": [
+      "A. 动能不变，势能减小，总能量减小",
+      "B. 机械能守恒",
+      "C. 机械能不变，内能增加",
+      "D. 机械能减小，内能增加，总能量守恒"
+    ],
+    "answer": "D",
+    "grading_rubric": "有摩擦，机械能转化为内能，但闭合系统总能量守恒。",
+    "explanation": "物块匀速下滑，动能不变，重力势能减小，因此系统的机械能减小。克服摩擦力做功使得机械能转化为系统的内能。因为没有外部系统做功，总能量保持守恒。D正确。B选项错误认为闭合系统总能量会减小。"
+  },
+  {
+    "id": "energy-power-d3-1",
+    "concept_ids": [
+      "energy-power"
+    ],
+    "week": 3,
+    "difficulty": 3,
+    "type": "mcq",
+    "question": "汽车以额定功率P在平直公路上加速行驶，所受阻力f恒定。当汽车速度为v时，其加速度a的表达式为？（m为汽车质量）",
+    "options": [
+      "A. (P/v - f)/m",
+      "B. (P - fv)/m",
+      "C. P/(mv)",
+      "D. P/v"
+    ],
+    "answer": "A",
+    "grading_rubric": "牵引力 F = P/v。由牛顿第二定律 F - f = ma，故 a = (P/v - f)/m。",
+    "explanation": "由功率公式 P = Fv 可得牵引力 F = P/v。根据牛顿第二定律，合外力产生加速度，即 F - f = ma。代入 F 得 (P/v) - f = ma，解得 a = (P/v - f)/m。A正确。这表明在恒定功率下，速度增大，牵引力减小，加速度减小。"
+  },
+  {
+    "id": "momentum-linear-d3-1",
+    "concept_ids": [
+      "momentum-linear"
+    ],
+    "week": 4,
+    "difficulty": 3,
+    "type": "mcq",
+    "question": "甲、乙两物体的动能相同，且甲的质量大于乙的质量。关于两物体的动量大小，正确的是？",
+    "options": [
+      "A. 甲的动量大于乙的动量",
+      "B. 无法比较",
+      "C. 甲的动量小于乙的动量",
+      "D. 甲的动量等于乙的动量"
+    ],
+    "answer": "A",
+    "grading_rubric": "p = √(2mK)。K相同，m越大，p越大。",
+    "explanation": "动量 p = mv，动能 K = 1/2 mv^2 = p^2 / 2m，因此动量 p = √(2mK)。当动能K相同时，质量m越大，动量p越大。因为甲的质量大，所以甲的动量大于乙。A正确。B选项是速度大小的比较结果。"
+  },
+  {
+    "id": "momentum-impulse-d3-1",
+    "concept_ids": [
+      "momentum-impulse"
+    ],
+    "week": 4,
+    "difficulty": 3,
+    "type": "mcq",
+    "question": "质量为m的小球以速度v垂直撞击墙面，并以相同速率v反弹。墙面对小球的冲量大小是？",
+    "options": [
+      "A. 0",
+      "B. 2mv",
+      "C. 0.5mv",
+      "D. mv"
+    ],
+    "answer": "B",
+    "grading_rubric": "冲量 = 动量的变化量。设反弹方向为正，Δp = mv - m(-v) = 2mv。",
+    "explanation": "冲量定理 I = Δp。动量是矢量。设反弹方向为正方向，初动量为 -mv，末动量为 mv。动量的变化量 Δp = mv - (-mv) = 2mv。墙面提供的冲量大小为2mv。B正确。C选项错误认为动量是标量从而得出变化量为0。"
+  },
+  {
+    "id": "momentum-ft-graph-d3-1",
+    "concept_ids": [
+      "momentum-ft-graph"
+    ],
+    "week": 4,
+    "difficulty": 3,
+    "type": "mcq",
+    "question": "作用在静止物体上的力F随时间t的变化图线为一三角形：t=0时F=0，t=T时F达到最大值F0，t=2T时F回到0。物体获得的最终动量大小为？",
+    "options": [
+      "A. 0.5 F0 T",
+      "B. F0 T",
+      "C. 0",
+      "D. 2 F0 T"
+    ],
+    "answer": "B",
+    "grading_rubric": "F-t图像面积等于冲量，也就是动量的变化。面积 = 1/2 * (2T) * F0 = F0 T。",
+    "explanation": "力-时间图像下的面积代表冲量。这里的图像是一个底边长为2T、高为F0的三角形。面积 = 1/2 * 2T * F0 = F0 T。因为初动量为0，根据动量定理 Δp = I，物体获得的最终动量大小即为 F0 T。B正确。"
+  },
+  {
+    "id": "momentum-conservation-d3-1",
+    "concept_ids": [
+      "momentum-conservation"
+    ],
+    "week": 4,
+    "difficulty": 3,
+    "type": "mcq",
+    "question": "宇航员在太空中静止。他将手中的工具向左抛出，工具抛出后，宇航员的运动状态是？",
+    "options": [
+      "A. 向右加速运动",
+      "B. 向右匀速运动",
+      "C. 保持静止",
+      "D. 向左匀速运动"
+    ],
+    "answer": "B",
+    "grading_rubric": "系统无外力，总动量守恒。初动量为0，工具向左有动量，人必然向右有动量。",
+    "explanation": "系统（宇航员和工具）在太空中不受外力，动量守恒。初始总动量为0。工具向左抛出获得向左的动量，宇航员必须获得等大反向（向右）的动量以保持总动量为0。抛出后他不再受力，因此向右做匀速运动。选B正确。A错误因为抛出后没有持续的力作用于宇航员，所以不会加速。C错误因为动量守恒要求宇航员向右运动。D错误因为宇航员应向右而非向左运动。"
+  },
+  {
+    "id": "momentum-collisions-d3-1",
+    "concept_ids": [
+      "momentum-collisions"
+    ],
+    "week": 4,
+    "difficulty": 3,
+    "type": "mcq",
+    "question": "两质量相等的物体发生完全非弹性碰撞，其中一个碰撞前静止，另一个以速度v运动。碰撞过程中系统损失的机械能占系统初始机械能的比例是？",
+    "options": [
+      "A. 50%",
+      "B. 100%",
+      "C. 75%",
+      "D. 25%"
+    ],
+    "answer": "A",
+    "grading_rubric": "完全非弹性碰后速度v/2。初动能0.5mv^2。末动能0.5(2m)(v/2)^2 = 0.25mv^2。损失一半。",
+    "explanation": "由动量守恒 mv = 2m v'，碰后共同速度 v'=v/2。初始动能 K_i = 1/2 mv^2。碰后总动能 K_f = 1/2 (2m)(v/2)^2 = 1/4 mv^2 = K_i / 2。损失的机械能为 K_i - K_i/2 = K_i/2，占比50%。A正确。"
+  },
+  {
+    "id": "torque-rotational-kinematics-d3-1",
+    "concept_ids": [
+      "torque-rotational-kinematics"
+    ],
+    "week": 5,
+    "difficulty": 3,
+    "type": "mcq",
+    "question": "一轮子由静止开始做匀角加速转动。若在第1秒内转过的角度为θ，则在第2秒内转过的角度是？",
+    "options": [
+      "A. 3θ",
+      "B. 4θ",
+      "C. θ",
+      "D. 2θ"
+    ],
+    "answer": "A",
+    "grading_rubric": "θ = 1/2 α t^2。t=1时角位移为θ，t=2时角位移为4θ，第2秒内为4θ - θ = 3θ。",
+    "explanation": "根据旋转运动学公式 θ = 1/2 α t^2。前1秒内的角位移 θ_1 = 1/2 α (1)^2 = θ。前2秒内的总角位移 θ_2 = 1/2 α (2)^2 = 4(1/2 α) = 4θ。第2秒内的角位移为 Δθ = θ_2 - θ_1 = 4θ - θ = 3θ。A正确。比例关系1:3:5...也适用。"
+  },
+  {
+    "id": "torque-linear-rotational-connection-d3-1",
+    "concept_ids": [
+      "torque-linear-rotational-connection"
+    ],
+    "week": 5,
+    "difficulty": 3,
+    "type": "mcq",
+    "question": "一个车轮在水平地面上做纯滚动。已知车轮中心的线速度为v，则车轮最高点的对地线速度是？",
+    "options": [
+      "A. 0",
+      "B. v",
+      "C. 0.5v",
+      "D. 2v"
+    ],
+    "answer": "D",
+    "grading_rubric": "纯滚动，接触点速度为0，ω = v/R。最高点相对圆心速度也是v，同向，合速度2v。",
+    "explanation": "车轮纯滚动时，底部接触点瞬时对地速度为0。根据 v = ωR，车轮旋转的角速度ω等于中心平移速度v除以半径R。最高点的速度等于中心平移速度v加上旋转带来的线速度ωR = v，两者方向相同，因此最高点总速度为 2v。D正确。"
+  },
+  {
+    "id": "torque-torque-d3-1",
+    "concept_ids": [
+      "torque-torque"
+    ],
+    "week": 5,
+    "difficulty": 3,
+    "type": "mcq",
+    "question": "将门把手安装在远离铰链的一端，是为了在施加相同大小的力时？",
+    "options": [
+      "A. 增加力矩",
+      "B. 增加做的功",
+      "C. 减小做的功",
+      "D. 减小力矩"
+    ],
+    "answer": "A",
+    "grading_rubric": "τ = r * F * sinθ。力臂r越大，相同F下产生的扭矩越大。",
+    "explanation": "力矩 τ 决定了改变物体转动状态的效果。τ = r * F * sinθ，其中r是转轴（铰链）到作用点（把手）的距离，即力臂。将把手放在远离铰链处可以增大r，从而在施加同样大小的力F时产生更大的力矩，更易推开门。A正确。功由力矩和角位移决定，与题意无关。"
+  },
+  {
+    "id": "torque-rotational-inertia-d3-1",
+    "concept_ids": [
+      "torque-rotational-inertia"
+    ],
+    "week": 5,
+    "difficulty": 3,
+    "type": "mcq",
+    "question": "质量和半径均相同的实心球和空心球（薄壳），关于过球心的轴转动，谁的转动惯量更大？",
+    "options": [
+      "A. 无法比较",
+      "B. 空心球",
+      "C. 实心球",
+      "D. 一样大"
+    ],
+    "answer": "B",
+    "grading_rubric": "空心球的质量全部分布在距轴较远的表面，实心球均匀分布。I=Σmr^2，空心球更大。",
+    "explanation": "转动惯量体现了质量分布对转轴的距离。空心球的所有质量都分布在半径R的球壳上，距离转轴较远。而实心球的质量均匀分布在整个体积内，大部分质量离转轴的距离小于R。因此，空心球的转动惯量（2/3 mR^2）大于实心球（2/5 mR^2）。B正确。"
+  },
+  {
+    "id": "torque-rotational-equilibrium-d3-1",
+    "concept_ids": [
+      "torque-rotational-equilibrium"
+    ],
+    "week": 5,
+    "difficulty": 3,
+    "type": "mcq",
+    "question": "一根均匀轻质木板平衡在一个支点上。左端放置质量为2m的物体，右端放置质量为m的物体。要使系统平衡，支点距左端的距离占全长的比例是？",
+    "options": [
+      "A. 1/4",
+      "B. 1/3",
+      "C. 1/2",
+      "D. 2/3"
+    ],
+    "answer": "B",
+    "grading_rubric": "设全长L，左端x。力矩平衡：2m * g * x = m * g * (L - x) -> 2x = L - x -> 3x = L -> x = L/3。",
+    "explanation": "根据转动平衡条件，顺时针力矩等于逆时针力矩。设木板总长为L，支点距左端x，则距右端(L-x)。以支点为轴，左侧力矩为 2mg * x，右侧力矩为 mg * (L-x)。令 2x = L-x，得 3x = L，所以 x = 1/3 L。B正确。"
+  },
+  {
+    "id": "torque-newtons-second-law-rotational-d3-1",
+    "concept_ids": [
+      "torque-newtons-second-law-rotational"
+    ],
+    "week": 5,
+    "difficulty": 3,
+    "type": "mcq",
+    "question": "一个有质量和转动惯量的定滑轮两侧悬挂着m1和m2（m1>m2），系统正加速运动。两端绳子的张力T1和T2的关系是？",
+    "options": [
+      "A. T1 < T2",
+      "B. 与滑轮质量无关",
+      "C. T1 > T2",
+      "D. T1 = T2"
+    ],
+    "answer": "C",
+    "grading_rubric": "滑轮产生角加速度需要净力矩。m1向下加速带动滑轮，所以m1侧的张力必须大于m2侧。",
+    "explanation": "因为系统加速运动，滑轮具有顺时针的角加速度α。要使滑轮加速转动，必须有顺时针的净力矩。滑轮两端受到的力矩分别是 T1*R 和 T2*R。由转动牛顿第二定律 (T1 - T2)R = Iα，因为α>0且I>0，所以 T1 > T2。C正确。B是理想无质量滑轮的情形。"
+  },
+  {
+    "id": "rotation-rotational-kinetic-energy-d3-1",
+    "concept_ids": [
+      "rotation-rotational-kinetic-energy"
+    ],
+    "week": 6,
+    "difficulty": 3,
+    "type": "mcq",
+    "question": "一均匀圆柱体在水平面上做纯滚动。其转动动能K_rot与平动动能K_trans之比为？（圆柱体I=1/2 mR^2）",
+    "options": [
+      "A. 2",
+      "B. 1/4",
+      "C. 1",
+      "D. 1/2"
+    ],
+    "answer": "D",
+    "grading_rubric": "K_rot = 1/2 I ω^2 = 1/2 (1/2 mR^2) (v/R)^2 = 1/4 mv^2。K_trans = 1/2 mv^2。比值为1/2。",
+    "explanation": "平动动能 K_trans = 1/2 mv^2。对于纯滚动，ω = v/R。转动动能 K_rot = 1/2 I ω^2 = 1/2 (1/2 mR^2) (v/R)^2 = 1/4 mv^2。两者之比 K_rot / K_trans = (1/4) / (1/2) = 1/2。D正确。这说明圆柱体纯滚动时，有1/3的总动能存在于旋转中。"
+  },
+  {
+    "id": "rotation-torque-work-d3-1",
+    "concept_ids": [
+      "rotation-torque-work"
+    ],
+    "week": 6,
+    "difficulty": 3,
+    "type": "mcq",
+    "question": "一恒定力矩τ作用在飞轮上，使其转过角度θ。此过程中力矩所做的功为？",
+    "options": [
+      "A. τθ^2",
+      "B. τ/θ",
+      "C. τθ",
+      "D. 0.5 τθ"
+    ],
+    "answer": "C",
+    "grading_rubric": "转动系统中的功等于力矩与角位移的乘积，类比平动中的W=Fx。",
+    "explanation": "在旋转运动中，功的定义是恒定力矩τ与角位移θ的乘积，即 W = τθ。这完全对应于线性运动中功等于恒力与位移的乘积 W = Fx。C正确。C选项可能是与弹力做功或动能公式混淆。"
+  },
+  {
+    "id": "rotation-angular-momentum-d3-1",
+    "concept_ids": [
+      "rotation-angular-momentum"
+    ],
+    "week": 6,
+    "difficulty": 3,
+    "type": "mcq",
+    "question": "花样滑冰运动员在旋转时收起双臂，其角速度会显著增加。这是因为？",
+    "options": [
+      "A. 转动惯量减小，角动量守恒",
+      "B. 产生了向前的力矩",
+      "C. 重力势能转化为动能",
+      "D. 机械能守恒导致速度增加"
+    ],
+    "answer": "A",
+    "grading_rubric": "无外部扭矩，L=Iω守恒。收臂导致I减小，因此ω增大。",
+    "explanation": "运动员在冰面上旋转时，系统受到的外力矩近似为零，因此角动量 L = Iω 守恒。当运动员收起双臂时，身体质量更靠近旋转轴，导致转动惯量I减小。为了保持L不变，角速度ω必须相应增大。A正确。此时运动员做了内功，动能是增加的，故C错。"
+  },
+  {
+    "id": "rotation-angular-momentum-conservation-d3-1",
+    "concept_ids": [
+      "rotation-angular-momentum-conservation"
+    ],
+    "week": 6,
+    "difficulty": 3,
+    "type": "mcq",
+    "question": "行星绕恒星做椭圆轨道运行。从远星点向近星点运动的过程中，其角动量和动能的变化是？",
+    "options": [
+      "A. 角动量增大，动能不变",
+      "B. 角动量减小，动能增大",
+      "C. 角动量不变，动能增大",
+      "D. 角动量不变，动能减小"
+    ],
+    "answer": "C",
+    "grading_rubric": "万有引力是通过中心的中心力，力矩为零，角动量守恒。距离减小势能减小，动能增加。",
+    "explanation": "恒星对行星的万有引力指向旋转中心，力臂为零，所以系统受到的力矩为零，角动量 L=mvr守恒。在向近星点运动时，轨道半径r减小，故速度v必须增大，导致动能增大（或者说万有引力做正功使得势能转化为动能）。C正确。"
+  },
+  {
+    "id": "rotation-rolling-d3-1",
+    "concept_ids": [
+      "rotation-rolling"
+    ],
+    "week": 6,
+    "difficulty": 3,
+    "type": "mcq",
+    "question": "实心球、空心球和圆柱体从同一高度的光滑斜面释放，由于没有摩擦不能纯滚，均做滑动。谁先到达底部？",
+    "options": [
+      "A. 圆柱体",
+      "B. 实心球",
+      "C. 空心球",
+      "D. 同时到达"
+    ],
+    "answer": "D",
+    "grading_rubric": "光滑斜面没有摩擦，物体不发生旋转，只有平动。加速度都是g sinθ。",
+    "explanation": "注意题目条件是“光滑斜面”！因为没有摩擦力提供使物体旋转的力矩，这些物体都不会发生滚动，而是完全靠平动滑下斜面。沿斜面的合外力均为 mg sinθ，加速度均为 g sinθ。既然初始条件和加速度完全相同，它们将同时到达底部。D正确。这属于经典陷阱题。"
+  },
+  {
+    "id": "rotation-orbiting-satellites-d3-1",
+    "concept_ids": [
+      "rotation-orbiting-satellites"
+    ],
+    "week": 6,
+    "difficulty": 3,
+    "type": "mcq",
+    "question": "质量相同的两颗卫星A和B绕地球做匀速圆周运动，轨道半径 Ra < Rb。关于它们的周期T，正确的是？",
+    "options": [
+      "A. 无法确定",
+      "B. Ta = Tb",
+      "C. Ta < Tb",
+      "D. Ta > Tb"
+    ],
+    "answer": "C",
+    "grading_rubric": "开普勒第三定律，T^2 ∝ R^3。R越小，T越小。",
+    "explanation": "根据开普勒第三定律或向心力公式推导，卫星周期的平方与轨道半径的立方成正比（T^2 ∝ R^3）。由于卫星A的轨道半径小于卫星B，其运动周期也一定小于卫星B。C正确。越靠近地球的轨道，不仅线速度更快，路程也更短，所以周期显著变短。"
+  },
+  {
+    "id": "oscillation-shm-definition-d3-1",
+    "concept_ids": [
+      "oscillation-shm-definition"
+    ],
+    "week": 7,
+    "difficulty": 3,
+    "type": "mcq",
+    "question": "简谐运动(SHM)的最核心定义特征是，物体的加速度a与偏离平衡位置的位移x之间满足什么关系？",
+    "options": [
+      "A. a 与 x 大小成反比",
+      "B. a 与 x 大小成正比，方向相同",
+      "C. a 与 x 大小成正比，方向相反",
+      "D. a 保持恒定"
+    ],
+    "answer": "C",
+    "grading_rubric": "恢复力 F = -kx，所以 a = - (k/m) x，即加速度与位移成正比且方向相反。",
+    "explanation": "简谐运动的定义是恢复力始终与偏离平衡位置的位移成正比且方向指向平衡位置，即 F = -kx。根据牛顿第二定律，加速度 a = F/m = -(k/m)x。这意味着加速度大小与位移成正比，负号表示方向相反（总是指向平衡位置）。C正确。"
+  },
+  {
+    "id": "oscillation-shm-frequency-period-d3-1",
+    "concept_ids": [
+      "oscillation-shm-frequency-period"
+    ],
+    "week": 7,
+    "difficulty": 3,
+    "type": "mcq",
+    "question": "一弹簧振子在光滑水平面上做简谐运动，振幅为A。当振子经过平衡位置时，将一质量相同的小泥块轻轻放在振子上并粘在一起。则系统的振幅会？",
+    "options": [
+      "A. 减小",
+      "B. 增大",
+      "C. 无法确定",
+      "D. 保持不变"
+    ],
+    "answer": "A",
+    "grading_rubric": "平衡位置动量守恒，粘合后速度减半。机械能(全为动能)减小为一半。新振幅 A' = A / √2。",
+    "explanation": "在平衡位置放泥块，水平方向不受外力，碰撞瞬间动量守恒：mv = 2m v'，所以新速度 v' = v/2。系统的新总机械能（全是动能）为 1/2 (2m)(v/2)^2 = 1/4 mv^2，是原来 1/2 mv^2 的一半。因为弹性势能最大值 1/2 k A'^2 = E' 减半，故振幅A减小。A正确。"
+  },
+  {
+    "id": "oscillation-shm-representing-d3-1",
+    "concept_ids": [
+      "oscillation-shm-representing"
+    ],
+    "week": 7,
+    "difficulty": 3,
+    "type": "mcq",
+    "question": "做简谐运动的物体，其速度v达到最大值的时刻，加速度a的大小是？",
+    "options": [
+      "A. 无法确定",
+      "B. 最大",
+      "C. 1/2 最大值",
+      "D. 0"
+    ],
+    "answer": "D",
+    "grading_rubric": "速度最大时在平衡位置，此时x=0，根据a=-ω^2 x，a=0。",
+    "explanation": "简谐运动中，速度最大的位置是平衡位置。在平衡位置，弹簧（或恢复力提供者）没有形变，恢复力为零，即 x=0。由 a = -kx/m 可知，此时加速度为零。D正确。反之，在端点处，位移最大，加速度最大，但速度为零。"
+  },
+  {
+    "id": "oscillation-shm-energy-d3-1",
+    "concept_ids": [
+      "oscillation-shm-energy"
+    ],
+    "week": 7,
+    "difficulty": 3,
+    "type": "mcq",
+    "question": "在简谐运动中，当物体的位移等于其振幅的一半 (x = A/2) 时，其动能与势能之比为？",
+    "options": [
+      "A. 1:1",
+      "B. 2:1",
+      "C. 1:3",
+      "D. 3:1"
+    ],
+    "answer": "D",
+    "grading_rubric": "U = 1/2 k x^2 = 1/2 k (A/2)^2 = 1/4 E。则 K = E - U = 3/4 E。比例为 3:1。",
+    "explanation": "总能量 E = 1/2 k A^2。当 x = A/2 时，势能 U = 1/2 k (A/2)^2 = 1/4 (1/2 k A^2) = 1/4 E。由能量守恒，动能 K = E - U = 3/4 E。因此动能与势能的比值 K:U = (3/4 E) : (1/4 E) = 3:1。D正确。B选项混淆了位移一半和能量一半的情况。"
+  },
+  {
+    "id": "fluids-density-structure-d3-1",
+    "concept_ids": [
+      "fluids-density-structure"
+    ],
+    "week": 8,
+    "difficulty": 3,
+    "type": "mcq",
+    "question": "将互不相溶的油和水混合静置后，油浮在水面上。这直接说明了？",
+    "options": [
+      "A. 油的压强小于水",
+      "B. 油的密度小于水",
+      "C. 油的体积小于水",
+      "D. 油的质量小于水"
+    ],
+    "answer": "B",
+    "grading_rubric": "由于重力分层，密度较小的流体会浮在密度较大的流体上方。",
+    "explanation": "在重力作用下，互不相溶的流体混合后会发生分层，密度较大的流体沉在下方以降低系统整体重力势能，密度较小的流体浮在上方。油浮在水面上，说明油的密度小于水的密度。B正确。浮沉与总质量或总体积无关。"
+  },
+  {
+    "id": "fluids-pressure-d3-1",
+    "concept_ids": [
+      "fluids-pressure"
+    ],
+    "week": 8,
+    "difficulty": 3,
+    "type": "mcq",
+    "question": "在一端开口的U型管中倒入适量水，静止后两边液面齐平。若再向左管中倒入一段油，静止后左管的油面高于右管的水面。关于两管分界面处深度的压强比较？",
+    "options": [
+      "A. 两侧压强相等",
+      "B. 左侧压强小于右侧",
+      "C. 无法确定",
+      "D. 左侧压强大于右侧"
+    ],
+    "answer": "A",
+    "grading_rubric": "同一连通器内、同种静止流体、同一高度的各点压强必定相等。",
+    "explanation": "在连通器原理中，同一种静止流体（这里是底部的水）在同一水平面上的压强处处相等。因此在油水交界面这一水平高度，左管（上方有油）产生的压强与右管（上方只有水）产生的压强必须相等。A正确。由于油面比水面高，也印证了油的密度比水小。"
+  },
+  {
+    "id": "fluids-newton-laws-d3-1",
+    "concept_ids": [
+      "fluids-newton-laws"
+    ],
+    "week": 8,
+    "difficulty": 3,
+    "type": "mcq",
+    "question": "一块冰漂浮在装有水的杯子中。当冰完全融化成水后，杯中的水面高度会？",
+    "options": [
+      "A. 视冰块大小而定",
+      "B. 降低",
+      "C. 升高",
+      "D. 保持不变"
+    ],
+    "answer": "D",
+    "grading_rubric": "冰块浮在水面，排开水的重力等于冰的重力。冰化成水后，重力不变，化成的水恰好填满原来排开的体积。",
+    "explanation": "冰漂浮时受到的浮力等于其重力：F_浮 = m_冰 * g。根据阿基米德原理，F_浮 = ρ_水 * V_排 * g，所以 m_冰 = ρ_水 * V_排。当冰融化成水时，其质量不变，这部分化成的水体积 V_化 = m_冰 / ρ_水，恰好等于原来排开水的体积V_排。因此水位不变。D正确。"
+  },
+  {
+    "id": "fluids-conservation-laws-d3-1",
+    "concept_ids": [
+      "fluids-conservation-laws"
+    ],
+    "week": 8,
+    "difficulty": 3,
+    "type": "mcq",
+    "question": "水在截面积不同的水平管中稳定流动。关于水在宽管和窄管中的流速与压强，正确的是？",
+    "options": [
+      "A. 宽管中流速大，压强大",
+      "B. 宽管中流速大，压强小",
+      "C. 窄管中流速大，压强小",
+      "D. 窄管中流速大，压强大"
+    ],
+    "answer": "C",
+    "grading_rubric": "连续性方程 A1v1 = A2v2 说明窄处速度大。伯努利方程 P + 1/2 ρv^2 = C 说明速度大处压强小。",
+    "explanation": "根据流体连续性方程 A1v1 = A2v2，管径变窄时，流体的流速必须增大。再根据水平管的伯努利方程 P + 1/2 ρv^2 = 常数，流速v增大的地方，动能项增加，为了保持总能量不变，静压强P必定减小。因此窄管中流速大、压强小。C正确。"
+  }
+]

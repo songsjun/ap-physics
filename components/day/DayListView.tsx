@@ -1,20 +1,19 @@
 'use client'
 
-import { useEffect, useRef, useState, useCallback } from 'react'
+import { useEffect, useMemo, useRef, useState, useCallback } from 'react'
 import { useDayContext } from '@/lib/app/session-context'
-import { repo } from '@/lib/repository'
-import { StorageService } from '@/lib/infra/storage'
-import type { Resource, Completion, KnowledgePoint, DailyFeedback, QuizResult } from '@/lib/types'
+import { useDayResources } from '@/lib/app/useDayResources'
+import type { Resource, KnowledgePoint, DailyFeedback } from '@/lib/types'
 import { TierSection, RowSharedProps } from './ResourceRow'
 import { RelatedFRQCard } from './RelatedFRQCard'
-import { PASS_THRESHOLD, DAILY_CHALLENGE_QUESTION_COUNT } from '@/lib/constants'
+import { PASS_THRESHOLD } from '@/lib/constants'
 import { ChallengePrompt } from './ChallengePrompt'
 import { QuizPanel } from './QuizPanel'
-import { selectDailyQuestions } from '@/lib/app/quiz'
+import { DaySkeleton } from '@/components/DaySkeleton'
 
 // ── CompleteBanner ────────────────────────────────────────────────────────────
 
-function CompleteBanner({ passRate, feedback }: { passRate: number; feedback: DailyFeedback | null }) {
+function CompleteBanner({ passRate, feedback }: { passRate: number | null; feedback: DailyFeedback | null }) {
   return (
     <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4 space-y-3">
       <div className="flex items-center gap-3">
@@ -25,7 +24,10 @@ function CompleteBanner({ passRate, feedback }: { passRate: number; feedback: Da
         </div>
         <div>
           <p className="font-semibold text-emerald-900 text-sm">今日完成</p>
-          <p className="text-xs text-emerald-600">通过率 {Math.round(passRate * 100)}%  ·  下一天已解锁</p>
+          <p className="text-xs text-emerald-600">
+            {passRate !== null ? `通过率 ${Math.round(passRate * 100)}%  ·  ` : '已跳过关口  ·  '}
+            下一天已解锁
+          </p>
         </div>
       </div>
       {feedback ? (
@@ -43,7 +45,15 @@ function CompleteBanner({ passRate, feedback }: { passRate: number; feedback: Da
 
 // ── NeedsRetryBanner ─────────────────────────────────────────────────────────
 
-function NeedsRetryBanner({ passRate }: { passRate: number | null }) {
+function NeedsRetryBanner({
+  passRate,
+  retryCount,
+  onForceAdvance,
+}: {
+  passRate: number | null
+  retryCount: number
+  onForceAdvance: () => void
+}) {
   return (
     <div className="bg-orange-50 border border-orange-200 rounded-xl p-4 space-y-2">
       <div className="flex items-center gap-3">
@@ -62,29 +72,44 @@ function NeedsRetryBanner({ passRate }: { passRate: number | null }) {
       <p className="text-xs text-orange-700 pl-1">
         请重新完成下方 A 层资源，提升答题质量后即可解锁下一天。
       </p>
+      {retryCount >= 2 && (
+        <button
+          onClick={onForceAdvance}
+          className="mt-3 py-2 px-1 text-sm text-stone-500 underline min-h-[44px]"
+        >
+          仍然继续（跳过当前关口，不计为通过）
+        </button>
+      )}
     </div>
   )
 }
 
 // ── DayListView ───────────────────────────────────────────────────────────────
 
-type ChallengeStatus = 'prompt' | 'active' | 'done' | 'skipped'
-
 export function DayListView({ week, day }: { week: number; day: number }) {
   const { dispatch, flowState, feedback } = useDayContext()
-  const [resources, setResources] = useState<Resource[]>([])
-  const [completions, setCompletions] = useState<Map<string, Completion>>(new Map())
-  const [kpMap, setKpMap] = useState<Map<string, KnowledgePoint>>(new Map())
-  const [loading, setLoading] = useState(true)
+  const {
+    resources,
+    completions,
+    kpMap,
+    loading,
+    challengeStatus,
+    challengeResults,
+    availableQuestions,
+    quizChecked,
+    setChallengeStatus,
+    onChallengeComplete,
+  } = useDayResources(week, day, flowState)
+
   // id of resource currently in score-input mode
   const [scoringId, setScoringId] = useState<string | null>(null)
   const feedbackRequestedRef = useRef(false)
+  const [retryCount, setRetryCount] = useState(0)
 
-  // Challenge state
-  const [challengeStatus, setChallengeStatus] = useState<ChallengeStatus>('prompt')
-  const [availableQuestions, setAvailableQuestions] = useState(0)
-  const [quizChecked, setQuizChecked] = useState(false)
-  const [challengeResults, setChallengeResults] = useState<QuizResult[]>([])
+  // Reset per-day state when navigating to a different day (same component instance via client routing)
+  useEffect(() => {
+    feedbackRequestedRef.current = false
+  }, [week, day])
 
   useEffect(() => {
     if (flowState.phase === 'COMPLETE' && !feedbackRequestedRef.current) {
@@ -96,52 +121,30 @@ export function DayListView({ week, day }: { week: number; day: number }) {
     }
   }, [flowState.phase, dispatch])
 
-  useEffect(() => {
-    let cancelled = false
-    const load = async () => {
-      const userId = StorageService.userId.get()
-      if (!userId) return
-      const allRes = await repo.getAllDayResources(week, day)
-      if (cancelled) return
-      const conceptIds = [...new Set(allRes.flatMap(r => r.concepts))]
-      const kps = await repo.getKnowledgePoints(conceptIds)
-      if (cancelled) return
-      const newKpMap = new Map<string, KnowledgePoint>()
-      kps.forEach(kp => { newKpMap.set(kp.id, kp) })
-      setResources(allRes)
-      setKpMap(newKpMap)
-      setLoading(false)
+  // Track current phase in a ref so the cleanup below can distinguish StrictMode
+  // double-invoke (phase unchanged) from a real phase transition away from NEEDS_RETRY.
+  const phaseRef = useRef(flowState.phase)
+  phaseRef.current = flowState.phase
 
-      // Check challenge status
-      const existingResults = await repo.getQuizResultsForDay(userId, week, day)
-      if (cancelled) return
-      if (existingResults.length > 0) {
-        setChallengeStatus('done')
-        setChallengeResults(existingResults)
+  // Increment per-day retry counter in localStorage when landing in NEEDS_RETRY.
+  // On StrictMode double-invoke: cleanup sees phase still NEEDS_RETRY → restores counter.
+  // On real transition out of NEEDS_RETRY: cleanup sees new phase → clears counter so
+  // next visit to this day starts fresh (prevents "skip" button appearing immediately).
+  useEffect(() => {
+    if (flowState.phase !== 'NEEDS_RETRY') return
+    const key = `needs_retry_${week}_${day}`
+    const prev = parseInt(localStorage.getItem(key) ?? '0', 10)
+    const next = prev + 1
+    localStorage.setItem(key, String(next))
+    setRetryCount(next)
+    return () => {
+      if (phaseRef.current === 'NEEDS_RETRY') {
+        localStorage.setItem(key, String(prev))
       } else {
-        const questions = await selectDailyQuestions(userId, week, day, conceptIds, DAILY_CHALLENGE_QUESTION_COUNT)
-        if (!cancelled) {
-          setAvailableQuestions(questions.length)
-          setQuizChecked(true)
-        }
+        localStorage.removeItem(key)
       }
     }
-    load().catch(console.error)
-    return () => { cancelled = true }
-  }, [week, day])
-
-  useEffect(() => {
-    let cancelled = false
-    const refresh = async () => {
-      const userId = StorageService.userId.get()
-      if (!userId) return
-      const dayCompletions = await repo.getCompletions(userId, week, day)
-      if (cancelled) return
-      setCompletions(new Map(dayCompletions.map(c => [c.resource_id, c])))
-    }
-    refresh().catch(console.error)
-    return () => { cancelled = true }
-  }, [week, day, flowState])
+  }, [week, day, flowState.phase])
 
   // For non-graded resources: mark complete immediately
   const handleCheckDirect = useCallback(async (r: Resource) => {
@@ -168,13 +171,7 @@ export function DayListView({ week, day }: { week: number; day: number }) {
   const handleScoreCancel = useCallback(() => setScoringId(null), [])
 
   if (loading) {
-    return (
-      <div className="space-y-3 max-w-2xl mx-auto px-4">
-        {Array.from({ length: 4 }).map((_, i) => (
-          <div key={i} className="h-16 bg-stone-200/60 rounded-xl animate-pulse" />
-        ))}
-      </div>
-    )
+    return <DaySkeleton />
   }
 
   if (flowState.phase === 'LOCKED') {
@@ -216,10 +213,16 @@ export function DayListView({ week, day }: { week: number; day: number }) {
       return aCoversWeak - bCoversWeak || a.slot_order - b.slot_order
     })
 
-  // Unique concepts from all A-tier resources (for reflection card)
-  const aConcepts = [...new Set(aTier.flatMap(r => r.concepts))]
+  // Unique concepts from all A-tier resources (for reflection card and quiz)
+  const aConceptIds = useMemo(
+    () => [...new Set(aTier.flatMap(r => r.concepts))],
+    [aTier]
+  )
+  const aConcepts = aConceptIds
     .map(id => kpMap.get(id))
     .filter(Boolean) as KnowledgePoint[]
+
+  const handleQuizExit = useCallback(() => setChallengeStatus('skipped'), [])
 
   const rowProps: RowSharedProps = { completions, kpMap, scoringId, onCheckDirect: handleCheckDirect, onCheckGraded: handleCheckGraded, onScoreSubmit: handleScoreSubmit, onScoreCancel: handleScoreCancel }
 
@@ -233,7 +236,11 @@ export function DayListView({ week, day }: { week: number; day: number }) {
 
       {/* Needs-retry banner */}
       {flowState.phase === 'NEEDS_RETRY' && (
-        <NeedsRetryBanner passRate={passRate} />
+        <NeedsRetryBanner
+          passRate={passRate}
+          retryCount={retryCount}
+          onForceAdvance={() => dispatch({ type: 'FORCE_ADVANCE' })}
+        />
       )}
 
       {/* Challenge system */}
@@ -251,12 +258,9 @@ export function DayListView({ week, day }: { week: number; day: number }) {
         <QuizPanel
           week={week}
           day={day}
-          conceptIds={[...new Set(aTier.flatMap(r => r.concepts))]}
-          onComplete={(results) => {
-            setChallengeResults(results)
-            setChallengeStatus('done')
-          }}
-          onExit={() => setChallengeStatus('skipped')}
+          conceptIds={aConceptIds}
+          onComplete={onChallengeComplete}
+          onExit={handleQuizExit}
         />
       )}
 

@@ -12,10 +12,11 @@ export async function assembleDaySnapshot(
   const mode: DayMode = week === WEEKS ? 'REVIEW' : 'STANDARD'
 
   // Parallel fetches for independent data
-  const [aResources, isUnlocked, completionsList] = await Promise.all([
+  const [aResources, isUnlocked, completionsList, allCompletions] = await Promise.all([
     catalog.getDay(week, day, 'A'),
     repo.isDayUnlocked(userId, week, day),
     repo.getCompletions(userId, week, day),
+    repo.getAllUserCompletions(userId),  // lifetime seenIds for cross-day B deduplication
   ])
 
   const completions = new Map(completionsList.map(c => [c.resource_id, c]))
@@ -23,8 +24,11 @@ export async function assembleDaySnapshot(
   // Compute stats from already-fetched data (no extra DB read)
   const stats = computeStatsFromData(aResources, completionsList)
 
+  // Use lifetime completions so B resources already seen on other days are excluded
+  const lifetimeSeenIds = new Set(allCompletions.map(c => c.resource_id))
+
   // B candidates depend on weakConcepts from stats
-  const rawBCandidates = await catalog.getBCandidates(stats.weakConcepts, stats.seenResourceIds)
+  const rawBCandidates = await catalog.getBCandidates(stats.weakConcepts, lifetimeSeenIds)
   const bCandidates = prioritize(stats.weakConcepts, rawBCandidates)
 
   return {

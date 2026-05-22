@@ -55,9 +55,8 @@ export function QuizPanel({ week, day, conceptIds, onComplete, onExit }: QuizPan
       if (qs.length === 0) { onExit(); return }
       setQuestions(qs)
       setPhase('question')
-    }).catch(console.error)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [week, day])
+    }).catch(err => { console.error(err); onExit() })
+  }, [week, day, conceptIds, onExit])
 
   useEffect(() => () => { mountedRef.current = false }, [])
 
@@ -69,28 +68,40 @@ export function QuizPanel({ week, day, conceptIds, onComplete, onExit }: QuizPan
       const userAnswer = q.type === 'mcq' ? (selectedOption ?? '') : answer.trim()
       if (!userAnswer) return
       setPhase('grading')
-      const g = await AIService.gradeAnswer(q, userAnswer).catch(() => ({
-        correct: false,
-        feedback: q.explanation,
-      }))
+      let gradingSucceeded = true
+      const g = await Promise.race([
+        AIService.gradeAnswer(q, userAnswer),
+        new Promise<never>((_, reject) =>
+          setTimeout(() => reject(new Error('grading timeout')), 15_000)
+        ),
+      ]).catch(() => {
+        gradingSucceeded = false
+        return {
+          correct: false,
+          feedback: q.explanation || '批改超时，请参考题目说明。',
+        }
+      })
       if (!mountedRef.current) return
       setGrade(g)
-      const userId = StorageService.userId.get()
-      if (userId) {
-        const result: QuizResult = {
-          id: `${userId}-${q.id}-${Date.now()}`,
-          user_id: userId,
-          question_id: q.id,
-          concept_ids: q.concept_ids,
-          week,
-          day,
-          correct: g.correct,
-          student_answer: userAnswer,
-          answered_at: new Date().toISOString(),
-          question_type: q.type,
+      // Don't persist a timeout/error result — it would incorrectly mark the student wrong
+      if (gradingSucceeded) {
+        const userId = StorageService.userId.get()
+        if (userId) {
+          const result: QuizResult = {
+            id: `${userId}-${q.id}-${Date.now()}`,
+            user_id: userId,
+            question_id: q.id,
+            concept_ids: q.concept_ids,
+            week,
+            day,
+            correct: g.correct,
+            student_answer: userAnswer,
+            answered_at: new Date().toISOString(),
+            question_type: q.type,
+          }
+          await repo.saveQuizResult(result).catch(console.error)
+          setSessionResults(prev => [...prev, result])
         }
-        await repo.saveQuizResult(result).catch(console.error)
-        setSessionResults(prev => [...prev, result])
       }
       setPhase('result')
     } finally {
@@ -197,10 +208,12 @@ export function QuizPanel({ week, day, conceptIds, onComplete, onExit }: QuizPan
 
         {/* MCQ options */}
         {q.type === 'mcq' && q.options && (
-          <div className="space-y-2">
+          <div role="radiogroup" aria-label="选择答案" className="space-y-2">
             {q.options.map((opt, i) => (
               <button
                 key={i}
+                role="radio"
+                aria-checked={selectedOption === opt}
                 onClick={() => setSelectedOption(opt)}
                 className={`w-full text-left text-sm rounded-lg py-2 px-3 border transition-colors ${
                   selectedOption === opt
@@ -214,26 +227,27 @@ export function QuizPanel({ week, day, conceptIds, onComplete, onExit }: QuizPan
           </div>
         )}
 
-        {/* Fill / Short answer */}
-        {(q.type === 'fill' || q.type === 'short') && (
-          q.type === 'fill' ? (
-            <input
-              type="text"
-              value={answer}
-              onChange={e => setAnswer(e.target.value)}
-              onKeyDown={e => { if (e.key === 'Enter' && hasAnswer) handleSubmit() }}
-              placeholder="输入答案…"
-              className="border border-stone-200 rounded-lg p-2 w-full text-sm focus:outline-none focus:border-blue-400"
-            />
-          ) : (
-            <textarea
-              value={answer}
-              onChange={e => setAnswer(e.target.value)}
-              placeholder="输入答案…"
-              rows={3}
-              className="border border-stone-200 rounded-lg p-2 w-full text-sm focus:outline-none focus:border-blue-400 resize-none"
-            />
-          )
+        {/* Fill answer */}
+        {q.type === 'fill' && (
+          <input
+            type="text"
+            value={answer}
+            onChange={e => setAnswer(e.target.value)}
+            onKeyDown={e => { if (e.key === 'Enter' && hasAnswer) handleSubmit() }}
+            placeholder="输入答案…"
+            className="border border-stone-200 rounded-lg p-2 w-full text-sm focus:outline-none focus:border-blue-400"
+          />
+        )}
+
+        {/* Short / Feynman answer */}
+        {(q.type === 'short' || q.type === 'feynman') && (
+          <textarea
+            value={answer}
+            onChange={e => setAnswer(e.target.value)}
+            placeholder={q.type === 'feynman' ? '用自己的话解释这个概念，就像在教一个完全不懂的人…' : '输入答案…'}
+            rows={q.type === 'feynman' ? 5 : 3}
+            className="border border-stone-200 rounded-lg p-2 w-full text-sm focus:outline-none focus:border-blue-400 resize-none"
+          />
         )}
 
         <div className="flex items-center justify-between">

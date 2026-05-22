@@ -197,7 +197,8 @@ function ResourceRow({ resource, completion, kpMap, scoringId, onCheckDirect, on
             if (graded) onCheckGraded(resource)
             else onCheckDirect(resource)
           }}
-          aria-label={done ? '已完成' : '标记完成'}
+          aria-label={done ? `${resource.title} 已完成` : `标记 ${resource.title} 为完成`}
+          aria-pressed={done}
           className={`mt-0.5 w-5 h-5 rounded-[5px] border-2 flex items-center justify-center shrink-0 transition-all ${
             done   ? 'bg-emerald-500 border-emerald-500 shadow-sm' :
             failed ? 'bg-red-50 border-red-300 hover:bg-red-100' :
@@ -407,6 +408,8 @@ export function TierSection({
     <div className={`bg-white rounded-xl border ${borderCls} overflow-hidden`}>
       <button
         onClick={() => setOpen(o => !o)}
+        aria-expanded={open}
+        aria-controls={`tier-${tier.toLowerCase()}-content`}
         className={`w-full px-4 py-2.5 flex items-center justify-between ${headerBg} hover:brightness-95 transition-all text-left`}
       >
         <div className="flex items-center gap-2.5">
@@ -430,7 +433,7 @@ export function TierSection({
       </button>
 
       {open && (
-        <div className="divide-y divide-stone-50">
+        <div id={`tier-${tier.toLowerCase()}-content`} className="divide-y divide-stone-50">
           {resources.map(r => (
             <ResourceRow
               key={r.id}

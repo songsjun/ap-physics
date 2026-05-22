@@ -4,13 +4,14 @@ export type FlowState =
   | { phase: 'PRESENTING'; resource: Resource; slot: number; total: number }
   | { phase: 'REMEDIATION'; resources: Resource[]; slot: number; total: number }
   | { phase: 'NEEDS_RETRY' }
-  | { phase: 'COMPLETE'; passRate: number }
+  | { phase: 'COMPLETE'; passRate: number | null }
 
 // ── Command: the only operations Presentation layer can emit ──
 export type Command =
   | { type: 'COMPLETE_RESOURCE'; resourceId: string; result: CompletionResult }
   | { type: 'SKIP_RESOURCE'; resourceId: string }
   | { type: 'REQUEST_FEEDBACK' }
+  | { type: 'FORCE_ADVANCE' }
 
 // ── DayMode: affects LearningFlow decision logic ──
 export type DayMode = 'STANDARD' | 'REVIEW'
@@ -23,6 +24,7 @@ export interface DaySnapshot {
   completions: Map<string, Completion>
   bCandidates: Resource[]
   bTotalForSession: number
+  forceCompleted?: boolean  // set in-session by forceAdvance(); not persisted
 }
 
 // ── DayStats: read output of ProgressTracker ──

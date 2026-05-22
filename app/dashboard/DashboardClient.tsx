@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { StorageService } from '@/lib/infra/storage'
+import { ensureAppReady } from '@/lib/app/ready'
 import { repo } from '@/lib/repository'
 import { WEEKS, DAYS_PER_WEEK, PASS_THRESHOLD } from '@/lib/constants'
 import type { QuizResult } from '@/lib/types'
@@ -20,9 +21,11 @@ interface DayStatus {
 export function DashboardClient() {
   const [days, setDays] = useState<DayStatus[]>([])
   const [loading, setLoading] = useState(true)
+  const [initFailed, setInitFailed] = useState(false)
 
   useEffect(() => {
     async function load() {
+      await ensureAppReady()
       const userId = StorageService.userId.init()
 
       const [allResources, allCompletions, unlockedDays, allQuizResults] = await Promise.all([
@@ -43,10 +46,20 @@ export function DashboardClient() {
         quizByDay.get(key)!.push(r)
       }
 
+      // Pre-index A-tier resources by week-day key for O(1) lookups in the nested loop
+      const aResourcesByDay = new Map<string, typeof allResources>()
+      for (const r of allResources) {
+        if (r.tier !== 'A') continue
+        const key = `${r.week}-${r.day}`
+        const arr = aResourcesByDay.get(key) ?? []
+        arr.push(r)
+        aResourcesByDay.set(key, arr)
+      }
+
       const result: DayStatus[] = []
       for (let w = 1; w <= WEEKS; w++) {
         for (let d = 1; d <= DAYS_PER_WEEK; d++) {
-          const aResources = allResources.filter(r => r.week === w && r.day === d && r.tier === 'A')
+          const aResources = aResourcesByDay.get(`${w}-${d}`) ?? []
           const aDone = aResources.filter(r => {
             const c = completionMap.get(r.id)
             return c && c.status !== 'skipped'
@@ -80,15 +93,82 @@ export function DashboardClient() {
       setDays(result)
       setLoading(false)
     }
-    load().catch(console.error)
+    load().catch(err => {
+      console.error(err)
+      setInitFailed(true)
+      setLoading(false)
+    })
   }, [])
+
+  if (initFailed) {
+    return (
+      <div className="max-w-3xl mx-auto px-4 py-16 text-center space-y-4">
+        <p className="font-semibold text-stone-800 text-sm">数据加载失败</p>
+        <p className="text-xs text-stone-500">请检查网络连接后重试</p>
+        <button
+          onClick={() => window.location.reload()}
+          className="px-4 py-2 text-sm bg-stone-800 text-white rounded-lg hover:bg-stone-700 transition-colors"
+        >
+          刷新页面
+        </button>
+      </div>
+    )
+  }
 
   if (loading) {
     return (
-      <div className="max-w-3xl mx-auto px-4 py-8 space-y-4">
-        {Array.from({ length: 4 }).map((_, i) => (
-          <div key={i} className="h-24 bg-stone-200/60 rounded-xl animate-pulse" />
-        ))}
+      <div className="max-w-3xl mx-auto px-4 py-8 space-y-6 animate-pulse">
+        {/* Header: title + nav links */}
+        <div className="flex items-center justify-between">
+          <div className="space-y-1.5">
+            <div className="h-6 w-24 bg-stone-200 rounded" />
+            <div className="h-3.5 w-40 bg-stone-200 rounded" />
+          </div>
+          <div className="flex items-center gap-4">
+            <div className="h-4 w-10 bg-stone-200 rounded" />
+            <div className="h-4 w-10 bg-stone-200 rounded" />
+          </div>
+        </div>
+
+        {/* Progress summary bar */}
+        <div className="bg-stone-50 rounded-xl border border-stone-100 p-4 space-y-3">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-5">
+              <div className="h-8 w-16 bg-stone-200 rounded" />
+              <div className="pl-5 border-l border-stone-100 space-y-1.5">
+                <div className="h-3 w-16 bg-stone-200 rounded" />
+                <div className="h-4 w-24 bg-stone-200 rounded" />
+              </div>
+            </div>
+            <div className="h-4 w-8 bg-stone-200 rounded" />
+          </div>
+          <div className="h-1.5 bg-stone-200 rounded-full" />
+        </div>
+
+        {/* Week grids */}
+        <div className="space-y-3">
+          {Array.from({ length: WEEKS }).map((_, wi) => (
+            <div key={wi} className="bg-stone-50 rounded-xl border border-stone-100 overflow-hidden">
+              {/* Week header */}
+              <div className="px-4 py-2.5 border-b border-stone-100 flex items-center justify-between">
+                <div className="h-4 w-14 bg-stone-200 rounded" />
+                <div className="h-3 w-10 bg-stone-200 rounded" />
+              </div>
+              {/* Day cells grid */}
+              <div className="overflow-x-auto">
+                <div className="grid grid-cols-7 min-w-[308px]">
+                  {Array.from({ length: DAYS_PER_WEEK }).map((_, di) => (
+                    <div key={di} className="py-3 flex flex-col items-center gap-1.5 border-r border-stone-100 last:border-r-0">
+                      <div className="h-3 w-5 bg-stone-200 rounded" />
+                      <div className="h-3.5 w-3.5 bg-stone-100 rounded-full" />
+                      <div className="h-2.5 w-8 bg-stone-100 rounded" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     )
   }
@@ -178,12 +258,14 @@ export function DashboardClient() {
               </div>
 
               {/* Day cells */}
-              <div className="grid grid-cols-7">
-                {weekDays.map(d => (
-                  <DayCell key={`${d.week}-${d.day}`} status={d} isCurrent={
-                    currentDay?.week === d.week && currentDay?.day === d.day
-                  } />
-                ))}
+              <div className="overflow-x-auto">
+                <div className="grid grid-cols-7 min-w-[308px]">
+                  {weekDays.map(d => (
+                    <DayCell key={`${d.week}-${d.day}`} status={d} isCurrent={
+                      currentDay?.week === d.week && currentDay?.day === d.day
+                    } />
+                  ))}
+                </div>
               </div>
             </div>
           )

@@ -63,8 +63,8 @@ function pickFeynmanQuestion(
 
   // Sort: highest net failures first; ties keep concept order (= learning priority)
   const sorted = [...pool].sort((a, b) => {
-    const scoreA = Math.max(...a.concept_ids.map(id => netFailures.get(id) ?? 0))
-    const scoreB = Math.max(...b.concept_ids.map(id => netFailures.get(id) ?? 0))
+    const scoreA = a.concept_ids.length === 0 ? 0 : Math.max(...a.concept_ids.map(id => netFailures.get(id) ?? 0))
+    const scoreB = b.concept_ids.length === 0 ? 0 : Math.max(...b.concept_ids.map(id => netFailures.get(id) ?? 0))
     return scoreB - scoreA
   })
 

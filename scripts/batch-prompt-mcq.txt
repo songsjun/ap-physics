@@ -1,0 +1,355 @@
+You are an expert AP Physics 1 exam writer with deep knowledge of the College Board CED.
+
+Generate difficulty-3 MCQ (multiple choice) synthesis questions in Chinese for ALL 47 knowledge points listed below.
+Return a JSON array of exactly 47 objects — one per knowledge point, in the same order as the list.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+KNOWLEDGE POINTS (47 total)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. ID: kinematics-scalars-vectors-1d
+   中文: 标量与向量（一维）
+   英文: Scalars and Vectors in One Dimension
+   AP Unit 1 — 1.1 (Scalars and Vectors in One Dimension)
+   Prerequisites: none
+
+2. ID: kinematics-reference-frames
+   中文: 参考系与相对运动
+   英文: Reference Frames and Relative Motion
+   AP Unit 1 — 1.4 (Reference Frames and Relative Motion)
+   Prerequisites: kinematics-displacement-velocity-acceleration
+
+3. ID: dynamics-systems-center-of-mass
+   中文: 系统与质心
+   英文: Systems and Center of Mass
+   AP Unit 2 — 2.1 (Systems and Center of Mass)
+   Prerequisites: kinematics-displacement-velocity-acceleration
+
+4. ID: dynamics-force-concept
+   中文: 力的概念与分类
+   英文: Force: Concept and Types of Forces
+   AP Unit 2 — 2.2 (Forces and Free-Body Diagrams)
+   Prerequisites: kinematics-displacement-velocity-acceleration
+
+5. ID: dynamics-fbd-forces
+   中文: 力与自由体图（FBD）
+   英文: Forces and Free-Body Diagrams
+   AP Unit 2 — 2.2 (Forces and Free-Body Diagrams)
+   Prerequisites: kinematics-displacement-velocity-acceleration
+
+6. ID: dynamics-newtons-third-law
+   中文: 牛顿第三定律
+   英文: Newton's Third Law
+   AP Unit 2 — 2.3 (Newton's Third Law)
+   Prerequisites: dynamics-fbd-forces
+
+7. ID: dynamics-newtons-first-law
+   中文: 牛顿第一定律（惯性与平衡）
+   英文: Newton's First Law
+   AP Unit 2 — 2.4 (Newton's First Law)
+   Prerequisites: dynamics-fbd-forces
+
+8. ID: dynamics-newtons-second-law
+   中文: 牛顿第二定律（ΣF=ma）
+   英文: Newton's Second Law
+   AP Unit 2 — 2.5 (Newton's Second Law)
+   Prerequisites: dynamics-fbd-forces, dynamics-newtons-first-law
+
+9. ID: dynamics-gravitational-force
+   中文: 万有引力与重力场
+   英文: Gravitational Force
+   AP Unit 2 — 2.6 (Gravitational Force)
+   Prerequisites: dynamics-newtons-second-law
+
+10. ID: dynamics-friction
+   中文: 静摩擦与动摩擦
+   英文: Kinetic and Static Friction
+   AP Unit 2 — 2.7 (Kinetic and Static Friction)
+   Prerequisites: dynamics-newtons-second-law
+
+11. ID: dynamics-spring-forces
+   中文: 弹簧力（胡克定律）
+   英文: Spring Forces
+   AP Unit 2 — 2.8 (Spring Forces)
+   Prerequisites: dynamics-newtons-second-law
+
+12. ID: dynamics-circular-motion
+   中文: 圆周运动与向心力
+   英文: Circular Motion
+   AP Unit 2 — 2.9 (Circular Motion)
+   Prerequisites: dynamics-newtons-second-law
+
+13. ID: dynamics-inclined-planes
+   中文: 斜面问题（力分解）
+   英文: Forces on Inclined Planes
+   AP Unit 2 — 2.5 (Newton's Second Law (Inclined Planes))
+   Prerequisites: dynamics-fbd-forces, dynamics-newtons-second-law
+
+14. ID: dynamics-systems-connected
+   中文: 连接系统（系统法与单体法）
+   英文: Connected Systems and Atwood Machine
+   AP Unit 2 — 2.5 (Newton's Second Law (Systems))
+   Prerequisites: dynamics-newtons-second-law
+
+15. ID: dynamics-circular-orbits
+   中文: 圆形轨道趋势
+   英文: Circular Orbits
+   AP Unit 2 — 2.9 (Circular Motion and Orbits)
+   Prerequisites: dynamics-circular-motion, dynamics-gravitational-force
+
+16. ID: energy-translational-kinetic
+   中文: 平动动能
+   英文: Translational Kinetic Energy
+   AP Unit 3 — 3.1 (Translational Kinetic Energy)
+   Prerequisites: kinematics-displacement-velocity-acceleration
+
+17. ID: energy-work
+   中文: 功（W=Fd cosθ）与功能定理
+   英文: Work and Work-Energy Theorem
+   AP Unit 3 — 3.2 (Work)
+   Prerequisites: energy-translational-kinetic
+
+18. ID: energy-fx-graph
+   中文: F-x图面积表示功
+   英文: F-x Graph and Work
+   AP Unit 3 — 3.2 (Work (graphical))
+   Prerequisites: energy-work
+
+19. ID: energy-potential-energy
+   中文: 重力势能与弹性势能
+   英文: Potential Energy
+   AP Unit 3 — 3.3 (Potential Energy)
+   Prerequisites: energy-work
+
+20. ID: energy-conservation
+   中文: 机械能守恒与能量系统
+   英文: Conservation of Energy
+   AP Unit 3 — 3.4 (Conservation of Energy)
+   Prerequisites: energy-potential-energy, energy-translational-kinetic
+
+21. ID: energy-bar-charts
+   中文: 能量棒图
+   英文: Energy Bar Charts
+   AP Unit 3 — 3.4 (Conservation of Energy (bar charts))
+   Prerequisites: energy-conservation
+
+22. ID: energy-power
+   中文: 功率（P=W/t=Fv）
+   英文: Power
+   AP Unit 3 — 3.5 (Power)
+   Prerequisites: energy-work
+
+23. ID: momentum-linear
+   中文: 线动量（p=mv）
+   英文: Linear Momentum
+   AP Unit 4 — 4.1 (Linear Momentum)
+   Prerequisites: kinematics-displacement-velocity-acceleration
+
+24. ID: momentum-impulse
+   中文: 冲量与冲量-动量定理
+   英文: Change in Momentum and Impulse
+   AP Unit 4 — 4.2 (Change in Momentum and Impulse)
+   Prerequisites: momentum-linear
+
+25. ID: momentum-ft-graph
+   中文: F-t图面积=冲量
+   英文: F-t Graph and Impulse
+   AP Unit 4 — 4.2 (Change in Momentum (graphical))
+   Prerequisites: momentum-impulse
+
+26. ID: momentum-conservation
+   中文: 线动量守恒
+   英文: Conservation of Linear Momentum
+   AP Unit 4 — 4.3 (Conservation of Linear Momentum)
+   Prerequisites: momentum-impulse
+
+27. ID: momentum-collisions
+   中文: 弹性/非弹性/完全非弹性碰撞
+   英文: Elastic and Inelastic Collisions
+   AP Unit 4 — 4.4 (Elastic and Inelastic Collisions)
+   Prerequisites: momentum-conservation
+
+28. ID: torque-rotational-kinematics
+   中文: 转动运动学（角量定义与关系）
+   英文: Rotational Kinematics
+   AP Unit 5 — 5.1 (Rotational Kinematics)
+   Prerequisites: kinematics-representing-motion
+
+29. ID: torque-linear-rotational-connection
+   中文: 线量-角量关系（s=rθ, v=rω）
+   英文: Connecting Linear and Rotational Motion
+   AP Unit 5 — 5.2 (Connecting Linear and Rotational Motion)
+   Prerequisites: torque-rotational-kinematics
+
+30. ID: torque-torque
+   中文: 力矩（τ=rF sinθ）
+   英文: Torque
+   AP Unit 5 — 5.3 (Torque)
+   Prerequisites: torque-linear-rotational-connection
+
+31. ID: torque-rotational-inertia
+   中文: 转动惯量（I）
+   英文: Rotational Inertia
+   AP Unit 5 — 5.4 (Rotational Inertia)
+   Prerequisites: torque-torque
+
+32. ID: torque-rotational-equilibrium
+   中文: 转动平衡（Στ=0，牛顿第一定律转动形式）
+   英文: Rotational Equilibrium and Newton's First Law in Rotational Form
+   AP Unit 5 — 5.5 (Rotational Equilibrium and Newton's First Law in Rotational Form)
+   Prerequisites: torque-torque
+
+33. ID: torque-newtons-second-law-rotational
+   中文: 转动牛顿第二定律（Στ=Iα）
+   英文: Newton's Second Law in Rotational Form
+   AP Unit 5 — 5.6 (Newton's Second Law in Rotational Form)
+   Prerequisites: torque-rotational-inertia, torque-rotational-equilibrium
+
+34. ID: rotation-rotational-kinetic-energy
+   中文: 转动动能（Krot=½Iω²）
+   英文: Rotational Kinetic Energy
+   AP Unit 6 — 6.1 (Rotational Kinetic Energy)
+   Prerequisites: torque-rotational-inertia
+
+35. ID: rotation-torque-work
+   中文: 力矩做功（W=τθ）
+   英文: Torque and Work
+   AP Unit 6 — 6.2 (Torque and Work)
+   Prerequisites: torque-torque, energy-work
+
+36. ID: rotation-angular-momentum
+   中文: 角动量（L=Iω）
+   英文: Angular Momentum and Angular Impulse
+   AP Unit 6 — 6.3 (Angular Momentum and Angular Impulse)
+   Prerequisites: torque-rotational-inertia
+
+37. ID: rotation-angular-momentum-conservation
+   中文: 角动量守恒
+   英文: Conservation of Angular Momentum
+   AP Unit 6 — 6.4 (Conservation of Angular Momentum)
+   Prerequisites: rotation-angular-momentum
+
+38. ID: rotation-rolling
+   中文: 滚动运动（纯滚动与滑动）
+   英文: Rolling
+   AP Unit 6 — 6.5 (Rolling)
+   Prerequisites: rotation-rotational-kinetic-energy
+
+39. ID: rotation-orbiting-satellites
+   中文: 卫星轨道运动（角动量守恒）
+   英文: Motion of Orbiting Satellites
+   AP Unit 6 — 6.6 (Motion of Orbiting Satellites)
+   Prerequisites: dynamics-gravitational-force, rotation-angular-momentum-conservation
+
+40. ID: oscillation-shm-definition
+   中文: 简谐运动定义（SHM）
+   英文: Defining Simple Harmonic Motion (SHM)
+   AP Unit 7 — 7.1 (Defining Simple Harmonic Motion (SHM))
+   Prerequisites: energy-potential-energy
+
+41. ID: oscillation-shm-frequency-period
+   中文: SHM频率与周期
+   英文: Frequency and Period of SHM
+   AP Unit 7 — 7.2 (Frequency and Period of SHM)
+   Prerequisites: oscillation-shm-definition
+
+42. ID: oscillation-shm-representing
+   中文: SHM的表示与分析（x/v/a图像）
+   英文: Representing and Analyzing SHM
+   AP Unit 7 — 7.3 (Representing and Analyzing SHM)
+   Prerequisites: oscillation-shm-definition
+
+43. ID: oscillation-shm-energy
+   中文: SHM能量（E=½kA²）
+   英文: Energy of Simple Harmonic Oscillators
+   AP Unit 7 — 7.4 (Energy of Simple Harmonic Oscillators)
+   Prerequisites: oscillation-shm-definition, energy-conservation
+
+44. ID: fluids-density-structure
+   中文: 流体内部结构与密度
+   英文: Internal Structure and Density
+   AP Unit 8 — 8.1 (Internal Structure and Density)
+   Prerequisites: none
+
+45. ID: fluids-pressure
+   中文: 流体压强（P=P₀+ρgh）
+   英文: Pressure
+   AP Unit 8 — 8.2 (Pressure)
+   Prerequisites: fluids-density-structure
+
+46. ID: fluids-newton-laws
+   中文: 流体与牛顿定律（浮力/阿基米德）
+   英文: Fluids and Newton's Laws (Buoyancy)
+   AP Unit 8 — 8.3 (Fluids and Newton's Laws)
+   Prerequisites: fluids-pressure
+
+47. ID: fluids-conservation-laws
+   中文: 流体与守恒定律（连续方程与伯努利）
+   英文: Fluids and Conservation Laws
+   AP Unit 8 — 8.4 (Fluids and Conservation Laws)
+   Prerequisites: fluids-pressure
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DIFFICULTY STANDARD: Level 3 / Synthesis (75th percentile AP Physics 1)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Each question MUST satisfy ALL of the following:
+1. Multi-concept synthesis — combines the target concept with at least one prerequisite or related concept
+2. Reasoning over recall — cannot be solved by plugging numbers into a single formula
+3. Realistic distractors — each wrong option targets a specific, named student misconception
+4. AP scope only — no calculus, no E&M, no relativity, no nuclear; algebra + trig only
+5. Clean arithmetic — integers or simple fractions; no calculator needed
+6. Unambiguous answer — exactly one option is correct
+
+ANTI-PATTERNS TO AVOID:
+- Never use μ_k for "initiating" motion from rest (needs μ_s)
+- Never mix instantaneous and average formulas without defining the context
+- No memorized constants beyond g = 10 m/s²
+- No trick questions based on units alone
+- No scenarios requiring calculus
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+MCQ FORMAT REQUIREMENTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- question: Chinese, describes a scenario that requires multi-step reasoning
+- options: exactly 4 strings labeled "A. ...", "B. ...", "C. ...", "D. ..."
+- answer: single letter "A", "B", "C", or "D"
+- grading_rubric: the key reasoning steps (concise, for the grader)
+- explanation: correct answer derivation + what misconception each wrong option represents
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+REFERENCE EXAMPLES (difficulty-3 quality benchmark)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Example A — short type (for difficulty reference only):
+{
+  "question": "一只小船要渡过一条宽 100 m 的河，船速（相对于水）为 5 m/s，水流速度为 3 m/s。若船头始终垂直河岸行驶，求渡河时间和实际到达的位置偏移量。",
+  "answer": "渡河时间 t = 20 s；偏移量 = 60 m",
+  "explanation": "船垂直河岸的速度分量为 5 m/s，渡河时间 t = 100/5 = 20 s。水流使船横向漂移：偏移量 = 3 × 20 = 60 m。体现运动的独立性原理。"
+}
+
+Example B — good MCQ distractor design (fictional, for format reference):
+{
+  "question": "一个物体在光滑水平面上受到两个力：向右 12 N 和向左 8 N。物体质量为 4 kg，初速为向右 6 m/s。3 秒后物体速度为？",
+  "options": ["A. 6 m/s 向右", "B. 9 m/s 向右", "C. 3 m/s 向右", "D. 15 m/s 向右"],
+  "answer": "B",
+  "explanation": "合力 = 12-8 = 4 N 向右，a = 4/4 = 1 m/s²，v = 6 + 1×3 = 9 m/s。A错：忽略了加速度。C错：用合力除以时间而不是质量。D错：把两个力的大小都加上了。"
+}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+OUTPUT FORMAT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Return ONLY a valid JSON array — no markdown fences, no preamble, no comments.
+Each element must have these exact fields:
+
+{
+  "id": "<concept_id>-d3-1",
+  "concept_ids": ["<concept_id>"],
+  "week": <week number from the list>,
+  "difficulty": 3,
+  "type": "mcq",
+  "question": "题目（中文）",
+  "options": ["A. ...", "B. ...", "C. ...", "D. ..."],
+  "answer": "A",
+  "grading_rubric": "关键推导步骤",
+  "explanation": "完整解析，含各错误选项的错误来源"
+}
+
+The array must contain exactly 47 objects in the same order as the knowledge point list above.
+If a concept truly cannot form a synthesis MCQ, still include the object but set "type": "SKIP" and "question": "reason why skipped".

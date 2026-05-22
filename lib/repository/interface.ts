@@ -6,6 +6,8 @@ export interface IRepository {
   getKnowledgePoint(id: string): Promise<KnowledgePoint | null>
   getCompletions(userId: string, week: number, day: number): Promise<Completion[]>
   getAllUserCompletions(userId: string): Promise<Completion[]>
+  getCompletionsByResourceIds(userId: string, resourceIds: Set<string>): Promise<Completion[]>
+  transact(fn: () => Promise<void>): Promise<void>
   saveCompletion(completion: Completion): Promise<void>
   isDayUnlocked(userId: string, week: number, day: number): Promise<boolean>
   unlockDay(userId: string, week: number, day: number): Promise<void>

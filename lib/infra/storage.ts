@@ -1,15 +1,17 @@
 const USER_ID_KEY = 'ap_physics_user_id'
 const API_KEY_KEY = 'ap_physics_api_key'
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
 
 export const StorageService = {
   userId: {
     get(): string | null {
       if (typeof window === 'undefined') return null
-      return localStorage.getItem(USER_ID_KEY)
+      const v = localStorage.getItem(USER_ID_KEY)
+      return v && UUID_RE.test(v) ? v : null
     },
     init(): string {
       const existing = localStorage.getItem(USER_ID_KEY)
-      if (existing) return existing
+      if (existing && UUID_RE.test(existing)) return existing
       const id = crypto.randomUUID()
       localStorage.setItem(USER_ID_KEY, id)
       return id
