@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
-import { StorageService } from '@/lib/infra/storage'
+import { StorageService, type ThemePreference } from '@/lib/infra/storage'
+import { applyStoredTheme } from '@/components/AppInitializer'
 import { exportProgress, importProgress, downloadJson, type ExportData } from '@/lib/app/share'
 
 export function SettingsClient() {
@@ -10,12 +11,20 @@ export function SettingsClient() {
   const [saved, setSaved] = useState(false)
   const [importStatus, setImportStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const [importError, setImportError] = useState('')
+  const [theme, setTheme] = useState<ThemePreference>('system')
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     const key = StorageService.apiKey.get()
     if (key) setApiKey(key)
+    setTheme(StorageService.theme.get())
   }, [])
+
+  function handleThemeChange(t: ThemePreference) {
+    setTheme(t)
+    StorageService.theme.save(t)
+    applyStoredTheme()
+  }
 
   function handleSave() {
     const trimmed = apiKey.trim()
@@ -56,12 +65,44 @@ export function SettingsClient() {
     if (fileInputRef.current) fileInputRef.current.value = ''
   }
 
+  const themeOptions: { value: ThemePreference; label: string; icon: string }[] = [
+    { value: 'light', label: '浅色', icon: '☀️' },
+    { value: 'system', label: '跟随系统', icon: '⚙️' },
+    { value: 'dark', label: '深色', icon: '🌙' },
+  ]
+
   return (
     <div className="max-w-2xl mx-auto px-4 py-8 space-y-8">
       <div className="flex items-center gap-4">
         <Link href="/" className="text-sm text-blue-500 hover:underline">← 返回首页</Link>
-        <h1 className="text-2xl font-bold text-stone-900">设置</h1>
+        <h1 className="text-2xl font-bold text-stone-900 dark:text-stone-100">设置</h1>
       </div>
+
+      {/* Theme preference */}
+      <section className="bg-white dark:bg-stone-800 rounded-xl border border-stone-100 dark:border-stone-700 shadow-sm p-6 space-y-4">
+        <div>
+          <h2 className="font-semibold text-stone-900 dark:text-stone-100">外观主题</h2>
+          <p className="text-sm text-stone-500 dark:text-stone-400 mt-0.5">
+            选择界面显示主题。设置仅保存在本地浏览器。
+          </p>
+        </div>
+        <div className="flex gap-2">
+          {themeOptions.map(opt => (
+            <button
+              key={opt.value}
+              onClick={() => handleThemeChange(opt.value)}
+              className={`flex-1 py-2.5 text-sm rounded-lg border transition-colors ${
+                theme === opt.value
+                  ? 'bg-stone-800 dark:bg-stone-100 text-white dark:text-stone-900 border-stone-800 dark:border-stone-100 font-medium'
+                  : 'bg-stone-50 dark:bg-stone-700 text-stone-700 dark:text-stone-300 border-stone-200 dark:border-stone-600 hover:bg-stone-100 dark:hover:bg-stone-600'
+              }`}
+            >
+              <span className="mr-1.5">{opt.icon}</span>
+              {opt.label}
+            </button>
+          ))}
+        </div>
+      </section>
 
       {/* API Key */}
       <section className="bg-white rounded-xl border border-stone-100 shadow-sm p-6 space-y-4">

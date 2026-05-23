@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+/* Enable class-based dark mode for Tailwind 4:
+   dark: variant activates when .dark is present on html or any ancestor. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -12,11 +16,20 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/* Fallback: honour system dark preference when no explicit class is set.
+   Once the user picks a manual theme (light/dark), the JS adds/removes
+   the .dark class on <html> and this media query becomes irrelevant. */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not(.light):not(.dark) {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
+}
+
+/* Applied by JS when .dark class is on <html> */
+:root.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
 }
 
 body {

@@ -25,7 +25,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="zh-CN" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
-      <body className="min-h-full bg-stone-50 text-stone-900">
+      {/* Synchronous FOUC-prevention script: runs before first paint,
+          reads localStorage and sets .dark on <html> if needed. */}
+      <head>
+        <script dangerouslySetInnerHTML={{ __html:
+          `(function(){try{var t=localStorage.getItem('ap_physics_theme');` +
+          `if(t==='dark'||(t!=='light'&&window.matchMedia('(prefers-color-scheme:dark)').matches)){` +
+          `document.documentElement.classList.add('dark')` +
+          `}}catch(e){}})();`
+        }} />
+      </head>
+      <body className="min-h-full bg-stone-50 dark:bg-stone-900 text-stone-900 dark:text-stone-100">
         <AppInitializer />
         {children}
       </body>
