@@ -142,7 +142,7 @@ export function DayProvider({ userId, week, day, children }: DayProviderProps) {
   if (loadError) {
     return (
       <div className="min-h-[40vh] flex items-center justify-center px-4">
-        <div className="bg-white border border-stone-200 rounded-2xl p-8 max-w-sm w-full text-center space-y-4">
+        <div className="bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-2xl p-8 max-w-sm w-full text-center space-y-4">
           <p className="font-semibold text-stone-800 text-sm">加载失败</p>
           <p className="text-xs text-stone-500">数据库访问出错，请刷新后重试</p>
           <button

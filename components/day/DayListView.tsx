@@ -15,7 +15,7 @@ import { DaySkeleton } from '@/components/DaySkeleton'
 
 function CompleteBanner({ passRate, feedback }: { passRate: number | null; feedback: DailyFeedback | null }) {
   return (
-    <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4 space-y-3">
+    <div className="bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800 rounded-xl p-4 space-y-3">
       <div className="flex items-center gap-3">
         <div className="w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center shrink-0">
           <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -23,18 +23,18 @@ function CompleteBanner({ passRate, feedback }: { passRate: number | null; feedb
           </svg>
         </div>
         <div>
-          <p className="font-semibold text-emerald-900 text-sm">今日完成</p>
-          <p className="text-xs text-emerald-600">
+          <p className="font-semibold text-emerald-900 dark:text-emerald-300 text-sm">今日完成</p>
+          <p className="text-xs text-emerald-600 dark:text-emerald-400">
             {passRate !== null ? `通过率 ${Math.round(passRate * 100)}%  ·  ` : '已跳过关口  ·  '}
             下一天已解锁
           </p>
         </div>
       </div>
       {feedback ? (
-        <div className="space-y-1.5 text-sm border-t border-emerald-200 pt-3 pl-1">
-          <p className="text-stone-700">💪 {feedback.strength}</p>
-          {feedback.note && <p className="text-stone-600">📝 {feedback.note}</p>}
-          {feedback.preview && <p className="text-stone-500">👀 明日：{feedback.preview}</p>}
+        <div className="space-y-1.5 text-sm border-t border-emerald-200 dark:border-emerald-800 pt-3 pl-1">
+          <p className="text-stone-700 dark:text-stone-300">💪 {feedback.strength}</p>
+          {feedback.note && <p className="text-stone-600 dark:text-stone-400">📝 {feedback.note}</p>}
+          {feedback.preview && <p className="text-stone-500 dark:text-stone-400">👀 明日：{feedback.preview}</p>}
         </div>
       ) : (
         <p className="text-xs text-emerald-500 pl-1 animate-pulse">正在获取 AI 学习反馈…</p>
@@ -214,12 +214,12 @@ export function DayListView({ week, day }: { week: number; day: number }) {
   if (flowState.phase === 'LOCKED') {
     return (
       <div className="max-w-2xl mx-auto p-8 text-center space-y-3">
-        <div className="w-12 h-12 rounded-full bg-stone-100 flex items-center justify-center mx-auto">
-          <svg className="w-5 h-5 text-stone-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <div className="w-12 h-12 rounded-full bg-stone-100 dark:bg-stone-700 flex items-center justify-center mx-auto">
+          <svg className="w-5 h-5 text-stone-400 dark:text-stone-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
           </svg>
         </div>
-        <p className="text-stone-500 text-sm">完成上一天的必做任务后解锁</p>
+        <p className="text-stone-500 dark:text-stone-400 text-sm">完成上一天的必做任务后解锁</p>
       </div>
     )
   }
@@ -319,9 +319,9 @@ export function DayListView({ week, day }: { week: number; day: number }) {
         <TierSection
           tier="A"
           label="必做"
-          accentCls="text-blue-700"
-          headerBg="bg-blue-50"
-          borderCls="border-blue-100"
+          accentCls="text-blue-700 dark:text-blue-300"
+          headerBg="bg-blue-50 dark:bg-blue-900/20"
+          borderCls="border-blue-100 dark:border-blue-900"
           description={`约 ${aTotalMin} 分钟 · 完成后＋约 ${QUIZ_ESTIMATED_MINUTES} 分钟挑战`}
           statusText={`${aPassed}/${aTier.length} 完成${passRate !== null ? `  ·  ${Math.round(passRate * 100)}%` : ''}`}
           resources={aTier}
@@ -329,15 +329,15 @@ export function DayListView({ week, day }: { week: number; day: number }) {
           {...rowProps}
         />
       ) : (
-        <div className="bg-white rounded-xl border border-stone-100 px-4 py-3 flex items-center gap-3">
-          <div className="w-7 h-7 rounded-full bg-emerald-100 flex items-center justify-center shrink-0">
+        <div className="bg-white dark:bg-stone-800 rounded-xl border border-stone-100 dark:border-stone-700 px-4 py-3 flex items-center gap-3">
+          <div className="w-7 h-7 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center shrink-0">
             <svg className="w-3.5 h-3.5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
             </svg>
           </div>
           <div>
-            <p className="text-sm font-medium text-stone-700">今日为自由学习日</p>
-            <p className="text-xs text-stone-400">无必做任务，下一天已自动解锁</p>
+            <p className="text-sm font-medium text-stone-700 dark:text-stone-300">今日为自由学习日</p>
+            <p className="text-xs text-stone-400 dark:text-stone-500">无必做任务，下一天已自动解锁</p>
           </div>
         </div>
       )}
@@ -347,9 +347,9 @@ export function DayListView({ week, day }: { week: number; day: number }) {
         <TierSection
           tier="B"
           label="建议补充"
-          accentCls="text-amber-700"
-          headerBg="bg-amber-50"
-          borderCls="border-amber-100"
+          accentCls="text-amber-700 dark:text-amber-300"
+          headerBg="bg-amber-50 dark:bg-amber-900/20"
+          borderCls="border-amber-100 dark:border-amber-900"
           description={hasAFailed ? '有题目未通过，已自动展开——针对卡点补充练习' : 'A 层 < 75% 或概念卡点时使用'}
           statusText=""
           resources={bTier}
@@ -364,9 +364,9 @@ export function DayListView({ week, day }: { week: number; day: number }) {
         <TierSection
           tier="C"
           label="拓展"
-          accentCls="text-stone-500"
-          headerBg="bg-stone-50"
-          borderCls="border-stone-100"
+          accentCls="text-stone-500 dark:text-stone-400"
+          headerBg="bg-stone-50 dark:bg-stone-700"
+          borderCls="border-stone-100 dark:border-stone-700"
           description="100% 覆盖 / 二轮返工"
           statusText=""
           resources={cTier}

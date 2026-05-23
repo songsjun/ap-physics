@@ -202,12 +202,12 @@ export function DashboardClient() {
         {/* Header: title + nav links */}
         <div className="flex items-center justify-between">
           <div className="space-y-1.5">
-            <div className="h-6 w-24 bg-stone-200 rounded" />
-            <div className="h-3.5 w-40 bg-stone-200 rounded" />
+            <div className="h-6 w-24 bg-stone-200 dark:bg-stone-700/60 rounded" />
+            <div className="h-3.5 w-40 bg-stone-200 dark:bg-stone-700/60 rounded" />
           </div>
           <div className="flex items-center gap-4">
-            <div className="h-4 w-10 bg-stone-200 rounded" />
-            <div className="h-4 w-10 bg-stone-200 rounded" />
+            <div className="h-4 w-10 bg-stone-200 dark:bg-stone-700/60 rounded" />
+            <div className="h-4 w-10 bg-stone-200 dark:bg-stone-700/60 rounded" />
           </div>
         </div>
 
@@ -215,15 +215,15 @@ export function DashboardClient() {
         <div className="bg-stone-50 rounded-xl border border-stone-100 p-4 space-y-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-5">
-              <div className="h-8 w-16 bg-stone-200 rounded" />
+              <div className="h-8 w-16 bg-stone-200 dark:bg-stone-700/60 rounded" />
               <div className="pl-5 border-l border-stone-100 space-y-1.5">
-                <div className="h-3 w-16 bg-stone-200 rounded" />
-                <div className="h-4 w-24 bg-stone-200 rounded" />
+                <div className="h-3 w-16 bg-stone-200 dark:bg-stone-700/60 rounded" />
+                <div className="h-4 w-24 bg-stone-200 dark:bg-stone-700/60 rounded" />
               </div>
             </div>
-            <div className="h-4 w-8 bg-stone-200 rounded" />
+            <div className="h-4 w-8 bg-stone-200 dark:bg-stone-700/60 rounded" />
           </div>
-          <div className="h-1.5 bg-stone-200 rounded-full" />
+          <div className="h-1.5 bg-stone-200 dark:bg-stone-700/60 rounded-full" />
         </div>
 
         {/* Week grids */}
@@ -232,15 +232,15 @@ export function DashboardClient() {
             <div key={wi} className="bg-stone-50 rounded-xl border border-stone-100 overflow-hidden">
               {/* Week header */}
               <div className="px-4 py-2.5 border-b border-stone-100 flex items-center justify-between">
-                <div className="h-4 w-14 bg-stone-200 rounded" />
-                <div className="h-3 w-10 bg-stone-200 rounded" />
+                <div className="h-4 w-14 bg-stone-200 dark:bg-stone-700/60 rounded" />
+                <div className="h-3 w-10 bg-stone-200 dark:bg-stone-700/60 rounded" />
               </div>
               {/* Day cells grid */}
               <div className="overflow-x-auto">
                 <div className="grid grid-cols-7 min-w-[308px]">
                   {Array.from({ length: DAYS_PER_WEEK }).map((_, di) => (
                     <div key={di} className="py-3 flex flex-col items-center gap-1.5 border-r border-stone-100 last:border-r-0">
-                      <div className="h-3 w-5 bg-stone-200 rounded" />
+                      <div className="h-3 w-5 bg-stone-200 dark:bg-stone-700/60 rounded" />
                       <div className="h-3.5 w-3.5 bg-stone-100 rounded-full" />
                       <div className="h-2.5 w-8 bg-stone-100 rounded" />
                     </div>
@@ -276,35 +276,35 @@ export function DashboardClient() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-xl font-semibold text-stone-900">学习进度</h1>
-          <p className="text-sm text-stone-400 mt-0.5">AP Physics 1  ·  8 周 56 天</p>
+          <h1 className="text-xl font-semibold text-stone-900 dark:text-stone-100">学习进度</h1>
+          <p className="text-sm text-stone-400 dark:text-stone-500 mt-0.5">AP Physics 1  ·  8 周 56 天</p>
         </div>
         <div className="flex items-center gap-4 text-sm">
-          <Link href="/" className="text-stone-500 hover:text-stone-900 transition-colors">← 返回</Link>
-          <Link href="/settings" className="text-stone-400 hover:text-stone-600 transition-colors">⚙ 设置</Link>
+          <Link href="/" className="text-stone-500 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-200 transition-colors">← 返回</Link>
+          <Link href="/settings" className="text-stone-400 dark:text-stone-500 hover:text-stone-600 dark:hover:text-stone-300 transition-colors">⚙ 设置</Link>
         </div>
       </div>
 
       {/* Progress summary bar */}
-      <div className="bg-white rounded-xl border border-stone-100 p-4 space-y-3">
+      <div className="bg-white dark:bg-stone-800 rounded-xl border border-stone-100 dark:border-stone-700 p-4 space-y-3">
         <div className="flex items-center justify-between text-sm">
           <div className="flex items-center gap-5">
             <div>
-              <span className="text-2xl font-bold text-stone-900">{completedDays.length}</span>
-              <span className="text-stone-400 ml-1 text-xs">/ {totalDays} 天完成</span>
+              <span className="text-2xl font-bold text-stone-900 dark:text-stone-100">{completedDays.length}</span>
+              <span className="text-stone-400 dark:text-stone-500 ml-1 text-xs">/ {totalDays} 天完成</span>
             </div>
             {currentDay && (
-              <div className="pl-5 border-l border-stone-100">
-                <span className="text-xs text-stone-400">当前进度</span>
-                <p className="text-sm font-medium text-stone-700">
+              <div className="pl-5 border-l border-stone-100 dark:border-stone-700">
+                <span className="text-xs text-stone-400 dark:text-stone-500">当前进度</span>
+                <p className="text-sm font-medium text-stone-700 dark:text-stone-300">
                   Week {currentDay.week} · Day {currentDay.day}
                 </p>
               </div>
             )}
           </div>
-          <span className="text-stone-400 text-sm font-medium">{progressPct}%</span>
+          <span className="text-stone-400 dark:text-stone-500 text-sm font-medium">{progressPct}%</span>
         </div>
-        <div className="h-1.5 bg-stone-100 rounded-full overflow-hidden">
+        <div className="h-1.5 bg-stone-100 dark:bg-stone-700 rounded-full overflow-hidden">
           <div
             className="h-full bg-blue-500 rounded-full transition-all duration-700"
             style={{ width: `${progressPct}%` }}
@@ -327,25 +327,25 @@ export function DashboardClient() {
           return (
             <div
               key={week}
-              className={`bg-white rounded-xl border overflow-hidden transition-all ${
-                isLockedWeek ? 'border-stone-100 opacity-60' :
-                isCurrentWeek ? 'border-blue-200 shadow-sm shadow-blue-50' :
-                'border-stone-100'
+              className={`bg-white dark:bg-stone-800 rounded-xl border overflow-hidden transition-all ${
+                isLockedWeek ? 'border-stone-100 dark:border-stone-700 opacity-60' :
+                isCurrentWeek ? 'border-blue-200 dark:border-blue-800 shadow-sm shadow-blue-50' :
+                'border-stone-100 dark:border-stone-700'
               }`}
             >
               {/* Week header */}
               <div className={`px-4 py-2.5 flex items-center justify-between border-b ${
-                isCurrentWeek ? 'bg-blue-50 border-blue-100' : 'bg-stone-50 border-stone-50'
+                isCurrentWeek ? 'bg-blue-50 dark:bg-blue-900/30 border-blue-100 dark:border-blue-800' : 'bg-stone-50 dark:bg-stone-700 border-stone-50 dark:border-stone-700'
               }`}>
                 <div className="flex items-center gap-2">
                   {isCurrentWeek && (
                     <span className="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0" />
                   )}
-                  <span className={`text-sm font-semibold ${isCurrentWeek ? 'text-blue-800' : 'text-stone-600'}`}>
+                  <span className={`text-sm font-semibold ${isCurrentWeek ? 'text-blue-800 dark:text-blue-300' : 'text-stone-600 dark:text-stone-400'}`}>
                     Week {week}
                   </span>
                 </div>
-                <span className="text-xs text-stone-400">{weekDone}/{DAYS_PER_WEEK} 天</span>
+                <span className="text-xs text-stone-400 dark:text-stone-500">{weekDone}/{DAYS_PER_WEEK} 天</span>
               </div>
 
               {/* Day cells */}
@@ -364,7 +364,7 @@ export function DashboardClient() {
       </div>
 
       {/* Legend */}
-      <div className="flex items-center gap-4 text-xs text-stone-400 px-1">
+      <div className="flex items-center gap-4 text-xs text-stone-400 dark:text-stone-500 px-1">
         <span className="flex items-center gap-1.5">
           <span className="w-3 h-3 rounded bg-emerald-100 border border-emerald-300 inline-block" />通过
         </span>
@@ -393,47 +393,47 @@ function DayCell({ status, isCurrent }: { status: DayStatus; isCurrent: boolean 
   const needsRetry = isComplete && passRate !== null && passRate < PASS_THRESHOLD
 
   // Visual state
-  let cellBg = 'bg-stone-50'
-  let dayNumCls = 'text-stone-300'
+  let cellBg = 'bg-stone-50 dark:bg-stone-700/50'
+  let dayNumCls = 'text-stone-300 dark:text-stone-600'
   let indicator: React.ReactNode = null
 
   if (!unlocked) {
-    cellBg = 'bg-stone-50'
-    dayNumCls = 'text-stone-300'
+    cellBg = 'bg-stone-50 dark:bg-stone-700/50'
+    dayNumCls = 'text-stone-300 dark:text-stone-600'
     indicator = (
-      <svg className="w-3.5 h-3.5 text-stone-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+      <svg className="w-3.5 h-3.5 text-stone-300 dark:text-stone-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
       </svg>
     )
   } else if (isPassed || isFreeDay) {
-    cellBg = 'bg-emerald-50 hover:bg-emerald-100'
-    dayNumCls = 'text-emerald-700'
+    cellBg = 'bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-900/20 dark:hover:bg-emerald-900/30'
+    dayNumCls = 'text-emerald-700 dark:text-emerald-400'
     indicator = (
       <svg className="w-3.5 h-3.5 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
       </svg>
     )
   } else if (needsRetry) {
-    cellBg = 'bg-orange-50 hover:bg-orange-100'
-    dayNumCls = 'text-orange-700'
+    cellBg = 'bg-orange-50 hover:bg-orange-100 dark:bg-orange-900/20 dark:hover:bg-orange-900/30'
+    dayNumCls = 'text-orange-700 dark:text-orange-400'
     indicator = (
       <svg className="w-3.5 h-3.5 text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
       </svg>
     )
   } else if (isStarted) {
-    cellBg = 'bg-amber-50 hover:bg-amber-100'
-    dayNumCls = 'text-amber-700'
+    cellBg = 'bg-amber-50 hover:bg-amber-100 dark:bg-amber-900/20 dark:hover:bg-amber-900/30'
+    dayNumCls = 'text-amber-700 dark:text-amber-400'
     indicator = (
       <div className="flex gap-0.5">
         {Array.from({ length: status.aTotal }).map((_, i) => (
-          <div key={i} className={`h-1.5 w-1.5 rounded-full ${i < aDone ? 'bg-amber-400' : 'bg-amber-200'}`} />
+          <div key={i} className={`h-1.5 w-1.5 rounded-full ${i < aDone ? 'bg-amber-400' : 'bg-amber-200 dark:bg-amber-700'}`} />
         ))}
       </div>
     )
   } else if (unlocked) {
-    cellBg = 'bg-blue-50 hover:bg-blue-100'
-    dayNumCls = 'text-blue-700'
+    cellBg = 'bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/20 dark:hover:bg-blue-900/30'
+    dayNumCls = 'text-blue-700 dark:text-blue-400'
     indicator = (
       <svg className="w-3.5 h-3.5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z" />
@@ -442,7 +442,7 @@ function DayCell({ status, isCurrent }: { status: DayStatus; isCurrent: boolean 
   }
 
   const subText = aTotal > 0 ? (
-    <span className="text-[10px] text-stone-400">
+    <span className="text-[10px] text-stone-400 dark:text-stone-500">
       {aDone}/{aTotal}
       {passRate !== null && (
         <span className={passRate >= PASS_THRESHOLD ? 'text-emerald-500' : 'text-orange-400'}>
@@ -485,10 +485,10 @@ function DayCell({ status, isCurrent }: { status: DayStatus; isCurrent: boolean 
     </div>
   )
 
-  if (!unlocked) return <div className="border-r border-stone-50 last:border-r-0">{inner}</div>
+  if (!unlocked) return <div className="border-r border-stone-50 dark:border-stone-700 last:border-r-0">{inner}</div>
 
   return (
-    <a href={`/week/${week}/day/${day}`} className="block border-r border-stone-50 last:border-r-0">
+    <a href={`/week/${week}/day/${day}`} className="block border-r border-stone-50 dark:border-stone-700 last:border-r-0">
       {inner}
     </a>
   )

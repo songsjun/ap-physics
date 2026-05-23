@@ -45,24 +45,24 @@ function MoralJudgmentDialog({ entry, onConfirm, onCancel }: {
         role="dialog"
         aria-modal="true"
         aria-labelledby="moral-dialog-title"
-        className="bg-white rounded-2xl shadow-2xl w-full max-w-sm overflow-hidden"
+        className="bg-white dark:bg-stone-800 rounded-2xl shadow-2xl w-full max-w-sm overflow-hidden"
         onClick={e => e.stopPropagation()}
       >
-        <div className="bg-amber-50 px-5 pt-5 pb-4 border-b border-amber-100">
+        <div className="bg-amber-50 dark:bg-amber-900/20 px-5 pt-5 pb-4 border-b border-amber-100 dark:border-amber-900">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-full bg-amber-100 flex items-center justify-center shrink-0 text-lg">⚖️</div>
+            <div className="w-9 h-9 rounded-full bg-amber-100 dark:bg-amber-800/40 flex items-center justify-center shrink-0 text-lg">⚖️</div>
             <div>
-              <p id="moral-dialog-title" className="text-sm font-semibold text-stone-800">查看答案前，请认真思考</p>
-              <p className="text-xs text-stone-500 mt-0.5">{entry.year} · Q{entry.question_number} · {frqTypeLabel(entry.frq_type)}</p>
+              <p id="moral-dialog-title" className="text-sm font-semibold text-stone-800 dark:text-stone-200">查看答案前，请认真思考</p>
+              <p className="text-xs text-stone-500 dark:text-stone-400 mt-0.5">{entry.year} · Q{entry.question_number} · {frqTypeLabel(entry.frq_type)}</p>
             </div>
           </div>
         </div>
         <div className="px-5 py-4 space-y-3">
-          <p className="text-xs text-stone-500">逐条确认后才能查看评分标准：</p>
+          <p className="text-xs text-stone-500 dark:text-stone-400">逐条确认后才能查看评分标准：</p>
           {[`我已独立完成 ${entry.year} Q${entry.question_number} 的作答，没有在中途查阅提示或答案`].map((item, i) => (
             <label key={i} className="flex items-start gap-3 cursor-pointer group">
               <div
-                className={`mt-0.5 w-5 h-5 rounded-[5px] border-2 flex items-center justify-center shrink-0 transition-all ${checked[i] ? 'bg-amber-500 border-amber-500' : 'border-stone-300 group-hover:border-amber-400'}`}
+                className={`mt-0.5 w-5 h-5 rounded-[5px] border-2 flex items-center justify-center shrink-0 transition-all ${checked[i] ? 'bg-amber-500 border-amber-500' : 'border-stone-300 dark:border-stone-600 group-hover:border-amber-400'}`}
                 onClick={() => toggle(i)}
               >
                 {checked[i] && (
@@ -72,7 +72,7 @@ function MoralJudgmentDialog({ entry, onConfirm, onCancel }: {
                 )}
               </div>
               <span
-                className={`text-xs leading-relaxed transition-colors ${checked[i] ? 'text-stone-400 line-through' : 'text-stone-600'}`}
+                className={`text-xs leading-relaxed transition-colors ${checked[i] ? 'text-stone-400 line-through dark:text-stone-500' : 'text-stone-600 dark:text-stone-400'}`}
                 onClick={() => toggle(i)}
               >
                 {item}
@@ -84,14 +84,14 @@ function MoralJudgmentDialog({ entry, onConfirm, onCancel }: {
           <button
             ref={firstButtonRef}
             onClick={onCancel}
-            className="flex-1 py-2 rounded-xl text-sm text-stone-500 bg-stone-100 hover:bg-stone-200 transition-colors"
+            className="flex-1 py-2 rounded-xl text-sm text-stone-500 dark:text-stone-400 bg-stone-100 dark:bg-stone-700 hover:bg-stone-200 dark:hover:bg-stone-600 transition-colors"
           >
             再想想
           </button>
           <button
             onClick={onConfirm}
             disabled={!allChecked}
-            className={`flex-1 py-2 rounded-xl text-sm font-medium transition-colors ${allChecked ? 'bg-amber-500 hover:bg-amber-600 text-white' : 'bg-stone-100 text-stone-300 cursor-not-allowed'}`}
+            className={`flex-1 py-2 rounded-xl text-sm font-medium transition-colors ${allChecked ? 'bg-amber-500 hover:bg-amber-600 text-white' : 'bg-stone-100 dark:bg-stone-700 text-stone-300 dark:text-stone-600 cursor-not-allowed'}`}
           >
             已确认，查看答案
           </button>
@@ -213,23 +213,23 @@ export function RelatedFRQCard({ userId, conceptIds, week, day }: RelatedFRQCard
 
   return (
     <>
-      <div className="bg-white rounded-xl border border-violet-100 overflow-hidden">
+      <div className="bg-white dark:bg-stone-800 rounded-xl border border-violet-100 dark:border-violet-900/50 overflow-hidden">
         {/* Collapsible header */}
         <button
           onClick={() => setOpen(o => !o)}
           aria-expanded={open}
           aria-controls="frq-card-content"
-          className="w-full px-4 py-2.5 flex items-center justify-between bg-violet-50 hover:brightness-95 transition-all text-left"
+          className="w-full px-4 py-2.5 flex items-center justify-between bg-violet-50 dark:bg-violet-900/20 hover:brightness-95 transition-all text-left"
         >
           <div className="flex items-center gap-2.5">
             <span className="text-xs font-bold px-2 py-0.5 rounded-md bg-violet-600 text-white">FRQ</span>
-            <span className="text-sm font-medium text-violet-700">历年相关真题</span>
-            <span className="text-xs text-stone-400">按今日知识点匹配</span>
+            <span className="text-sm font-medium text-violet-700 dark:text-violet-300">历年相关真题</span>
+            <span className="text-xs text-stone-400 dark:text-stone-500">按今日知识点匹配</span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-xs text-stone-400">{related.length} 题</span>
+            <span className="text-xs text-stone-400 dark:text-stone-500">{related.length} 题</span>
             <svg
-              className={`w-3.5 h-3.5 text-stone-300 transition-transform ${open ? 'rotate-180' : ''}`}
+              className={`w-3.5 h-3.5 text-stone-300 dark:text-stone-600 transition-transform ${open ? 'rotate-180' : ''}`}
               fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}
             >
               <path strokeLinecap="round" strokeLinejoin="round" d="m19 9-7 7-7-7" />
@@ -239,7 +239,7 @@ export function RelatedFRQCard({ userId, conceptIds, week, day }: RelatedFRQCard
 
         {/* Rows */}
         {open && (
-          <div id="frq-card-content" className="divide-y divide-stone-50">
+          <div id="frq-card-content" className="divide-y divide-stone-50 dark:divide-stone-700">
             {related.map(entry => {
               const completion = frqCompletions.get(entry.id)
               const isPassing = completion && completion.score_max > 0 && completion.score / completion.score_max >= 0.6
@@ -250,8 +250,8 @@ export function RelatedFRQCard({ userId, conceptIds, week, day }: RelatedFRQCard
                   <div className="flex items-start justify-between gap-3">
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 flex-wrap">
-                        <span className="text-xs font-mono text-stone-400">{entry.year}</span>
-                        <span className="text-xs font-semibold text-stone-700">Q{entry.question_number}</span>
+                        <span className="text-xs font-mono text-stone-400 dark:text-stone-500">{entry.year}</span>
+                        <span className="text-xs font-semibold text-stone-700 dark:text-stone-300">Q{entry.question_number}</span>
                         <span className="text-xs px-1.5 py-0.5 rounded-md bg-violet-50 text-violet-600">
                           {frqTypeLabel(entry.frq_type)}
                         </span>
@@ -262,7 +262,7 @@ export function RelatedFRQCard({ userId, conceptIds, week, day }: RelatedFRQCard
                           </span>
                         )}
                       </div>
-                      <p className="text-xs text-stone-500 mt-1 leading-relaxed line-clamp-2">
+                      <p className="text-xs text-stone-500 dark:text-stone-400 mt-1 leading-relaxed line-clamp-2">
                         {entry.text_preview.slice(0, 130)}…
                       </p>
                     </div>
@@ -277,7 +277,7 @@ export function RelatedFRQCard({ userId, conceptIds, week, day }: RelatedFRQCard
                       {entry.sg_pdf && (
                         <button
                           onClick={() => { setScoringEntry(null); setJudgmentEntry(entry) }}
-                          className="text-xs px-2.5 py-1 rounded-lg bg-stone-50 text-stone-500 hover:bg-amber-50 hover:text-amber-700 transition-colors whitespace-nowrap"
+                          className="text-xs px-2.5 py-1 rounded-lg bg-stone-50 dark:bg-stone-700 text-stone-500 dark:text-stone-400 hover:bg-amber-50 hover:text-amber-700 transition-colors whitespace-nowrap"
                         >
                           查看答案
                         </button>
@@ -285,14 +285,14 @@ export function RelatedFRQCard({ userId, conceptIds, week, day }: RelatedFRQCard
                       {completion ? (
                         <button
                           onClick={() => setScoringEntry(isScoring ? null : entry)}
-                          className="text-xs px-2.5 py-1 rounded-lg bg-stone-50 text-stone-400 hover:text-violet-600 transition-colors whitespace-nowrap"
+                          className="text-xs px-2.5 py-1 rounded-lg bg-stone-50 dark:bg-stone-700 text-stone-400 dark:text-stone-500 hover:text-violet-600 transition-colors whitespace-nowrap"
                         >
                           修改分数
                         </button>
                       ) : (
                         <button
                           onClick={() => setScoringEntry(isScoring ? null : entry)}
-                          className="text-xs px-2.5 py-1 rounded-lg bg-stone-50 text-stone-500 hover:bg-violet-50 hover:text-violet-700 transition-colors whitespace-nowrap"
+                          className="text-xs px-2.5 py-1 rounded-lg bg-stone-50 dark:bg-stone-700 text-stone-500 dark:text-stone-400 hover:bg-violet-50 hover:text-violet-700 transition-colors whitespace-nowrap"
                         >
                           记录分数
                         </button>

@@ -16,13 +16,13 @@ const PHASE_STYLE: Record<string, {
     label: '学习',
     badgeCls: 'bg-amber-100 text-amber-700',
     borderCls: 'border-l-amber-400',
-    rowBg: 'bg-amber-50/40',
+    rowBg: 'bg-amber-50/40 dark:bg-amber-900/10',
   },
   PRACTICE: {
     label: '练习',
     badgeCls: 'bg-blue-100 text-blue-700',
     borderCls: 'border-l-blue-400',
-    rowBg: 'bg-blue-50/40',
+    rowBg: 'bg-blue-50/40 dark:bg-blue-900/10',
   },
 }
 
@@ -101,22 +101,22 @@ function ScorePanel({ resource, onSubmit, onCancel }: {
 
   return (
     <div className="mx-4 mb-3 ml-12 mt-1">
-      <div className="bg-stone-50 rounded-lg border border-stone-200 p-3 space-y-3">
-        <p className="text-xs font-medium text-stone-600">
+      <div className="bg-stone-50 dark:bg-stone-800 rounded-lg border border-stone-200 dark:border-stone-600 p-3 space-y-3">
+        <p className="text-xs font-medium text-stone-600 dark:text-stone-400">
           {resource.type === 'frq' ? '得了几分？' : '几题答对了？'}
         </p>
         <div className="flex items-center gap-3">
           <button
             onClick={() => setScore(s => Math.max(0, s - 1))}
-            className="w-8 h-8 rounded-lg bg-white border border-stone-200 text-stone-600 font-bold text-lg flex items-center justify-center hover:bg-stone-100 transition-colors"
+            className="w-8 h-8 rounded-lg bg-white border border-stone-200 text-stone-600 font-bold text-lg flex items-center justify-center hover:bg-stone-100 transition-colors dark:bg-stone-700 dark:border-stone-600 dark:text-stone-300 dark:hover:bg-stone-600"
           >−</button>
           <div className="flex items-baseline gap-1.5 min-w-[4rem] justify-center">
-            <span className="text-2xl font-bold text-stone-800 tabular-nums">{score}</span>
-            <span className="text-sm text-stone-400">/ {max}</span>
+            <span className="text-2xl font-bold text-stone-800 dark:text-stone-200 tabular-nums">{score}</span>
+            <span className="text-sm text-stone-400 dark:text-stone-500">/ {max}</span>
           </div>
           <button
             onClick={() => setScore(s => Math.min(max, s + 1))}
-            className="w-8 h-8 rounded-lg bg-white border border-stone-200 text-stone-600 font-bold text-lg flex items-center justify-center hover:bg-stone-100 transition-colors"
+            className="w-8 h-8 rounded-lg bg-white border border-stone-200 text-stone-600 font-bold text-lg flex items-center justify-center hover:bg-stone-100 transition-colors dark:bg-stone-700 dark:border-stone-600 dark:text-stone-300 dark:hover:bg-stone-600"
           >+</button>
           <div className={`ml-1 text-xs font-medium px-2 py-1 rounded-md ${
             willPass ? 'bg-emerald-100 text-emerald-700' : 'bg-red-100 text-red-600'
@@ -137,7 +137,7 @@ function ScorePanel({ resource, onSubmit, onCancel }: {
           </button>
           <button
             onClick={onCancel}
-            className="px-3 py-1.5 rounded-lg text-sm text-stone-400 hover:text-stone-600 hover:bg-stone-100 transition-colors"
+            className="px-3 py-1.5 rounded-lg text-sm text-stone-400 dark:text-stone-500 hover:text-stone-600 dark:hover:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors"
           >
             取消
           </button>
@@ -174,7 +174,7 @@ function ResourceRow({ resource, completion, kpMap, scoringId, onCheckDirect, on
   const platformLabel = PLATFORM_SHORT[resource.platform] ?? resource.platform
   const graded = isGradedResource(resource)
 
-  const rowBg = done ? 'bg-emerald-50/30' : phase.rowBg
+  const rowBg = done ? 'bg-emerald-50/30 dark:bg-emerald-900/10' : phase.rowBg
 
   // Score display if recorded
   const scoreDisplay = done && completion?.score !== undefined && completion.score_max
@@ -201,8 +201,8 @@ function ResourceRow({ resource, completion, kpMap, scoringId, onCheckDirect, on
           aria-pressed={done}
           className={`mt-0.5 w-5 h-5 rounded-[5px] border-2 flex items-center justify-center shrink-0 transition-all ${
             done   ? 'bg-emerald-500 border-emerald-500 shadow-sm' :
-            failed ? 'bg-red-50 border-red-300 hover:bg-red-100' :
-                     'border-stone-300 hover:border-blue-400 hover:bg-blue-50'
+            failed ? 'bg-red-50 border-red-300 hover:bg-red-100 dark:bg-red-950/30' :
+                     'border-stone-300 hover:border-blue-400 hover:bg-blue-50 dark:border-stone-600 dark:hover:bg-blue-900/20'
           }`}
         >
           {done && (
@@ -224,13 +224,13 @@ function ResourceRow({ resource, completion, kpMap, scoringId, onCheckDirect, on
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`text-sm font-medium leading-snug transition-colors flex-1 ${
-                  done ? 'text-stone-400 line-through' : 'text-stone-800 hover:text-blue-600'
+                  done ? 'text-stone-400 line-through dark:text-stone-500' : 'text-stone-800 hover:text-blue-600 dark:text-stone-200 dark:hover:text-blue-400'
                 }`}
               >
                 {resource.title}
               </a>
             ) : (
-              <span className={`text-sm font-medium leading-snug flex-1 ${done ? 'text-stone-400 line-through' : 'text-stone-800'}`}>
+              <span className={`text-sm font-medium leading-snug flex-1 ${done ? 'text-stone-400 line-through dark:text-stone-500' : 'text-stone-800 dark:text-stone-200'}`}>
                 {resource.title}
               </span>
             )}
@@ -239,8 +239,8 @@ function ResourceRow({ resource, completion, kpMap, scoringId, onCheckDirect, on
               <span className={`text-[11px] px-1.5 py-0.5 rounded font-medium ${phase.badgeCls}`}>
                 {phase.label}
               </span>
-              <span className="text-[11px] text-stone-400 hidden sm:inline">{typeLabel}</span>
-              <span className="text-[11px] text-stone-300 hidden sm:inline">{platformLabel}</span>
+              <span className="text-[11px] text-stone-400 dark:text-stone-500 hidden sm:inline">{typeLabel}</span>
+              <span className="text-[11px] text-stone-300 dark:text-stone-600 hidden sm:inline">{platformLabel}</span>
               {/* Score display */}
               {scoreDisplay && (
                 <span className="text-[11px] font-medium px-1.5 py-0.5 rounded-md bg-emerald-100 text-emerald-700">
@@ -254,7 +254,7 @@ function ResourceRow({ resource, completion, kpMap, scoringId, onCheckDirect, on
               )}
               {!scoreDisplay && !failedScoreDisplay && (
                 <span className={`text-[11px] font-medium px-1.5 py-0.5 rounded-md ${
-                  done ? 'text-stone-400 bg-stone-100' : 'text-stone-500 bg-stone-100'
+                  done ? 'text-stone-400 dark:text-stone-500 bg-stone-100 dark:bg-stone-700' : 'text-stone-500 dark:text-stone-400 bg-stone-100 dark:bg-stone-700'
                 }`}>
                   {resource.estimated_minutes}m
                 </span>
@@ -264,7 +264,7 @@ function ResourceRow({ resource, completion, kpMap, scoringId, onCheckDirect, on
                   href={resource.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-stone-300 hover:text-blue-500 transition-colors"
+                  className="text-stone-300 dark:text-stone-600 hover:text-blue-500 dark:hover:text-blue-400 transition-colors"
                   aria-label="在新标签页打开"
                 >
                   <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -281,13 +281,13 @@ function ResourceRow({ resource, completion, kpMap, scoringId, onCheckDirect, on
               <span className="text-[11px] text-stone-400 font-mono">CED {cedCodes}</span>
             )}
             {kps.slice(0, 2).map(kp => (
-              <span key={kp.id} className="text-[11px] bg-stone-100 text-stone-500 px-1.5 py-0.5 rounded-md">
+              <span key={kp.id} className="text-[11px] bg-stone-100 dark:bg-stone-700 text-stone-500 dark:text-stone-400 px-1.5 py-0.5 rounded-md">
                 {kp.name_zh}
               </span>
             ))}
             <button
               onClick={() => setExpanded(e => !e)}
-              className="text-[11px] text-blue-400 hover:text-blue-600 transition-colors ml-0.5"
+              className="text-[11px] text-blue-400 hover:text-blue-600 dark:hover:text-blue-300 transition-colors ml-0.5"
             >
               {expanded ? '收起' : '详情'}
             </button>
@@ -306,33 +306,33 @@ function ResourceRow({ resource, completion, kpMap, scoringId, onCheckDirect, on
 
       {/* Expandable detail */}
       {expanded && !isScoring && (
-        <div className={`mx-4 mb-3 ml-12 pl-3 border-l border-stone-100 space-y-1.5 text-xs text-stone-500 ${rowBg}`}>
+        <div className={`mx-4 mb-3 ml-12 pl-3 border-l border-stone-100 dark:border-stone-700 space-y-1.5 text-xs text-stone-500 dark:text-stone-400 ${rowBg}`}>
           {objective && (
             <div className="flex gap-2 pt-1">
-              <span className="text-stone-300 shrink-0 w-14 text-right">学习目标</span>
-              <span className="text-stone-600">{objective}</span>
+              <span className="text-stone-300 dark:text-stone-600 shrink-0 w-14 text-right">学习目标</span>
+              <span className="text-stone-600 dark:text-stone-400">{objective}</span>
             </div>
           )}
           {resource.description && (
             <div className="flex gap-2">
-              <span className="text-stone-300 shrink-0 w-14 text-right pt-0.5">实验步骤</span>
+              <span className="text-stone-300 dark:text-stone-600 shrink-0 w-14 text-right pt-0.5">实验步骤</span>
               <ol className="space-y-1 flex-1">
                 {resource.description.split('\n').map((step, i) => (
-                  <li key={i} className="text-stone-600">{step}</li>
+                  <li key={i} className="text-stone-600 dark:text-stone-400">{step}</li>
                 ))}
               </ol>
             </div>
           )}
           {!resource.description && (
             <div className="flex gap-2">
-              <span className="text-stone-300 shrink-0 w-14 text-right">完成标准</span>
-              <span className="text-stone-600">{criteria}</span>
+              <span className="text-stone-300 dark:text-stone-600 shrink-0 w-14 text-right">完成标准</span>
+              <span className="text-stone-600 dark:text-stone-400">{criteria}</span>
             </div>
           )}
           {/* Answer key link */}
           {resource.answer_url && (
             <div className="flex gap-2">
-              <span className="text-stone-300 shrink-0 w-14 text-right">答案</span>
+              <span className="text-stone-300 dark:text-stone-600 shrink-0 w-14 text-right">答案</span>
               <a
                 href={resource.answer_url}
                 target="_blank"
@@ -345,34 +345,34 @@ function ResourceRow({ resource, completion, kpMap, scoringId, onCheckDirect, on
           )}
           {kps.length > 0 && (
             <div className="flex gap-2">
-              <span className="text-stone-300 shrink-0 w-14 text-right">知识点</span>
-              <span className="text-stone-600">
+              <span className="text-stone-300 dark:text-stone-600 shrink-0 w-14 text-right">知识点</span>
+              <span className="text-stone-600 dark:text-stone-400">
                 {kps.map(k => `CED ${k.ced_topic} ${k.name_en}`).join('  ·  ')}
               </span>
             </div>
           )}
           {openstaxSections.length > 0 && (
             <div className="flex gap-2">
-              <span className="text-stone-300 shrink-0 w-14 text-right">OpenStax</span>
-              <span className="text-stone-600">第 {openstaxSections.join(', ')} 节</span>
+              <span className="text-stone-300 dark:text-stone-600 shrink-0 w-14 text-right">OpenStax</span>
+              <span className="text-stone-600 dark:text-stone-400">第 {openstaxSections.join(', ')} 节</span>
             </div>
           )}
           {resource.type === 'exercise' && resource.platform === 'khan' && (
             <div className="flex gap-2">
-              <span className="text-stone-300 shrink-0 w-14 text-right">达成含义</span>
-              <span className="text-stone-600">75% 正确率代表对该知识点有基础掌握，可推进下一模块</span>
+              <span className="text-stone-300 dark:text-stone-600 shrink-0 w-14 text-right">达成含义</span>
+              <span className="text-stone-600 dark:text-stone-400">75% 正确率代表对该知识点有基础掌握，可推进下一模块</span>
             </div>
           )}
           {resource.type === 'interactive' && (
             <div className="flex gap-2">
-              <span className="text-stone-300 shrink-0 w-14 text-right">达成含义</span>
-              <span className="text-stone-600">实验建立的直觉将帮助你在 FRQ 中正确设定符号和方向</span>
+              <span className="text-stone-300 dark:text-stone-600 shrink-0 w-14 text-right">达成含义</span>
+              <span className="text-stone-600 dark:text-stone-400">实验建立的直觉将帮助你在 FRQ 中正确设定符号和方向</span>
             </div>
           )}
           {resource.type === 'frq' && (
             <div className="flex gap-2 pb-1">
-              <span className="text-stone-300 shrink-0 w-14 text-right">达成含义</span>
-              <span className="text-stone-600">FRQ 是 AP 考试 50% 分值，完成官方题是最直接的水平校准</span>
+              <span className="text-stone-300 dark:text-stone-600 shrink-0 w-14 text-right">达成含义</span>
+              <span className="text-stone-600 dark:text-stone-400">FRQ 是 AP 考试 50% 分值，完成官方题是最直接的水平校准</span>
             </div>
           )}
         </div>
@@ -405,7 +405,7 @@ export function TierSection({
   useEffect(() => { if (forceOpen) setOpen(true) }, [forceOpen])
 
   return (
-    <div className={`bg-white rounded-xl border ${borderCls} overflow-hidden`}>
+    <div className={`bg-white dark:bg-stone-800 rounded-xl border ${borderCls} overflow-hidden`}>
       <button
         onClick={() => setOpen(o => !o)}
         aria-expanded={open}
@@ -419,12 +419,12 @@ export function TierSection({
                            'bg-stone-400 text-white'
           }`}>{tier}</span>
           <span className={`text-sm font-medium ${accentCls}`}>{label}</span>
-          {description && <span className="text-xs text-stone-400">{description}</span>}
+          {description && <span className="text-xs text-stone-400 dark:text-stone-500">{description}</span>}
         </div>
         <div className="flex items-center gap-2">
-          {statusText && <span className="text-xs text-stone-500">{statusText}</span>}
+          {statusText && <span className="text-xs text-stone-500 dark:text-stone-400">{statusText}</span>}
           <svg
-            className={`w-3.5 h-3.5 text-stone-300 transition-transform ${open ? 'rotate-180' : ''}`}
+            className={`w-3.5 h-3.5 text-stone-300 dark:text-stone-600 transition-transform ${open ? 'rotate-180' : ''}`}
             fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}
           >
             <path strokeLinecap="round" strokeLinejoin="round" d="m19 9-7 7-7-7" />
@@ -433,7 +433,7 @@ export function TierSection({
       </button>
 
       {open && (
-        <div id={`tier-${tier.toLowerCase()}-content`} className="divide-y divide-stone-50">
+        <div id={`tier-${tier.toLowerCase()}-content`} className="divide-y divide-stone-50 dark:divide-stone-700">
           {resources.map(r => (
             <ResourceRow
               key={r.id}

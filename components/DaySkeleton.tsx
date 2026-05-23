@@ -16,13 +16,13 @@ export function DaySkeleton() {
       <div className="pt-2 mb-6 flex items-start justify-between">
         {/* Left: AP Physics label + Week · Day title */}
         <div className="space-y-1.5">
-          <div className="h-3 w-24 bg-stone-200 rounded" />
-          <div className="h-7 w-40 bg-stone-200 rounded" />
+          <div className="h-3 w-24 bg-stone-200 dark:bg-stone-700 rounded" />
+          <div className="h-7 w-40 bg-stone-200 dark:bg-stone-700 rounded" />
         </div>
         {/* Right: back link + settings icon */}
         <div className="flex items-center gap-4 mt-1">
-          <div className="h-4 w-10 bg-stone-200 rounded" />
-          <div className="w-4 h-4 bg-stone-200 rounded" />
+          <div className="h-4 w-10 bg-stone-200 dark:bg-stone-700 rounded" />
+          <div className="w-4 h-4 bg-stone-200 dark:bg-stone-700 rounded" />
         </div>
       </div>
 
@@ -31,10 +31,10 @@ export function DaySkeleton() {
         {/* Section header */}
         <div className="bg-blue-50 px-4 py-3 flex items-center justify-between border-b border-blue-100">
           <div className="flex items-center gap-2">
-            <div className="h-4 w-10 bg-stone-200 rounded" />
-            <div className="h-3 w-16 bg-stone-200 rounded" />
+            <div className="h-4 w-10 bg-stone-200 dark:bg-stone-700 rounded" />
+            <div className="h-3 w-16 bg-stone-200 dark:bg-stone-700 rounded" />
           </div>
-          <div className="h-3 w-20 bg-stone-200 rounded" />
+          <div className="h-3 w-20 bg-stone-200 dark:bg-stone-700 rounded" />
         </div>
         {/* Resource rows */}
         <div className="divide-y divide-stone-50">
@@ -55,10 +55,10 @@ export function DaySkeleton() {
       <div className="rounded-xl border border-stone-100 overflow-hidden">
         <div className="bg-amber-50 px-4 py-3 flex items-center justify-between border-b border-amber-100">
           <div className="flex items-center gap-2">
-            <div className="h-4 w-16 bg-stone-200 rounded" />
-            <div className="h-3 w-24 bg-stone-200 rounded" />
+            <div className="h-4 w-16 bg-stone-200 dark:bg-stone-700 rounded" />
+            <div className="h-3 w-24 bg-stone-200 dark:bg-stone-700 rounded" />
           </div>
-          <div className="h-3.5 w-3.5 bg-stone-200 rounded" />
+          <div className="h-3.5 w-3.5 bg-stone-200 dark:bg-stone-700 rounded" />
         </div>
         <div className="divide-y divide-stone-50">
           {Array.from({ length: 2 }).map((_, i) => (
@@ -78,10 +78,10 @@ export function DaySkeleton() {
       <div className="rounded-xl border border-stone-100 overflow-hidden">
         <div className="bg-stone-50 px-4 py-3 flex items-center justify-between border-b border-stone-100">
           <div className="flex items-center gap-2">
-            <div className="h-4 w-10 bg-stone-200 rounded" />
-            <div className="h-3 w-20 bg-stone-200 rounded" />
+            <div className="h-4 w-10 bg-stone-200 dark:bg-stone-700 rounded" />
+            <div className="h-3 w-20 bg-stone-200 dark:bg-stone-700 rounded" />
           </div>
-          <div className="h-3.5 w-3.5 bg-stone-200 rounded" />
+          <div className="h-3.5 w-3.5 bg-stone-200 dark:bg-stone-700 rounded" />
         </div>
         <div className="divide-y divide-stone-50">
           {Array.from({ length: 2 }).map((_, i) => (

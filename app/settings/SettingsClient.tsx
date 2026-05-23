@@ -105,10 +105,10 @@ export function SettingsClient() {
       </section>
 
       {/* API Key */}
-      <section className="bg-white rounded-xl border border-stone-100 shadow-sm p-6 space-y-4">
+      <section className="bg-white dark:bg-stone-800 rounded-xl border border-stone-100 dark:border-stone-700 shadow-sm p-6 space-y-4">
         <div>
-          <h2 className="font-semibold text-stone-900">Claude API Key</h2>
-          <p className="text-sm text-stone-500 mt-0.5">用于获取个性化学习反馈。Key 仅保存在本地浏览器，不会上传。</p>
+          <h2 className="font-semibold text-stone-900 dark:text-stone-100">Claude API Key</h2>
+          <p className="text-sm text-stone-500 dark:text-stone-400 mt-0.5">用于获取个性化学习反馈。Key 仅保存在本地浏览器，不会上传。</p>
         </div>
         <div className="flex gap-2">
           <input
@@ -117,7 +117,7 @@ export function SettingsClient() {
             onChange={e => setApiKey(e.target.value)}
             onKeyDown={e => e.key === 'Enter' && handleSave()}
             placeholder="sk-ant-..."
-            className="flex-1 border border-stone-200 rounded-lg px-3 py-2 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-blue-300"
+            className="flex-1 border border-stone-200 dark:border-stone-600 dark:bg-stone-700 dark:text-stone-100 rounded-lg px-3 py-2 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-blue-300"
           />
           <button
             onClick={handleSave}
@@ -134,7 +134,7 @@ export function SettingsClient() {
             清除 Key
           </button>
         )}
-        <p className="text-xs text-stone-400">
+        <p className="text-xs text-stone-400 dark:text-stone-500">
           前往{' '}
           <a
             href="https://console.anthropic.com"
@@ -149,21 +149,21 @@ export function SettingsClient() {
       </section>
 
       {/* Progress backup */}
-      <section className="bg-white rounded-xl border border-stone-100 shadow-sm p-6 space-y-4">
+      <section className="bg-white dark:bg-stone-800 rounded-xl border border-stone-100 dark:border-stone-700 shadow-sm p-6 space-y-4">
         <div>
-          <h2 className="font-semibold text-stone-900">学习进度备份</h2>
-          <p className="text-sm text-stone-500 mt-0.5">导出进度到 JSON 文件，或从备份文件恢复（会覆盖当前进度）。</p>
+          <h2 className="font-semibold text-stone-900 dark:text-stone-100">学习进度备份</h2>
+          <p className="text-sm text-stone-500 dark:text-stone-400 mt-0.5">导出进度到 JSON 文件，或从备份文件恢复（会覆盖当前进度）。</p>
         </div>
         <div className="flex gap-2 flex-wrap">
           <button
             onClick={handleExport}
-            className="px-4 py-2 bg-stone-100 hover:bg-stone-200 text-stone-700 text-sm font-medium rounded-lg transition-colors"
+            className="px-4 py-2 bg-stone-100 hover:bg-stone-200 text-stone-700 text-sm font-medium rounded-lg transition-colors dark:bg-stone-700 dark:hover:bg-stone-600 dark:text-stone-300"
           >
             导出进度
           </button>
           <button
             onClick={() => fileInputRef.current?.click()}
-            className="px-4 py-2 bg-stone-100 hover:bg-stone-200 text-stone-700 text-sm font-medium rounded-lg transition-colors"
+            className="px-4 py-2 bg-stone-100 hover:bg-stone-200 text-stone-700 text-sm font-medium rounded-lg transition-colors dark:bg-stone-700 dark:hover:bg-stone-600 dark:text-stone-300"
           >
             导入进度
           </button>
