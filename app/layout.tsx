@@ -29,10 +29,14 @@ export default function RootLayout({
           reads localStorage and sets .dark on <html> if needed. */}
       <head>
         <script dangerouslySetInnerHTML={{ __html:
-          `(function(){try{var t=localStorage.getItem('ap_physics_theme');` +
-          `if(t==='dark'||(t!=='light'&&window.matchMedia('(prefers-color-scheme:dark)').matches)){` +
-          `document.documentElement.classList.add('dark')` +
-          `}}catch(e){}})();`
+          `(function(){try{` +
+          `var t=localStorage.getItem('ap_physics_theme');` +
+          `var d=t==='dark'||(t!=='light'&&window.matchMedia('(prefers-color-scheme:dark)').matches);` +
+          `var r=document.documentElement;` +
+          `if(d){r.classList.add('dark');` +
+          `r.style.setProperty('--background','#0a0a0a');` +
+          `r.style.setProperty('--foreground','#ededed');}` +
+          `}catch(e){}})();`
         }} />
       </head>
       <body className="min-h-full bg-stone-50 dark:bg-stone-900 text-stone-900 dark:text-stone-100">

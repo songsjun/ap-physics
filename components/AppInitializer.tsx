@@ -4,17 +4,25 @@ import { useEffect } from 'react'
 import { ensureAppReady } from '@/lib/app/ready'
 import { StorageService } from '@/lib/infra/storage'
 
+const DARK_VARS = { '--background': '#0a0a0a', '--foreground': '#ededed' }
+const LIGHT_VARS = { '--background': '#ffffff', '--foreground': '#171717' }
+
 /**
- * Applies the stored theme preference by toggling the `dark` class on
- * `<html>`. Called on hydration and whenever the system preference or
- * localStorage changes.
+ * Applies the stored theme preference:
+ *   1. Toggles `.dark` on `<html>` (for Tailwind dark: utilities)
+ *   2. Sets CSS variables via inline style on `<html>` (for body/globals rules).
+ *      Inline styles have the highest specificity so they override any layer
+ *      ordering issues between Tailwind utilities and unlayered globals rules.
  */
 function applyStoredTheme() {
   const t = StorageService.theme.get()
   const isDark =
     t === 'dark' ||
     (t === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)
-  document.documentElement.classList.toggle('dark', isDark)
+  const root = document.documentElement
+  root.classList.toggle('dark', isDark)
+  const vars = isDark ? DARK_VARS : LIGHT_VARS
+  for (const [k, v] of Object.entries(vars)) root.style.setProperty(k, v)
 }
 
 /**
