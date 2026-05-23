@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react'
 import { repo } from '@/lib/repository'
-import { StorageService } from '@/lib/infra/storage'
 import { selectDailyQuestions } from '@/lib/app/quiz'
 import { DAILY_CHALLENGE_QUESTION_COUNT } from '@/lib/constants'
 import type { Resource, Completion, KnowledgePoint, FlowState, QuizResult } from '@/lib/types'
@@ -23,6 +22,7 @@ export interface DayResourcesState {
 }
 
 export function useDayResources(
+  userId: string,
   week: number,
   day: number,
   flowState: FlowState,
@@ -41,7 +41,6 @@ export function useDayResources(
   useEffect(() => {
     let cancelled = false
     const load = async () => {
-      const userId = StorageService.userId.get()
       if (!userId) return
       const allRes = await repo.getAllDayResources(week, day)
       if (cancelled) return
@@ -67,15 +66,20 @@ export function useDayResources(
         }
       }
     }
-    load().catch(console.error)
+    // Use finally so setLoading(false) is always called, even on error.
+    // Without this, a Dexie failure would leave the skeleton visible forever.
+    load()
+      .catch(console.error)
+      .finally(() => { if (!cancelled) setLoading(false) })
     return () => { cancelled = true }
-  }, [week, day])
+  }, [week, day, userId])
 
-  // Refresh completions whenever flowState changes (phase transitions trigger re-reads)
+  // Refresh completions after every dispatch (flowState is a new object on each execute(),
+  // even when phase stays the same — e.g. completing a B/C tier resource during COMPLETE phase).
+  // userId must be in deps: if the active user changes the completions must reload immediately.
   useEffect(() => {
     let cancelled = false
     const refresh = async () => {
-      const userId = StorageService.userId.get()
       if (!userId) return
       const dayCompletions = await repo.getCompletions(userId, week, day)
       if (cancelled) return
@@ -83,7 +87,7 @@ export function useDayResources(
     }
     refresh().catch(console.error)
     return () => { cancelled = true }
-  }, [week, day, flowState.phase])
+  }, [week, day, userId, flowState])
 
   const onChallengeComplete = (results: QuizResult[]) => {
     setChallengeResults(results)

@@ -6,7 +6,7 @@ import { useDayResources } from '@/lib/app/useDayResources'
 import type { Resource, KnowledgePoint, DailyFeedback } from '@/lib/types'
 import { TierSection, RowSharedProps } from './ResourceRow'
 import { RelatedFRQCard } from './RelatedFRQCard'
-import { PASS_THRESHOLD } from '@/lib/constants'
+import { PASS_THRESHOLD, QUIZ_ESTIMATED_MINUTES } from '@/lib/constants'
 import { ChallengePrompt } from './ChallengePrompt'
 import { QuizPanel } from './QuizPanel'
 import { DaySkeleton } from '@/components/DaySkeleton'
@@ -48,11 +48,15 @@ function CompleteBanner({ passRate, feedback }: { passRate: number | null; feedb
 function NeedsRetryBanner({
   passRate,
   retryCount,
+  weakConceptNames,
   onForceAdvance,
+  onResetFailed,
 }: {
   passRate: number | null
   retryCount: number
+  weakConceptNames: string[]
   onForceAdvance: () => void
+  onResetFailed: () => void
 }) {
   return (
     <div className="bg-orange-50 border border-orange-200 rounded-xl p-4 space-y-2">
@@ -69,13 +73,26 @@ function NeedsRetryBanner({
           </p>
         </div>
       </div>
-      <p className="text-xs text-orange-700 pl-1">
-        请重新完成下方 A 层资源，提升答题质量后即可解锁下一天。
-      </p>
+      {weakConceptNames.length > 0 ? (
+        <p className="text-xs text-orange-700 pl-1">
+          在以下知识点上遇到了困难，建议重新完成相关资源（标记为 ✕ 的题目）：
+          <span className="font-medium"> {weakConceptNames.join('、')}</span>
+        </p>
+      ) : (
+        <p className="text-xs text-orange-700 pl-1">
+          请重新完成下方 A 层资源，提升答题质量后即可解锁下一天。
+        </p>
+      )}
+      <button
+        onClick={onResetFailed}
+        className="mt-1 w-full py-2.5 px-3 text-sm font-medium text-orange-700 bg-orange-100 hover:bg-orange-200 rounded-lg transition-colors min-h-[44px]"
+      >
+        重新完成失败项目
+      </button>
       {retryCount >= 2 && (
         <button
           onClick={onForceAdvance}
-          className="mt-3 py-2 px-1 text-sm text-stone-500 underline min-h-[44px]"
+          className="py-2 px-1 text-sm text-stone-500 underline min-h-[44px]"
         >
           仍然继续（跳过当前关口，不计为通过）
         </button>
@@ -87,7 +104,7 @@ function NeedsRetryBanner({
 // ── DayListView ───────────────────────────────────────────────────────────────
 
 export function DayListView({ week, day }: { week: number; day: number }) {
-  const { dispatch, flowState, feedback } = useDayContext()
+  const { userId, dispatch, flowState, feedback } = useDayContext()
   const {
     resources,
     completions,
@@ -99,7 +116,7 @@ export function DayListView({ week, day }: { week: number; day: number }) {
     quizChecked,
     setChallengeStatus,
     onChallengeComplete,
-  } = useDayResources(week, day, flowState)
+  } = useDayResources(userId, week, day, flowState)
 
   // id of resource currently in score-input mode
   const [scoringId, setScoringId] = useState<string | null>(null)
@@ -110,6 +127,15 @@ export function DayListView({ week, day }: { week: number; day: number }) {
   useEffect(() => {
     feedbackRequestedRef.current = false
   }, [week, day])
+
+  // Also re-arm feedback when the phase leaves COMPLETE (e.g. after
+  // RESET_FAILED_RESOURCES). Without this, the ref stays true and
+  // REQUEST_FEEDBACK never fires on the subsequent completion.
+  useEffect(() => {
+    if (flowState.phase !== 'COMPLETE') {
+      feedbackRequestedRef.current = false
+    }
+  }, [flowState.phase])
 
   useEffect(() => {
     if (flowState.phase === 'COMPLETE' && !feedbackRequestedRef.current) {
@@ -200,9 +226,10 @@ export function DayListView({ week, day }: { week: number; day: number }) {
   const bTier = resources.filter(r => r.tier === 'B')
 
   const aPassed = aTier.filter(r => completions.get(r.id)?.status === 'passed').length
-  const aFailed = aTier.filter(r => completions.get(r.id)?.status === 'failed').length
-  const aGraded = aPassed + aFailed
-  const passRate = aGraded > 0 ? aPassed / aGraded : null
+  // Use aTotal denominator — matches calcAttemptedPassRate used by the gate.
+  // aPassed/aGraded would diverge after RESET_FAILED_RESOURCES (failed→skipped
+  // drops aGraded), making the banner show 100% while the gate stays blocked.
+  const passRate = aTier.length > 0 ? aPassed / aTier.length : null
   const aTotalMin = aTier.reduce((s, r) => s + r.estimated_minutes, 0)
   const hasAFailed = aTier.some(r => completions.get(r.id)?.status === 'failed')
 
@@ -241,7 +268,13 @@ export function DayListView({ week, day }: { week: number; day: number }) {
         <NeedsRetryBanner
           passRate={passRate}
           retryCount={retryCount}
+          weakConceptNames={
+            [...weakConceptIds]
+              .map(id => kpMap.get(id)?.name_zh)
+              .filter((n): n is string => Boolean(n))
+          }
           onForceAdvance={() => dispatch({ type: 'FORCE_ADVANCE' })}
+          onResetFailed={() => dispatch({ type: 'RESET_FAILED_RESOURCES' })}
         />
       )}
 
@@ -258,6 +291,7 @@ export function DayListView({ week, day }: { week: number; day: number }) {
 
       {flowState.phase === 'COMPLETE' && challengeStatus === 'active' && (
         <QuizPanel
+          userId={userId}
           week={week}
           day={day}
           conceptIds={aConceptIds}
@@ -288,7 +322,7 @@ export function DayListView({ week, day }: { week: number; day: number }) {
           accentCls="text-blue-700"
           headerBg="bg-blue-50"
           borderCls="border-blue-100"
-          description={`约 ${aTotalMin} 分钟`}
+          description={`约 ${aTotalMin} 分钟 · 完成后＋约 ${QUIZ_ESTIMATED_MINUTES} 分钟挑战`}
           statusText={`${aPassed}/${aTier.length} 完成${passRate !== null ? `  ·  ${Math.round(passRate * 100)}%` : ''}`}
           resources={aTier}
           defaultOpen
@@ -316,7 +350,7 @@ export function DayListView({ week, day }: { week: number; day: number }) {
           accentCls="text-amber-700"
           headerBg="bg-amber-50"
           borderCls="border-amber-100"
-          description="A 层 < 75% 或概念卡点时使用"
+          description={hasAFailed ? '有题目未通过，已自动展开——针对卡点补充练习' : 'A 层 < 75% 或概念卡点时使用'}
           statusText=""
           resources={bTier}
           defaultOpen={false}
@@ -343,7 +377,7 @@ export function DayListView({ week, day }: { week: number; day: number }) {
 
       {/* 相关 FRQ 真题 */}
       {aConcepts.length > 0 && (
-        <RelatedFRQCard conceptIds={aConcepts.map(k => k.id)} />
+        <RelatedFRQCard userId={userId} conceptIds={aConcepts.map(k => k.id)} week={week} day={day} />
       )}
     </div>
   )

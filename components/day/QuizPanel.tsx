@@ -5,7 +5,6 @@ import { selectDailyQuestions } from '@/lib/app/quiz'
 import { DAILY_CHALLENGE_QUESTION_COUNT } from '@/lib/constants'
 import { AIService } from '@/lib/infra/ai'
 import { repo } from '@/lib/repository'
-import { StorageService } from '@/lib/infra/storage'
 import type { QuizQuestion, QuizResult, QuizGrade, ChatMessage } from '@/lib/types'
 
 // ── Types ─────────────────────────────────────────────────────────────────────
@@ -13,11 +12,29 @@ import type { QuizQuestion, QuizResult, QuizGrade, ChatMessage } from '@/lib/typ
 type QuizPhase = 'loading' | 'question' | 'grading' | 'result' | 'chat' | 'summary'
 
 interface QuizPanelProps {
+  userId: string
   week: number
   day: number
   conceptIds: string[]
   onComplete: (results: QuizResult[]) => void
   onExit: () => void
+}
+
+// ── Local grading for objective question types ────────────────────────────────
+
+function gradeLocal(q: QuizQuestion, answer: string): QuizGrade {
+  if (q.type === 'mcq') {
+    return {
+      correct: answer.trim().toLowerCase() === q.answer.trim().toLowerCase(),
+      feedback: q.explanation,
+    }
+  }
+  // fill: normalize whitespace and common CJK punctuation
+  const normalize = (s: string) => s.trim().toLowerCase().replace(/[，,；;\s]+/g, '|')
+  return {
+    correct: normalize(answer) === normalize(q.answer),
+    feedback: q.explanation,
+  }
 }
 
 // ── Spinner ───────────────────────────────────────────────────────────────────
@@ -32,7 +49,7 @@ function Spinner() {
 
 // ── QuizPanel ─────────────────────────────────────────────────────────────────
 
-export function QuizPanel({ week, day, conceptIds, onComplete, onExit }: QuizPanelProps) {
+export function QuizPanel({ userId, week, day, conceptIds, onComplete, onExit }: QuizPanelProps) {
   const [phase, setPhase] = useState<QuizPhase>('loading')
   const [questions, setQuestions] = useState<QuizQuestion[]>([])
   const [currentIdx, setCurrentIdx] = useState(0)
@@ -46,19 +63,37 @@ export function QuizPanel({ week, day, conceptIds, onComplete, onExit }: QuizPan
 
   const mountedRef = useRef(true)
   const submittingRef = useRef(false)
+  // Holds the AbortController for an in-flight AI grading call so that it can be
+  // cancelled on unmount. Without this, the fetch would continue running in the
+  // background after the component unmounts, consuming an API credit on every
+  // unmount-during-grading event (e.g. navigating away while AI is thinking).
+  const gradingACRef = useRef<AbortController | null>(null)
 
-  // Load questions on mount
+  // Load questions — cancelled flag prevents stale setState after fast
+  // prop changes or React StrictMode double-invoke.
   useEffect(() => {
-    const userId = StorageService.userId.get()
+    let cancelled = false
     if (!userId) { onExit(); return }
-    selectDailyQuestions(userId, week, day, conceptIds, DAILY_CHALLENGE_QUESTION_COUNT).then(qs => {
-      if (qs.length === 0) { onExit(); return }
-      setQuestions(qs)
-      setPhase('question')
-    }).catch(err => { console.error(err); onExit() })
-  }, [week, day, conceptIds, onExit])
+    selectDailyQuestions(userId, week, day, conceptIds, DAILY_CHALLENGE_QUESTION_COUNT)
+      .then(qs => {
+        if (cancelled) return
+        if (qs.length === 0) { onExit(); return }
+        setQuestions(qs)
+        setPhase('question')
+      })
+      .catch(err => { if (!cancelled) { console.error(err); onExit() } })
+    return () => { cancelled = true }
+  }, [week, day, conceptIds, onExit, userId])
 
-  useEffect(() => () => { mountedRef.current = false }, [])
+  useEffect(() => {
+    mountedRef.current = true
+    return () => {
+      mountedRef.current = false
+      // Cancel any in-flight AI grading call to prevent ghost fetches after unmount.
+      gradingACRef.current?.abort()
+      gradingACRef.current = null
+    }
+  }, [])
 
   async function handleSubmit() {
     if (submittingRef.current) return
@@ -67,28 +102,22 @@ export function QuizPanel({ week, day, conceptIds, onComplete, onExit }: QuizPan
       const q = questions[currentIdx]
       const userAnswer = q.type === 'mcq' ? (selectedOption ?? '') : answer.trim()
       if (!userAnswer) return
-      setPhase('grading')
-      let gradingSucceeded = true
-      const g = await Promise.race([
-        AIService.gradeAnswer(q, userAnswer),
-        new Promise<never>((_, reject) =>
-          setTimeout(() => reject(new Error('grading timeout')), 15_000)
-        ),
-      ]).catch(() => {
-        gradingSucceeded = false
-        return {
-          correct: false,
-          feedback: q.explanation || '批改超时，请参考题目说明。',
-        }
-      })
-      if (!mountedRef.current) return
-      setGrade(g)
-      // Don't persist a timeout/error result — it would incorrectly mark the student wrong
-      if (gradingSucceeded) {
-        const userId = StorageService.userId.get()
+
+      let g: QuizGrade
+
+      if (q.type === 'mcq' || q.type === 'fill') {
+        // Objective: grade instantly, show result immediately, save in background
+        g = gradeLocal(q, userAnswer)
+        if (!mountedRef.current) return
+        setGrade(g)
+        setPhase('result')
         if (userId) {
+          // Capture a single timestamp so `id` and `answered_at` are always
+          // consistent — two separate `new Date()` calls can diverge if a
+          // microtask runs between them.
+          const answeredAt = new Date().toISOString()
           const result: QuizResult = {
-            id: `${userId}-${q.id}-${Date.now()}`,
+            id: `${userId}-${q.id}-${answeredAt}`,
             user_id: userId,
             question_id: q.id,
             concept_ids: q.concept_ids,
@@ -96,8 +125,59 @@ export function QuizPanel({ week, day, conceptIds, onComplete, onExit }: QuizPan
             day,
             correct: g.correct,
             student_answer: userAnswer,
-            answered_at: new Date().toISOString(),
+            answered_at: answeredAt,
             question_type: q.type,
+            difficulty: q.difficulty,
+          }
+          repo.saveQuizResult(result).catch(console.error)
+          setSessionResults(prev => [...prev, result])
+        }
+        return
+      }
+
+      // Subjective (short / feynman): show spinner and call AI.
+      // Use an AbortController so the in-flight fetch is cancelled when the
+      // 15 s timeout fires or the component unmounts — without this the ghost
+      // fetch would continue in the background and consume a full API credit.
+      let gradingSucceeded = true
+      setPhase('grading')
+      const gradingAC = new AbortController()
+      gradingACRef.current = gradingAC
+      g = await Promise.race([
+        AIService.gradeAnswer(q, userAnswer, gradingAC.signal),
+        new Promise<never>((_, reject) =>
+          setTimeout(() => { gradingAC.abort(); reject(new Error('grading timeout')) }, 15_000)
+        ),
+      ]).catch((err: unknown) => {
+        gradingSucceeded = false
+        const noApiKey = err instanceof Error && err.message === 'no-api-key'
+        return {
+          correct: false,
+          feedback: noApiKey
+            ? '此题需要 AI 批改。请前往「设置」页配置 Claude API Key 后重试。'
+            : q.explanation || '批改超时，请参考题目说明。',
+        }
+      })
+
+      gradingACRef.current = null
+      if (!mountedRef.current) return
+      setGrade(g)
+      // Don't persist a timeout/error result — it would incorrectly mark the student wrong
+      if (gradingSucceeded) {
+        if (userId) {
+          const answeredAt = new Date().toISOString()
+          const result: QuizResult = {
+            id: `${userId}-${q.id}-${answeredAt}`,
+            user_id: userId,
+            question_id: q.id,
+            concept_ids: q.concept_ids,
+            week,
+            day,
+            correct: g.correct,
+            student_answer: userAnswer,
+            answered_at: answeredAt,
+            question_type: q.type,
+            difficulty: q.difficulty,
           }
           await repo.saveQuizResult(result).catch(console.error)
           setSessionResults(prev => [...prev, result])

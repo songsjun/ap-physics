@@ -12,6 +12,7 @@ const {
   mockDbCompletions,
   mockTransact,
   mockGetCompletionsByResourceIds,
+  mockIsDayUnlocked,
 } = vi.hoisted(() => {
   const mockDbCompletions: Completion[] = []
   const mockGetCompletionsByResourceIds = vi.fn(
@@ -28,6 +29,7 @@ const {
     mockDbCompletions,
     mockTransact,
     mockGetCompletionsByResourceIds,
+    mockIsDayUnlocked: vi.fn(),
   }
 })
 
@@ -54,6 +56,7 @@ vi.mock('@/lib/repository', () => ({
   repo: {
     transact: mockTransact,
     getCompletionsByResourceIds: mockGetCompletionsByResourceIds,
+    isDayUnlocked: mockIsDayUnlocked,
   },
 }))
 
@@ -122,6 +125,8 @@ describe('DaySessionManager', () => {
       mockDbCompletions.push(makeCompletion(resourceId, result.status as 'passed' | 'failed' | 'skipped'))
     })
     mockTrackerUnlockDay.mockResolvedValue(undefined)
+    // Default: next day not yet unlocked — allows unlock path to proceed
+    mockIsDayUnlocked.mockResolvedValue(false)
   })
 
   // ── Test 1 ────────────────────────────────────────────────────────────────
@@ -537,7 +542,66 @@ describe('DaySessionManager', () => {
     const feedback = await manager.requestFeedback()
 
     expect(mockTrackerGetDayStats).toHaveBeenCalledWith('user1', 1, 1, [r1])
-    expect(mockAIGetDailyFeedback).toHaveBeenCalledWith(fakeStats, { week: 1, day: 1 })
+    expect(mockAIGetDailyFeedback).toHaveBeenCalledWith(fakeStats, { week: 1, day: 1 }, undefined)
     expect(feedback).toEqual(fakeFeedback)
+  })
+
+  // ── Test 13 ───────────────────────────────────────────────────────────────
+  it('execute(RESET_FAILED_RESOURCES) re-records failed A resources as skipped and returns PRESENTING', async () => {
+    const r1 = makeResource('r1')
+    const r2 = makeResource('r2')
+    const r3 = makeResource('r3')
+
+    // Load snapshot: r1+r2 passed, r3 failed → NEEDS_RETRY (passRate=2/3 < 0.75, no B candidates)
+    const loadSnapshot = makeSnapshot({
+      isUnlocked: true,
+      aResources: [r1, r2, r3],
+      completions: new Map([
+        ['r1', makeCompletion('r1', 'passed')],
+        ['r2', makeCompletion('r2', 'passed')],
+        ['r3', makeCompletion('r3', 'failed')],
+      ]),
+      bCandidates: [],
+    })
+    // Post-reset snapshot: r3 is now skipped → incomplete → PRESENTING
+    const postResetSnapshot = makeSnapshot({
+      isUnlocked: true,
+      aResources: [r1, r2, r3],
+      completions: new Map([
+        ['r1', makeCompletion('r1', 'passed')],
+        ['r2', makeCompletion('r2', 'passed')],
+        ['r3', makeCompletion('r3', 'skipped')],
+      ]),
+      bCandidates: [],
+    })
+    mockAssembleDaySnapshot
+      .mockResolvedValueOnce(loadSnapshot)   // load()
+      .mockResolvedValueOnce(postResetSnapshot)  // execute() re-assembly
+
+    const manager = new DaySessionManager()
+    await manager.load('user1', 1, 1)
+
+    // Verify pre-condition: day is in NEEDS_RETRY
+    // (loadSnapshot has all A done, passRate < threshold, no B candidates)
+
+    const nextState = await manager.execute({ type: 'RESET_FAILED_RESOURCES' })
+
+    // Failed resource r3 should be re-recorded as skipped
+    expect(mockTrackerRecord).toHaveBeenCalledWith('user1', 'r3', { status: 'skipped' })
+    // r1 and r2 (passed) must NOT be touched
+    expect(mockTrackerRecord).not.toHaveBeenCalledWith('user1', 'r1', expect.anything())
+    expect(mockTrackerRecord).not.toHaveBeenCalledWith('user1', 'r2', expect.anything())
+    // Flow should return to PRESENTING with r3 as the incomplete resource
+    expect(nextState.phase).toBe('PRESENTING')
+  })
+
+  // ── Test 14 ───────────────────────────────────────────────────────────────
+  it('BADGE_AMBER: gate-pass score of 49 must be ≥ BADGE_AMBER to avoid red badge', async () => {
+    // A student who completes all 4 A resources and passes exactly 3/4 (75%) earns:
+    // aScore = 30*(4/4) + 25*(3/4) = 30 + 18.75 = 48.75 → rounded to 49.
+    // This must be ≥ BADGE_AMBER so the dashboard badge shows amber, not red.
+    const { BADGE_AMBER } = await import('@/lib/constants')
+    const gatePassScore = 49
+    expect(gatePassScore).toBeGreaterThanOrEqual(BADGE_AMBER)
   })
 })

@@ -1,4 +1,5 @@
 import { repo } from '@/lib/repository'
+import { calcAttemptedPassRate } from '@/lib/domain/scoring'
 import type { Completion, CompletionResult, DayStats, Resource } from '@/lib/types'
 
 export const tracker = {
@@ -43,7 +44,9 @@ export const tracker = {
     }
 
     const gradedCount = passedCount + failedCount
-    const passRate = gradedCount === 0 ? 0 : passedCount / gradedCount
+    // Use aTotal denominator (consistent with computeDayScore): untouched
+    // resources count against quality, and AI feedback reflects the same metric.
+    const passRate = calcAttemptedPassRate(passedCount, aResources.length)
 
     return {
       passRate,

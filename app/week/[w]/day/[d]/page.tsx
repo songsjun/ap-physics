@@ -1,5 +1,6 @@
 import { DayPageClient } from './DayPageClient'
 import { DayHeader } from '@/components/day/DayHeader'
+import { WEEKS, DAYS_PER_WEEK } from '@/lib/constants'
 
 interface Props {
   params: Promise<{ w: string; d: string }>
@@ -20,8 +21,8 @@ export default async function DayPage({ params }: Props) {
 
 export function generateStaticParams() {
   const params = []
-  for (let w = 1; w <= 8; w++) {
-    for (let d = 1; d <= 7; d++) {
+  for (let w = 1; w <= WEEKS; w++) {
+    for (let d = 1; d <= DAYS_PER_WEEK; d++) {
       params.push({ w: String(w), d: String(d) })
     }
   }

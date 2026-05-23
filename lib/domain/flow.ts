@@ -1,4 +1,5 @@
 import { PASS_THRESHOLD } from '@/lib/constants'
+import { calcAttemptedPassRate } from '@/lib/domain/scoring'
 import type { DaySnapshot, FlowState, DayStats, DayMode } from '@/lib/types'
 
 export function computeFlowState(snapshot: DaySnapshot): FlowState {
@@ -58,14 +59,12 @@ export function computeFlowState(snapshot: DaySnapshot): FlowState {
 }
 
 function calcPassRate(snapshot: DaySnapshot): number {
-  let passed = 0, failed = 0
+  let passed = 0
   for (const r of snapshot.aResources) {
-    const c = snapshot.completions.get(r.id)
-    if (c?.status === 'passed') passed++
-    else if (c?.status === 'failed') failed++
+    if (snapshot.completions.get(r.id)?.status === 'passed') passed++
   }
-  const graded = passed + failed
-  return graded === 0 ? 0 : passed / graded
+  // Use aTotal (not graded) — consistent with computeDayScore anti-gaming fix.
+  return calcAttemptedPassRate(passed, snapshot.aResources.length)
 }
 
 export function shouldUnlock(stats: DayStats, mode: DayMode): boolean {

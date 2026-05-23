@@ -42,7 +42,8 @@
       "concepts": [
         "kinematics-vectors-2d-motion",
         "dynamics-spring-forces",
-        "energy-conservation"
+        "energy-conservation",
+        "energy-translational-kinetic"
       ],
       "text_preview": "2019 3. (12 points, suggested time 25 minutes) A projectile launcher consists of a spring with an attached plate, as shown in Figure 1. When the spring is compressed, the plate can be held in place by",
       "sg_pdf": "/frq/ap19-sg-physics-1.pdf",
@@ -89,7 +90,8 @@
       "concepts": [
         "dynamics-spring-forces",
         "energy-conservation",
-        "dynamics-systems-connected"
+        "dynamics-systems-connected",
+        "energy-translational-kinetic"
       ],
       "text_preview": "AP® Physics 1 2022 Free-Response Questions   PHYSICS 1 SECTION II Time—1 hour and 30 minutes 5 Questions  Directions: Questions 1, 4, and 5 are short free-response questions that require about 13 minu",
       "sg_pdf": "/frq/ap22-sg-physics-1.pdf",
@@ -138,7 +140,9 @@
       "concepts": [
         "momentum-conservation",
         "momentum-collisions",
-        "kinematics-vectors-2d-motion"
+        "kinematics-vectors-2d-motion",
+        "momentum-impulse",
+        "momentum-linear"
       ],
       "text_preview": "AP® Physics 1 2022 Free-Response Questions  4. (7 points, suggested time 13 minutes) A student has a piece of clay and a rubber sphere, both of the same mass. Both objects are thrown horizontally at t",
       "sg_pdf": "/frq/ap22-sg-physics-1.pdf",
@@ -170,7 +174,9 @@
       "concepts": [
         "momentum-conservation",
         "momentum-collisions",
-        "energy-conservation"
+        "energy-conservation",
+        "momentum-linear",
+        "energy-translational-kinetic"
       ],
       "text_preview": "AP® Physics 1 2023 Free-Response Questions   PHYSICS 1 SECTION II Time—1 hour and 30 minutes 5 Questions  Directions: Questions 1, 4, and 5 are short free-response questions that require about 13 minu",
       "sg_pdf": "/frq/ap23-sg-physics-1.pdf",
@@ -186,7 +192,8 @@
       "concepts": [
         "dynamics-fbd-forces",
         "dynamics-newtons-second-law",
-        "dynamics-friction"
+        "dynamics-friction",
+        "dynamics-force-concept"
       ],
       "text_preview": "AP® Physics 1 2023 Free-Response Questions   2. (12 points, suggested time 25 minutes) (a) Students conduct an experiment to determine the acceleration a of a cart. The cart is released from rest at t",
       "sg_pdf": "/frq/ap23-sg-physics-1.pdf",
@@ -218,7 +225,8 @@
       "concepts": [
         "energy-conservation",
         "energy-potential-energy",
-        "dynamics-spring-forces"
+        "dynamics-spring-forces",
+        "energy-translational-kinetic"
       ],
       "text_preview": "AP® Physics 1 2023 Free-Response Questions   4. (7 points, suggested time 13 minutes) A block of unknown mass is attached to a long, lightweight string that is wrapped several turns around a pulley mo",
       "sg_pdf": "/frq/ap23-sg-physics-1.pdf",
@@ -265,7 +273,9 @@
       "concepts": [
         "dynamics-spring-forces",
         "energy-conservation",
-        "energy-bar-charts"
+        "energy-bar-charts",
+        "oscillation-shm-energy",
+        "energy-translational-kinetic"
       ],
       "text_preview": "AP® Physics 1 2024 Free-Response Questions   2. (12 points, suggested time 25 minutes) A student hangs a spring of unknown spring constant k vertically by attaching one end to a stand, as shown in Fig",
       "sg_pdf": "/frq/ap24-sg-physics-1.pdf",
@@ -313,7 +323,9 @@
       "concepts": [
         "momentum-conservation",
         "momentum-collisions",
-        "energy-conservation"
+        "energy-conservation",
+        "momentum-linear",
+        "energy-translational-kinetic"
       ],
       "text_preview": "AP® Physics 1 2024 Free-Response Questions   5. (7 points, suggested time 13 minutes) At time t = 0, Block A slides along a horizontal surface toward Block B, which is initially at rest, as shown in F",
       "sg_pdf": "/frq/ap24-sg-physics-1.pdf",
@@ -329,7 +341,8 @@
       "concepts": [
         "momentum-conservation",
         "momentum-collisions",
-        "kinematics-representing-motion"
+        "kinematics-representing-motion",
+        "momentum-linear"
       ],
       "text_preview": "Question 1: Version J  1  1. A student has a cart of mass mc and a block of mass 5 mc , as shown in Figure 1. •  At time t = 0 , the cart is moving to the right across a horizontal surface with consta",
       "sg_pdf": "/frq/ap25-sg-physics-1.pdf",
@@ -346,7 +359,8 @@
         "energy-conservation",
         "energy-bar-charts",
         "dynamics-spring-forces",
-        "dynamics-inclined-planes"
+        "dynamics-inclined-planes",
+        "energy-translational-kinetic"
       ],
       "text_preview": "Question 2: Version J 2. A block of mass M is released from rest at position x = 0 near the top of a ramp. The ramp makes an angle of i with the horizontal. The block slides down the ramp with negligi",
       "sg_pdf": "/frq/ap25-sg-physics-1.pdf",
@@ -394,7 +408,9 @@
       "concepts": [
         "kinematics-vectors-2d-motion",
         "momentum-conservation",
-        "energy-conservation"
+        "energy-conservation",
+        "energy-translational-kinetic",
+        "momentum-linear"
       ],
       "text_preview": "Question 1: Version J 1. Water exits the nozzle of a fountain at an angle i0 above the horizontal. At time t = 0 , a droplet of water exits the nozzle and follows the path shown in Figure 1. The dropl"
     },
@@ -407,7 +423,8 @@
       "frq_page": 5,
       "concepts": [
         "momentum-conservation",
-        "momentum-collisions"
+        "momentum-collisions",
+        "momentum-linear"
       ],
       "text_preview": "Question 2: Version J 2. Two small disks, R and S, are on a straight, horizontal track. At time t = 0 , Disk R of mass m0 is located at position x = 0 . Disk R is initially moving with speed v0 in the"
     },
@@ -421,7 +438,8 @@
       "concepts": [
         "dynamics-friction",
         "dynamics-inclined-planes",
-        "energy-conservation"
+        "energy-conservation",
+        "energy-translational-kinetic"
       ],
       "text_preview": "Question 3: Version J The following information applies to parts A and B. 3. A group of students are investigating friction using the following procedure. The students release a block of unknown mass"
     },

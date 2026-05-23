@@ -102,30 +102,18 @@ export const AIService = {
     if (question.type === 'fill') {
       const normalize = (s: string) =>
         s.trim().toLowerCase().replace(/[，,；;\s]+/g, '|')
-      if (normalize(studentAnswer) === normalize(question.answer)) {
-        return { correct: true, feedback: question.explanation }
-      }
-      // Exact match failed — try AI to catch mathematically equivalent forms
-      const key = StorageService.apiKey.get()
-      if (!key) return { correct: false, feedback: question.explanation }
-
-      const system = `你是 AP 物理 1 评分助手。判断两个答案是否数学等价（如 3L/4 与 0.75L 等价）。返回纯 JSON：{"correct":true/false,"feedback":"1句反馈"}`
-      const userMsg = `题目：${question.question}\n标准答案：${question.answer}\n学生答案：${studentAnswer}\n是否等价？`
-      try {
-        const raw = await callClaudeWithMessages([{ role: 'user', content: userMsg }], system, 100, signal)
-        const match = raw.match(/\{[\s\S]*\}/)
-        const parsed = JSON.parse(match?.[0] ?? '{}')
-        return { correct: parsed.correct ?? false, feedback: parsed.feedback ?? question.explanation }
-      } catch (err) {
-        if (err instanceof Error && err.name === 'AbortError') throw err
-        return { correct: false, feedback: question.explanation }
+      return {
+        correct: normalize(studentAnswer) === normalize(question.answer),
+        feedback: question.explanation,
       }
     }
 
     // feynman: evaluate quality of student's concept explanation
     if (question.type === 'feynman') {
       const key = StorageService.apiKey.get()
-      if (!key) return { correct: false, feedback: '未配置 API Key，无法评分。请在设置页配置后重试。' }
+      // Throw instead of returning {correct:false} — QuizPanel must not persist a
+      // "wrong" result just because the user hasn't configured an API key yet.
+      if (!key) throw new Error('no-api-key')
 
       const system = `你是 AP 物理 1 学习助手。评估学生用费曼技巧解释物理概念的质量。
 返回纯 JSON：{"correct":true/false,"feedback":"2-3句反馈：肯定理解准确之处，指出可以更清晰或补充的地方"}
@@ -136,20 +124,25 @@ correct=true 表示学生展示了对核心概念的真实理解（不必完美�
 <student_answer>${studentAnswer.slice(0, 2000)}</student_answer>`
       try {
         const raw = await callClaudeWithMessages([{ role: 'user', content: userMsg }], system, 200, signal)
+        // Guard: if the API key was deleted between the !key check and the fetch,
+        // callClaudeWithMessages returns ''. Treat this as no-api-key so QuizPanel
+        // skips persistence instead of silently recording a wrong/correct grade.
+        if (!raw) throw new Error('no-api-key')
         const match = raw.match(/\{[\s\S]*\}/)
         const parsed = JSON.parse(match?.[0] ?? '{}')
         return { correct: parsed.correct ?? true, feedback: parsed.feedback ?? question.explanation }
       } catch (err) {
         if (err instanceof Error && err.name === 'AbortError') throw err
-        return { correct: false, feedback: question.explanation }
+        // Rethrow non-abort errors so QuizPanel's outer .catch() sets
+        // gradingSucceeded=false and skips DB persistence.
+        throw err
       }
     }
 
     // short answer: use AI
     const key = StorageService.apiKey.get()
-    if (!key) {
-      return { correct: false, feedback: '未配置 API Key，无法评分。请在设置页配置后重试。' }
-    }
+    // Same reasoning as feynman: throw so QuizPanel skips DB persistence.
+    if (!key) throw new Error('no-api-key')
 
     const system = `你是 AP 物理 1 评分助手。只评分，不教学。返回纯 JSON，格式：{"correct":true/false,"feedback":"1句反馈"}`
     const userMsg = `题目：${question.question}
@@ -166,6 +159,8 @@ correct=true 表示学生展示了对核心概念的真实理解（不必完美�
         150,
         signal,
       )
+      // Same guard as feynman: empty raw means key disappeared mid-flight.
+      if (!raw) throw new Error('no-api-key')
       const match = raw.match(/\{[\s\S]*\}/)
       const parsed = JSON.parse(match?.[0] ?? '{}')
       return {
@@ -174,8 +169,8 @@ correct=true 表示学生展示了对核心概念的真实理解（不必完美�
       }
     } catch (err) {
       if (err instanceof Error && err.name === 'AbortError') throw err
-      console.error('gradeAnswer error:', err)
-      return { correct: false, feedback: question.explanation }
+      // Rethrow so QuizPanel's outer .catch() handles it as gradingSucceeded=false.
+      throw err
     }
   },
 

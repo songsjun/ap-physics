@@ -5,8 +5,9 @@ import Link from 'next/link'
 import { StorageService } from '@/lib/infra/storage'
 import { ensureAppReady } from '@/lib/app/ready'
 import { repo } from '@/lib/repository'
-import { WEEKS, DAYS_PER_WEEK, PASS_THRESHOLD } from '@/lib/constants'
-import type { QuizResult } from '@/lib/types'
+import { WEEKS, DAYS_PER_WEEK, PASS_THRESHOLD, BADGE_DARK_GREEN, BADGE_LIGHT_GREEN, BADGE_AMBER } from '@/lib/constants'
+import { computeDayScore } from '@/lib/domain/scoring'
+import type { QuizResult, FRQCompletion } from '@/lib/types'
 
 interface DayStatus {
   week: number
@@ -17,6 +18,7 @@ interface DayStatus {
   passRate: number | null
   challengeCorrect: number | null
   challengeTotal: number | null
+  score: number | null
 }
 
 export function DashboardClient() {
@@ -29,11 +31,12 @@ export function DashboardClient() {
       await ensureAppReady()
       const userId = StorageService.userId.init()
 
-      const [allResources, allCompletions, unlockedDays, allQuizResults] = await Promise.all([
+      const [allResources, allCompletions, unlockedDays, allQuizResults, allFRQCompletions] = await Promise.all([
         repo.getAllResources(),
         repo.getAllUserCompletions(userId),
         repo.getUnlockedDays(userId),
         repo.getAllQuizResultsForUser(userId),
+        repo.getAllFRQCompletionsForUser(userId),
       ])
 
       const unlockedSet = new Set(unlockedDays.map(u => `${u.week}-${u.day}`))
@@ -47,46 +50,123 @@ export function DashboardClient() {
         quizByDay.get(key)!.push(r)
       }
 
-      // Pre-index A-tier resources by week-day key for O(1) lookups in the nested loop
-      const aResourcesByDay = new Map<string, typeof allResources>()
-      for (const r of allResources) {
-        if (r.tier !== 'A') continue
-        const key = `${r.week}-${r.day}`
-        const arr = aResourcesByDay.get(key) ?? []
-        arr.push(r)
-        aResourcesByDay.set(key, arr)
+      // Group FRQ completions by week-day
+      const frqByDay = new Map<string, FRQCompletion[]>()
+      for (const f of allFRQCompletions) {
+        const key = `${f.week}-${f.day}`
+        if (!frqByDay.has(key)) frqByDay.set(key, [])
+        frqByDay.get(key)!.push(f)
       }
 
+      // Pre-index resources by tier and week-day key for O(1) lookups
+      const aResourcesByDay = new Map<string, typeof allResources>()
+      const cResourcesByDay = new Map<string, typeof allResources>()
+      // B resources are indexed by concept ID rather than by their assigned week/day.
+      // getBResources() selects B candidates by concept IDs (not by day), so a B
+      // resource seeded to Day 7 can be presented during Day 3 remediation when
+      // the concepts overlap. Keying by assigned day would silently produce
+      // bBonus = 0 for those cross-day B completions.
+      const bResourceByConcept = new Map<string, typeof allResources>()
+      for (const r of allResources) {
+        const key = `${r.week}-${r.day}`
+        if (r.tier === 'A') {
+          const arr = aResourcesByDay.get(key) ?? []; arr.push(r); aResourcesByDay.set(key, arr)
+        } else if (r.tier === 'B') {
+          for (const c of r.concepts) {
+            const arr = bResourceByConcept.get(c) ?? []; arr.push(r); bResourceByConcept.set(c, arr)
+          }
+        } else if (r.tier === 'C') {
+          const arr = cResourcesByDay.get(key) ?? []; arr.push(r); cResourcesByDay.set(key, arr)
+        }
+      }
+
+      // Freeze the reference time once so every day cell uses the same 'now'.
+      // Without this, a tab left open overnight would silently degrade scores via
+      // the recency factor in computeDayScore.
+      const loadedAt = new Date()
       const result: DayStatus[] = []
       for (let w = 1; w <= WEEKS; w++) {
         for (let d = 1; d <= DAYS_PER_WEEK; d++) {
-          const aResources = aResourcesByDay.get(`${w}-${d}`) ?? []
+          const key = `${w}-${d}`
+          const aResources = aResourcesByDay.get(key) ?? []
           const aDone = aResources.filter(r => {
             const c = completionMap.get(r.id)
             return c && c.status !== 'skipped'
           }).length
 
           let passRate: number | null = null
-          if (aDone > 0) {
+          if (aDone > 0 && aResources.length > 0) {
             const passed = aResources.filter(r => completionMap.get(r.id)?.status === 'passed').length
-            const failed = aResources.filter(r => completionMap.get(r.id)?.status === 'failed').length
-            const graded = passed + failed
-            passRate = graded > 0 ? passed / graded : null
+            // Use aTotal denominator — matches calcAttemptedPassRate used everywhere else.
+            // Untouched resources count against quality so the display stays honest.
+            passRate = passed / aResources.length
           }
 
-          const dayQuiz = quizByDay.get(`${w}-${d}`) ?? []
+          const dayQuiz = quizByDay.get(key) ?? []
           const regularQuiz = dayQuiz.filter(r => r.question_type !== 'feynman')
-          const challengeTotal = regularQuiz.length > 0 ? regularQuiz.length : null
-          const challengeCorrect = regularQuiz.length > 0 ? regularQuiz.filter(r => r.correct).length : null
+          // Deduplicate by question_id keeping the latest attempt. An incorrectly-answered
+          // question is re-eligible for selection and produces a second result row when
+          // re-answered — without dedup, challengeTotal is inflated and the badge ratio
+          // (and its amber/green coloring) diverges from the score computed by computeDayScore.
+          const latestByQuestion = new Map<string, typeof regularQuiz[0]>()
+          for (const r of regularQuiz) {
+            const prev = latestByQuestion.get(r.question_id)
+            if (!prev || r.answered_at > prev.answered_at) latestByQuestion.set(r.question_id, r)
+          }
+          const dedupedQuiz = Array.from(latestByQuestion.values())
+          const challengeTotal = dedupedQuiz.length > 0 ? dedupedQuiz.length : null
+          const challengeCorrect = dedupedQuiz.length > 0 ? dedupedQuiz.filter(r => r.correct).length : null
+
+          // Compute day score if there is any activity
+          const dayFRQ = frqByDay.get(key) ?? []
+          // Collect B resources by concept overlap — same logic as getBResources().
+          // B resources are stored with their curriculum-assigned week/day, which may
+          // differ from the remediation session day; using concept overlap ensures
+          // cross-day B completions are credited to the day whose concepts they cover.
+          const dayConceptSet = new Set(aResources.flatMap(r => r.concepts))
+          const bSeenIds = new Set<string>()
+          const bResources: typeof allResources = []
+          for (const conceptId of dayConceptSet) {
+            for (const r of (bResourceByConcept.get(conceptId) ?? [])) {
+              if (!bSeenIds.has(r.id)) { bSeenIds.add(r.id); bResources.push(r) }
+            }
+          }
+          const cResources = cResourcesByDay.get(key) ?? []
+          const bComps = bResources.map(r => completionMap.get(r.id)).filter((c): c is NonNullable<typeof c> => c != null)
+          const cComps = cResources.map(r => completionMap.get(r.id)).filter((c): c is NonNullable<typeof c> => c != null)
+          // cComps must be included: a day with only C-tier activity has aDone=0,
+          // no quiz, no B completion, and no FRQ — omitting cComps silently
+          // discards the C-bonus and leaves score as null in the dashboard.
+          const hasActivity = aDone > 0 || dayQuiz.length > 0 || bComps.length > 0 || cComps.length > 0 || dayFRQ.length > 0
+
+          let score: number | null = null
+          if (hasActivity) {
+            const aCompMap = new Map<string, NonNullable<ReturnType<typeof completionMap.get>>>()
+            for (const r of aResources) {
+              const c = completionMap.get(r.id)
+              if (c) aCompMap.set(r.id, c)
+            }
+            score = computeDayScore({
+              aResources,
+              aCompletions: aCompMap,
+              bCompletions: bComps,
+              cCompletions: cComps,
+              frqCompletions: dayFRQ,
+              quizResults: dayQuiz,
+              bTotalResources: bResources.length,
+              now: loadedAt,
+            }).total
+          }
 
           result.push({
             week: w, day: d,
-            unlocked: unlockedSet.has(`${w}-${d}`),
+            unlocked: unlockedSet.has(key),
             aTotal: aResources.length,
             aDone,
             passRate,
             challengeCorrect,
             challengeTotal,
+            score,
           })
         }
       }
@@ -175,7 +255,14 @@ export function DashboardClient() {
   }
 
   // Summary stats
-  const completedDays = days.filter(d => d.aDone > 0 && d.aDone === d.aTotal && d.aTotal > 0)
+  // A day is "complete" only when the student genuinely passed (passRate ≥ threshold).
+  // Counting failed-but-attempted days (aDone === aTotal but passRate < threshold)
+  // inflates the progress bar and misleads the student about how far they've come.
+  // Free days (aTotal=0) are auto-unlocked on arrival and count as completed.
+  const completedDays = days.filter(d =>
+    (d.aTotal > 0 && d.passRate !== null && d.passRate >= PASS_THRESHOLD) ||
+    (d.aTotal === 0 && d.unlocked)
+  )
   const unlockedDays = days.filter(d => d.unlocked)
   const totalDays = WEEKS * DAYS_PER_WEEK
   const progressPct = Math.round((completedDays.length / totalDays) * 100)
@@ -230,7 +317,10 @@ export function DashboardClient() {
         {Array.from({ length: WEEKS }, (_, wi) => {
           const week = wi + 1
           const weekDays = days.filter(d => d.week === week)
-          const weekDone = weekDays.filter(d => d.aDone === d.aTotal && d.aTotal > 0).length
+          const weekDone = weekDays.filter(d =>
+            (d.aTotal > 0 && d.passRate !== null && d.passRate >= PASS_THRESHOLD) ||
+            (d.aTotal === 0 && d.unlocked)
+          ).length
           const isCurrentWeek = currentDay?.week === week
           const isLockedWeek = weekDays.every(d => !d.unlocked)
 
@@ -293,7 +383,10 @@ export function DashboardClient() {
 }
 
 function DayCell({ status, isCurrent }: { status: DayStatus; isCurrent: boolean }) {
-  const { week, day, unlocked, aTotal, aDone, passRate, challengeCorrect, challengeTotal } = status
+  const { week, day, unlocked, aTotal, aDone, passRate, challengeCorrect, challengeTotal, score } = status
+  // Rest/review days (aTotal === 0) are auto-unlocked on arrival with no resources to complete.
+  // Treat them as "done" so the cell shows a green checkmark instead of the blue "start" icon.
+  const isFreeDay = aTotal === 0 && unlocked
   const isComplete = aTotal > 0 && aDone === aTotal
   const isStarted = aDone > 0 && !isComplete
   const isPassed = isComplete && passRate !== null && passRate >= PASS_THRESHOLD
@@ -312,7 +405,7 @@ function DayCell({ status, isCurrent }: { status: DayStatus; isCurrent: boolean 
         <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
       </svg>
     )
-  } else if (isPassed) {
+  } else if (isPassed || isFreeDay) {
     cellBg = 'bg-emerald-50 hover:bg-emerald-100'
     dayNumCls = 'text-emerald-700'
     indicator = (
@@ -369,10 +462,22 @@ function DayCell({ status, isCurrent }: { status: DayStatus; isCurrent: boolean 
     </span>
   ) : null
 
+  const scoreBadgeCls = score !== null
+    ? score >= BADGE_DARK_GREEN  ? 'bg-emerald-500 text-white'
+    : score >= BADGE_LIGHT_GREEN ? 'bg-emerald-100 text-emerald-700'
+    : score >= BADGE_AMBER       ? 'bg-amber-100 text-amber-700'
+    : 'bg-red-50 text-red-600'
+    : null
+
   const inner = (
-    <div className={`py-3 flex flex-col items-center gap-1.5 ${cellBg} transition-colors ${
+    <div className={`relative py-3 flex flex-col items-center gap-1.5 ${cellBg} transition-colors ${
       isCurrent ? 'ring-1 ring-inset ring-blue-400' : ''
     }`}>
+      {scoreBadgeCls && score !== null && (
+        <div className={`absolute top-0.5 right-0.5 text-[8px] font-bold leading-tight px-1 py-0.5 rounded ${scoreBadgeCls}`}>
+          {score}
+        </div>
+      )}
       <span className={`text-[11px] font-semibold ${dayNumCls}`}>D{day}</span>
       <div className="flex items-center justify-center h-4">{indicator}</div>
       {subText}

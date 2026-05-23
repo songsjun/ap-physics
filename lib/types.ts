@@ -12,6 +12,9 @@ export type Command =
   | { type: 'SKIP_RESOURCE'; resourceId: string }
   | { type: 'REQUEST_FEEDBACK' }
   | { type: 'FORCE_ADVANCE' }
+  /** Reset all failed A resources back to 'skipped' so computeFlowState re-presents
+   *  them in PRESENTING phase, giving the student a genuine retry opportunity. */
+  | { type: 'RESET_FAILED_RESOURCES' }
 
 // ── DayMode: affects LearningFlow decision logic ──
 export type DayMode = 'STANDARD' | 'REVIEW'
@@ -141,6 +144,17 @@ export interface QuizResult {
   student_answer: string
   answered_at: string
   question_type?: QuizQuestion['type']  // undefined for legacy records — treat as non-feynman
+  difficulty?: 1 | 2 | 3               // copied from question; undefined for legacy records
+}
+
+export interface FRQCompletion {
+  user_id: string
+  frq_id: string
+  week: number
+  day: number
+  score: number
+  score_max: number
+  completed_at: string
 }
 
 export interface QuizGrade {
