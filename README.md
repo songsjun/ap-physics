@@ -41,21 +41,22 @@ ap-physics-app/
 │   ├── types.ts / constants.ts     # Foundation 层
 │   ├── infra/                      # db / storage / ai / seed（Infrastructure 层）
 │   ├── repository/                 # IRepository + DexieRepository
-│   ├── domain/                     # LearningFlow / scoring / frq（纯函数）
-│   └── app/                        # Session / useDayResources / quiz（Application 层）
+│   ├── domain/                     # flow / scoring / frq / adaptive（纯函数）
+│   └── app/                        # session / useDayResources / quiz（Application 层）
 │
 ├── data/
-│   ├── content_library.json        # 270 条资源 + 49 个知识点
-│   ├── quiz-bank.json              # 197 道题库（MCQ/fill/short/feynman，difficulty 1–3）
-│   └── frq_map.json                # 28 道历年 FRQ（2019/2022–2026）映射表
+│   ├── content_library.json        # 289 条资源 + 50 个知识点（LIBRARY_VERSION=1.5.2）
+│   └── frq_map.json                # 28 道历年 FRQ（2019/2022–2026）知识点映射
 │
-└── public/frq/                     # AP Physics 1 历年 FRQ PDF（本地）
+└── public/
+    ├── quiz-bank.json              # 261 道题库（MCQ/fill/short/feynman，difficulty 1–3，QUIZ_BANK_VERSION=1.0.2）
+    └── frq/                        # AP Physics 1 历年 FRQ PDF（本地）
 ```
 
 ## 核心功能
 
 - **8 周学习路径**：Week 1–8，顺序解锁，每日 A/B/C 三层任务
-- **自适应补救**：Khan 得分 < 75% 时自动推荐 B 层相关资源
+- **自适应补救**：通过率 < 75% 时自动推荐 B 层相关资源（按薄弱知识点概念重合度排序）
 - **每日挑战题**：3 道客观题 + 1 道费曼反思，AI 评分主观题，AI 追问
 - **每日综合得分**：0–100 分（A层完成+质量 55 分 + B/C/FRQ 加成 15 分 + Quiz 30 分）
 - **历年 FRQ 推荐**：根据当天知识点匹配相关真题，PDF 精准定位到目标页 + 分数回填
@@ -65,14 +66,14 @@ ap-physics-app/
 
 | 层级 | 数量 | 说明 |
 |------|------|------|
-| A 必做 | 100 | Khan / PhET / AP Central / 原生题 |
-| B 建议 | 114 | A 层 < 75% 时自动显示 |
-| C 拓展 | 56 | 手动展开 |
-| Quiz | 197 | MCQ / fill / short / feynman，难度 1–3 |
+| A 必做 | 113 | Khan 94 / PhET 14 / AP Central 2 / OpenStax 3 |
+| B 建议 | 119 | OpenStax 阅读 + Test Prep，通过率 < 75% 自动显示 |
+| C 拓展 | 57 | OpenStax Problems & Exercises，手动展开 |
+| Quiz | 261 | MCQ 160 / fill 47 / short 4 / feynman 50，难度 1–3 |
 | FRQ | 28 | 2019、2022–2026 历年真题 |
 
 ## 数据说明
 
-- 用户进度存 IndexedDB，设备绑定
+- 用户进度存 IndexedDB（Dexie PhysicsLearningDB v4），设备绑定
 - API Key 存 localStorage，不上传任何服务器
-- `LIBRARY_VERSION` / `QUIZ_BANK_VERSION` 变更时自动重新 seed（当前 content `1.4.0`）
+- `LIBRARY_VERSION` / `QUIZ_BANK_VERSION` 变更时客户端自动重新 seed
