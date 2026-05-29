@@ -48,6 +48,21 @@ export function calcAttemptedPassRate(passed: number, aTotal: number): number {
   return aTotal > 0 ? passed / aTotal : 0
 }
 
+/**
+ * Deduplicate quiz results per question_id, keeping the latest attempt.
+ * A question answered incorrectly becomes re-eligible and may produce a
+ * second result row — without this dedup, totals and weighted scores are
+ * inflated. Single source of truth used by scoring and dashboard display.
+ */
+export function latestPerQuestion(results: QuizResult[]): QuizResult[] {
+  const map = new Map<string, QuizResult>()
+  for (const r of results) {
+    const existing = map.get(r.question_id)
+    if (!existing || r.answered_at > existing.answered_at) map.set(r.question_id, r)
+  }
+  return Array.from(map.values())
+}
+
 export function computeDayScore(input: ScoreInput): ScoreBreakdown {
   const now = input.now ?? new Date()
   const { aResources, aCompletions, bCompletions, cCompletions, frqCompletions, quizResults } = input
@@ -85,17 +100,9 @@ export function computeDayScore(input: ScoreInput): ScoreBreakdown {
   const cBonus = 8 * cQuality * cCoverage
 
   // ── Quiz: 0–30 points, squared correct-rate for steep wrong-answer penalty ─
-  // Dedupe per question: take the latest result per question_id
-  const latestByQuestion = new Map<string, QuizResult>()
-  for (const r of quizResults) {
-    const existing = latestByQuestion.get(r.question_id)
-    if (!existing || r.answered_at > existing.answered_at) {
-      latestByQuestion.set(r.question_id, r)
-    }
-  }
   let weightedCorrect = 0
   let weightedTotal = 0
-  for (const r of latestByQuestion.values()) {
+  for (const r of latestPerQuestion(quizResults)) {
     const w = quizWeight(r) * recencyFactor(r.answered_at, now)
     weightedTotal += w
     if (r.correct) weightedCorrect += w

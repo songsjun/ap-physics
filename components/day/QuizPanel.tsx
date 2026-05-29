@@ -233,14 +233,8 @@ export function QuizPanel({ userId, week, day, conceptIds, onComplete, onExit }:
 
   // ── Render: summary ──────────────────────────────────────────────────────────
   if (phase === 'summary') {
-    const regularResults = sessionResults.filter(r => {
-      const q = questions.find(q => q.id === r.question_id)
-      return q?.type !== 'feynman'
-    })
-    const feynmanResult = sessionResults.find(r => {
-      const q = questions.find(q => q.id === r.question_id)
-      return q?.type === 'feynman'
-    })
+    const regularResults = sessionResults.filter(r => r.question_type !== 'feynman')
+    const feynmanResult = sessionResults.find(r => r.question_type === 'feynman')
     const correct = regularResults.filter(r => r.correct).length
     const total = regularResults.length
     return (

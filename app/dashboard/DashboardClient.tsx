@@ -6,7 +6,7 @@ import { StorageService } from '@/lib/infra/storage'
 import { ensureAppReady } from '@/lib/app/ready'
 import { repo } from '@/lib/repository'
 import { WEEKS, DAYS_PER_WEEK, PASS_THRESHOLD, BADGE_DARK_GREEN, BADGE_LIGHT_GREEN, BADGE_AMBER } from '@/lib/constants'
-import { computeDayScore } from '@/lib/domain/scoring'
+import { computeDayScore, latestPerQuestion } from '@/lib/domain/scoring'
 import type { QuizResult, FRQCompletion } from '@/lib/types'
 
 interface DayStatus {
@@ -104,16 +104,7 @@ export function DashboardClient() {
 
           const dayQuiz = quizByDay.get(key) ?? []
           const regularQuiz = dayQuiz.filter(r => r.question_type !== 'feynman')
-          // Deduplicate by question_id keeping the latest attempt. An incorrectly-answered
-          // question is re-eligible for selection and produces a second result row when
-          // re-answered — without dedup, challengeTotal is inflated and the badge ratio
-          // (and its amber/green coloring) diverges from the score computed by computeDayScore.
-          const latestByQuestion = new Map<string, typeof regularQuiz[0]>()
-          for (const r of regularQuiz) {
-            const prev = latestByQuestion.get(r.question_id)
-            if (!prev || r.answered_at > prev.answered_at) latestByQuestion.set(r.question_id, r)
-          }
-          const dedupedQuiz = Array.from(latestByQuestion.values())
+          const dedupedQuiz = latestPerQuestion(regularQuiz)
           const challengeTotal = dedupedQuiz.length > 0 ? dedupedQuiz.length : null
           const challengeCorrect = dedupedQuiz.length > 0 ? dedupedQuiz.filter(r => r.correct).length : null
 

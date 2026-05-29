@@ -1,9 +1,14 @@
 // @vitest-environment node
+import { readFileSync } from 'fs'
+import { join } from 'path'
 import { describe, it, expect } from 'vitest'
-import d3Mcqs from '@/data/d3_mcqs.json'
 import type { QuizQuestion } from '@/lib/types'
 
-const questions = d3Mcqs as QuizQuestion[]
+// Test the deployed quiz bank (public/quiz-bank.json) — the file actually loaded
+// at runtime — not the generation-pipeline source files in data/ or scripts/.
+const questions = JSON.parse(
+  readFileSync(join(__dirname, '../../public/quiz-bank.json'), 'utf8')
+) as QuizQuestion[]
 
 // Phrases that introduce distractor analysis — the letter(s) immediately following
 // indicate the WRONG options. If the correct answer letter appears here, it's a bug.
@@ -42,7 +47,6 @@ describe('quiz bank — structural integrity', () => {
 
   it('all question ids are unique', () => {
     const ids = questions.map(q => q.id)
-    const unique = new Set(ids)
     const duplicates = ids.filter((id, idx) => ids.indexOf(id) !== idx)
     expect(duplicates, `Duplicate IDs: ${duplicates.join(', ')}`).toHaveLength(0)
   })
@@ -93,7 +97,6 @@ describe('quiz bank — semantic integrity (answer vs explanation)', () => {
   it('MCQ answer is one of the option labels (A/B/C/D)', () => {
     for (const q of questions) {
       if (q.type !== 'mcq' || !q.options) continue
-      // answer should be a single letter A-D or start with that letter
       const answerLetter = q.answer.trim().charAt(0).toUpperCase()
       const validLetters = q.options.map(opt => opt.trim().charAt(0).toUpperCase())
       expect(
@@ -119,12 +122,10 @@ describe('quiz bank — semantic integrity (answer vs explanation)', () => {
   })
 
   it('every MCQ explanation mentions the correct answer as correct (contains answer letter + "正确")', () => {
-    // Soft check — warn but don't fail if a question doesn't follow this convention
     const missing: string[] = []
     for (const q of questions) {
       if (q.type !== 'mcq') continue
       const correctLetter = q.answer.trim().charAt(0).toUpperCase()
-      // Look for patterns like "A正确" or "选A" or "正确答案是A"
       const confirmsCorrect =
         q.explanation.includes(`${correctLetter}正确`) ||
         q.explanation.includes(`选${correctLetter}`) ||
@@ -134,10 +135,9 @@ describe('quiz bank — semantic integrity (answer vs explanation)', () => {
         missing.push(`${q.id} (answer=${correctLetter})`)
       }
     }
-    // This is a warning-level check; log but don't hard fail
+    // Warning-level check — conventions vary, surfaces gaps without hard failing.
     if (missing.length > 0) {
       console.warn(`[quiz-content] ${missing.length} questions don't explicitly confirm the correct answer in explanation:\n  ${missing.join('\n  ')}`)
     }
-    // No hard assertion — conventions vary; this just surfaces gaps
   })
 })

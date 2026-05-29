@@ -5,7 +5,7 @@ export const DAYS_PER_WEEK = 7
 export const DAILY_CHALLENGE_QUESTION_COUNT = 4
 /** Estimated minutes for the daily challenge quiz (4 questions × ~4 min each). */
 export const QUIZ_ESTIMATED_MINUTES = 15
-export const QUIZ_BANK_VERSION = '1.0.1'
+export const QUIZ_BANK_VERSION = '1.0.2'
 
 // Dashboard day-cell badge score thresholds (calibrated against the new scoring system).
 // With aTotal-denominator and x^1.5 quiz curve:
