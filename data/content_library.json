@@ -3509,6 +3509,38 @@
       "answer_url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/chapter-6"
     },
     {
+      "id": "flipping-rotational-kinematics-intro",
+      "title": "Introduction to Rotational Kinematics",
+      "url": "https://www.flippingphysics.com/rotational-kinematics.html",
+      "description": "Angular displacement, angular velocity, and angular acceleration — the rotational analogues of linear kinematic variables, with worked examples.",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "A",
+      "estimated_minutes": 10,
+      "concepts": [
+        "torque-rotational-kinematics",
+        "torque-linear-rotational-connection"
+      ],
+      "week": 6,
+      "day": 2
+    },
+    {
+      "id": "flipping-linear-rotational-connection",
+      "title": "Relating Linear and Rotational Variables",
+      "url": "https://www.flippingphysics.com/angular-kinematics.html",
+      "description": "Connecting tangential and angular quantities: v = ωr, a_t = αr — the bridge between linear kinematics and rotational kinematics.",
+      "type": "video",
+      "platform": "flipping",
+      "tier": "A",
+      "estimated_minutes": 10,
+      "concepts": [
+        "torque-linear-rotational-connection",
+        "torque-rotational-kinematics"
+      ],
+      "week": 6,
+      "day": 2
+    },
+    {
       "id": "openstax-ch9-equilibrium-reading-b",
       "title": "OpenStax 9.2 Second Condition for Equilibrium - Reading",
       "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/9-2-the-second-condition-for-equilibrium",
@@ -4739,6 +4771,21 @@
       ]
     },
     {
+      "id": "openstax-ch7-fx-graph-reading-b",
+      "title": "OpenStax 7.1 Work: The Scientific Definition",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/7-1-work-the-scientific-definition",
+      "description": "Work as W = Fd cosθ; work as the area under an F-x curve; sign conventions for positive and negative work.",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 15,
+      "concepts": [
+        "energy-fx-graph"
+      ],
+      "week": 4,
+      "day": 3
+    },
+    {
       "id": "khan-potential-energy-video",
       "title": "Potential energy",
       "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:work-energy-and-power/xf557a762645cccc5:potential-energy/v/potential_energy",
@@ -4810,6 +4857,21 @@
       ]
     },
     {
+      "id": "openstax-ch8-ft-graph-reading-b",
+      "title": "OpenStax 8.2 Impulse",
+      "url": "https://openstax.org/books/college-physics-ap-courses-2e/pages/8-2-impulse",
+      "description": "Impulse J = FΔt; impulse as the area under an F-t curve; impulse-momentum theorem J = Δp.",
+      "type": "reading",
+      "platform": "openstax",
+      "tier": "B",
+      "estimated_minutes": 15,
+      "concepts": [
+        "momentum-ft-graph"
+      ],
+      "week": 5,
+      "day": 3
+    },
+    {
       "id": "khan-conservation-linear-momentum-video",
       "title": "Conservation of linear momentum",
       "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:linear-momentum/xf557a762645cccc5:untitled-303/v/conservation-of-linear-momentum",
@@ -4869,6 +4931,21 @@
       "description": "1. 力矩大小：固定力 10N，作用点从 0.5m 移至 2m，观察角加速度随 r 增大而增大\n2. 力的方向：垂直杆时力矩最大，平行杆时力矩为零，验证 τ = rF sinθ\n3. 转动惯量：切换质量集中在轴处和质量在端部的棒，同力矩下后者角加速度更小\n4. 净力矩为零：两端施力使合力矩为零，确认角加速度 = 0"
     },
     {
+      "id": "khan-rotational-inertia-exercise",
+      "title": "Rotational inertia exercise",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:torque-and-rotational-dynamics/xf557a762645cccc5:rotational-inertia/e/rotational-inertia-ap1",
+      "description": "Calculate moment of inertia for point masses and simple rigid bodies; apply rotational inertia to predict angular acceleration.",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 15,
+      "concepts": [
+        "torque-rotational-inertia"
+      ],
+      "week": 6,
+      "day": 4
+    },
+    {
       "id": "khan-rotational-kinetic-energy-video",
       "title": "Rotational kinetic energy",
       "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:energy-and-momentum-of-rotating-systems/xf557a762645cccc5:rotational-kinetic-energy/v/rotational-kinetic-energy-of-rigid-systems",
@@ -4883,6 +4960,21 @@
         "rotation-rotational-kinetic-energy",
         "rotation-torque-work"
       ]
+    },
+    {
+      "id": "khan-torque-work-exercise",
+      "title": "Rotational work and energy exercise",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:energy-and-momentum-of-rotating-systems/xf557a762645cccc5:rotational-work/e/rotational-work-ap1",
+      "description": "Apply W = τΔθ to calculate work done by a torque; use the rotational work-energy theorem to find changes in rotational kinetic energy.",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 15,
+      "concepts": [
+        "rotation-torque-work"
+      ],
+      "week": 6,
+      "day": 5
     },
     {
       "id": "khan-angular-momentum-rigid-systems",
@@ -5044,7 +5136,16 @@
       "estimated_minutes": 60,
       "week": 8,
       "day": 5,
-      "concepts": []
+      "concepts": [
+        "kinematics-displacement-velocity-acceleration",
+        "dynamics-newtons-second-law",
+        "dynamics-circular-motion",
+        "energy-conservation",
+        "momentum-conservation",
+        "rotation-angular-momentum-conservation",
+        "oscillation-shm-frequency-period",
+        "fluids-pressure"
+      ]
     },
     {
       "id": "ap-central-2024-frq-w8d2",
