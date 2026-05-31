@@ -5240,6 +5240,90 @@
       ],
       "week": 2,
       "day": 1
+    },
+    {
+      "id": "phet-forces-motion-basics",
+      "title": "PhET: Forces and Motion — Basics",
+      "url": "https://phet.colorado.edu/en/simulations/forces-and-motion-basics",
+      "type": "interactive",
+      "platform": "phet",
+      "tier": "B",
+      "estimated_minutes": 20,
+      "concepts": [
+        "dynamics-force-concept"
+      ],
+      "week": 2,
+      "day": 1
+    },
+    {
+      "id": "khan-force-types-exercise",
+      "title": "Khan Academy: Forces and Free Body Diagrams (practice)",
+      "url": "https://www.khanacademy.org/science/ap-physics-1/ap-forces-newtons-laws/ap-introduction-to-forces-and-newtons-laws/e/forces-and-free-body-diagrams",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "C",
+      "estimated_minutes": 20,
+      "concepts": [
+        "dynamics-force-concept"
+      ],
+      "week": 2,
+      "day": 1
+    },
+    {
+      "id": "khan-center-of-mass-video",
+      "title": "Khan Academy: Center of Mass",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:force-and-translational-dynamics/xf557a762645cccc5:center-of-mass/v/center-of-mass",
+      "type": "video",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 12,
+      "concepts": [
+        "dynamics-systems-center-of-mass"
+      ],
+      "week": 2,
+      "day": 2
+    },
+    {
+      "id": "khan-center-of-mass-exercise",
+      "title": "Khan Academy: Center of Mass (practice)",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:force-and-translational-dynamics/xf557a762645cccc5:center-of-mass/e/center-of-mass",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "C",
+      "estimated_minutes": 20,
+      "concepts": [
+        "dynamics-systems-center-of-mass"
+      ],
+      "week": 2,
+      "day": 2
+    },
+    {
+      "id": "khan-rolling-without-slipping-video",
+      "title": "Khan Academy: Rolling Without Slipping",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:energy-and-momentum-of-rotating-systems/xf557a762645cccc5:rotational-kinetic-energy/v/rolling-without-slipping-problems",
+      "type": "video",
+      "platform": "khan",
+      "tier": "A",
+      "estimated_minutes": 14,
+      "concepts": [
+        "rotation-rolling"
+      ],
+      "week": 6,
+      "day": 5
+    },
+    {
+      "id": "khan-rolling-exercise",
+      "title": "Khan Academy: Rolling Without Slipping (practice)",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:energy-and-momentum-of-rotating-systems/xf557a762645cccc5:rotational-kinetic-energy/e/rolling-without-slipping",
+      "type": "exercise",
+      "platform": "khan",
+      "tier": "C",
+      "estimated_minutes": 20,
+      "concepts": [
+        "rotation-rolling"
+      ],
+      "week": 6,
+      "day": 5
     }
   ]
 }

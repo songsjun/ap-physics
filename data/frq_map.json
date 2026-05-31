@@ -307,7 +307,8 @@
       "concepts": [
         "oscillation-shm-definition",
         "oscillation-shm-frequency-period",
-        "torque-torque"
+        "torque-torque",
+        "oscillation-shm-representing"
       ],
       "text_preview": "AP® Physics 1 2024 Free-Response Questions   4. (7 points, suggested time 13 minutes) A simple pendulum consists of a small sphere that hangs from a string with negligible mass. The top end of the str",
       "sg_pdf": "/frq/ap24-sg-physics-1.pdf",
@@ -453,7 +454,8 @@
       "concepts": [
         "torque-newtons-second-law-rotational",
         "rotation-rotational-kinetic-energy",
-        "rotation-angular-momentum"
+        "rotation-angular-momentum",
+        "rotation-angular-momentum-conservation"
       ],
       "text_preview": "Question 4 4. Toys X and Y are free to rotate with negligible friction about a vertical axle through the center of each toy. The upper portion of each toy has a radius r0 , as shown in the side view i"
     }
