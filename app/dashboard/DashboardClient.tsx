@@ -175,13 +175,13 @@ export function DashboardClient() {
   if (initFailed) {
     return (
       <div className="max-w-3xl mx-auto px-4 py-16 text-center space-y-4">
-        <p className="font-semibold text-stone-800 text-sm">数据加载失败</p>
-        <p className="text-xs text-stone-500">请检查网络连接后重试</p>
+        <p className="font-semibold text-stone-800 text-sm">Failed to Load Data</p>
+        <p className="text-xs text-stone-500">Please check your network connection and try again.</p>
         <button
           onClick={() => window.location.reload()}
           className="px-4 py-2 text-sm bg-stone-800 text-white rounded-lg hover:bg-stone-700 transition-colors"
         >
-          刷新页面
+          Refresh Page
         </button>
       </div>
     )
@@ -267,13 +267,13 @@ export function DashboardClient() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-xl font-semibold text-stone-900 dark:text-stone-100">学习进度</h1>
-          <p className="text-sm text-stone-400 dark:text-stone-500 mt-0.5">AP Physics 1  ·  8 周 56 天</p>
+          <h1 className="text-xl font-semibold text-stone-900 dark:text-stone-100">Study Progress</h1>
+          <p className="text-sm text-stone-400 dark:text-stone-500 mt-0.5">AP Physics 1  ·  8 Weeks · 56 Days</p>
         </div>
         <div className="flex items-center gap-4 text-sm">
-          <Link href="/" className="text-stone-500 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-200 transition-colors">← 返回</Link>
-          <Link href="/knowledge-tree" className="text-stone-500 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-200 transition-colors">知识点</Link>
-          <Link href="/settings" className="text-stone-400 dark:text-stone-500 hover:text-stone-600 dark:hover:text-stone-300 transition-colors">⚙ 设置</Link>
+          <Link href="/" className="text-stone-500 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-200 transition-colors">← Back</Link>
+          <Link href="/knowledge-tree" className="text-stone-500 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-200 transition-colors">Topics</Link>
+          <Link href="/settings" className="text-stone-400 dark:text-stone-500 hover:text-stone-600 dark:hover:text-stone-300 transition-colors">⚙ Settings</Link>
         </div>
       </div>
 
@@ -283,11 +283,11 @@ export function DashboardClient() {
           <div className="flex items-center gap-5">
             <div>
               <span className="text-2xl font-bold text-stone-900 dark:text-stone-100">{completedDays.length}</span>
-              <span className="text-stone-400 dark:text-stone-500 ml-1 text-xs">/ {totalDays} 天完成</span>
+              <span className="text-stone-400 dark:text-stone-500 ml-1 text-xs">/ {totalDays} days done</span>
             </div>
             {currentDay && (
               <div className="pl-5 border-l border-stone-100 dark:border-stone-700">
-                <span className="text-xs text-stone-400 dark:text-stone-500">当前进度</span>
+                <span className="text-xs text-stone-400 dark:text-stone-500">Current</span>
                 <p className="text-sm font-medium text-stone-700 dark:text-stone-300">
                   Week {currentDay.week} · Day {currentDay.day}
                 </p>
@@ -337,7 +337,7 @@ export function DashboardClient() {
                     Week {week}
                   </span>
                 </div>
-                <span className="text-xs text-stone-400 dark:text-stone-500">{weekDone}/{DAYS_PER_WEEK} 天</span>
+                <span className="text-xs text-stone-400 dark:text-stone-500">{weekDone}/{DAYS_PER_WEEK} days</span>
               </div>
 
               {/* Day cells */}
@@ -358,16 +358,16 @@ export function DashboardClient() {
       {/* Legend */}
       <div className="flex items-center gap-4 text-xs text-stone-400 dark:text-stone-500 px-1">
         <span className="flex items-center gap-1.5">
-          <span className="w-3 h-3 rounded bg-emerald-100 border border-emerald-300 inline-block" />通过
+          <span className="w-3 h-3 rounded bg-emerald-100 border border-emerald-300 inline-block" />Passed
         </span>
         <span className="flex items-center gap-1.5">
-          <span className="w-3 h-3 rounded bg-amber-100 border border-amber-300 inline-block" />进行中
+          <span className="w-3 h-3 rounded bg-amber-100 border border-amber-300 inline-block" />In Progress
         </span>
         <span className="flex items-center gap-1.5">
-          <span className="w-3 h-3 rounded bg-blue-100 border border-blue-300 inline-block" />待开始
+          <span className="w-3 h-3 rounded bg-blue-100 border border-blue-300 inline-block" />Not Started
         </span>
         <span className="flex items-center gap-1.5">
-          <span className="w-3 h-3 rounded bg-orange-100 border border-orange-300 inline-block" />需重试
+          <span className="w-3 h-3 rounded bg-orange-100 border border-orange-300 inline-block" />Needs Retry
         </span>
       </div>
     </div>

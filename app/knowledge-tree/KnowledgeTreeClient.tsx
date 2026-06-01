@@ -36,9 +36,9 @@ const TYPE_ICONS: Record<string, string> = {
 }
 
 const TIER_LABELS: Record<string, string> = {
-  A: '必学',
-  B: '补充',
-  C: '练习',
+  A: 'Required',
+  B: 'Supplement',
+  C: 'Practice',
 }
 
 const TIER_ORDER: Record<string, number> = { A: 0, B: 1, C: 2 }
@@ -143,12 +143,12 @@ export function KnowledgeTreeClient() {
   if (initFailed) {
     return (
       <div className="max-w-3xl mx-auto px-4 py-16 text-center space-y-4">
-        <p className="font-semibold text-stone-800 dark:text-stone-200 text-sm">数据加载失败</p>
+        <p className="font-semibold text-stone-800 dark:text-stone-200 text-sm">Failed to Load Data</p>
         <button
           onClick={() => window.location.reload()}
           className="px-4 py-2 text-sm bg-stone-800 text-white rounded-lg hover:bg-stone-700 transition-colors"
         >
-          刷新页面
+          Refresh Page
         </button>
       </div>
     )
@@ -206,12 +206,12 @@ export function KnowledgeTreeClient() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-xl font-semibold text-stone-900 dark:text-stone-100">知识点树</h1>
-          <p className="text-sm text-stone-400 dark:text-stone-500 mt-0.5">AP Physics 1 · {totalKPs} 个知识点</p>
+          <h1 className="text-xl font-semibold text-stone-900 dark:text-stone-100">Knowledge Tree</h1>
+          <p className="text-sm text-stone-400 dark:text-stone-500 mt-0.5">AP Physics 1 · {totalKPs} Topics</p>
         </div>
         <div className="flex items-center gap-4 text-sm">
-          <Link href="/dashboard" className="text-stone-500 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-200 transition-colors">← 进度</Link>
-          <Link href="/settings" className="text-stone-400 dark:text-stone-500 hover:text-stone-600 dark:hover:text-stone-300 transition-colors">⚙ 设置</Link>
+          <Link href="/dashboard" className="text-stone-500 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-200 transition-colors">← Progress</Link>
+          <Link href="/settings" className="text-stone-400 dark:text-stone-500 hover:text-stone-600 dark:hover:text-stone-300 transition-colors">⚙ Settings</Link>
         </div>
       </div>
 
@@ -220,15 +220,15 @@ export function KnowledgeTreeClient() {
         <div className="flex items-center gap-6 text-sm">
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 shrink-0" />
-            <span className="text-stone-600 dark:text-stone-300">已掌握 <strong className="text-stone-900 dark:text-stone-100">{masteredKPs}</strong></span>
+            <span className="text-stone-600 dark:text-stone-300">Mastered <strong className="text-stone-900 dark:text-stone-100">{masteredKPs}</strong></span>
           </div>
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-amber-400 shrink-0" />
-            <span className="text-stone-600 dark:text-stone-300">进行中 <strong className="text-stone-900 dark:text-stone-100">{inProgressKPs}</strong></span>
+            <span className="text-stone-600 dark:text-stone-300">In Progress <strong className="text-stone-900 dark:text-stone-100">{inProgressKPs}</strong></span>
           </div>
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-stone-300 dark:bg-stone-600 shrink-0" />
-            <span className="text-stone-600 dark:text-stone-300">未开始 <strong className="text-stone-900 dark:text-stone-100">{totalKPs - masteredKPs - inProgressKPs}</strong></span>
+            <span className="text-stone-600 dark:text-stone-300">Not Started <strong className="text-stone-900 dark:text-stone-100">{totalKPs - masteredKPs - inProgressKPs}</strong></span>
           </div>
         </div>
       </div>
@@ -253,7 +253,7 @@ export function KnowledgeTreeClient() {
               >
                 <span className="text-sm font-semibold text-stone-700 dark:text-stone-300">Week {week}</span>
                 <div className="flex items-center gap-3">
-                  <span className="text-xs text-stone-400 dark:text-stone-500">{weekMastered}/{weekKPs.length} 已掌握</span>
+                  <span className="text-xs text-stone-400 dark:text-stone-500">{weekMastered}/{weekKPs.length} mastered</span>
                   <svg
                     className={`w-4 h-4 text-stone-400 transition-transform ${isCollapsed ? '' : 'rotate-180'}`}
                     fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}
@@ -274,8 +274,8 @@ export function KnowledgeTreeClient() {
                       status === 'in-progress' ? 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400' :
                                                  'bg-stone-100 text-stone-500 dark:bg-stone-700 dark:text-stone-400'
                     const statusLabel =
-                      status === 'mastered'    ? '已掌握' :
-                      status === 'in-progress' ? '进行中' : '未开始'
+                      status === 'mastered'    ? 'Mastered' :
+                      status === 'in-progress' ? 'In Progress' : 'Not Started'
 
                     return (
                       <div key={kp.id}>
@@ -289,11 +289,11 @@ export function KnowledgeTreeClient() {
                             {statusLabel}
                           </span>
                           <div className="flex-1 min-w-0">
-                            <p className="text-sm font-medium text-stone-800 dark:text-stone-200 truncate">{kp.name_zh}</p>
-                            <p className="text-xs text-stone-400 dark:text-stone-500 truncate">{kp.name_en}</p>
+                            <p className="text-sm font-medium text-stone-800 dark:text-stone-200 truncate">{kp.name_en}</p>
+                            <p className="text-xs text-stone-400 dark:text-stone-500 truncate">{kp.name_zh}</p>
                           </div>
                           <div className="flex items-center gap-2 shrink-0">
-                            <span className="text-xs text-stone-400 dark:text-stone-500 whitespace-nowrap">D{kp.day} · {resources.length} 资源{frqs.length > 0 ? ` · ${frqs.length} FRQ` : ''}</span>
+                            <span className="text-xs text-stone-400 dark:text-stone-500 whitespace-nowrap">D{kp.day} · {resources.length} resources{frqs.length > 0 ? ` · ${frqs.length} FRQ` : ''}</span>
                             <svg
                               className={`w-3.5 h-3.5 text-stone-400 transition-transform ${isExpanded ? 'rotate-180' : ''}`}
                               fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}
@@ -307,7 +307,7 @@ export function KnowledgeTreeClient() {
                         {isExpanded && (
                           <div className="px-4 pb-3 pt-1 space-y-1.5 bg-stone-50/50 dark:bg-stone-700/10">
                             {resources.length === 0 ? (
-                              <p className="text-xs text-stone-400 dark:text-stone-500 py-2 pl-1">暂无关联资源</p>
+                              <p className="text-xs text-stone-400 dark:text-stone-500 py-2 pl-1">No related resources</p>
                             ) : (
                               resources.map(({ resource, status: rStatus }) => (
                                 <ResourceRow key={resource.id} resource={resource} status={rStatus} />
@@ -315,7 +315,7 @@ export function KnowledgeTreeClient() {
                             )}
                             {frqs.length > 0 && (
                               <div className="pt-1 space-y-1.5">
-                                <p className="text-[10px] font-semibold text-violet-500 dark:text-violet-400 px-1 uppercase tracking-wide">历年真题</p>
+                                <p className="text-[10px] font-semibold text-violet-500 dark:text-violet-400 px-1 uppercase tracking-wide">Past Exams</p>
                                 {frqs.map(frq => (
                                   <button
                                     key={frq.id}
@@ -358,9 +358,9 @@ function ResourceRow({ resource, status }: { resource: Resource; status: Resourc
     status === 'skipped'     ? 'bg-stone-100 text-stone-500 dark:bg-stone-700 dark:text-stone-400' :
                                'bg-stone-100 text-stone-400 dark:bg-stone-700/50 dark:text-stone-500'
   const rStatusLabel =
-    status === 'passed'  ? '✓ 已学' :
-    status === 'failed'  ? '✗ 未过' :
-    status === 'skipped' ? '— 跳过' : '未学'
+    status === 'passed'  ? '✓ Done' :
+    status === 'failed'  ? '✗ Failed' :
+    status === 'skipped' ? '— Skipped' : 'Not Done'
 
   const tierCls =
     resource.tier === 'A' ? 'text-blue-500 dark:text-blue-400' :

@@ -13,13 +13,13 @@ const PHASE_STYLE: Record<string, {
   rowBg: string
 }> = {
   LEARN: {
-    label: '学习',
+    label: 'Learn',
     badgeCls: 'bg-amber-100 text-amber-700',
     borderCls: 'border-l-amber-400',
     rowBg: 'bg-amber-50/40 dark:bg-amber-900/10',
   },
   PRACTICE: {
-    label: '练习',
+    label: 'Practice',
     badgeCls: 'bg-blue-100 text-blue-700',
     borderCls: 'border-l-blue-400',
     rowBg: 'bg-blue-50/40 dark:bg-blue-900/10',
@@ -28,12 +28,12 @@ const PHASE_STYLE: Record<string, {
 
 const PLATFORM_SHORT: Record<string, string> = {
   khan: 'Khan', openstax: 'OpenStax', phet: 'PhET',
-  flipping: 'Flipping', ap_central: 'AP Central', native: '平台',
+  flipping: 'Flipping', ap_central: 'AP Central', native: 'Platform',
 }
 
 const TYPE_LABEL: Record<string, string> = {
-  video: '视频', exercise: '练习', reading: '阅读',
-  interactive: '实验', frq: 'FRQ',
+  video: 'Video', exercise: 'Exercise', reading: 'Reading',
+  interactive: 'Lab', frq: 'FRQ',
 }
 
 // Default score_max by resource type / platform
@@ -50,28 +50,28 @@ function isGradedResource(r: Resource): boolean {
 // ── Derived annotations ───────────────────────────────────────────────────────
 
 function getCompletionCriteria(r: Resource): string {
-  if (r.platform === 'khan' && r.type === 'exercise') return '4 题，目标 ≥ 3 题正确（75%）'
-  if (r.platform === 'khan' && r.type === 'video') return '完整观看，记录关键概念和公式'
-  if (r.platform === 'khan' && r.type === 'reading') return '阅读互动文章，完成嵌入练习'
-  if (r.type === 'interactive') return '完成实验步骤，记录观察结论，建立物理直觉'
-  if (r.platform === 'openstax' && r.type === 'reading') return '阅读并理解核心定义，能口述要点'
-  if (r.platform === 'openstax' && r.type === 'exercise') return '完成练习题，用答案键核对过程'
-  if (r.type === 'frq') return '完成 FRQ 作答，对照评分标准逐点自评'
-  if (r.platform === 'flipping') return '观看补强视频，针对卡点概念做笔记'
-  return `完成 ${r.estimated_minutes} 分钟学习任务`
+  if (r.platform === 'khan' && r.type === 'exercise') return '4 questions, aim for ≥ 3 correct (75%)'
+  if (r.platform === 'khan' && r.type === 'video') return 'Watch fully and note key concepts and formulas'
+  if (r.platform === 'khan' && r.type === 'reading') return 'Read the interactive article and complete the embedded exercises'
+  if (r.type === 'interactive') return 'Complete the lab steps, record observations, and build physical intuition'
+  if (r.platform === 'openstax' && r.type === 'reading') return 'Read and understand the key definitions; be able to explain the main points'
+  if (r.platform === 'openstax' && r.type === 'exercise') return 'Complete the exercises and check your work with the answer key'
+  if (r.type === 'frq') return 'Complete the FRQ and self-score against the scoring guide'
+  if (r.platform === 'flipping') return 'Watch the supplemental video and take notes on concepts you find tricky'
+  return `Complete the ${r.estimated_minutes}-minute task`
 }
 
 function getLearningObjective(r: Resource, kps: KnowledgePoint[]): string {
-  const topicsZh = kps.map(k => k.name_zh).join('、')
-  if (!topicsZh) return ''
+  const topicsEn = kps.map(k => k.name_en).join(', ')
+  if (!topicsEn) return ''
   const prefix: Record<string, string> = {
-    video: `理解 ${topicsZh} 的物理意义和数学表达`,
-    exercise: `运用 ${topicsZh} 解决典型 AP 题目`,
-    interactive: `通过实验直观感受 ${topicsZh} 的规律`,
-    reading: `深入理解 ${topicsZh} 的定义与推导过程`,
-    frq: `综合运用本周知识完成开放性 FRQ 作答`,
+    video: `Understand the physical meaning and math of ${topicsEn}`,
+    exercise: `Apply ${topicsEn} to solve typical AP problems`,
+    interactive: `Build intuition for ${topicsEn} through hands-on experiment`,
+    reading: `Deeply understand the definition and derivation of ${topicsEn}`,
+    frq: `Synthesize this week's knowledge to complete an open-ended FRQ`,
   }
-  return prefix[r.type] ?? `完成 ${topicsZh} 相关学习`
+  return prefix[r.type] ?? `Complete learning related to ${topicsEn}`
 }
 
 // ── RowSharedProps ────────────────────────────────────────────────────────────
@@ -103,7 +103,7 @@ function ScorePanel({ resource, onSubmit, onCancel }: {
     <div className="mx-4 mb-3 ml-12 mt-1">
       <div className="bg-stone-50 dark:bg-stone-800 rounded-lg border border-stone-200 dark:border-stone-600 p-3 space-y-3">
         <p className="text-xs font-medium text-stone-600 dark:text-stone-400">
-          {resource.type === 'frq' ? '得了几分？' : '几题答对了？'}
+          {resource.type === 'frq' ? 'How many points?' : 'How many correct?'}
         </p>
         <div className="flex items-center gap-3">
           <button
@@ -133,13 +133,13 @@ function ScorePanel({ resource, onSubmit, onCancel }: {
                 : 'bg-red-100 hover:bg-red-200 text-red-700'
             }`}
           >
-            {willPass ? '通过' : '未达标'}
+            {willPass ? 'Pass' : 'Below Target'}
           </button>
           <button
             onClick={onCancel}
             className="px-3 py-1.5 rounded-lg text-sm text-stone-400 dark:text-stone-500 hover:text-stone-600 dark:hover:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors"
           >
-            取消
+            Cancel
           </button>
         </div>
       </div>
@@ -197,7 +197,7 @@ function ResourceRow({ resource, completion, kpMap, scoringId, onCheckDirect, on
             if (graded) onCheckGraded(resource)
             else onCheckDirect(resource)
           }}
-          aria-label={done ? `${resource.title} 已完成` : `标记 ${resource.title} 为完成`}
+          aria-label={done ? `${resource.title} completed` : `Mark ${resource.title} as complete`}
           aria-pressed={done}
           className={`mt-0.5 w-5 h-5 rounded-[5px] border-2 flex items-center justify-center shrink-0 transition-all ${
             done   ? 'bg-emerald-500 border-emerald-500 shadow-sm' :
@@ -265,7 +265,7 @@ function ResourceRow({ resource, completion, kpMap, scoringId, onCheckDirect, on
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-stone-300 dark:text-stone-600 hover:text-blue-500 dark:hover:text-blue-400 transition-colors"
-                  aria-label="在新标签页打开"
+                  aria-label="Open in new tab"
                 >
                   <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
@@ -282,14 +282,14 @@ function ResourceRow({ resource, completion, kpMap, scoringId, onCheckDirect, on
             )}
             {kps.slice(0, 2).map(kp => (
               <span key={kp.id} className="text-[11px] bg-stone-100 dark:bg-stone-700 text-stone-500 dark:text-stone-400 px-1.5 py-0.5 rounded-md">
-                {kp.name_zh}
+                {kp.name_en}
               </span>
             ))}
             <button
               onClick={() => setExpanded(e => !e)}
               className="text-[11px] text-blue-400 hover:text-blue-600 dark:hover:text-blue-300 transition-colors ml-0.5"
             >
-              {expanded ? '收起' : '详情'}
+              {expanded ? 'Collapse' : 'Details'}
             </button>
           </div>
         </div>
@@ -309,13 +309,13 @@ function ResourceRow({ resource, completion, kpMap, scoringId, onCheckDirect, on
         <div className={`mx-4 mb-3 ml-12 pl-3 border-l border-stone-100 dark:border-stone-700 space-y-1.5 text-xs text-stone-500 dark:text-stone-400 ${rowBg}`}>
           {objective && (
             <div className="flex gap-2 pt-1">
-              <span className="text-stone-300 dark:text-stone-600 shrink-0 w-14 text-right">学习目标</span>
+              <span className="text-stone-300 dark:text-stone-600 shrink-0 w-14 text-right">Objective</span>
               <span className="text-stone-600 dark:text-stone-400">{objective}</span>
             </div>
           )}
           {resource.description && (
             <div className="flex gap-2">
-              <span className="text-stone-300 dark:text-stone-600 shrink-0 w-14 text-right pt-0.5">实验步骤</span>
+              <span className="text-stone-300 dark:text-stone-600 shrink-0 w-14 text-right pt-0.5">Steps</span>
               <ol className="space-y-1 flex-1">
                 {resource.description.split('\n').map((step, i) => (
                   <li key={i} className="text-stone-600 dark:text-stone-400">{step}</li>
@@ -325,27 +325,27 @@ function ResourceRow({ resource, completion, kpMap, scoringId, onCheckDirect, on
           )}
           {!resource.description && (
             <div className="flex gap-2">
-              <span className="text-stone-300 dark:text-stone-600 shrink-0 w-14 text-right">完成标准</span>
+              <span className="text-stone-300 dark:text-stone-600 shrink-0 w-14 text-right">Criteria</span>
               <span className="text-stone-600 dark:text-stone-400">{criteria}</span>
             </div>
           )}
           {/* Answer key link */}
           {resource.answer_url && (
             <div className="flex gap-2">
-              <span className="text-stone-300 dark:text-stone-600 shrink-0 w-14 text-right">答案</span>
+              <span className="text-stone-300 dark:text-stone-600 shrink-0 w-14 text-right">Answer</span>
               <a
                 href={resource.answer_url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-500 hover:text-blue-700 underline underline-offset-2"
               >
-                查看答案键 →
+                View Answer Key →
               </a>
             </div>
           )}
           {kps.length > 0 && (
             <div className="flex gap-2">
-              <span className="text-stone-300 dark:text-stone-600 shrink-0 w-14 text-right">知识点</span>
+              <span className="text-stone-300 dark:text-stone-600 shrink-0 w-14 text-right">Topics</span>
               <span className="text-stone-600 dark:text-stone-400">
                 {kps.map(k => `CED ${k.ced_topic} ${k.name_en}`).join('  ·  ')}
               </span>
@@ -354,25 +354,25 @@ function ResourceRow({ resource, completion, kpMap, scoringId, onCheckDirect, on
           {openstaxSections.length > 0 && (
             <div className="flex gap-2">
               <span className="text-stone-300 dark:text-stone-600 shrink-0 w-14 text-right">OpenStax</span>
-              <span className="text-stone-600 dark:text-stone-400">第 {openstaxSections.join(', ')} 节</span>
+              <span className="text-stone-600 dark:text-stone-400">Section {openstaxSections.join(', ')}</span>
             </div>
           )}
           {resource.type === 'exercise' && resource.platform === 'khan' && (
             <div className="flex gap-2">
-              <span className="text-stone-300 dark:text-stone-600 shrink-0 w-14 text-right">达成含义</span>
-              <span className="text-stone-600 dark:text-stone-400">75% 正确率代表对该知识点有基础掌握，可推进下一模块</span>
+              <span className="text-stone-300 dark:text-stone-600 shrink-0 w-14 text-right">What it means</span>
+              <span className="text-stone-600 dark:text-stone-400">75% correct means basic mastery of this topic — ready to advance.</span>
             </div>
           )}
           {resource.type === 'interactive' && (
             <div className="flex gap-2">
-              <span className="text-stone-300 dark:text-stone-600 shrink-0 w-14 text-right">达成含义</span>
-              <span className="text-stone-600 dark:text-stone-400">实验建立的直觉将帮助你在 FRQ 中正确设定符号和方向</span>
+              <span className="text-stone-300 dark:text-stone-600 shrink-0 w-14 text-right">What it means</span>
+              <span className="text-stone-600 dark:text-stone-400">Lab intuition helps you set correct signs and directions in FRQs.</span>
             </div>
           )}
           {resource.type === 'frq' && (
             <div className="flex gap-2 pb-1">
-              <span className="text-stone-300 dark:text-stone-600 shrink-0 w-14 text-right">达成含义</span>
-              <span className="text-stone-600 dark:text-stone-400">FRQ 是 AP 考试 50% 分值，完成官方题是最直接的水平校准</span>
+              <span className="text-stone-300 dark:text-stone-600 shrink-0 w-14 text-right">What it means</span>
+              <span className="text-stone-600 dark:text-stone-400">FRQs are 50% of the AP exam. Completing official questions is the most direct calibration.</span>
             </div>
           )}
         </div>

@@ -16,14 +16,14 @@ export default function GlobalError({
           </svg>
         </div>
         <div>
-          <p className="font-semibold text-stone-800 text-sm">应用加载失败</p>
-          <p className="text-xs text-stone-500 mt-1">{error.message || '请检查网络连接后重试'}</p>
+          <p className="font-semibold text-stone-800 text-sm">Failed to Load App</p>
+          <p className="text-xs text-stone-500 mt-1">{error.message || 'Please check your network connection and try again.'}</p>
         </div>
         <button
           onClick={reset}
           className="w-full py-2 text-sm bg-stone-800 text-white rounded-lg hover:bg-stone-700 transition-colors"
         >
-          重试
+          Retry
         </button>
       </div>
     </div>

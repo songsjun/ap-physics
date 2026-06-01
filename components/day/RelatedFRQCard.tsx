@@ -52,14 +52,14 @@ function MoralJudgmentDialog({ entry, onConfirm, onCancel }: {
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-full bg-amber-100 dark:bg-amber-800/40 flex items-center justify-center shrink-0 text-lg">⚖️</div>
             <div>
-              <p id="moral-dialog-title" className="text-sm font-semibold text-stone-800 dark:text-stone-200">查看答案前，请认真思考</p>
+              <p id="moral-dialog-title" className="text-sm font-semibold text-stone-800 dark:text-stone-200">Before Viewing the Answer</p>
               <p className="text-xs text-stone-500 dark:text-stone-400 mt-0.5">{entry.year} · Q{entry.question_number} · {frqTypeLabel(entry.frq_type)}</p>
             </div>
           </div>
         </div>
         <div className="px-5 py-4 space-y-3">
-          <p className="text-xs text-stone-500 dark:text-stone-400">逐条确认后才能查看评分标准：</p>
-          {[`我已独立完成 ${entry.year} Q${entry.question_number} 的作答，没有在中途查阅提示或答案`].map((item, i) => (
+          <p className="text-xs text-stone-500 dark:text-stone-400">Confirm the following before viewing the scoring guide:</p>
+          {[`I completed ${entry.year} Q${entry.question_number} independently without looking at hints or answers`].map((item, i) => (
             <label key={i} className="flex items-start gap-3 cursor-pointer group">
               <div
                 className={`mt-0.5 w-5 h-5 rounded-[5px] border-2 flex items-center justify-center shrink-0 transition-all ${checked[i] ? 'bg-amber-500 border-amber-500' : 'border-stone-300 dark:border-stone-600 group-hover:border-amber-400'}`}
@@ -86,14 +86,14 @@ function MoralJudgmentDialog({ entry, onConfirm, onCancel }: {
             onClick={onCancel}
             className="flex-1 py-2 rounded-xl text-sm text-stone-500 dark:text-stone-400 bg-stone-100 dark:bg-stone-700 hover:bg-stone-200 dark:hover:bg-stone-600 transition-colors"
           >
-            再想想
+            Not Yet
           </button>
           <button
             onClick={onConfirm}
             disabled={!allChecked}
             className={`flex-1 py-2 rounded-xl text-sm font-medium transition-colors ${allChecked ? 'bg-amber-500 hover:bg-amber-600 text-white' : 'bg-stone-100 dark:bg-stone-700 text-stone-300 dark:text-stone-600 cursor-not-allowed'}`}
           >
-            已确认，查看答案
+            Confirmed, View Answer
           </button>
         </div>
       </div>
@@ -116,12 +116,12 @@ function ScoreEntryInline({ onSave, onCancel }: {
 
   return (
     <div className="flex items-center gap-2 pt-1.5 flex-wrap">
-      <span className="text-xs text-stone-400 shrink-0">回填得分：</span>
+      <span className="text-xs text-stone-400 shrink-0">Enter score:</span>
       <input
         type="number"
         value={scoreStr}
         onChange={e => setScoreStr(e.target.value)}
-        placeholder="得分"
+        placeholder="Score"
         min="0"
         className="w-14 border border-stone-200 rounded px-2 py-1 text-xs focus:outline-none focus:border-violet-400"
       />
@@ -130,7 +130,7 @@ function ScoreEntryInline({ onSave, onCancel }: {
         type="number"
         value={maxStr}
         onChange={e => setMaxStr(e.target.value)}
-        placeholder="满分"
+        placeholder="Max"
         min="1"
         className="w-14 border border-stone-200 rounded px-2 py-1 text-xs focus:outline-none focus:border-violet-400"
       />
@@ -139,10 +139,10 @@ function ScoreEntryInline({ onSave, onCancel }: {
         disabled={!valid}
         className="text-xs px-2.5 py-1 rounded-lg bg-violet-600 text-white disabled:opacity-40 hover:bg-violet-700 transition-colors"
       >
-        记录
+        Save
       </button>
       <button onClick={onCancel} className="text-xs text-stone-400 hover:text-stone-600 transition-colors">
-        取消
+        Cancel
       </button>
     </div>
   )
@@ -223,11 +223,11 @@ export function RelatedFRQCard({ userId, conceptIds, week, day }: RelatedFRQCard
         >
           <div className="flex items-center gap-2.5">
             <span className="text-xs font-bold px-2 py-0.5 rounded-md bg-violet-600 text-white">FRQ</span>
-            <span className="text-sm font-medium text-violet-700 dark:text-violet-300">历年相关真题</span>
-            <span className="text-xs text-stone-400 dark:text-stone-500">按今日知识点匹配</span>
+            <span className="text-sm font-medium text-violet-700 dark:text-violet-300">Related Past Exam Questions</span>
+            <span className="text-xs text-stone-400 dark:text-stone-500">Matched to today&apos;s topics</span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-xs text-stone-400 dark:text-stone-500">{related.length} 题</span>
+            <span className="text-xs text-stone-400 dark:text-stone-500">{related.length} questions</span>
             <svg
               className={`w-3.5 h-3.5 text-stone-300 dark:text-stone-600 transition-transform ${open ? 'rotate-180' : ''}`}
               fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}
@@ -272,14 +272,14 @@ export function RelatedFRQCard({ userId, conceptIds, week, day }: RelatedFRQCard
                         onClick={() => window.open(`${entry.frq_pdf}#page=${entry.frq_page}`, '_blank', 'noopener,noreferrer')}
                         className="text-xs px-2.5 py-1 rounded-lg bg-violet-50 text-violet-700 hover:bg-violet-100 transition-colors font-medium whitespace-nowrap"
                       >
-                        查看题目 ↗
+                        View Question ↗
                       </button>
                       {entry.sg_pdf && (
                         <button
                           onClick={() => { setScoringEntry(null); setJudgmentEntry(entry) }}
                           className="text-xs px-2.5 py-1 rounded-lg bg-stone-50 dark:bg-stone-700 text-stone-500 dark:text-stone-400 hover:bg-amber-50 hover:text-amber-700 transition-colors whitespace-nowrap"
                         >
-                          查看答案
+                          View Answer
                         </button>
                       )}
                       {completion ? (
@@ -287,14 +287,14 @@ export function RelatedFRQCard({ userId, conceptIds, week, day }: RelatedFRQCard
                           onClick={() => setScoringEntry(isScoring ? null : entry)}
                           className="text-xs px-2.5 py-1 rounded-lg bg-stone-50 dark:bg-stone-700 text-stone-400 dark:text-stone-500 hover:text-violet-600 transition-colors whitespace-nowrap"
                         >
-                          修改分数
+                          Edit Score
                         </button>
                       ) : (
                         <button
                           onClick={() => setScoringEntry(isScoring ? null : entry)}
                           className="text-xs px-2.5 py-1 rounded-lg bg-stone-50 dark:bg-stone-700 text-stone-500 dark:text-stone-400 hover:bg-violet-50 hover:text-violet-700 transition-colors whitespace-nowrap"
                         >
-                          记录分数
+                          Record Score
                         </button>
                       )}
                     </div>

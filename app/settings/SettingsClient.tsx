@@ -52,38 +52,38 @@ export function SettingsClient() {
       const text = await file.text()
       const raw: unknown = JSON.parse(text)
       if (typeof raw !== 'object' || raw === null || Array.isArray(raw)) {
-        throw new Error('文件格式错误：不是有效的 JSON 对象')
+        throw new Error('Invalid file format: not a valid JSON object')
       }
       const userId = StorageService.userId.get()
-      if (!userId) throw new Error('用户未初始化')
+      if (!userId) throw new Error('User not initialized')
       await importProgress(userId, raw as ExportData)
       setImportStatus('success')
     } catch (err) {
       setImportStatus('error')
-      setImportError(err instanceof Error ? err.message : '文件格式错误')
+      setImportError(err instanceof Error ? err.message : 'Invalid file format')
     }
     if (fileInputRef.current) fileInputRef.current.value = ''
   }
 
   const themeOptions: { value: ThemePreference; label: string; icon: string }[] = [
-    { value: 'light', label: '浅色', icon: '☀️' },
-    { value: 'system', label: '跟随系统', icon: '⚙️' },
-    { value: 'dark', label: '深色', icon: '🌙' },
+    { value: 'light', label: 'Light', icon: '☀️' },
+    { value: 'system', label: 'System', icon: '⚙️' },
+    { value: 'dark', label: 'Dark', icon: '🌙' },
   ]
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-8 space-y-8">
       <div className="flex items-center gap-4">
-        <Link href="/" className="text-sm text-blue-500 hover:underline">← 返回首页</Link>
-        <h1 className="text-2xl font-bold text-stone-900 dark:text-stone-100">设置</h1>
+        <Link href="/" className="text-sm text-blue-500 hover:underline">← Back to Home</Link>
+        <h1 className="text-2xl font-bold text-stone-900 dark:text-stone-100">Settings</h1>
       </div>
 
       {/* Theme preference */}
       <section className="bg-white dark:bg-stone-800 rounded-xl border border-stone-100 dark:border-stone-700 shadow-sm p-6 space-y-4">
         <div>
-          <h2 className="font-semibold text-stone-900 dark:text-stone-100">外观主题</h2>
+          <h2 className="font-semibold text-stone-900 dark:text-stone-100">Appearance</h2>
           <p className="text-sm text-stone-500 dark:text-stone-400 mt-0.5">
-            选择界面显示主题。设置仅保存在本地浏览器。
+            Choose your display theme. Settings are saved locally in your browser.
           </p>
         </div>
         <div className="flex gap-2">
@@ -108,7 +108,7 @@ export function SettingsClient() {
       <section className="bg-white dark:bg-stone-800 rounded-xl border border-stone-100 dark:border-stone-700 shadow-sm p-6 space-y-4">
         <div>
           <h2 className="font-semibold text-stone-900 dark:text-stone-100">Claude API Key</h2>
-          <p className="text-sm text-stone-500 dark:text-stone-400 mt-0.5">用于获取个性化学习反馈。Key 仅保存在本地浏览器，不会上传。</p>
+          <p className="text-sm text-stone-500 dark:text-stone-400 mt-0.5">Used for personalized learning feedback. Your key is saved locally and never uploaded.</p>
         </div>
         <div className="flex gap-2">
           <input
@@ -123,7 +123,7 @@ export function SettingsClient() {
             onClick={handleSave}
             className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors"
           >
-            {saved ? '已保存 ✓' : '保存'}
+            {saved ? 'Saved ✓' : 'Save'}
           </button>
         </div>
         {apiKey && (
@@ -131,11 +131,11 @@ export function SettingsClient() {
             onClick={() => { StorageService.apiKey.clear(); setApiKey('') }}
             className="text-xs text-red-400 hover:text-red-600 transition-colors"
           >
-            清除 Key
+            Clear Key
           </button>
         )}
         <p className="text-xs text-stone-400 dark:text-stone-500">
-          前往{' '}
+          Visit{' '}
           <a
             href="https://console.anthropic.com"
             target="_blank"
@@ -144,28 +144,28 @@ export function SettingsClient() {
           >
             console.anthropic.com
           </a>{' '}
-          获取 API Key（需要账号）。
+          to get your API Key (account required).
         </p>
       </section>
 
       {/* Progress backup */}
       <section className="bg-white dark:bg-stone-800 rounded-xl border border-stone-100 dark:border-stone-700 shadow-sm p-6 space-y-4">
         <div>
-          <h2 className="font-semibold text-stone-900 dark:text-stone-100">学习进度备份</h2>
-          <p className="text-sm text-stone-500 dark:text-stone-400 mt-0.5">导出进度到 JSON 文件，或从备份文件恢复（会覆盖当前进度）。</p>
+          <h2 className="font-semibold text-stone-900 dark:text-stone-100">Progress Backup</h2>
+          <p className="text-sm text-stone-500 dark:text-stone-400 mt-0.5">Export progress to a JSON file, or restore from a backup (overwrites current progress).</p>
         </div>
         <div className="flex gap-2 flex-wrap">
           <button
             onClick={handleExport}
             className="px-4 py-2 bg-stone-100 hover:bg-stone-200 text-stone-700 text-sm font-medium rounded-lg transition-colors dark:bg-stone-700 dark:hover:bg-stone-600 dark:text-stone-300"
           >
-            导出进度
+            Export Progress
           </button>
           <button
             onClick={() => fileInputRef.current?.click()}
             className="px-4 py-2 bg-stone-100 hover:bg-stone-200 text-stone-700 text-sm font-medium rounded-lg transition-colors dark:bg-stone-700 dark:hover:bg-stone-600 dark:text-stone-300"
           >
-            导入进度
+            Import Progress
           </button>
           <input
             ref={fileInputRef}
@@ -176,10 +176,10 @@ export function SettingsClient() {
           />
         </div>
         {importStatus === 'success' && (
-          <p className="text-sm text-emerald-600">✓ 进度已成功导入，请刷新页面查看更新。</p>
+          <p className="text-sm text-emerald-600">✓ Progress imported successfully. Refresh the page to see updates.</p>
         )}
         {importStatus === 'error' && (
-          <p className="text-sm text-red-500">导入失败：{importError}</p>
+          <p className="text-sm text-red-500">Import failed: {importError}</p>
         )}
       </section>
     </div>

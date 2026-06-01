@@ -23,10 +23,10 @@ function CompleteBanner({ passRate, feedback }: { passRate: number | null; feedb
           </svg>
         </div>
         <div>
-          <p className="font-semibold text-emerald-900 dark:text-emerald-300 text-sm">今日完成</p>
+          <p className="font-semibold text-emerald-900 dark:text-emerald-300 text-sm">Day Complete</p>
           <p className="text-xs text-emerald-600 dark:text-emerald-400">
-            {passRate !== null ? `通过率 ${Math.round(passRate * 100)}%  ·  ` : '已跳过关口  ·  '}
-            下一天已解锁
+            {passRate !== null ? `Pass rate ${Math.round(passRate * 100)}%  ·  ` : 'Gate skipped  ·  '}
+            Next day unlocked
           </p>
         </div>
       </div>
@@ -34,10 +34,10 @@ function CompleteBanner({ passRate, feedback }: { passRate: number | null; feedb
         <div className="space-y-1.5 text-sm border-t border-emerald-200 dark:border-emerald-800 pt-3 pl-1">
           <p className="text-stone-700 dark:text-stone-300">💪 {feedback.strength}</p>
           {feedback.note && <p className="text-stone-600 dark:text-stone-400">📝 {feedback.note}</p>}
-          {feedback.preview && <p className="text-stone-500 dark:text-stone-400">👀 明日：{feedback.preview}</p>}
+          {feedback.preview && <p className="text-stone-500 dark:text-stone-400">👀 Tomorrow: {feedback.preview}</p>}
         </div>
       ) : (
-        <p className="text-xs text-emerald-500 pl-1 animate-pulse">正在获取 AI 学习反馈…</p>
+        <p className="text-xs text-emerald-500 pl-1 animate-pulse">Fetching AI feedback…</p>
       )}
     </div>
   )
@@ -67,34 +67,34 @@ function NeedsRetryBanner({
           </svg>
         </div>
         <div>
-          <p className="font-semibold text-orange-900 text-sm">需要重试</p>
+          <p className="font-semibold text-orange-900 text-sm">Needs Retry</p>
           <p className="text-xs text-orange-600">
-            当前通过率 {passRate !== null ? Math.round(passRate * 100) : 0}%  ·  目标 75%
+            Current pass rate {passRate !== null ? Math.round(passRate * 100) : 0}%  ·  Target 75%
           </p>
         </div>
       </div>
       {weakConceptNames.length > 0 ? (
         <p className="text-xs text-orange-700 pl-1">
-          在以下知识点上遇到了困难，建议重新完成相关资源（标记为 ✕ 的题目）：
-          <span className="font-medium"> {weakConceptNames.join('、')}</span>
+          You struggled with the following topics. Please redo related resources (those marked ✕):
+          <span className="font-medium"> {weakConceptNames.join(', ')}</span>
         </p>
       ) : (
         <p className="text-xs text-orange-700 pl-1">
-          请重新完成下方 A 层资源，提升答题质量后即可解锁下一天。
+          Please redo the Tier A resources below to improve your pass rate and unlock the next day.
         </p>
       )}
       <button
         onClick={onResetFailed}
         className="mt-1 w-full py-2.5 px-3 text-sm font-medium text-orange-700 bg-orange-100 hover:bg-orange-200 rounded-lg transition-colors min-h-[44px]"
       >
-        重新完成失败项目
+        Redo Failed Items
       </button>
       {retryCount >= 2 && (
         <button
           onClick={onForceAdvance}
           className="py-2 px-1 text-sm text-stone-500 underline min-h-[44px]"
         >
-          仍然继续（跳过当前关口，不计为通过）
+          Continue anyway (skip this gate, not counted as passed)
         </button>
       )}
     </div>
@@ -219,7 +219,7 @@ export function DayListView({ week, day }: { week: number; day: number }) {
             <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
           </svg>
         </div>
-        <p className="text-stone-500 dark:text-stone-400 text-sm">完成上一天的必做任务后解锁</p>
+        <p className="text-stone-500 dark:text-stone-400 text-sm">Complete the previous day&apos;s required tasks to unlock.</p>
       </div>
     )
   }
@@ -270,7 +270,7 @@ export function DayListView({ week, day }: { week: number; day: number }) {
           retryCount={retryCount}
           weakConceptNames={
             [...weakConceptIds]
-              .map(id => kpMap.get(id)?.name_zh)
+              .map(id => kpMap.get(id)?.name_en)
               .filter((n): n is string => Boolean(n))
           }
           onForceAdvance={() => dispatch({ type: 'FORCE_ADVANCE' })}
@@ -303,14 +303,14 @@ export function DayListView({ week, day }: { week: number; day: number }) {
       {flowState.phase === 'COMPLETE' && challengeStatus === 'done' && challengeResults.length > 0 && (
         <div className="bg-white border border-stone-100 rounded-xl px-4 py-3">
           <p className="text-xs text-stone-500">
-            ⚡ 今日挑战：{challengeResults.filter(r => r.correct).length} / {challengeResults.length} 正确
+            ⚡ Today&apos;s Challenge: {challengeResults.filter(r => r.correct).length} / {challengeResults.length} correct
           </p>
         </div>
       )}
 
       {flowState.phase === 'COMPLETE' && challengeStatus === 'prompt' && quizChecked && availableQuestions === 0 && (
         <div className="bg-stone-50 border border-stone-100 rounded-xl px-4 py-3">
-          <p className="text-xs text-stone-400">⚡ 本日相关题目已全部完成，继续学习新内容以解锁更多题目。</p>
+          <p className="text-xs text-stone-400">⚡ All related questions completed. Keep studying new content to unlock more.</p>
         </div>
       )}
 
@@ -318,12 +318,12 @@ export function DayListView({ week, day }: { week: number; day: number }) {
       {aTier.length > 0 ? (
         <TierSection
           tier="A"
-          label="必做"
+          label="Required"
           accentCls="text-blue-700 dark:text-blue-300"
           headerBg="bg-blue-50 dark:bg-blue-900/20"
           borderCls="border-blue-100 dark:border-blue-900"
-          description={`约 ${aTotalMin} 分钟 · 完成后＋约 ${QUIZ_ESTIMATED_MINUTES} 分钟挑战`}
-          statusText={`${aPassed}/${aTier.length} 完成${passRate !== null ? `  ·  ${Math.round(passRate * 100)}%` : ''}`}
+          description={`~${aTotalMin} min · then ~${QUIZ_ESTIMATED_MINUTES} min challenge`}
+          statusText={`${aPassed}/${aTier.length} done${passRate !== null ? `  ·  ${Math.round(passRate * 100)}%` : ''}`}
           resources={aTier}
           defaultOpen
           {...rowProps}
@@ -336,8 +336,8 @@ export function DayListView({ week, day }: { week: number; day: number }) {
             </svg>
           </div>
           <div>
-            <p className="text-sm font-medium text-stone-700 dark:text-stone-300">今日为自由学习日</p>
-            <p className="text-xs text-stone-400 dark:text-stone-500">无必做任务，下一天已自动解锁</p>
+            <p className="text-sm font-medium text-stone-700 dark:text-stone-300">Free Study Day</p>
+            <p className="text-xs text-stone-400 dark:text-stone-500">No required tasks. Next day auto-unlocked.</p>
           </div>
         </div>
       )}
@@ -346,11 +346,11 @@ export function DayListView({ week, day }: { week: number; day: number }) {
       {bTier.length > 0 && (
         <TierSection
           tier="B"
-          label="建议补充"
+          label="Supplemental"
           accentCls="text-amber-700 dark:text-amber-300"
           headerBg="bg-amber-50 dark:bg-amber-900/20"
           borderCls="border-amber-100 dark:border-amber-900"
-          description={hasAFailed ? '有题目未通过，已自动展开——针对卡点补充练习' : 'A 层 < 75% 或概念卡点时使用'}
+          description={hasAFailed ? 'Some items failed — expanded for targeted practice' : 'Use when Tier A < 75% or stuck on a concept'}
           statusText=""
           resources={bTier}
           defaultOpen={false}
@@ -363,11 +363,11 @@ export function DayListView({ week, day }: { week: number; day: number }) {
       {cTier.length > 0 && (
         <TierSection
           tier="C"
-          label="拓展"
+          label="Extension"
           accentCls="text-stone-500 dark:text-stone-400"
           headerBg="bg-stone-50 dark:bg-stone-700"
           borderCls="border-stone-100 dark:border-stone-700"
-          description="100% 覆盖 / 二轮返工"
+          description="100% coverage / second pass"
           statusText=""
           resources={cTier}
           defaultOpen={false}
