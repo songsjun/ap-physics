@@ -106,7 +106,7 @@ export function SettingsClient() {
       <section className="bg-white dark:bg-stone-800 rounded-xl border border-stone-100 dark:border-stone-700 shadow-sm p-6 space-y-4">
         <div>
           <h2 className="font-semibold text-stone-900 dark:text-stone-100">Progress Backup</h2>
-          <p className="text-sm text-stone-500 dark:text-stone-400 mt-0.5">Export progress to a JSON file, or restore from a backup (overwrites current progress).</p>
+          <p className="text-sm text-stone-500 dark:text-stone-400 mt-0.5">Export progress to a JSON file, or import a backup into the current account. Import merges records and keeps newer saved progress.</p>
         </div>
         <div className="flex gap-2 flex-wrap">
           <button
@@ -130,7 +130,7 @@ export function SettingsClient() {
           />
         </div>
         {importStatus === 'success' && (
-          <p className="text-sm text-emerald-600">✓ Progress imported successfully. Refresh the page to see updates.</p>
+          <p className="text-sm text-emerald-600">Progress imported successfully. Refresh the page to see updates.</p>
         )}
         {importStatus === 'error' && (
           <p className="text-sm text-red-500">Import failed: {importError}</p>

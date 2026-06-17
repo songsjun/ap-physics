@@ -26,8 +26,6 @@
 
 import { readFileSync, writeFileSync, existsSync } from 'fs'
 import { spawnSync } from 'child_process'
-import { writeFile } from 'fs/promises'
-import { tmpdir } from 'os'
 import { join, dirname } from 'path'
 import { fileURLToPath } from 'url'
 import { parseArgs } from 'util'
