@@ -7,16 +7,12 @@ import { applyStoredTheme } from '@/components/AppInitializer'
 import { exportProgress, importProgress, downloadJson, type ExportData } from '@/lib/app/share'
 
 export function SettingsClient() {
-  const [apiKey, setApiKey] = useState('')
-  const [saved, setSaved] = useState(false)
   const [importStatus, setImportStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const [importError, setImportError] = useState('')
   const [theme, setTheme] = useState<ThemePreference>('system')
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
-    const key = StorageService.apiKey.get()
-    if (key) setApiKey(key)
     setTheme(StorageService.theme.get())
   }, [])
 
@@ -24,17 +20,6 @@ export function SettingsClient() {
     setTheme(t)
     StorageService.theme.save(t)
     applyStoredTheme()
-  }
-
-  function handleSave() {
-    const trimmed = apiKey.trim()
-    if (trimmed) {
-      StorageService.apiKey.save(trimmed)
-    } else {
-      StorageService.apiKey.clear()
-    }
-    setSaved(true)
-    setTimeout(() => setSaved(false), 2000)
   }
 
   async function handleExport() {
@@ -104,47 +89,16 @@ export function SettingsClient() {
         </div>
       </section>
 
-      {/* API Key */}
+      {/* AI gateway */}
       <section className="bg-white dark:bg-stone-800 rounded-xl border border-stone-100 dark:border-stone-700 shadow-sm p-6 space-y-4">
         <div>
-          <h2 className="font-semibold text-stone-900 dark:text-stone-100">Claude API Key</h2>
-          <p className="text-sm text-stone-500 dark:text-stone-400 mt-0.5">Used for personalized learning feedback. Your key is saved locally and never uploaded.</p>
+          <h2 className="font-semibold text-stone-900 dark:text-stone-100">AI Gateway</h2>
+          <p className="text-sm text-stone-500 dark:text-stone-400 mt-0.5">
+            AI grading and learning feedback are provided by the local AOPS AI Gateway. No model key is stored in the browser.
+          </p>
         </div>
-        <div className="flex gap-2">
-          <input
-            type="password"
-            value={apiKey}
-            onChange={e => setApiKey(e.target.value)}
-            onKeyDown={e => e.key === 'Enter' && handleSave()}
-            placeholder="sk-ant-..."
-            className="flex-1 border border-stone-200 dark:border-stone-600 dark:bg-stone-700 dark:text-stone-100 rounded-lg px-3 py-2 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-blue-300"
-          />
-          <button
-            onClick={handleSave}
-            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors"
-          >
-            {saved ? 'Saved ✓' : 'Save'}
-          </button>
-        </div>
-        {apiKey && (
-          <button
-            onClick={() => { StorageService.apiKey.clear(); setApiKey('') }}
-            className="text-xs text-red-400 hover:text-red-600 transition-colors"
-          >
-            Clear Key
-          </button>
-        )}
         <p className="text-xs text-stone-400 dark:text-stone-500">
-          Visit{' '}
-          <a
-            href="https://console.anthropic.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-400 hover:underline"
-          >
-            console.anthropic.com
-          </a>{' '}
-          to get your API Key (account required).
+          Local deployment requires the <code className="font-mono">aops_calculus</code> AI gateway and AP AI proxy to be running.
         </p>
       </section>
 

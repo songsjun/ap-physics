@@ -137,8 +137,7 @@ export function QuizPanel({ userId, week, day, conceptIds, onComplete, onExit }:
 
       // Subjective (short / feynman): show spinner and call AI.
       // Use an AbortController so the in-flight fetch is cancelled when the
-      // 15 s timeout fires or the component unmounts — without this the ghost
-      // fetch would continue in the background and consume a full API credit.
+      // 15 s timeout fires or the component unmounts.
       let gradingSucceeded = true
       setPhase('grading')
       const gradingAC = new AbortController()
@@ -150,11 +149,11 @@ export function QuizPanel({ userId, week, day, conceptIds, onComplete, onExit }:
         ),
       ]).catch((err: unknown) => {
         gradingSucceeded = false
-        const noApiKey = err instanceof Error && err.message === 'no-api-key'
+        const aiUnavailable = err instanceof Error && err.message.startsWith('ai-gateway')
         return {
           correct: false,
-          feedback: noApiKey
-            ? 'This question requires AI grading. Please go to Settings and configure your Claude API Key.'
+          feedback: aiUnavailable
+            ? 'This question requires AI grading. Please confirm the local AI gateway and AP AI proxy are running.'
             : q.explanation || 'Grading timed out. Please refer to the question explanation.',
         }
       })
