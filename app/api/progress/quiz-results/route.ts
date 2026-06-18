@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from 'next/server'
 
 import { AuthError, requireStudent, unauthorized } from '@/lib/server/auth'
-import { listQuizResults, saveQuizResultForUser } from '@/lib/server/progress'
+import { listQuizResults, resetQuizResultsForDay, saveQuizResultForUser } from '@/lib/server/progress'
 
 export const runtime = 'nodejs'
 
@@ -28,6 +28,22 @@ export async function PUT(request: NextRequest) {
     const student = await requireStudent()
     const body = await request.json()
     return NextResponse.json({ quizResult: await saveQuizResultForUser(student.id, body) })
+  } catch (error) {
+    if (error instanceof AuthError) return unauthorized()
+    return NextResponse.json({ error: 'bad_request' }, { status: 400 })
+  }
+}
+
+export async function DELETE(request: NextRequest) {
+  try {
+    const student = await requireStudent()
+    const week = intParam(request.nextUrl.searchParams.get('week'))
+    const day = intParam(request.nextUrl.searchParams.get('day'))
+    if (week === undefined || day === undefined) {
+      return NextResponse.json({ error: 'bad_day' }, { status: 400 })
+    }
+    await resetQuizResultsForDay(student.id, week, day)
+    return NextResponse.json({ ok: true })
   } catch (error) {
     if (error instanceof AuthError) return unauthorized()
     return NextResponse.json({ error: 'bad_request' }, { status: 400 })

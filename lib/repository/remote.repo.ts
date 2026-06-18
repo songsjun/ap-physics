@@ -229,6 +229,13 @@ export class RemoteProgressRepository extends DexieRepository {
     return this.overlayPendingQuizResults(data.quizResults)
   }
 
+  async resetQuizResultsForDay(_userId: string, week: number, day: number): Promise<void> {
+    void _userId
+    await requestJson(`/api/progress/quiz-results?week=${week}&day=${day}`, {
+      method: 'DELETE',
+    })
+  }
+
   async saveFRQCompletion(completion: FRQCompletion): Promise<void> {
     if (this.pendingTransaction) {
       this.pendingTransaction.frqCompletions.push(completion)

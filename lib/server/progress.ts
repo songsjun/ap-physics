@@ -304,6 +304,54 @@ export async function listQuizResults(userId: string, week?: number, day?: numbe
   return rows.map(quizResultFromRow)
 }
 
+export async function resetQuizResultsForDay(userId: string, week: number, day: number): Promise<void> {
+  await ensureSchema()
+  if (!Number.isInteger(week) || !Number.isInteger(day)) throw new Error('bad_day')
+
+  await transaction(async client => {
+    const deletedAttempts = await client.query<{ question_id: string }>(
+      `DELETE FROM quiz_result_attempts
+       WHERE user_id = $1 AND week = $2 AND day = $3
+       RETURNING question_id`,
+      [userId, week, day],
+    )
+    const deletedLatest = await client.query<{ question_id: string }>(
+      `DELETE FROM quiz_results
+       WHERE user_id = $1 AND week = $2 AND day = $3
+       RETURNING question_id`,
+      [userId, week, day],
+    )
+
+    const questionIds = Array.from(new Set([
+      ...deletedAttempts.rows.map(row => row.question_id),
+      ...deletedLatest.rows.map(row => row.question_id),
+    ]))
+    if (questionIds.length === 0) return
+
+    await client.query(
+      `DELETE FROM quiz_results
+       WHERE user_id = $1 AND question_id = ANY($2::text[])`,
+      [userId, questionIds],
+    )
+
+    await client.query(
+      `INSERT INTO quiz_results
+         (id, user_id, question_id, concept_ids, week, day, correct, student_answer, answered_at, question_type, difficulty)
+       SELECT id, user_id, question_id, concept_ids, week, day, correct, student_answer, answered_at, question_type, difficulty
+       FROM (
+         SELECT DISTINCT ON (question_id)
+           COALESCE(client_result_id, user_id || '-' || question_id || '-' || answered_at::text) AS id,
+           user_id, question_id, concept_ids, week, day, correct, student_answer, answered_at, question_type, difficulty,
+           attempt_id
+         FROM quiz_result_attempts
+         WHERE user_id = $1 AND question_id = ANY($2::text[])
+         ORDER BY question_id, answered_at DESC, attempt_id DESC
+       ) latest`,
+      [userId, questionIds],
+    )
+  })
+}
+
 export async function saveQuizResultForUser(userId: string, input: unknown): Promise<QuizResult> {
   await ensureSchema()
   return transaction(client => saveQuizResultWithClient(client, userId, input))
