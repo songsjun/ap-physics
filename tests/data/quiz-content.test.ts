@@ -10,26 +10,17 @@ const questions = JSON.parse(
   readFileSync(join(__dirname, '../../public/quiz-bank.json'), 'utf8')
 ) as QuizQuestion[]
 
-// Phrases that introduce distractor analysis — the letter(s) immediately following
-// indicate the WRONG options. If the correct answer letter appears here, it's a bug.
-const DISTRACTOR_PATTERNS = [
-  /([A-D])[、，]?\s*错误/g,
-  /([A-D])[、，]?\s*混淆/g,
-  /([A-D])[、，]?\s*只考虑/g,
-  /([A-D])[、，]?\s*忽略/g,
-  /([A-D])[、，]?\s*认为.*错/g,
-]
+const CJK_RE = /[\u3400-\u9fff]/
 
-function extractDistractorLetters(explanation: string): Set<string> {
-  const blamed = new Set<string>()
-  for (const pattern of DISTRACTOR_PATTERNS) {
-    const re = new RegExp(pattern.source, pattern.flags)
-    let m: RegExpExecArray | null
-    while ((m = re.exec(explanation)) !== null) {
-      blamed.add(m[1])
-    }
-  }
-  return blamed
+function visibleFields(q: QuizQuestion): Array<[string, string]> {
+  const fields: Array<[string, string]> = [
+    ['question', q.question],
+    ['answer', q.answer],
+    ['grading_rubric', q.grading_rubric],
+    ['explanation', q.explanation],
+  ]
+  q.options?.forEach((option, index) => fields.push([`options[${index}]`, option]))
+  return fields
 }
 
 // ── Structural integrity ───────────────────────────────────────────────────────
@@ -76,6 +67,9 @@ describe('quiz bank — structural integrity', () => {
       if (q.type === 'mcq') {
         expect(q.options, `MCQ question ${q.id} missing options`).toBeDefined()
         expect(q.options!.length, `MCQ question ${q.id} must have 4 options`).toBe(4)
+        for (const option of q.options!) {
+          expect(option.trim(), `MCQ question ${q.id} has an empty option`).not.toBe('')
+        }
       }
     }
   })
@@ -91,53 +85,32 @@ describe('quiz bank — structural integrity', () => {
   })
 })
 
-// ── Semantic integrity — answer vs explanation consistency ─────────────────────
+// ── Runtime and language contract ──────────────────────────────────────────────
 
-describe('quiz bank — semantic integrity (answer vs explanation)', () => {
-  it('MCQ answer is one of the option labels (A/B/C/D)', () => {
+describe('quiz bank — runtime and language contract', () => {
+  it('MCQ answer exactly matches one rendered option', () => {
     for (const q of questions) {
       if (q.type !== 'mcq' || !q.options) continue
-      const answerLetter = q.answer.trim().charAt(0).toUpperCase()
-      const validLetters = q.options.map(opt => opt.trim().charAt(0).toUpperCase())
       expect(
-        validLetters,
-        `Question ${q.id}: answer="${q.answer}" is not one of the option labels ${validLetters.join('/')}`,
-      ).toContain(answerLetter)
+        q.options.map(option => option.trim().toLowerCase()),
+        `Question ${q.id}: answer must exactly match one rendered option because QuizPanel grades by selected option text`,
+      ).toContain(q.answer.trim().toLowerCase())
     }
   })
 
-  it('the correct answer letter is not blamed in distractor analysis phrases', () => {
-    const failures: string[] = []
+  it('all user-visible quiz text is English-only', () => {
     for (const q of questions) {
-      if (q.type !== 'mcq') continue
-      const correctLetter = q.answer.trim().charAt(0).toUpperCase()
-      const blamed = extractDistractorLetters(q.explanation)
-      if (blamed.has(correctLetter)) {
-        failures.push(
-          `Question ${q.id}: correct answer is "${correctLetter}" but explanation blames "${correctLetter}" as wrong (distractor mention found)`
-        )
+      for (const [field, value] of visibleFields(q)) {
+        expect(CJK_RE.test(value), `Question ${q.id}: ${field} still contains CJK text`).toBe(false)
       }
     }
-    expect(failures, failures.join('\n')).toHaveLength(0)
   })
 
-  it('every MCQ explanation mentions the correct answer as correct (contains answer letter + "正确")', () => {
-    const missing: string[] = []
+  it('all objective questions include grading guidance and feedback', () => {
     for (const q of questions) {
-      if (q.type !== 'mcq') continue
-      const correctLetter = q.answer.trim().charAt(0).toUpperCase()
-      const confirmsCorrect =
-        q.explanation.includes(`${correctLetter}正确`) ||
-        q.explanation.includes(`选${correctLetter}`) ||
-        q.explanation.includes(`答案是${correctLetter}`) ||
-        q.explanation.includes(`答案为${correctLetter}`)
-      if (!confirmsCorrect) {
-        missing.push(`${q.id} (answer=${correctLetter})`)
-      }
-    }
-    // Warning-level check — conventions vary, surfaces gaps without hard failing.
-    if (missing.length > 0) {
-      console.warn(`[quiz-content] ${missing.length} questions don't explicitly confirm the correct answer in explanation:\n  ${missing.join('\n  ')}`)
+      if (!['mcq', 'fill'].includes(q.type)) continue
+      expect(q.grading_rubric.trim().length, `Question ${q.id}: missing grading rubric`).toBeGreaterThan(0)
+      expect(q.explanation.trim().length, `Question ${q.id}: missing explanation`).toBeGreaterThan(0)
     }
   })
 })
