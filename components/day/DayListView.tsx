@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useDayContext } from '@/lib/app/session-context'
 import { useDayResources } from '@/lib/app/useDayResources'
 import type { Resource, KnowledgePoint, DailyFeedback } from '@/lib/types'
@@ -114,13 +114,17 @@ export function DayListView({ week, day }: { week: number; day: number }) {
     challengeResults,
     availableQuestions,
     quizChecked,
+    challengeResetting,
+    challengeError,
     setChallengeStatus,
     onChallengeComplete,
+    resetChallenge,
   } = useDayResources(userId, week, day, flowState)
 
   // id of resource currently in score-input mode
   const [scoringId, setScoringId] = useState<string | null>(null)
   const feedbackRequestedRef = useRef(false)
+  const retryPhaseKeyRef = useRef<string | null>(null)
   const [retryCount, setRetryCount] = useState(0)
 
   // Reset per-day state when navigating to a different day (same component instance via client routing)
@@ -147,30 +151,16 @@ export function DayListView({ week, day }: { week: number; day: number }) {
     }
   }, [flowState.phase, dispatch])
 
-  // Track current phase in a ref so the cleanup below can distinguish StrictMode
-  // double-invoke (phase unchanged) from a real phase transition away from NEEDS_RETRY.
-  const phaseRef = useRef(flowState.phase)
-  useLayoutEffect(() => {
-    phaseRef.current = flowState.phase
-  })
-
-  // Increment per-day retry counter in localStorage when landing in NEEDS_RETRY.
-  // On StrictMode double-invoke: cleanup sees phase still NEEDS_RETRY → restores counter.
-  // On real transition out of NEEDS_RETRY: cleanup sees new phase → clears counter so
-  // next visit to this day starts fresh (prevents "skip" button appearing immediately).
   useEffect(() => {
-    if (flowState.phase !== 'NEEDS_RETRY') return
-    const key = `needs_retry_${week}_${day}`
-    const prev = parseInt(localStorage.getItem(key) ?? '0', 10)
-    const next = prev + 1
-    localStorage.setItem(key, String(next))
-    setRetryCount(next)
-    return () => {
-      if (phaseRef.current === 'NEEDS_RETRY') {
-        localStorage.setItem(key, String(prev))
-      } else {
-        localStorage.removeItem(key)
+    const key = `${week}:${day}`
+    if (flowState.phase === 'NEEDS_RETRY') {
+      if (retryPhaseKeyRef.current !== key) {
+        retryPhaseKeyRef.current = key
+        setRetryCount(count => count + 1)
       }
+    } else {
+      retryPhaseKeyRef.current = null
+      setRetryCount(0)
     }
   }, [week, day, flowState.phase])
 
@@ -205,7 +195,7 @@ export function DayListView({ week, day }: { week: number; day: number }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [resources],
   )
-  const handleQuizExit = useCallback(() => setChallengeStatus('skipped'), [setChallengeStatus])
+  const handleQuizExit = useCallback(() => setChallengeStatus('prompt'), [setChallengeStatus])
 
   if (loading) {
     return <DaySkeleton />
@@ -279,17 +269,15 @@ export function DayListView({ week, day }: { week: number; day: number }) {
       )}
 
       {/* Challenge system */}
-      {flowState.phase === 'COMPLETE' && challengeStatus === 'prompt' && availableQuestions > 0 && (
+      {challengeStatus === 'prompt' && (
         <ChallengePrompt
-          week={week}
-          day={day}
           questionCount={availableQuestions}
+          ready={quizChecked}
           onStart={() => setChallengeStatus('active')}
-          onSkip={() => setChallengeStatus('skipped')}
         />
       )}
 
-      {flowState.phase === 'COMPLETE' && challengeStatus === 'active' && (
+      {challengeStatus === 'active' && (
         <QuizPanel
           userId={userId}
           week={week}
@@ -300,17 +288,28 @@ export function DayListView({ week, day }: { week: number; day: number }) {
         />
       )}
 
-      {flowState.phase === 'COMPLETE' && challengeStatus === 'done' && challengeResults.length > 0 && (
-        <div className="bg-white border border-stone-100 rounded-xl px-4 py-3">
-          <p className="text-xs text-stone-500">
+      {challengeStatus === 'done' && challengeResults.length > 0 && (
+        <div className="bg-white border border-stone-100 rounded-xl px-4 py-3 flex items-center justify-between gap-3">
+          <p className="text-xs text-stone-500 min-w-0">
             ⚡ Today&apos;s Challenge: {challengeResults.filter(r => r.correct).length} / {challengeResults.length} correct
           </p>
+          <button
+            onClick={resetChallenge}
+            disabled={challengeResetting}
+            className={`shrink-0 text-xs rounded-lg border px-3 py-1.5 transition-colors ${
+              challengeResetting
+                ? 'border-stone-100 text-stone-300 cursor-not-allowed'
+                : 'border-stone-200 text-stone-500 hover:text-stone-700 hover:bg-stone-50'
+            }`}
+          >
+            {challengeResetting ? 'Resetting...' : 'Reset'}
+          </button>
         </div>
       )}
 
-      {flowState.phase === 'COMPLETE' && challengeStatus === 'prompt' && quizChecked && availableQuestions === 0 && (
-        <div className="bg-stone-50 border border-stone-100 rounded-xl px-4 py-3">
-          <p className="text-xs text-stone-400">⚡ All related questions completed. Keep studying new content to unlock more.</p>
+      {challengeError && (
+        <div className="bg-red-50 border border-red-100 rounded-xl px-4 py-3">
+          <p className="text-xs text-red-600">{challengeError}</p>
         </div>
       )}
 
@@ -322,7 +321,7 @@ export function DayListView({ week, day }: { week: number; day: number }) {
           accentCls="text-blue-700 dark:text-blue-300"
           headerBg="bg-blue-50 dark:bg-blue-900/20"
           borderCls="border-blue-100 dark:border-blue-900"
-          description={`~${aTotalMin} min · then ~${QUIZ_ESTIMATED_MINUTES} min challenge`}
+          description={`~${aTotalMin} min · ~${QUIZ_ESTIMATED_MINUTES} min challenge available`}
           statusText={`${aPassed}/${aTier.length} done${passRate !== null ? `  ·  ${Math.round(passRate * 100)}%` : ''}`}
           resources={aTier}
           defaultOpen

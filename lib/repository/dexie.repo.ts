@@ -135,6 +135,14 @@ export class DexieRepository implements IRepository {
     return db.quiz_results.where('user_id').equals(userId).toArray()
   }
 
+  async resetQuizResultsForDay(userId: string, week: number, day: number): Promise<void> {
+    const db = getDb()
+    await db.quiz_results
+      .where('[user_id+week+day]')
+      .equals([userId, week, day])
+      .delete()
+  }
+
   async saveFRQCompletion(completion: FRQCompletion): Promise<void> {
     const db = getDb()
     // Wrap the read-modify-write in a transaction so concurrent calls (e.g., rapid

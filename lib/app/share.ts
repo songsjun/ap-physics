@@ -1,4 +1,4 @@
-import { getDb, type DayUnlock } from '@/lib/infra/db'
+import { repo as defaultRepo, type IRepository } from '@/lib/repository'
 import type { Completion, QuizResult } from '@/lib/types'
 
 // ── Type guards ──────────────────────────────────────────────────────────────
@@ -44,6 +44,10 @@ function isQuizQuestionType(v: unknown): v is QuizQuestionType {
   return typeof v === 'string' && (QUIZ_QUESTION_TYPES as readonly string[]).includes(v)
 }
 
+function isQuizDifficulty(v: unknown): v is QuizResult['difficulty'] {
+  return v === 1 || v === 2 || v === 3
+}
+
 function isValidQuizResult(r: unknown): r is QuizResult {
   if (typeof r !== 'object' || r === null) return false
   const obj = r as Record<string, unknown>
@@ -56,9 +60,21 @@ function isValidQuizResult(r: unknown): r is QuizResult {
     typeof obj.correct === 'boolean' &&
     typeof obj.student_answer === 'string' &&
     typeof obj.answered_at === 'string' && !isNaN(Date.parse(obj.answered_at)) &&
-    (obj.question_type === undefined || isQuizQuestionType(obj.question_type))
+    (obj.question_type === undefined || isQuizQuestionType(obj.question_type)) &&
+    (obj.difficulty === undefined || isQuizDifficulty(obj.difficulty))
   )
 }
+
+type ProgressShareRepository = Pick<
+  IRepository,
+  | 'getAllUserCompletions'
+  | 'getUnlockedDays'
+  | 'getAllQuizResultsForUser'
+  | 'transact'
+  | 'saveCompletion'
+  | 'unlockDay'
+  | 'saveQuizResult'
+>
 
 // ── ExportData ───────────────────────────────────────────────────────────────
 
@@ -71,28 +87,46 @@ export interface ExportData {
   quiz_results?: QuizResult[]   // added in version 2; optional for forward compatibility
 }
 
+interface DayUnlock {
+  user_id: string
+  week: number
+  day: number
+  unlocked_at: string
+}
+
 // ── exportProgress ───────────────────────────────────────────────────────────
 
-export async function exportProgress(userId: string): Promise<ExportData> {
-  const db = getDb()
-  const [completions, dayUnlocks, quiz_results] = await Promise.all([
-    db.completions.where('user_id').equals(userId).toArray(),
-    db.day_unlocks.where('user_id').equals(userId).toArray(),
-    db.quiz_results.where('user_id').equals(userId).toArray(),
+export async function exportProgress(
+  userId: string,
+  progressRepo: ProgressShareRepository = defaultRepo,
+): Promise<ExportData> {
+  const [completions, unlockedDays, quiz_results] = await Promise.all([
+    progressRepo.getAllUserCompletions(userId),
+    progressRepo.getUnlockedDays(userId),
+    progressRepo.getAllQuizResultsForUser(userId),
   ])
   return {
     version: 2,
     exportedAt: new Date().toISOString(),
     userId,
     completions,
-    dayUnlocks,
+    dayUnlocks: unlockedDays.map(day => ({
+      user_id: userId,
+      week: day.week,
+      day: day.day,
+      unlocked_at: new Date().toISOString(),
+    })),
     quiz_results,
   }
 }
 
 // ── importProgress ───────────────────────────────────────────────────────────
 
-export async function importProgress(userId: string, data: ExportData): Promise<void> {
+export async function importProgress(
+  userId: string,
+  data: ExportData,
+  progressRepo: ProgressShareRepository = defaultRepo,
+): Promise<void> {
   if (data.version !== 1 && data.version !== 2) throw new Error('不支持的数据版本')
   if (!Array.isArray(data.completions) || !Array.isArray(data.dayUnlocks)) {
     throw new Error('数据格式错误：completions 或 dayUnlocks 不是数组')
@@ -106,47 +140,38 @@ export async function importProgress(userId: string, data: ExportData): Promise<
   const rawQuizResults: unknown[] = Array.isArray(data.quiz_results) ? data.quiz_results : []
   const validQuizResults = rawQuizResults.filter(isValidQuizResult)
 
-  const db = getDb()
-  await db.transaction('rw', db.completions, db.day_unlocks, db.quiz_results, async () => {
-    // Clear existing records for this user
-    await db.completions.where('user_id').equals(userId).delete()
-    await db.day_unlocks.where('user_id').equals(userId).delete()
-    await db.quiz_results.where('user_id').equals(userId).delete()
+  await progressRepo.transact(async () => {
+    for (const c of validCompletions) {
+      await progressRepo.saveCompletion({
+        user_id: userId,
+        resource_id: c.resource_id,
+        status: c.status,
+        score: c.score,
+        score_max: c.score_max,
+        ai_feedback: c.ai_feedback,
+        completed_at: c.completed_at,
+      })
+    }
 
-    // Re-stamp user_id from the authenticated session — never trust the payload's user_id
-    const completions: Completion[] = validCompletions.map(c => ({
-      user_id: userId,
-      resource_id: c.resource_id,
-      status: c.status,
-      score: c.score,
-      score_max: c.score_max,
-      ai_feedback: c.ai_feedback,
-      completed_at: c.completed_at,
-    }))
+    for (const u of validUnlocks) {
+      await progressRepo.unlockDay(userId, u.week, u.day)
+    }
 
-    const unlocks: DayUnlock[] = validUnlocks.map(u => ({
-      user_id: userId,
-      week: u.week,
-      day: u.day,
-      unlocked_at: u.unlocked_at,
-    }))
-
-    const quizResults: QuizResult[] = validQuizResults.map(r => ({
-      id: `${userId}-${r.question_id}-${r.answered_at}`,
-      user_id: userId,
-      question_id: r.question_id,
-      concept_ids: r.concept_ids,
-      week: r.week,
-      day: r.day,
-      correct: r.correct,
-      student_answer: r.student_answer,
-      answered_at: r.answered_at,
-      question_type: r.question_type,
-    }))
-
-    await db.completions.bulkPut(completions)
-    await db.day_unlocks.bulkPut(unlocks)
-    await db.quiz_results.bulkPut(quizResults)
+    for (const r of validQuizResults) {
+      await progressRepo.saveQuizResult({
+        id: `${userId}-${r.question_id}-${r.answered_at}`,
+        user_id: userId,
+        question_id: r.question_id,
+        concept_ids: r.concept_ids,
+        week: r.week,
+        day: r.day,
+        correct: r.correct,
+        student_answer: r.student_answer,
+        answered_at: r.answered_at,
+        question_type: r.question_type,
+        difficulty: r.difficulty,
+      })
+    }
   })
 }
 

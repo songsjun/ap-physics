@@ -1,12 +1,12 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { repo } from '@/lib/repository'
 import { selectDailyQuestions } from '@/lib/app/quiz'
 import { DAILY_CHALLENGE_QUESTION_COUNT } from '@/lib/constants'
 import type { Resource, Completion, KnowledgePoint, FlowState, QuizResult } from '@/lib/types'
 
-export type ChallengeStatus = 'prompt' | 'active' | 'done' | 'skipped'
+export type ChallengeStatus = 'prompt' | 'active' | 'done'
 
 export interface DayResourcesState {
   resources: Resource[]
@@ -17,8 +17,11 @@ export interface DayResourcesState {
   challengeResults: QuizResult[]
   availableQuestions: number
   quizChecked: boolean
+  challengeResetting: boolean
+  challengeError: string | null
   setChallengeStatus: (s: ChallengeStatus) => void
   onChallengeComplete: (results: QuizResult[]) => void
+  resetChallenge: () => Promise<void>
 }
 
 export function useDayResources(
@@ -36,14 +39,23 @@ export function useDayResources(
   const [challengeResults, setChallengeResults] = useState<QuizResult[]>([])
   const [availableQuestions, setAvailableQuestions] = useState(0)
   const [quizChecked, setQuizChecked] = useState(false)
+  const [challengeResetting, setChallengeResetting] = useState(false)
+  const [challengeError, setChallengeError] = useState<string | null>(null)
 
   // One-time load: resources, kpMap, quiz status
   useEffect(() => {
     let cancelled = false
     const load = async () => {
+      setLoading(true)
+      setChallengeStatus('prompt')
+      setChallengeResults([])
+      setAvailableQuestions(0)
+      setQuizChecked(false)
+      setChallengeError(null)
       if (!userId) return
       const allRes = await repo.getAllDayResources(week, day)
       if (cancelled) return
+      const challengeConceptIds = [...new Set(allRes.filter(r => r.tier === 'A').flatMap(r => r.concepts))]
       const conceptIds = [...new Set(allRes.flatMap(r => r.concepts))]
       const kps = await repo.getKnowledgePoints(conceptIds)
       if (cancelled) return
@@ -58,8 +70,9 @@ export function useDayResources(
       if (existingResults.length > 0) {
         setChallengeStatus('done')
         setChallengeResults(existingResults)
+        setQuizChecked(true)
       } else {
-        const questions = await selectDailyQuestions(userId, week, day, conceptIds, DAILY_CHALLENGE_QUESTION_COUNT)
+        const questions = await selectDailyQuestions(userId, week, day, challengeConceptIds, DAILY_CHALLENGE_QUESTION_COUNT)
         if (!cancelled) {
           setAvailableQuestions(questions.length)
           setQuizChecked(true)
@@ -90,9 +103,30 @@ export function useDayResources(
   }, [week, day, userId, flowState])
 
   const onChallengeComplete = (results: QuizResult[]) => {
+    setChallengeError(null)
     setChallengeResults(results)
     setChallengeStatus('done')
   }
+
+  const resetChallenge = useCallback(async () => {
+    if (!userId) return
+    setChallengeResetting(true)
+    setChallengeError(null)
+    try {
+      await repo.resetQuizResultsForDay(userId, week, day)
+      const conceptIds = [...new Set(resources.filter(r => r.tier === 'A').flatMap(r => r.concepts))]
+      const questions = await selectDailyQuestions(userId, week, day, conceptIds, DAILY_CHALLENGE_QUESTION_COUNT)
+      setChallengeResults([])
+      setAvailableQuestions(questions.length)
+      setQuizChecked(true)
+      setChallengeStatus('prompt')
+    } catch (error) {
+      console.error(error)
+      setChallengeError('Could not reset the challenge. Check your login or connection and try again.')
+    } finally {
+      setChallengeResetting(false)
+    }
+  }, [day, resources, userId, week])
 
   return {
     resources,
@@ -103,7 +137,10 @@ export function useDayResources(
     challengeResults,
     availableQuestions,
     quizChecked,
+    challengeResetting,
+    challengeError,
     setChallengeStatus,
     onChallengeComplete,
+    resetChallenge,
   }
 }

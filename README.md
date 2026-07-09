@@ -4,20 +4,32 @@ AP Physics 1 的本地优先学习编排器，把 Khan Academy、OpenStax、PhET
 
 ## 技术栈
 
-- **框架**: Next.js (App Router, `output: 'export'` 纯静态)
-- **数据库**: Dexie.js 4.4.2 (IndexedDB)
-- **AI**: Anthropic Claude API (浏览器直调，Key 存 localStorage)
+- **框架**: Next.js (App Router, 本地服务模式)
+- **数据库**: PostgreSQL（学生身份与学习记录）+ Dexie.js（本地课程内容缓存）
+- **AI**: 本地 AOPS AI Gateway / AP AI proxy
 - **样式**: Tailwind CSS
-- **部署**: Cloudflare Pages / GitHub Pages
+- **运行方式**: 本地 Node.js 服务 + PostgreSQL
 
 ## 快速开始
 
 ```bash
 npm install
+cp .env.example .env
+# 编辑 .env：非开发环境必须设置真实 SESSION_SECRET
+createdb ap_physics
+npm run db:schema
+npm run student:create -- --name "Student Name"
 npm run dev      # http://localhost:3000
-npm run build    # 生成 out/ 静态产物
-npx vitest run   # 运行单元测试
+npm run build
+npm test         # 运行单元测试
 ```
+
+`npm run db:schema`、`npm run student:create` 和 Next.js 运行时都会按 Next 的 `.env*` 规则加载环境变量。常用变量：
+
+- `DATABASE_URL` / `POSTGRES_URL`: PostgreSQL 连接串，默认 `postgres://localhost:5432/ap_physics`
+- `SESSION_SECRET`: session cookie 签名密钥；生产环境缺失或仍是示例占位值会启动失败
+- `ACCESS_CODE_LOOKUP_SECRET`: access code 查询 HMAC 密钥；缺失时使用 `SESSION_SECRET`
+- `SESSION_TTL_SECONDS`: session 有效期，默认 14 天
 
 ## 项目结构
 
@@ -74,6 +86,8 @@ ap-physics-app/
 
 ## 数据说明
 
-- 用户进度存 IndexedDB（Dexie PhysicsLearningDB v4），设备绑定
-- API Key 存 localStorage，不上传任何服务器
+- 学生必须使用后台生成的 access code 登录
+- 学生身份、资源完成记录、每日挑战题答题内容、FRQ 分数和解锁状态存入本地 PostgreSQL
+- 课程资源与题库仍缓存到 IndexedDB（Dexie PhysicsLearningDB v4），用于离线读取静态内容
+- AI 服务通过本地 gateway 调用，不在浏览器保存模型密钥
 - `LIBRARY_VERSION` / `QUIZ_BANK_VERSION` 变更时客户端自动重新 seed

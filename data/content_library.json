@@ -1,5 +1,6 @@
 {
   "metadata": {
+    "version": "1.5.4",
     "course": "AP Physics 1",
     "ced_version": "Fall 2024",
     "generated": "2026-05-18"
@@ -831,12 +832,12 @@
   "resources": [
     {
       "id": "khan-intro-scalars-vectors",
-      "title": "Introduction to Vectors and Scalars",
-      "url": "https://www.khanacademy.org/science/highschool-physics/x6679aa2c65c01e53:motion-and-forces/x6679aa2c65c01e53:describing-motion/v/introduction-to-vectors-and-scalars",
-      "type": "video",
+      "title": "Learn and try: Scalars and vectors",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:kinematics/xf557a762645cccc5:scalars-and-vectors-in-1d/a/scalars-and-vectors",
+      "type": "reading",
       "platform": "khan",
       "tier": "A",
-      "estimated_minutes": 12,
+      "estimated_minutes": 8,
       "concepts": [
         "kinematics-scalars-vectors-1d"
       ],
@@ -845,8 +846,8 @@
     },
     {
       "id": "khan-motion-variables",
-      "title": "Understand: motion variables",
-      "url": "https://www.khanacademy.org/science/highschool-physics/x6679aa2c65c01e53:motion-and-forces/x6679aa2c65c01e53:describing-motion/e/understand-motion-variables",
+      "title": "Scalars and vectors",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:kinematics/xf557a762645cccc5:scalars-and-vectors-in-1d/e/scalars-and-vectors",
       "type": "exercise",
       "platform": "khan",
       "tier": "A",
@@ -888,8 +889,8 @@
     },
     {
       "id": "khan-constant-speed-motion",
-      "title": "Apply: constant speed motion",
-      "url": "https://www.khanacademy.org/science/highschool-physics/x6679aa2c65c01e53:motion-and-forces/x6679aa2c65c01e53:describing-motion/e/apply-constant-speed-motion",
+      "title": "1D motion calculations",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:kinematics/xf557a762645cccc5:mathematical-models-of-motion/e/position-acceleration-and-velocity",
       "type": "exercise",
       "platform": "khan",
       "tier": "A",
@@ -902,8 +903,8 @@
     },
     {
       "id": "khan-accelerated-motion",
-      "title": "Apply: accelerated motion",
-      "url": "https://www.khanacademy.org/science/highschool-physics/x6679aa2c65c01e53:motion-and-forces/x6679aa2c65c01e53:describing-motion/e/apply-accelerated-motion",
+      "title": "Finding displacement from velocity graphs",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:kinematics/xf557a762645cccc5:visual-models-of-motion/e/v-t-area-displacement",
       "type": "exercise",
       "platform": "khan",
       "tier": "A",
@@ -1088,7 +1089,7 @@
     {
       "id": "khan-relative-velocity",
       "title": "Relative velocity",
-      "url": "https://en.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:kinematics/xf557a762645cccc5:scalars-and-vectors-in-1d/v/intro-to-relative-velocity-class-11-india-physics-khan-academy",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:kinematics/xf557a762645cccc5:scalars-and-vectors-in-1d/v/intro-to-relative-velocity-class-11-india-physics-khan-academy",
       "type": "video",
       "platform": "khan",
       "tier": "B",
@@ -1159,9 +1160,9 @@
     },
     {
       "id": "khan-newton1-video",
-      "title": "Newton's First Law of Motion",
-      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:force-and-translational-dynamics/xf557a762645cccc5:newtons-first-law/v/newtons-first-law-of-motion",
-      "type": "video",
+      "title": "Learn and try: Newton's first and second laws",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:force-and-translational-dynamics/xf557a762645cccc5:forces-and-acceleration/a/what-is-newtons-second-law",
+      "type": "reading",
       "platform": "khan",
       "tier": "A",
       "estimated_minutes": 8,
@@ -1173,8 +1174,8 @@
     },
     {
       "id": "khan-newton1-exercise",
-      "title": "Newton's First Law exercise",
-      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:force-and-translational-dynamics/xf557a762645cccc5:newtons-first-law/e/newtons-first-law",
+      "title": "Inertial and gravitational mass",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:force-and-translational-dynamics/xf557a762645cccc5:gravitational-force/e/newton-s-first-law",
       "type": "exercise",
       "platform": "khan",
       "tier": "A",
@@ -1329,8 +1330,8 @@
     },
     {
       "id": "khan-circular-motion-exercise",
-      "title": "Circular motion exercise",
-      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:force-and-translational-dynamics/xf557a762645cccc5:circular-motion/e/circular-motion-ap1",
+      "title": "Circular motion",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:force-and-translational-dynamics/xf557a762645cccc5:circular-motion/e/free-body-diagrams-for-uniform-circular-motion",
       "type": "exercise",
       "platform": "khan",
       "tier": "A",
@@ -1645,8 +1646,8 @@
     },
     {
       "id": "khan-rotational-kinematics-exercise",
-      "title": "Rotational kinematics exercise",
-      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:simple-harmonic-motion-and-rotational-motion/xf557a762645cccc5:rotational-kinematics/e/rotational-kinematics",
+      "title": "Connecting linear and rotational motion",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:torque-and-rotational-dynamics/xf557a762645cccc5:untitled-320/e/rotational-kinematics",
       "type": "exercise",
       "platform": "khan",
       "tier": "A",
@@ -4713,7 +4714,7 @@
     {
       "id": "khan-analyzing-systems-video",
       "title": "Analyzing systems",
-      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:force-and-translational-dynamics/xf557a762645cccc5:forces-and-acceleration/v/analyzing-systems",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:force-and-translational-dynamics/xf557a762645cccc5:forces-and-acceleration/v/two-masses-hanging-from-a-pulley",
       "type": "video",
       "platform": "khan",
       "tier": "A",
@@ -4932,8 +4933,8 @@
     },
     {
       "id": "khan-rotational-inertia-exercise",
-      "title": "Rotational inertia exercise",
-      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:torque-and-rotational-dynamics/xf557a762645cccc5:rotational-inertia/e/rotational-inertia-ap1",
+      "title": "Rotational inertia",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:torque-and-rotational-dynamics/xf557a762645cccc5:newton-s-second-law-in-rotational-form/e/multiple-torques-and-rotation",
       "description": "Calculate moment of inertia for point masses and simple rigid bodies; apply rotational inertia to predict angular acceleration.",
       "type": "exercise",
       "platform": "khan",
@@ -4963,9 +4964,9 @@
     },
     {
       "id": "khan-torque-work-exercise",
-      "title": "Rotational work and energy exercise",
-      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:energy-and-momentum-of-rotating-systems/xf557a762645cccc5:rotational-work/e/rotational-work-ap1",
-      "description": "Apply W = τΔθ to calculate work done by a torque; use the rotational work-energy theorem to find changes in rotational kinetic energy.",
+      "title": "Energy and momentum of rotating systems: Quiz 1",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:energy-and-momentum-of-rotating-systems/xf557a762645cccc5:angular-momentum/quiz/xf557a762645cccc5:energy-and-momentum-of-rotating-systems-quiz-1",
+      "description": "Unit 6 checkpoint covering rotational kinetic energy, torque transfer, and angular momentum relationships.",
       "type": "exercise",
       "platform": "khan",
       "tier": "A",
@@ -5008,8 +5009,8 @@
     },
     {
       "id": "khan-orbiting-satellites-video",
-      "title": "Orbiting Satellites and Angular Momentum",
-      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:energy-and-momentum-of-rotating-systems/xf557a762645cccc5:conservation-of-angular-momentum/v/angular-momentum-of-orbiting-satellites",
+      "title": "Angular momentum of satellites",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:energy-and-momentum-of-rotating-systems/xf557a762645cccc5:satellites-and-orbits/v/angular-momentum-of-satellites",
       "type": "video",
       "platform": "khan",
       "tier": "A",
@@ -5022,8 +5023,8 @@
     },
     {
       "id": "khan-orbiting-satellites-exercise",
-      "title": "Orbiting Satellites exercise",
-      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:energy-and-momentum-of-rotating-systems/xf557a762645cccc5:conservation-of-angular-momentum/e/orbital-angular-momentum",
+      "title": "Satellites and orbits",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:energy-and-momentum-of-rotating-systems/xf557a762645cccc5:satellites-and-orbits/e/satellites-and-orbits",
       "type": "exercise",
       "platform": "khan",
       "tier": "A",
@@ -5128,8 +5129,8 @@
     },
     {
       "id": "khan-ap1-full-course-practice",
-      "title": "AP Physics 1 全单元练习题",
-      "url": "https://www.khanacademy.org/science/ap-college-physics-1",
+      "title": "AP Physics 1 Course Challenge",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/test/xf557a762645cccc5:course-challenge",
       "type": "exercise",
       "platform": "khan",
       "tier": "C",
@@ -5215,8 +5216,8 @@
     },
     {
       "id": "khan-intro-forces-types",
-      "title": "Khan Academy: Introduction to Forces",
-      "url": "https://www.khanacademy.org/science/ap-physics-1/ap-forces-newtons-laws/ap-introduction-to-forces-and-newtons-laws/v/introduction-to-forces-review",
+      "title": "Forces and free-body diagrams",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:force-and-translational-dynamics/xf557a762645cccc5:forces-and-systems/v/forces-and-free-body-diagrams",
       "type": "video",
       "platform": "khan",
       "tier": "A",
@@ -5229,8 +5230,8 @@
     },
     {
       "id": "khan-contact-field-forces",
-      "title": "Khan Academy: Contact and Field Forces Exercise",
-      "url": "https://www.khanacademy.org/science/ap-physics-1/ap-forces-newtons-laws/ap-introduction-to-forces-and-newtons-laws/e/introduction-to-forces-and-free-body-diagrams",
+      "title": "Forces and free-body diagrams",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:force-and-translational-dynamics/xf557a762645cccc5:forces-and-systems/e/free-body-diagrams-ap-physics-1",
       "type": "exercise",
       "platform": "khan",
       "tier": "A",
@@ -5257,8 +5258,8 @@
     },
     {
       "id": "khan-force-types-exercise",
-      "title": "Khan Academy: Forces and Free Body Diagrams (practice)",
-      "url": "https://www.khanacademy.org/science/ap-physics-1/ap-forces-newtons-laws/ap-introduction-to-forces-and-newtons-laws/e/forces-and-free-body-diagrams",
+      "title": "Forces and free-body diagrams practice",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:force-and-translational-dynamics/xf557a762645cccc5:forces-and-systems/e/free-body-diagrams-ap-physics-1",
       "type": "exercise",
       "platform": "khan",
       "tier": "C",
@@ -5271,9 +5272,9 @@
     },
     {
       "id": "khan-center-of-mass-video",
-      "title": "Khan Academy: Center of Mass",
-      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:force-and-translational-dynamics/xf557a762645cccc5:center-of-mass/v/center-of-mass",
-      "type": "video",
+      "title": "Learn and try: Systems and center of mass",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:linear-momentum/xf557a762645cccc5:center-of-mass/a/what-is-center-of-mass",
+      "type": "reading",
       "platform": "khan",
       "tier": "A",
       "estimated_minutes": 12,
@@ -5285,8 +5286,8 @@
     },
     {
       "id": "khan-center-of-mass-exercise",
-      "title": "Khan Academy: Center of Mass (practice)",
-      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:force-and-translational-dynamics/xf557a762645cccc5:center-of-mass/e/center-of-mass",
+      "title": "Systems and center of mass",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:linear-momentum/xf557a762645cccc5:center-of-mass/e/center-of-mass-exercises-ap1",
       "type": "exercise",
       "platform": "khan",
       "tier": "C",
@@ -5313,8 +5314,8 @@
     },
     {
       "id": "khan-rolling-exercise",
-      "title": "Khan Academy: Rolling Without Slipping (practice)",
-      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:energy-and-momentum-of-rotating-systems/xf557a762645cccc5:rotational-kinetic-energy/e/rolling-without-slipping",
+      "title": "Rotational kinetic energy and rolling",
+      "url": "https://www.khanacademy.org/science/ap-college-physics-1/xf557a762645cccc5:energy-and-momentum-of-rotating-systems/xf557a762645cccc5:rotational-kinetic-energy/e/rotational-kinetic-energy-exercises-ap1",
       "type": "exercise",
       "platform": "khan",
       "tier": "C",

@@ -19,6 +19,7 @@ export interface IRepository {
   saveQuizResult(result: QuizResult): Promise<void>
   getQuizResultsForDay(userId: string, week: number, day: number): Promise<QuizResult[]>
   getAllQuizResultsForUser(userId: string): Promise<QuizResult[]>
+  resetQuizResultsForDay(userId: string, week: number, day: number): Promise<void>
   saveFRQCompletion(completion: FRQCompletion): Promise<void>
   getFRQCompletions(userId: string, frqIds: string[]): Promise<FRQCompletion[]>
   getAllFRQCompletionsForUser(userId: string): Promise<FRQCompletion[]>
